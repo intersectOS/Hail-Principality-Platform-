@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="SULAIMAN O. ALKHATEEB">
+<meta name="creator" content="SULAIMAN O. ALKHATEEB">
+<meta name="description" content="منصة صوت حائل — بوابة إمارة منطقة حائل لحوكمة البلاغات والمقترحات ومتابعة أداء الجهات الحكومية">
+<title>صوت حائل | إمارة منطقة حائل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="libs.js"></script>
+<style>
+#pitch{--bg:#04110b;--ink:#eef4ef;--mut:#a7bfb1;--dim:#6f8a7b;--gold:#d6b25c;--gold2:#f3dc98;--g6:#1B8354;--g4:#3fb672;--line:rgba(214,178,92,.22);--card:rgba(14,46,31,.62);--red:#e5654f;--amb:#e9a23b;--blu:#4aa8dc}
+
+body.pitching{overflow:hidden}
+#pitch button{font-family:inherit;color:inherit}
+#pitch :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+#p_stars{position:fixed;inset:0;z-index:0}
+#p_globe{position:fixed;inset:0;z-index:1;transition:opacity 1.2s ease,filter 1.2s ease}
+#p_globe.pk-dim{opacity:.32;filter:saturate(.7)}
+.maplibregl-ctrl-attrib{background:rgba(0,0,0,.35)!important;color:#bbb!important;font-size:10px}
+.maplibregl-ctrl-attrib a{color:#ddd!important}
+.pk-veil{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(90% 80% at 50% 50%,transparent 30%,rgba(4,17,11,.75) 100%);transition:background 1s}
+#pitch.deep .pk-veil{background:linear-gradient(180deg,rgba(4,17,11,.82),rgba(4,17,11,.9))}
+
+/* deck */
+.pk-deck{position:fixed;inset:0;z-index:5}
+.pk-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:70px clamp(18px,5vw,90px) 90px;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.pk-slide.on{opacity:1;visibility:visible}
+.pk-wrap{width:min(1180px,100%);max-height:100%;overflow:auto;scrollbar-width:none}
+.pk-wrap::-webkit-scrollbar{display:none}
+.pk-rv{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.pk-slide.on .pk-rv{opacity:1;transform:none}
+.pk-slide.on .pk-rv:nth-child(2){transition-delay:.12s}.pk-slide.on .pk-rv:nth-child(3){transition-delay:.24s}.pk-slide.on .pk-rv:nth-child(4){transition-delay:.36s}.pk-slide.on .pk-rv:nth-child(5){transition-delay:.48s}.pk-slide.on .pk-rv:nth-child(6){transition-delay:.6s}
+.pk-kick{color:var(--gold);font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.pk-kick::before{content:"";width:28px;height:2px;background:var(--gold);border-radius:2px}
+#pitch h2{font-family:"Reem Kufi","IBM Plex Sans Arabic";font-weight:700;font-size:clamp(28px,4.2vw,52px);line-height:1.25;color:#fff;max-width:20em}
+.pk-lead{color:var(--mut);font-size:clamp(15px,1.6vw,19px);line-height:1.9;margin-top:16px;max-width:42em}
+.pk-grid{display:grid;gap:16px;margin-top:34px}
+.pk-g2{grid-template-columns:1fr 1fr}.pk-g3{grid-template-columns:repeat(3,1fr)}.pk-g4{grid-template-columns:repeat(4,1fr)}
+.pk-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(10px)}
+.pk-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#fff}
+.pk-card p{font-size:14px;line-height:1.8;color:var(--mut)}
+.pk-num{font-family:"Reem Kufi";font-size:clamp(34px,4vw,50px);color:var(--gold2);line-height:1.1}
+.pk-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(214,178,92,.12);border:1px solid var(--line);margin-bottom:14px;font-size:22px}
+
+/* cover */
+.pk-cover{text-align:center;display:flex;flex-direction:column;align-items:center}
+.pk-cover img{width:min(250px,52vw);filter:drop-shadow(0 0 26px rgba(214,178,92,.45))}
+.pk-cover h1{font-family:"Reem Kufi";font-weight:700;font-size:clamp(44px,7.5vw,92px);color:var(--gold2);margin-top:18px;line-height:1.15}
+.pk-cover p{color:#d5e4da;font-size:clamp(15px,1.9vw,22px);margin-top:12px;max-width:30em;line-height:1.7}
+.pk-cover .pk-hint{margin-top:34px;font-size:13px;color:var(--dim)}
+.pk-loc{position:fixed;z-index:6;top:22px;right:26px;font-size:12.5px;color:var(--mut);line-height:1.7;pointer-events:none;transition:opacity .6s}
+.pk-loc b{color:var(--gold2);font-family:ui-monospace,monospace;direction:ltr;display:inline-block;font-weight:600}
+#pitch.deep .pk-loc{opacity:0}
+
+/* ladder */
+.pk-ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;position:relative}
+.pk-rung{padding:22px 20px;border:1px solid var(--line);background:var(--card);position:relative}
+.pk-rung:first-child{border-radius:0 16px 16px 0}.pk-rung:last-child{border-radius:16px 0 0 16px}
+.pk-rung em{font-style:normal;font-size:12.5px;color:var(--gold);font-weight:600}
+.pk-rung b{display:block;font-size:18px;margin:6px 0;color:#fff}
+.pk-rung p{font-size:13.5px;color:var(--mut);line-height:1.75}
+.pk-rung.pk-hl{background:linear-gradient(180deg,rgba(214,178,92,.22),rgba(214,178,92,.06));border-color:rgba(214,178,92,.6)}
+.pk-rung::after{content:"←";position:absolute;left:-14px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;font-size:13px;color:var(--gold);z-index:2}
+.pk-rung:last-child::after{display:none}
+
+/* journey */
+.pk-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:34px}
+.pk-st{cursor:pointer;padding:16px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:right;transition:border-color .2s,background .2s}
+.pk-st i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(214,178,92,.15);color:var(--gold2);font-weight:700;margin-bottom:10px}
+.pk-st b{font-size:14.5px;display:block}
+.pk-st.on{border-color:var(--gold);background:rgba(214,178,92,.12)}
+.pk-st.on i{background:var(--gold);color:#1a1205}
+.pk-detail{margin-top:16px;min-height:120px}
+.pk-detail .pk-card{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.pk-detail .pk-big{font-size:44px}
+
+/* levels */
+.pk-lvl{border-radius:16px;padding:20px;border:1px solid;background:var(--card)}
+.pk-lvl b{font-size:19px;display:block;margin-bottom:6px}
+.pk-lvl p{font-size:13.5px;color:var(--mut);line-height:1.75}
+.pk-l1{border-color:rgba(63,182,114,.5)}.pk-l1 b{color:var(--g4)}
+.pk-l2{border-color:rgba(74,168,220,.5)}.pk-l2 b{color:var(--blu)}
+.pk-l3{border-color:rgba(233,162,59,.55)}.pk-l3 b{color:var(--amb)}
+.pk-l4{border-color:rgba(229,101,79,.6)}.pk-l4 b{color:var(--red)}
+.pk-pill{display:inline-flex;gap:8px;align-items:center;padding:10px 16px;border-radius:12px;background:rgba(214,178,92,.1);border:1px solid var(--line);font-size:14.5px;margin-top:22px;color:var(--gold2);font-weight:600}
+
+/* mock ui */
+.pk-mock{background:#f7f8f7;color:#1c2621;border-radius:16px;padding:20px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.pk-mock .pk-q{font-weight:700;font-size:15px}
+.pk-mock .pk-seg{display:flex;gap:8px;margin-top:10px}
+.pk-mock .pk-seg span{padding:9px 14px;border-radius:8px;border:1px solid #cbd2ce;font-size:13.5px;background:#fff}
+.pk-mock .pk-seg span.on{border-color:#1B8354;background:#e9f4ee;color:#14573a;font-weight:700;box-shadow:inset 0 0 0 1px #1B8354}
+.pk-mock .pk-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.pk-mock .pk-f{border:1px solid #cbd2ce;border-radius:8px;padding:9px 12px;font-size:13px;background:#fff;direction:ltr;text-align:left;color:#3d4a43}
+.pk-mock .pk-att{margin-top:10px;border:1.5px dashed #bfc8c3;border-radius:8px;padding:10px;text-align:center;font-size:13px;color:#5f6b65}
+.pk-mock .pk-ok{margin-top:12px;padding:10px 12px;border-radius:8px;background:#fdf4e5;border:1px solid #f1d3a3;font-size:13px;color:#7a5a16;line-height:1.7}
+
+/* roles */
+.pk-role{border-radius:16px;padding:22px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.pk-role.pk-k{background:linear-gradient(160deg,rgba(214,178,92,.24),rgba(14,46,31,.7));border-color:rgba(214,178,92,.6)}
+.pk-role small{color:var(--gold);font-weight:600;font-size:12.5px}
+.pk-role b{font-size:18px}
+.pk-role ul{list-style:none;font-size:13.5px;color:var(--mut);line-height:1.95}
+.pk-role li::before{content:"— ";color:var(--gold)}
+
+/* kpis */
+.pk-kp{border-radius:16px;padding:20px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold)}
+.pk-kp .pk-l{font-size:13.5px;color:var(--mut)}
+.pk-kp .pk-v{font-family:"Reem Kufi";font-size:clamp(34px,4vw,48px);color:#fff;margin-top:6px}
+.pk-kp .pk-v small{font-size:18px;color:var(--mut)}
+.pk-kp p{font-size:13px;color:var(--mut);line-height:1.7;margin-top:6px}
+.pk-bars{margin-top:12px;display:flex;flex-direction:column;gap:9px}
+.pk-bars div{display:grid;grid-template-columns:150px 1fr 44px;gap:10px;align-items:center;font-size:13px;color:var(--mut)}
+.pk-bars s{display:block;height:8px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden;text-decoration:none}
+.pk-bars s i{display:block;height:100%;border-radius:9px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1) .5s}
+.pk-slide.on .pk-bars s i{width:var(--w)}
+
+/* roadmap */
+.pk-phase{border-radius:16px;padding:22px;background:var(--card);border:1px solid var(--line);position:relative}
+.pk-phase em{font-style:normal;font-size:12.5px;color:var(--gold);font-weight:600}
+.pk-phase b{display:block;font-size:18px;margin:6px 0 10px}
+.pk-phase ul{list-style:none;font-size:13.5px;color:var(--mut);line-height:1.95}
+.pk-phase li::before{content:"✓ ";color:var(--g4)}
+
+/* end */
+.pk-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;padding:18px 34px;border-radius:14px;background:linear-gradient(180deg,#ebcf80,#b8913c);color:#1a1205;font-weight:700;font-size:clamp(17px,2vw,21px);text-decoration:none;box-shadow:0 22px 50px -18px rgba(214,178,92,.75);transition:transform .2s}
+.pk-cta:hover{transform:translateY(-2px)}
+.pk-cta2{display:inline-block;margin-top:16px;color:var(--mut);font-size:14px}
+.pk-credit{position:fixed;z-index:7;bottom:8px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--dim);pointer-events:none}
+.pk-credit span{direction:ltr;display:inline-block}
+
+/* chrome */
+.pk-top{position:fixed;z-index:8;top:16px;left:20px;display:flex;gap:10px;align-items:center}
+.pk-top a{font-size:13px;color:var(--mut);text-decoration:none;border:1px solid var(--line);padding:7px 13px;border-radius:9px;background:rgba(4,17,11,.5);backdrop-filter:blur(6px)}
+.pk-top a:hover{color:#fff;border-color:var(--gold)}
+.pk-nav{position:fixed;z-index:8;bottom:34px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;background:rgba(4,17,11,.6);border:1px solid var(--line);border-radius:99px;padding:7px 10px;backdrop-filter:blur(10px)}
+.pk-nav button{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.06);cursor:pointer;font-size:17px}
+.pk-nav button:hover{background:rgba(214,178,92,.2)}
+.pk-dots{display:flex;gap:6px}
+.pk-dots i{width:7px;height:7px;border-radius:9px;background:rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
+.pk-dots i.on{width:22px;background:var(--gold)}
+.pk-count{font-size:12.5px;color:var(--mut);font-variant-numeric:tabular-nums;min-width:42px;text-align:center}
+.pk-prog{position:fixed;z-index:8;top:0;right:0;height:3px;background:var(--gold);transition:width .6s ease}
+
+@media(max-width:980px){.pk-g4,.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-ladder{grid-template-columns:1fr 1fr}.pk-rung{border-radius:14px!important;margin:5px}.pk-rung::after{display:none}}
+@media(max-width:640px){.pk-slide{align-items:flex-start;padding:64px 18px 100px}.pk-wrap{max-height:calc(100vh - 160px)}.pk-g2,.pk-g3,.pk-g4,.pk-steps,.pk-ladder{grid-template-columns:1fr}.pk-bars div{grid-template-columns:110px 1fr 40px}.pk-steps{grid-template-columns:1fr 1fr}.pk-detail .pk-card{grid-template-columns:1fr}.pk-loc{display:none}.pk-dots{display:none}}
+
+#pitch{position:fixed;inset:0;z-index:60;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}</style>
+
+
+
+
+<style>
+:root{
+  --g6:#1B8354;--g7:#166A45;--g8:#14573A;--g9:#0E3B28;--g1:#E9F4EE;--g05:#F3F9F5;
+  --ink:#1C2621;--ink2:#3D4A43;--mut:#5F6B65;--dim:#8A948F;
+  --bg:#F6F7F6;--card:#FFFFFF;--line:#E2E6E3;--line2:#EDF0EE;
+  --acc:#B48A3C;--acc1:#F7EFDF;
+  --gold:var(--g6);--gold2:var(--g8);--txt:var(--ink);
+  --pub:#1B8354;--res:#1D6FA5;--sec:#B86E00;--top:#C4321F;
+  --r:12px;--gut:clamp(16px,3.2vw,40px);
+  --sh:0 1px 2px rgba(16,40,28,.06),0 8px 24px -12px rgba(16,40,28,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html.dark,body.dark{background:#03100a}
+button,input,select,textarea{font-family:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--g6);outline-offset:2px}
+::selection{background:var(--g6);color:#fff}
+a{color:var(--g7)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ===== INTRO (dark, cinematic) ===== */
+#stars{position:fixed;inset:0;z-index:0}
+#globe{position:fixed;inset:0;z-index:1;opacity:0;transition:opacity 1.6s ease}
+#globe.on{opacity:1}
+.maplibregl-ctrl-attrib{font-size:10px}
+#intro{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;transition:opacity 1s ease;background:radial-gradient(70% 60% at 50% 42%,rgba(27,131,84,.22),transparent 70%)}
+#intro.gone{opacity:0;pointer-events:none}
+.logo-stage{position:relative;width:min(330px,68vw);aspect-ratio:367/334;filter:drop-shadow(0 0 22px rgba(214,178,92,.35))}
+.logo-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.lg-emb{-webkit-clip-path:inset(0 0 37% 0);clip-path:inset(0 0 37% 0);opacity:0;transform:scale(.6) rotate(-10deg)}
+.lg-cal{-webkit-clip-path:inset(63% 0 0 100%);clip-path:inset(63% 0 0 100%)}
+.play .lg-emb{animation:emb 1.5s cubic-bezier(.2,.9,.2,1) .9s forwards}
+.play .lg-cal{animation:cal 1.7s cubic-bezier(.65,0,.35,1) 2.2s forwards}
+@keyframes emb{to{opacity:1;transform:none}}
+@keyframes cal{to{-webkit-clip-path:inset(63% 0 0 0);clip-path:inset(63% 0 0 0)}}
+.glow{position:absolute;left:50%;top:32%;width:62%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(243,220,152,.55),transparent 65%);opacity:0}
+.play .glow{animation:glow 2.2s ease 3.6s forwards}
+@keyframes glow{40%{opacity:1}100%{opacity:.25}}
+.rings{position:absolute;left:50%;top:32%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;overflow:visible}
+.rings circle{fill:none;stroke:#d6b25c;stroke-linecap:round}
+.rings .c1{stroke-width:.6;stroke-dasharray:400;stroke-dashoffset:400;opacity:.75}
+.rings .c2{stroke-width:.35;stroke-dasharray:3 6;opacity:0}
+.rings .c3{stroke-width:1.1;stroke-dasharray:40 470;opacity:0}
+.rings g{transform-origin:100px 100px}
+.play .rings .c1{animation:draw 2.4s ease .2s forwards}
+.play .rings .c2{animation:fadeIn 1s ease 1.2s forwards}
+.play .rings .c3{animation:fadeIn 1s ease 1.6s forwards}
+.play .rings .g2{animation:spin 50s linear infinite}
+.play .rings .g3{animation:spin 7s linear infinite reverse}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fadeIn{to{opacity:.8}}@keyframes spin{to{transform:rotate(360deg)}}
+.intro-title{margin-top:26px;text-align:center;opacity:0;transform:translateY(12px)}
+.play .intro-title{animation:up 1s ease 4s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.intro-title h1{font-family:"Reem Kufi","IBM Plex Sans Arabic";font-weight:700;font-size:clamp(34px,6vw,58px);color:#f3dc98;line-height:1.2}
+.intro-title p{color:#a9c1b3;margin-top:8px;font-size:clamp(14px,1.7vw,18px);max-width:34em;line-height:1.7}
+.intro-cta{margin-top:28px;display:flex;gap:12px;opacity:0;flex-wrap:wrap;justify-content:center}
+.play .intro-cta{animation:up 1s ease 4.8s forwards}
+.ibtn{border:1px solid rgba(214,178,92,.4);background:rgba(255,255,255,.04);color:#eef4ef;padding:12px 24px;border-radius:10px;cursor:pointer;font-weight:600;font-size:15px}
+.ibtn.pri{background:#d6b25c;color:#1a1205;border-color:#d6b25c}
+#hud{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .8s;color:#cfe0d6}
+#hud.on{opacity:1}
+.hud-corner{position:absolute;padding:20px 24px;font-size:13px;line-height:1.7}
+.hud-corner b{color:#f3dc98;font-weight:600;font-family:ui-monospace,monospace;direction:ltr;display:inline-block}
+.hud-tl{top:0;right:0}.hud-br{bottom:24px;left:0;text-align:left}
+.hud-stage{position:absolute;left:50%;bottom:15%;transform:translateX(-50%);text-align:center;width:90%}
+.hud-stage .lbl{font-family:"Reem Kufi","IBM Plex Sans Arabic";font-size:clamp(26px,4.4vw,48px);color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.85)}
+.hud-stage .sub{color:#f3dc98;margin-top:6px;font-size:14px;text-shadow:0 2px 12px #000}
+.hud-mini{position:absolute;top:20px;left:24px;width:62px}
+.hud-frame{position:absolute;inset:14px;border:1px solid rgba(214,178,92,.2);border-radius:20px}
+.pin{width:20px;height:20px;border-radius:50%;background:#d6b25c;box-shadow:0 0 0 4px rgba(214,178,92,.35),0 0 30px #d6b25c;position:relative}
+.pin::before,.pin::after{content:"";position:absolute;inset:-14px;border:2px solid #d6b25c;border-radius:50%;animation:ping 2s ease-out infinite}
+.pin::after{animation-delay:1s}
+@keyframes ping{from{transform:scale(.4);opacity:1}to{transform:scale(2.4);opacity:0}}
+.pin-lbl{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff;color:var(--g8);padding:7px 14px;border-radius:8px;font-weight:700;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+
+/* ===== APP SHELL (light, government portal) ===== */
+#app{position:relative;z-index:8;min-height:100vh;display:none;background:var(--bg)}
+#app.on{display:block;animation:fade .7s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.gov-strip{background:#fff;border-bottom:1px solid var(--line2);font-size:12.5px;color:var(--mut)}
+.gov-strip .in{max-width:1440px;margin:0 auto;padding:7px var(--gut);display:flex;gap:16px;align-items:center;justify-content:space-between}
+.gov-strip .flag{display:flex;align-items:center;gap:8px}
+.gov-strip .flag i{width:18px;height:12px;border-radius:2px;background:var(--g6);display:inline-block}
+.topbar{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 10px -6px rgba(16,40,28,.15)}
+.topbar .in{max-width:1440px;margin:0 auto;padding:10px var(--gut);display:flex;align-items:center;gap:22px}
+.topbar .lg{display:flex;align-items:center;gap:14px;cursor:pointer;flex:none}
+.topbar .lg img{height:52px}
+.topbar .lg .sep{width:1px;height:38px;background:var(--line)}
+.brand b{font-size:19px;font-weight:700;color:var(--g8);display:block;line-height:1.2}
+.brand span{font-size:12px;color:var(--mut)}
+.nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{background:none;border:0;padding:10px 14px;font-size:14.5px;font-weight:500;color:var(--ink2);cursor:pointer;border-radius:8px;white-space:nowrap;position:relative}
+.nav button:hover{background:var(--g05);color:var(--g8)}
+.nav button.on{color:var(--g7);font-weight:700}
+.nav button.on::after{content:"";position:absolute;bottom:-11px;right:14px;left:14px;height:3px;border-radius:3px 3px 0 0;background:var(--g6)}
+.crumb{max-width:1440px;margin:0 auto;padding:16px var(--gut) 0;font-size:13px;color:var(--mut)}
+.crumb a{color:var(--g7);text-decoration:none;cursor:pointer}
+main{padding:20px var(--gut) 70px;max-width:1440px;margin:0 auto}
+
+.footer{background:var(--g9);color:#c9dbd0;margin-top:20px}
+.footer .in{max-width:1440px;margin:0 auto;padding:42px var(--gut) 20px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+.footer img{height:64px}
+.footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+.footer p,.footer li{font-size:13.5px;line-height:1.9;list-style:none}
+.footer li a{color:#c9dbd0;text-decoration:none;cursor:pointer}
+.footer li a:hover{color:#fff}
+.footer .bot{border-top:1px solid rgba(255,255,255,.1);max-width:1440px;margin:0 auto;padding:16px var(--gut) 22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#9db8a8}
+.footer .bot span{direction:ltr;display:inline-block}
+.footer .bot a{color:#9db8a8}
+
+/* primitives */
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14.5px;transition:background .15s,border-color .15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn:hover{border-color:var(--g6);color:var(--g8)}
+.btn.gold{background:var(--g6);border-color:var(--g6);color:#fff}
+.btn.gold:hover{background:var(--g7);color:#fff}
+.btn.sm{padding:7px 13px;font-size:13px}
+.btn.ghost{background:transparent}
+.btn.red{color:var(--top);border-color:#F1C2BB;background:#FFF6F5}
+.btn.grn{color:var(--g7);border-color:#B9DCC8;background:var(--g05)}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.card{padding:22px}
+.h2{font-size:24px;font-weight:700;color:var(--g9);display:flex;align-items:center;gap:10px;line-height:1.35}
+.h3{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--ink)}
+.mut{color:var(--mut)}.dim{color:var(--dim)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:16px}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.page-head p{color:var(--mut);margin-top:6px;font-size:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:12.5px;color:var(--mut);white-space:nowrap}
+.chip b{color:var(--ink)}
+
+/* hub / home */
+.hero{position:relative;width:100vw;margin:-20px calc(50% - 50vw) 0;min-height:520px;overflow:hidden;background:var(--g9);color:#fff}
+#heroMap{position:absolute;inset:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(9,40,26,.96) 0%,rgba(9,40,26,.82) 38%,rgba(9,40,26,.25) 72%,rgba(9,40,26,.1)),linear-gradient(0deg,rgba(9,40,26,.6),transparent 40%);pointer-events:none}
+.hero .in{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:70px var(--gut) 110px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,56px);font-weight:700;line-height:1.25}
+.hero .lead{font-size:clamp(15px,1.5vw,18px);line-height:1.9;color:#d5e6dc;margin-top:16px;max-width:30em}
+.hero .acts{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero .btn{padding:13px 24px;font-size:15px}
+.hero .btn.out{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.35)}
+.hero .loc{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#e8d6a8;margin-bottom:18px;padding:5px 12px;border:1px solid rgba(232,214,168,.35);border-radius:99px;background:rgba(0,0,0,.2)}
+.track{background:#fff;color:var(--ink);border-radius:14px;padding:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);max-width:420px;justify-self:start}
+.track h3{font-size:18px;font-weight:700;color:var(--g9)}
+.track p{font-size:13.5px;color:var(--mut);margin:6px 0 16px;line-height:1.7}
+.track .f{display:flex;gap:8px}
+.track .ex{font-size:12.5px;color:var(--dim);margin-top:10px}
+.stats{position:relative;z-index:3;margin-top:-56px;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh)}
+.stats div{padding:22px 24px;border-inline-start:1px solid var(--line2)}
+.stats div:first-child{border:0}
+.stats b{display:block;font-size:30px;font-weight:700;color:var(--g8);line-height:1.2}
+.stats span{font-size:13.5px;color:var(--mut)}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;margin:46px 0 18px;gap:16px;flex-wrap:wrap}
+.sec-h h2{font-size:24px;font-weight:700;color:var(--g9)}
+.sec-h p{color:var(--mut);font-size:14px;margin-top:4px}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc .s{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;cursor:pointer;display:flex;gap:16px;align-items:flex-start;transition:border-color .15s,box-shadow .15s}
+.svc .s:hover{border-color:var(--g6);box-shadow:var(--sh)}
+.svc .s .ic{flex:none;width:48px;height:48px;border-radius:10px;background:var(--g1);display:grid;place-items:center}
+.svc .s .ic svg{width:24px;height:24px;stroke:var(--g7);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svc .s h3{font-size:16px;font-weight:700;margin-bottom:5px}
+.svc .s p{font-size:13.5px;color:var(--mut);line-height:1.75}
+.journey{display:grid;grid-template-columns:repeat(6,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.journey div{padding:20px 18px;border-inline-start:1px solid var(--line2);position:relative}
+.journey div:first-child{border:0}
+.journey em{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--g6);color:#fff;font-weight:700;font-size:14px;margin-bottom:12px}
+.journey b{font-size:14.5px;display:block;margin-bottom:4px}
+.journey p{font-size:12.5px;color:var(--mut);line-height:1.7}
+.staff{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.staff .p{border-radius:14px;padding:24px;cursor:pointer;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:8px;transition:border-color .15s}
+.staff .p:hover{border-color:var(--g6)}
+.staff .p.prince{background:var(--g9);color:#fff;border-color:var(--g9)}
+.staff .p.prince p{color:#bcd2c5}
+.staff .p h3{font-size:17px;font-weight:700}
+.staff .p p{font-size:13.5px;color:var(--mut);line-height:1.75;flex:1}
+.staff .p .go{font-size:13.5px;font-weight:700;color:var(--g7)}
+.staff .p.prince .go{color:#e8d6a8}
+.staff .p .lk{font-size:12px;display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
+.staff .p.prince .lk{color:#9db8a8}
+
+/* forms */
+label.f{display:block;font-size:13.5px;color:var(--ink2);margin-bottom:7px;font-weight:600}
+.inp{width:100%;background:#fff;border:1px solid #CBD2CE;border-radius:8px;padding:11px 13px;font-size:14.5px;outline:none;transition:border-color .15s,box-shadow .15s}
+.inp:focus{border-color:var(--g6);box-shadow:0 0 0 3px rgba(27,131,84,.15)}
+textarea.inp{min-height:120px;resize:vertical;line-height:1.75}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{padding:10px 15px;border-radius:8px;border:1px solid #CBD2CE;background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;gap:7px}
+.seg button.on{border-color:var(--g6);background:var(--g1);color:var(--g8);font-weight:700;box-shadow:inset 0 0 0 1px var(--g6)}
+.toggle{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--g05);cursor:pointer}
+.toggle input{display:none}
+.toggle .sw{flex:none;width:40px;height:23px;border-radius:99px;background:#C9D1CC;position:relative;transition:.2s;margin-top:2px}
+.toggle .sw::after{content:"";position:absolute;top:3px;right:3px;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle input:checked+.sw{background:var(--g6)}
+.toggle input:checked+.sw::after{right:20px}
+.toggle b{font-size:14px;display:block}.toggle small{color:var(--mut);font-size:12.5px;line-height:1.65}
+.tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:#EEF1EF;flex-wrap:wrap}
+.tabs button{padding:9px 16px;border-radius:7px;border:0;background:transparent;cursor:pointer;font-size:14px;color:var(--mut);font-weight:600}
+.tabs button.on{background:#fff;color:var(--g8);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.drop{border:1.5px dashed #BFC8C3;border-radius:10px;padding:16px;text-align:center;color:var(--mut);font-size:13.5px;cursor:pointer;background:#FBFCFB}
+
+/* badges */
+.bdg{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;border:1px solid;white-space:nowrap}
+.lv-public{color:#136C43;border-color:#BFE0CD;background:#EAF6EF}
+.lv-restricted{color:#1D6FA5;border-color:#BCD9EE;background:#EAF3FA}
+.lv-secret{color:#9A5B05;border-color:#F1D3A3;background:#FDF4E5}
+.lv-topsecret{color:#B42318;border-color:#F4C0B8;background:#FDEEEC}
+.lv-none{color:var(--mut);border-color:var(--line);background:#F4F5F4}
+.st-b{color:var(--ink2);border-color:var(--line);background:#F7F8F7}
+.pr-urgent{color:var(--top);border-color:#F4C0B8;background:#fff}.pr-high{color:var(--sec);border-color:#F1D3A3;background:#fff}.pr-normal{color:var(--mut);border-color:var(--line);background:#fff}
+
+/* lists */
+.tlist{display:flex;flex-direction:column;gap:8px}
+.titem{padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:border-color .15s,background .15s}
+.titem:hover{border-color:#A9CDB9}
+.titem.on{border-color:var(--g6);background:var(--g05);box-shadow:inset -3px 0 0 var(--g6)}
+.titem .t{font-weight:600;font-size:14.5px;margin:6px 0 4px}
+.titem .m{font-size:12.5px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.idc{font-family:ui-monospace,SFMono-Regular,monospace;direction:ltr;font-size:12.5px;color:var(--g7);font-weight:600}
+.timeline{position:relative;padding-right:24px;margin-top:8px}
+.timeline::before{content:"";position:absolute;right:7px;top:6px;bottom:10px;width:2px;background:var(--line)}
+.tl{position:relative;padding:0 0 16px}
+.tl::before{content:"";position:absolute;right:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid #C3CBC6}
+.tl.done::before{background:var(--g6);border-color:var(--g6)}
+.tl.cur::before{background:#fff;border-color:var(--g6);box-shadow:0 0 0 4px rgba(27,131,84,.18)}
+.tl b{font-size:14px;font-weight:600}.tl p{font-size:12.5px;color:var(--mut);margin-top:2px}
+.stepper{display:flex;gap:4px;margin:16px 0 8px}
+.stepper div{flex:1;height:6px;border-radius:9px;background:#E6EAE7}
+.stepper div.on{background:var(--g6)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-weight:600;color:var(--mut);text-align:right;padding:11px 10px;border-bottom:1px solid var(--line);font-size:12.5px;white-space:nowrap;background:#FAFBFA}
+td{padding:11px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+tr:hover td{background:#FAFCFB}
+.bar{height:7px;border-radius:9px;background:#E8ECE9;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;border-radius:9px}
+
+/* command center */
+.cc-band{width:100vw;margin:-20px calc(50% - 50vw) 22px;background:linear-gradient(180deg,var(--g9),#123f2c);color:#fff}
+.cc-band .in{max-width:1440px;margin:0 auto;padding:28px var(--gut) 26px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.cc-band h1{font-size:clamp(22px,2.6vw,30px);font-weight:700;display:flex;align-items:center;gap:14px}
+.cc-band h1 img{height:56px}
+.cc-band p{color:#b9d0c2;font-size:13.5px;margin-top:6px}
+.cc-band .btn{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.3)}
+.cc-band .btn:hover{background:rgba(255,255,255,.16)}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.kpi{padding:16px 18px;border-top:3px solid var(--g6)}
+.kpi .l{font-size:13px;color:var(--mut);font-weight:500}
+.kpi .v{font-size:30px;font-weight:700;color:var(--g9);margin-top:4px;line-height:1.15}
+.kpi .v small{font-size:15px;color:var(--mut);font-weight:500}
+.kpi .d{font-size:12.5px;margin-top:6px}
+.up{color:var(--pub)}.dn{color:var(--top)}
+.cc-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:16px}
+.cc-3{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:16px}
+.cc-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+#ccMap{height:440px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.gov-m{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.gov-m .c{border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;color:#fff;border:2px solid #fff;box-shadow:0 4px 18px rgba(0,0,0,.45)}
+.gov-m .n{margin-top:4px;font-size:12px;font-weight:700;color:var(--g9);background:#fff;padding:2px 8px;border-radius:6px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.insight{display:flex;gap:12px;padding:13px;border-radius:10px;background:#FAFBFA;border:1px solid var(--line2);margin-bottom:10px}
+.insight .dot{flex:none;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:16px}
+.insight p{font-size:13.5px;line-height:1.75}
+.insight b{color:var(--g8)}
+.vault{position:relative;overflow:hidden}
+.vault.locked .vbody{filter:blur(6px);pointer-events:none;user-select:none}
+.vlock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(255,255,255,.7);text-align:center;padding:20px}
+.vlock svg{width:46px;height:46px;stroke:var(--g8);fill:none;stroke-width:1.5}
+.wm{position:absolute;inset:0;pointer-events:none;opacity:.07;font-size:22px;font-weight:700;display:flex;flex-wrap:wrap;gap:40px 60px;transform:rotate(-20deg) scale(1.4);align-content:center;justify-content:center;color:var(--top)}
+.ticker{display:flex;align-items:center;gap:12px;padding:11px 16px;margin-bottom:16px;overflow:hidden}
+.ticker .live{flex:none;display:flex;align-items:center;gap:6px;color:var(--top);font-weight:700;font-size:13px}
+.ticker .live i{width:8px;height:8px;border-radius:50%;background:var(--top);animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+.ticker .txt{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grade{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;font-weight:700}
+
+/* modal / toast */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(10,30,20,.45);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex;animation:fade .2s}
+.modal .box{width:min(880px,100%);max-height:90vh;overflow:auto;padding:26px;background:#fff}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(30px);z-index:120;padding:13px 20px;border-radius:10px;background:var(--g9);color:#fff;opacity:0;transition:.3s;font-size:14px;max-width:92vw;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.verify{display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 10px;text-align:center}
+.spin{width:56px;height:56px;border-radius:50%;border:3px solid var(--g1);border-top-color:var(--g6);animation:spin 1s linear infinite}
+.pinbox{display:flex;gap:10px;direction:ltr}
+.pinbox input{width:52px;height:58px;text-align:center;font-size:24px;border-radius:10px;background:#fff;border:1px solid #CBD2CE;outline:none}
+.pinbox input:focus{border-color:var(--g6);box-shadow:0 0 0 3px rgba(27,131,84,.15)}
+.matrix td,.matrix th{text-align:center;font-size:13px}
+.matrix td:first-child,.matrix th:first-child{text-align:right;font-weight:600}
+.yes{color:var(--pub);font-weight:600}.no{color:var(--top);font-weight:600}.part{color:var(--sec);font-weight:600}
+.stars button{background:none;border:0;font-size:28px;cursor:pointer;color:#D3D9D5}
+.stars button.on{color:#E0A526}
+.split{display:grid;grid-template-columns:380px 1fr;gap:16px;align-items:start}
+.empty{text-align:center;color:var(--dim);padding:50px 10px}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:10px 14px;font-size:14px}
+.kv dt{color:var(--dim)}
+.reason{font-size:13px;padding:9px 12px;border-radius:8px;background:#FDF8EE;border:1px solid #F1DFBA;margin-top:6px;line-height:1.7}
+.lvopt{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.lvopt button{padding:13px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;text-align:right}
+.lvopt button b{display:block;font-size:14.5px;margin-bottom:4px}
+.lvopt button small{font-size:12px;color:var(--mut);line-height:1.6;display:block}
+.lvopt button.on{background:#FAFCFB;box-shadow:inset 0 0 0 1px currentColor}
+.directive{padding:16px 18px;border-radius:12px;border:1px solid #E6D3A8;background:var(--acc1);margin-bottom:14px;display:flex;gap:14px;align-items:flex-start}
+.directive img{width:44px}
+
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}.cc-3{grid-template-columns:1fr 1fr}.svc{grid-template-columns:repeat(2,1fr)}.journey{grid-template-columns:repeat(3,1fr)}.journey div:nth-child(4){border:0}.footer .in{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.cc-grid,.cc-2,.cc-3,.split,.hero .in,.staff{grid-template-columns:1fr}.lvopt{grid-template-columns:1fr 1fr}.track{max-width:none;justify-self:stretch}.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){border:0}.stats div:nth-child(n+3){border-top:1px solid var(--line2)}.hero .in{padding:44px var(--gut) 90px}.topbar .in{flex-wrap:wrap;gap:6px 16px}.nav{order:3;flex-basis:100%}.nav button.on::after{bottom:-3px}}
+@media(max-width:560px){.kpis{grid-template-columns:1fr 1fr}.svc,.journey{grid-template-columns:1fr}.journey div{border:0;border-top:1px solid var(--line2)}.kpi .v{font-size:25px}.topbar .lg img{height:42px}.brand span,.gov-strip .hide-m{display:none}.kv{grid-template-columns:96px 1fr}.footer .in{grid-template-columns:1fr}.stats b{font-size:24px}}
+@media print{.topbar,.gov-strip,.footer,.btn,#stars,#globe{display:none!important}}
+</style>
+</head>
+<body class="dark pitching">
+<div id="pitch"><canvas id="p_stars"></canvas>
+<div id="p_globe"></div>
+<div class="pk-veil"></div>
+<div class="pk-prog" id="p_prog"></div>
+<div class="pk-loc" id="p_loc">إمارة منطقة حائل<br><b id="p_coord">7HV3GM9W+GR</b></div>
+<div class="pk-top"><a href="#app" data-enter="app">المنصة</a></div>
+
+<main class="pk-deck" id="p_deck">
+
+<!-- 1 cover -->
+<section class="pk-slide" data-globe="space">
+  <div class="pk-cover">
+    <img class="pk-rv" data-logo="gold" src="data:," alt="إمارة منطقة حائل">
+    <h1 class="pk-rv">صوت حائل</h1>
+    <p class="pk-rv">منصة إمارة منطقة حائل لحوكمة الشكاوى والبلاغات ومتابعة أداء الجهات الحكومية</p>
+    <div class="pk-hint pk-rv">اضغط ← أو اسحب للبدء</div>
+  </div>
+</section>
+
+<!-- 2 arrive -->
+<section class="pk-slide" data-globe="hail">
+  <div class="pk-wrap" style="text-align:center">
+    <div class="pk-kick pk-rv" style="justify-content:center">من هنا تبدأ الحكاية</div>
+    <h2 class="pk-rv" style="margin:0 auto">كل صوت في محافظات المنطقة العشر يصل إلى مقر الإمارة</h2>
+    <p class="pk-lead pk-rv" style="margin:16px auto 0">حائل، بقعاء، الغزالة، الشنان، الحائط، السليمي، الشملي، موقق، سميراء، والحليفة السفلى.</p>
+  </div>
+</section>
+
+<!-- 3 problem -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">الواقع اليوم</div>
+    <h2 class="pk-rv">الشكاوى موجودة، لكنها متفرقة ولا تصل كصورة واحدة</h2>
+    <div class="pk-grid pk-g4">
+      <div class="pk-card pk-rv"><div class="pk-ic">🧩</div><h3>قنوات متفرقة</h3><p>كل جهة لها نافذتها، ولا توجد رؤية موحدة لما يعانيه المواطن عبر الجهات.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🔁</div><h3>إغلاق شكلي</h3><p>تُغلق الشكوى في نظام الجهة بينما المشكلة قائمة على أرض الواقع.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">⏳</div><h3>مهل غير مرئية</h3><p>لا يُعرف كم انتظر المواطن، ولا أي جهة تتأخر بانتظام.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🔐</div><h3>حساسية بلا ضوابط</h3><p>بلاغات شبهات الفساد قد تعود للجهة نفسها المشكو منها.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 idea -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">الفكرة</div>
+    <h2 class="pk-rv">الإمارة مستوى متابعة أعلى، لا نافذة شكاوى إضافية</h2>
+    <p class="pk-lead pk-rv">المواطن يبدأ من قناة الجهة. وإن لم تتجاوب، يصعد إلى الإمارة ومعه الإثبات، فتتحول كل شكوى إلى مؤشر على أداء الجهة.</p>
+    <div class="pk-ladder pk-rv">
+      <div class="pk-rung"><em>المواطن</em><b>يرفع طلبه</b><p>شكوى، بلاغ، مقترح، أو استفسار عن أي جهة في المنطقة.</p></div>
+      <div class="pk-rung"><em>المستوى الأول</em><b>قناة الجهة</b><p>بلدي، 937، 938… الجهة تعالج أولاً عبر نافذتها.</p></div>
+      <div class="pk-rung pk-hl"><em>المستوى الثاني</em><b>إمارة المنطقة</b><p>تستقبل ما أخفقت فيه الجهة، والحالات المستثناة مباشرة.</p></div>
+      <div class="pk-rung"><em>القرار</em><b>سمو الأمير</b><p>يرى أداء كل جهة، ويصدر توجيهاته بضغطة واحدة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 journey -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">رحلة الطلب</div>
+    <h2 class="pk-rv">ست مراحل، لا يُغلق الطلب إلا بكلمة المواطن</h2>
+    <div class="pk-steps pk-rv" id="p_steps"></div>
+    <div class="pk-detail pk-rv" id="p_detail"></div>
+  </div>
+</section>
+
+<!-- 6 governance -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">الحوكمة والسرية</div>
+    <h2 class="pk-rv">المواطن يحمي هويته، والإمارة تعتمد درجة السرية</h2>
+    <p class="pk-lead pk-rv">أربع درجات مستمدة من مستويات تصنيف البيانات الوطنية. يقترح محرك آلي الدرجة ويذكر سببها، ويعتمدها مصنِّف معتمد يُسجَّل قراره باسمه.</p>
+    <div class="pk-grid pk-g4">
+      <div class="pk-lvl pk-l1 pk-rv"><b>عام</b><p>يُحال للجهة كاملاً، ويظهر في التقارير التفصيلية.</p></div>
+      <div class="pk-lvl pk-l2 pk-rv"><b>مقيّد</b><p>يُحال للجهة مع حجب هوية المواطن وبياناته الشخصية.</p></div>
+      <div class="pk-lvl pk-l3 pk-rv"><b>سري</b><p>شبهات الفساد والادعاءات ضد مسؤولين: لا يُحال أبداً للجهة المشكو منها.</p></div>
+      <div class="pk-lvl pk-l4 pk-rv"><b>سري للغاية</b><p>لسمو الأمير ووكيل الإمارة فقط، بتحقق إضافي وسجل لكل اطلاع.</p></div>
+    </div>
+    <div class="pk-pill pk-rv">🛡️ كل تصنيف وكل اطلاع موثّق في سجل تدقيق باسم المستخدم ووقته</div>
+  </div>
+</section>
+
+<!-- 7 evidence -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-grid pk-g2" style="margin-top:0;align-items:center;gap:40px">
+      <div>
+        <div class="pk-kick pk-rv">الإثبات والتصعيد</div>
+        <h2 class="pk-rv">من سبق أن اشتكى للجهة، يصل للإمارة أقوى</h2>
+        <p class="pk-lead pk-rv">يذكر المواطن رقم طلبه لدى الجهة وتاريخه ويرفق صورة أو PDF، فيُعامل طلبه بأولوية عالية. ومن لم يرفعه بعد، يُوجَّه لقناة الجهة الصحيحة، ثم يصعّد بضغطة واحدة إن لم تتجاوب.</p>
+        <p class="pk-lead pk-rv" style="font-size:15px">الاستثناءات تدخل الإمارة مباشرة: شبهة فساد، أو خطر على السلامة العامة، أو شكوى ضد الجهة نفسها.</p>
+      </div>
+      <div class="pk-mock pk-rv">
+        <div class="pk-q">هل سبق أن رفعت هذا الطلب للجهة نفسها؟</div>
+        <div class="pk-seg"><span class="on">نعم، رفعته ولم تتجاوب</span><span>لا، لم أرفعه بعد</span></div>
+        <div class="pk-row"><div class="pk-f">NWC-551209</div><div class="pk-f">2026-10-02</div></div>
+        <div class="pk-att">📎 صورة-الطلب.jpg · إشعار-الجهة.pdf</div>
+        <div class="pk-ok">🧾 سبق رفعه للجهة منذ 14 يوماً دون تجاوب. رُفعت الأولوية، ويُحتسب في مؤشر «إخفاق القناة الأولى».</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 roles -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">من يستخدم المنصة</div>
+    <h2 class="pk-rv">لكل دور بوابته، ولكل جهة ضابط اتصال</h2>
+    <div class="pk-grid pk-g4">
+      <div class="pk-role pk-rv"><small>بلا حساب</small><b>المواطن</b><ul><li>يرفع طلبه برقم هويته</li><li>يتابعه برقم ورمز سري</li><li>يؤكد الحل أو يصعّده</li><li>يقترح ويصوّت</li></ul></div>
+      <div class="pk-role pk-rv"><small>موظفو الإمارة</small><b>مكتب الفرز</b><ul><li>يعتمد درجة السرية</li><li>يتحقق من الإثبات</li><li>يحيل أو يعيد التوجيه</li><li>يتابع المصعَّد</li></ul></div>
+      <div class="pk-role pk-rv"><small>حساب لكل جهة</small><b>ضابط الاتصال</b><ul><li>يرى تذاكر جهته فقط</li><li>يرد ضمن المهلة</li><li>لا يرى هوية المحجوب</li><li>يستقبل توجيهات سمو الأمير</li></ul></div>
+      <div class="pk-role pk-k pk-rv"><small>دخول مخصص</small><b>مركز القيادة</b><ul><li>أداء كل جهة ومحافظة</li><li>الإغلاق الشكلي</li><li>الملفات السرية</li><li>إصدار التوجيهات</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 command center -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">مركز قيادة سمو الأمير</div>
+    <h2 class="pk-rv">ثلاثة مؤشرات تكشف ما لا تقوله الأرقام الداخلية</h2>
+    <div class="pk-grid pk-g3">
+      <div class="pk-kp pk-rv"><div class="pk-l">الإغلاق الشكلي</div><div class="pk-v" data-count="18">0<small>%</small></div><p>ردّت الجهة بأن المشكلة حُلّت، ونفى المواطن ذلك.</p></div>
+      <div class="pk-kp pk-rv" style="border-top-color:var(--red)"><div class="pk-l">إخفاق القناة الأولى</div><div class="pk-v" data-count="37">0<small>%</small></div><p>طلبات وصلت الإمارة بعد أن رُفعت للجهة دون تجاوب.</p></div>
+      <div class="pk-kp pk-rv" style="border-top-color:var(--g4)"><div class="pk-l">الالتزام بالمهلة</div><div class="pk-v" data-count="71">0<small>%</small></div><p>ردود الجهات التي وصلت ضمن المهلة المعتمدة.</p></div>
+    </div>
+    <div class="pk-card pk-rv" style="margin-top:16px"><h3>إخفاق القناة الأولى حسب الجهة — مثال توضيحي</h3>
+      <div class="pk-bars">
+        <div>الطرق<s><i style="--w:68%;background:var(--red)"></i></s>68%</div>
+        <div>المياه<s><i style="--w:56%;background:var(--red)"></i></s>56%</div>
+        <div>الأمانة<s><i style="--w:48%;background:var(--amb)"></i></s>48%</div>
+        <div>الكهرباء<s><i style="--w:37%;background:var(--amb)"></i></s>37%</div>
+        <div>التجمع الصحي<s><i style="--w:21%;background:var(--g4)"></i></s>21%</div>
+      </div></div>
+  </div>
+</section>
+
+<!-- 10 tech -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">البنية والأمان</div>
+    <h2 class="pk-rv">جاهزة للتشغيل اليوم، وقابلة للتكامل غداً</h2>
+    <div class="pk-grid pk-g3">
+      <div class="pk-card pk-rv"><div class="pk-ic">🗄️</div><h3>قاعدة بيانات مُدارة</h3><p>PostgreSQL مع صلاحيات على مستوى الصف: كل دور يرى ما يحق له فقط، والقاعدة نفسها تفرض ذلك.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🔑</div><h3>حسابات وصلاحيات</h3><p>إدارة تنشئ حسابات ضباط الاتصال وتربط كل حساب بجهته، وتعطّله متى شاءت.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">📎</div><h3>مرفقات محمية</h3><p>صور الإثبات وملفات PDF في مخزن خاص، لا تُفتح إلا لموظفي الإمارة بروابط مؤقتة.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🧾</div><h3>سجل تدقيق</h3><p>كل دخول، وتصنيف، وإحالة، واطلاع على ملف سري مسجّل بالاسم والوقت.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">📱</div><h3>تعمل على كل جهاز</h3><p>واجهة عربية بهوية البوابات الحكومية، على الجوال والحاسب دون تثبيت.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🔗</div><h3>تكامل لاحق</h3><p>الدخول بالنفاذ الوطني، والتحقق الآلي من أرقام تذاكر الجهات عبر أنظمتها.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 roadmap -->
+<section class="pk-slide" data-globe="deep">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">خطة الإطلاق</div>
+    <h2 class="pk-rv">نبدأ صغاراً، ونقيس، ثم نعمّم</h2>
+    <div class="pk-grid pk-g3">
+      <div class="pk-phase pk-rv"><em>المرحلة الأولى · 30 يوماً</em><b>تجربة محدودة</b><ul><li>ثلاث جهات عالية الطلب</li><li>تدريب ضباط الاتصال</li><li>اعتماد ميثاق التصنيف</li></ul></div>
+      <div class="pk-phase pk-rv"><em>المرحلة الثانية · 60 يوماً</em><b>جميع جهات المنطقة</b><ul><li>ضابط اتصال لكل جهة</li><li>تقرير شهري لسمو الأمير</li><li>متابعة التوجيهات</li></ul></div>
+      <div class="pk-phase pk-rv"><em>المرحلة الثالثة</em><b>التكامل</b><ul><li>الدخول بالنفاذ الوطني</li><li>ربط أنظمة شكاوى الجهات</li><li>إشعارات نصية للمواطن</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 end -->
+<section class="pk-slide" data-globe="hq">
+  <div class="pk-cover">
+    <img class="pk-rv" data-logo="gold" src="data:," alt="" style="width:min(170px,40vw)">
+    <h1 class="pk-rv" style="font-size:clamp(34px,5.5vw,64px)">المنصة جاهزة للتجربة</h1>
+    <p class="pk-rv">ارفع طلباً كمواطن، ثم ادخل بحساب مكتب الفرز وضابط الاتصال، وشاهد كيف يصل إلى مركز القيادة.</p>
+    <a class="pk-cta pk-rv" href="#app" data-enter="app">زيارة المنصة</a>
+    <a class="pk-cta2 pk-rv" href="#app" data-enter="intro">أو ابدأ برحلة الوصول من الفضاء</a>
+  </div>
+</section>
+
+</main>
+
+<nav class="pk-nav" aria-label="التنقل بين الشرائح">
+  <button id="p_prev" aria-label="السابق">→</button>
+  <span class="pk-count" id="p_count"></span>
+  <div class="pk-dots" id="p_dots"></div>
+  <button id="p_next" aria-label="التالي">←</button>
+</nav>
+<div class="pk-credit">تم تطوير هذه المنصة بواسطة سليمان الخطيب <span>0559965929</span></div>
+
+</div>
+<script>window.__fillLogos&&__fillLogos()</script>
+<script>
+(()=>{
+"use strict";
+const PITCH=document.getElementById('pitch');let PON=true;
+if(/[?&]app=1/.test(location.search)||location.hash==='#app'){PITCH.remove();document.body.classList.remove('pitching');return}
+
+const $=s=>document.querySelector(s);
+const HQ=[41.6971,27.5188];
+const SAT='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+
+/* stars */
+(function(){const c=$('#p_stars'),x=c.getContext('2d');let S=[];
+ const rs=()=>{c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio;S=Array.from({length:420},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2*devicePixelRatio+.2,a:Math.random()*6,s:Math.random()*.02+.004}))};
+ rs();addEventListener('resize',rs);
+ (function f(){x.clearRect(0,0,c.width,c.height);for(const s of S){s.a+=s.s;x.fillStyle=`rgba(255,248,225,${.3+Math.abs(Math.sin(s.a))*.7})`;x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill()}requestAnimationFrame(f)})();
+})();
+
+/* globe */
+let map=null,NETOK=false;
+const SZ=()=>innerWidth<640?.9:1.55,SP=()=>({top:Math.round(innerHeight*1.15),bottom:0,left:0,right:0}),NP={top:0,bottom:0,left:0,right:0};
+const NET=new Promise(res=>{const i=new Image();let d=false;const f=v=>{if(!d){d=true;NETOK=v;res(v)}};i.onload=()=>f(true);i.onerror=()=>f(false);i.src=SAT.replace('{z}/{y}/{x}','6/27/41')+'?t='+Date.now();setTimeout(()=>f(false),4500)});
+if(window.maplibregl){
+  if(window.__EARTH){try{maplibregl.addProtocol('earth',async p=>{const b=window.__EARTH[p.url.replace('earth://','')];if(!b)throw new Error('none');const bin=atob(b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return{data:u.buffer}})}catch(e){}}
+  try{map=new maplibregl.Map({container:'p_globe',interactive:false,attributionControl:{compact:true},
+    style:{version:8,projection:{type:'globe'},sources:{earth:{type:'raster',tiles:['earth://{z}/{x}/{y}'],tileSize:256,maxzoom:4,attribution:'NASA Blue Marble'},sat:{type:'raster',tiles:[SAT],tileSize:256,maxzoom:19,attribution:'Imagery © Esri, Maxar, Earthstar Geographics'}},
+      layers:[{id:'earth',type:'raster',source:'earth',paint:{'raster-fade-duration':0}},{id:'sat',type:'raster',source:'sat',paint:{'raster-fade-duration':250}}],
+      sky:{'atmosphere-blend':['interpolate',['linear'],['zoom'],0,1,5,1,8,0]}},
+    center:[-10,20],zoom:SZ()});
+    map.setPadding(SP());
+    map.once('load',()=>{const a=document.querySelector('#p_globe .maplibregl-ctrl-attrib');if(a)a.classList.remove('maplibregl-compact-show')});
+    map.on('move',()=>{const c=map.getCenter();$('#p_coord').textContent=c.lat.toFixed(3)+'°N · '+c.lng.toFixed(3)+'°E'});
+  }catch(e){map=null}
+}
+let spinning=true,pin=null;
+function spin(){if(!PON||!map||!spinning)return;const c=map.getCenter();map.easeTo({center:[c.lng+10,c.lat],duration:2200,easing:t=>t});map.once('moveend',()=>{if(spinning)spin()})}
+if(map)map.once('load',spin);
+let GSTATE='space';
+async function globeTo(mode){
+  PITCH.classList.toggle('deep',mode==='deep');
+  $('#p_globe').classList.toggle('pk-dim',mode==='deep');
+  if(!map||mode===GSTATE||mode==='deep'){GSTATE=mode==='deep'?GSTATE:mode;return}
+  GSTATE=mode;spinning=false;map.stop();
+  if(mode==='space'){spinning=true;map.flyTo({center:[20,22],zoom:SZ(),pitch:0,bearing:0,padding:SP(),duration:2500});map.once('moveend',spin);return}
+  const ok=await NET;
+  if(mode==='hail'){map.flyTo({center:ok?[41.69,27.51]:[41.75,27.35],zoom:ok?11.2:6.3,pitch:ok?55:38,bearing:-18,padding:NP,duration:9000,curve:1.5,essential:true,easing:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2});addPin()}
+  if(mode==='hq'){map.flyTo({center:ok?HQ:[41.75,27.35],zoom:ok?16.4:6.5,pitch:ok?62:40,bearing:30,padding:NP,duration:5000,essential:true});addPin()}
+}
+function addPin(){if(pin||!map)return;const el=document.createElement('div');el.style.cssText='width:18px;height:18px;border-radius:50%;background:#d6b25c;box-shadow:0 0 0 5px rgba(214,178,92,.35),0 0 28px #d6b25c';pin=new maplibregl.Marker({element:el}).setLngLat(HQ).addTo(map)}
+
+/* journey */
+const ST=[['📝','ترفع طلبك','يختار المواطن الجهة والموضوع والمحافظة، ويذكر إن كان قد رفعه للجهة سابقاً مع الإثبات، ويختار حجب هويته إن أراد.'],
+ ['🏛️','الإمارة تصنّفه','يقترح المحرك درجة السرية مع أسبابها، ويعتمدها مصنِّف معتمد مع الأولوية والمهلة: يومان للعاجل، وخمسة للعالي، وعشرة للعادي.'],
+ ['📤','يُحال أو يُوجَّه','إلى ضابط اتصال الجهة، أو إلى وحدة الرقابة إن كان سرياً، أو يُوجَّه المواطن لقناة الجهة أولاً مع رابطها الصحيح.'],
+ ['⏱️','تعالجه الجهة','ضابط الاتصال يرى تذاكر جهته فقط، ويرد بما تم فعلياً على أرض الواقع، والعداد يحسب المهلة لحظة بلحظة.'],
+ ['✅','المواطن يؤكد','لا يُغلق الطلب إلا بتأكيد المواطن. وإن نفى الحل، يعود للإمارة مصعَّداً ويُحتسب على الجهة «إغلاقاً شكلياً».'],
+ ['📊','يصل لسمو الأمير','كل طلب يغذي مؤشرات الجهة والمحافظة في مركز القيادة، ومنه تصدر التوجيهات مباشرة إلى بوابة الجهة.']];
+let si=0;
+function drawSteps(){$('#p_steps').innerHTML=ST.map((s,i)=>`<button class="pk-st ${i===si?'on':''}" data-st="${i}"><i>${i+1}</i><b>${s[1]}</b></button>`).join('');
+  $('#p_detail').innerHTML=`<div class="pk-card"><div class="pk-big">${ST[si][0]}</div><div><h3>${ST[si][1]}</h3><p style="font-size:15px">${ST[si][2]}</p></div></div>`}
+drawSteps();
+$('#p_steps').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;si=+b.dataset.st;drawSteps()});
+
+/* deck */
+const slides=[...document.querySelectorAll('.pk-slide')];let cur=-1;
+$('#p_dots').innerHTML=slides.map((_,i)=>`<i data-i="${i}" title="${i+1}"></i>`).join('');
+function countUp(root){root.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,t0=performance.now(),sm=el.querySelector('small');const sh=sm?sm.outerHTML:'';
+  (function f(t){const p=Math.min(1,(t-t0)/1400),v=Math.round(to*(1-Math.pow(1-p,3)));el.innerHTML=v+sh;if(p<1)requestAnimationFrame(f)})(t0)})}
+function show(n){
+  n=Math.max(0,Math.min(slides.length-1,n));if(n===cur)return;cur=n;
+  slides.forEach((s,i)=>s.classList.toggle('on',i===n));
+  document.querySelectorAll('#p_dots i').forEach((d,i)=>d.classList.toggle('on',i===n));
+  $('#p_count').textContent=(n+1)+' / '+slides.length;$('#p_prog').style.width=((n+1)/slides.length*100)+'%';
+  globeTo(slides[n].dataset.globe||'deep');countUp(slides[n]);
+  if(history.replaceState)history.replaceState(null,'','#p'+(n+1));
+}
+window.__exitPitch=()=>{if(!PON)return;PON=false;try{map&&map.remove()}catch(e){}PITCH.style.transition='opacity .6s';PITCH.style.opacity='0';setTimeout(()=>{PITCH.remove();document.body.classList.remove('pitching')},650);if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#app');(window.__startPlatform?window.__startPlatform():window.__wantPlatform=true)};
+PITCH.addEventListener('click',e=>{const a=e.target.closest('[data-enter]');if(!a)return;e.preventDefault();if(a.dataset.enter==='intro'){window.__wantIntro=true}window.__exitPitch()});
+$('#p_next').onclick=()=>show(cur+1);$('#p_prev').onclick=()=>show(cur-1);
+$('#p_dots').onclick=e=>{const d=e.target.closest('[data-i]');if(d)show(+d.dataset.i)};
+addEventListener('keydown',e=>{if(!PON)return;if(['ArrowLeft','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(cur+1)}else if(['ArrowRight','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(cur-1)}else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1)});
+let tx=null,ty=null;
+addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{if(!PON||tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(cur+(dx>0?1:-1));tx=null},{passive:true});
+document.addEventListener('click',e=>{if(!PON)return;if(e.target.closest('a,button,.pk-st,.pk-nav'))return;if(e.clientX<innerWidth*.33)show(cur+1)});
+const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-1);
+})();
+</script>
+
+
+<canvas id="stars"></canvas>
+<div id="globe"></div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="logo-stage" id="logoStage">
+    <div class="glow"></div>
+    <svg class="rings" viewBox="0 0 200 200">
+      <circle class="c1" cx="100" cy="100" r="62"/>
+      <g class="g2"><circle class="c2" cx="100" cy="100" r="74"/></g>
+      <g class="g3"><circle class="c3" cx="100" cy="100" r="80"/></g>
+    </svg>
+    <img class="lg-emb" data-logo="gold" src="data:," alt="">
+    <img class="lg-cal" data-logo="gold" src="data:," alt="إمارة منطقة حائل">
+  </div>
+  <div class="intro-title">
+    <h1>منصّة صَوت حائل</h1>
+    <p>بوابة إمارة منطقة حائل لحوكمة البلاغات والمقترحات ومتابعة أداء الجهات الحكومية</p>
+  </div>
+  <div class="intro-cta">
+    <button class="ibtn pri" id="goFly">الانطلاق إلى حائل</button>
+    <button class="ibtn" id="skip">تخطي العرض</button>
+  </div>
+</section>
+
+<!-- FLY HUD -->
+<div id="hud">
+  <div class="hud-frame"></div>
+  <img class="hud-mini" data-logo="gold" src="data:," alt="">
+  <div class="hud-corner hud-tl">الموقع المستهدف: <b>7HV3GM9W+GR</b><br>إحداثيات: <b id="hCoord">27.5188°N · 41.6971°E</b></div>
+  <div class="hud-corner hud-br">الارتفاع التقريبي<br><b id="hAlt">—</b></div>
+  <div class="hud-stage"><div class="lbl" id="hLbl">كوكب الأرض</div><div class="sub" id="hSub">بداية الرحلة</div></div>
+</div>
+
+
+
+<!-- APP -->
+<div id="app">
+  <div class="gov-strip"><div class="in"><span class="flag"><i></i>منصة صوت حائل · تابعة لإمارة منطقة حائل</span><span id="clock"></span></div></div>
+  <header class="topbar"><div class="in">
+    <div class="lg" data-go="hub"><img data-logo="green" src="data:," alt="إمارة منطقة حائل"><span class="sep"></span><div class="brand"><b>صوت حائل</b><span>البلاغات والمقترحات ومتابعة الجهات</span></div></div>
+    <nav class="nav" id="nav">
+      <button data-go="hub" data-nav="hub">الرئيسية</button>
+      <button data-go="citizen" data-tab="new" data-nav="new">رفع طلب</button>
+      <button data-go="citizen" data-tab="mine" data-nav="mine">طلباتي</button>
+      <button data-go="citizen" data-tab="ideas" data-nav="ideas">مقترحات المواطنين</button>
+      <button data-act="charter">ميثاق التصنيف</button>
+      <button data-act="staff" data-nav="staff">بوابات الموظفين</button>
+      <button data-go="admin" data-nav="admin" id="navAdmin" hidden>الإدارة</button>
+    </nav>
+    <div class="row" id="authBox" style="gap:8px;flex-wrap:nowrap"></div>
+    <button class="btn gold sm" data-go="prince">مركز القيادة</button>
+  </div></header>
+  <div class="crumb" id="crumb"></div>
+  <main id="view"></main>
+  <footer class="footer">
+    <div class="in">
+      <div><img data-logo="gold" src="data:," alt=""><p style="margin-top:12px;max-width:26em">منصة تربط أهالي منطقة حائل بإمارة المنطقة، لرفع الشكاوى والبلاغات والمقترحات بشأن الجهات الحكومية ومتابعتها حتى الحل.</p></div>
+      <div><h4>للمواطن</h4><ul><li><a data-go="citizen" data-tab="new">رفع طلب جديد</a></li><li><a data-go="citizen" data-tab="mine">متابعة طلباتي</a></li><li><a data-go="citizen" data-tab="ideas">مقترحات المواطنين</a></li></ul></div>
+      <div><h4>للموظفين</h4><ul><li><a data-go="triage">مكتب الفرز والتصنيف</a></li><li><a data-go="entity">بوابة الجهات الحكومية</a></li><li><a data-go="prince">مركز القيادة</a></li><li><a data-go="admin">إدارة المنصة</a></li></ul></div>
+      <div><h4>الحوكمة</h4><ul><li><a data-act="charter">ميثاق التصنيف والصلاحيات</a></li><li><a data-go="triage" data-tab="audit">سجل التدقيق</a></li><li><a data-act="login">دخول الموظفين</a></li><li><a href="?#p1" onclick="location.href=location.pathname;return false">العرض التعريفي</a></li></ul></div>
+    </div>
+    <div class="bot"><span style="direction:rtl">© إمارة منطقة حائل — منصة صوت حائل</span><span style="direction:rtl">تم تطوير هذه المنصة بواسطة سليمان الخطيب <span>0559965929</span></span></div>
+  </footer>
+</div>
+
+<div class="modal" id="modal"><div class="box glass" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>window.__fillLogos&&__fillLogos()</script>
+<script>
+(()=>{
+"use strict";
+const SUPA_URL='https://atwvtrulclwgfedxigkg.supabase.co';
+const SUPA_KEY='sb_publishable_K0lEyv7-WpR6xfIXPSjY7A_uvuVPgFI';
+const LOGO=document.querySelector('.lg-emb').src;const LOGOG=document.querySelector('.topbar .lg img').src;
+const HQ=[41.6971,27.5188];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const DAY=864e5, NOW=()=>Date.now();
+const hij=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'long',year:'numeric'});
+const hijS=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn',{day:'2-digit',month:'2-digit',year:'numeric'});
+const hijM=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn',{month:'long'});
+const greg=new Intl.DateTimeFormat('ar-SA-u-ca-gregory-nu-latn',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const tm=new Intl.DateTimeFormat('ar-SA-u-nu-latn',{hour:'2-digit',minute:'2-digit'});
+const fmt=n=>Number(n).toLocaleString('en-US');
+const dShort=ts=>hijS.format(new Date(ts));
+
+/* ================= REFERENCE DATA ================= */
+const DEF={
+ amana:{n:'أمانة منطقة حائل',p:.62,w:18},
+ water:{n:'شركة المياه الوطنية – حائل',p:.56,w:12},
+ sec:{n:'الشركة السعودية للكهرباء – حائل',p:.7,w:10},
+ health:{n:'تجمع حائل الصحي',p:.76,w:12},
+ edu:{n:'الإدارة العامة للتعليم بمنطقة حائل',p:.84,w:9},
+ roads:{n:'الهيئة العامة للطرق – فرع حائل',p:.52,w:8},
+ traffic:{n:'إدارة مرور منطقة حائل',p:.8,w:6},
+ police:{n:'شرطة منطقة حائل',p:.9,w:4},
+ civil:{n:'المديرية العامة للدفاع المدني بحائل',p:.88,w:3},
+ hrsd:{n:'فرع وزارة الموارد البشرية بحائل',p:.74,w:4},
+ commerce:{n:'فرع وزارة التجارة بحائل',p:.82,w:4},
+ mewa:{n:'فرع وزارة البيئة والمياه والزراعة',p:.7,w:4},
+ uoh:{n:'جامعة حائل',p:.86,w:3},
+ passports:{n:'جوازات منطقة حائل',p:.91,w:2},
+ civilaff:{n:'الأحوال المدنية بمنطقة حائل',p:.88,w:2}
+};
+const ENT={};Object.entries(DEF).forEach(([k,v])=>ENT[k]={...v,ch:''});
+const GOV={
+ 'حائل':{c:[41.69,27.52],w:44},'بقعاء':{c:[42.38,27.89],w:9},'الغزالة':{c:[41.32,26.79],w:8},'الشنان':{c:[42.44,27.18],w:6},
+ 'الحائط':{c:[40.47,25.99],w:7},'السليمي':{c:[41.37,26.27],w:4},'الشملي':{c:[40.28,26.83],w:6},'موقق':{c:[41.17,27.40],w:6},
+ 'سميراء':{c:[42.12,26.51],w:5},'الحليفة السفلى':{c:[40.63,26.42],w:4}
+};
+const CATS=['تأخر في إنجاز معاملة','انقطاع أو ضعف خدمة','بنية تحتية وطرق','نظافة وتشوه بصري','سوء تعامل موظف','مخالفة أنظمة','سلامة عامة','شبهة فساد أو تجاوز','خدمات صحية','خدمات تعليمية','أخرى'];
+const TYPES={complaint:'شكوى',report:'بلاغ',suggestion:'مقترح',inquiry:'استفسار'};
+const LV={
+ public:{n:'عام',d:'يُحال للجهة كاملاً، ويظهر في التقارير العامة'},
+ restricted:{n:'مقيّد',d:'يُحال للجهة مع حجب بيانات المواطن الشخصية'},
+ secret:{n:'سري',d:'لا يُحال للجهة المشكو منها؛ يُعالج عبر وحدة الرقابة بالإمارة'},
+ topsecret:{n:'سري للغاية',d:'لسمو الأمير ووكيل الإمارة فقط، بتحقق ثنائي وسجل اطلاع'}
+};
+const LVORD=['public','restricted','secret','topsecret'];
+const ST={redirected:'وُجّه للجهة مباشرة',triage:'قيد الفرز والتصنيف',assigned:'أُحيل للجهة',progress:'قيد المعالجة',responded:'بانتظار تأكيد المواطن',closed:'مغلق',reopened:'أُعيد فتحه — تصعيد',internal:'قيد المعالجة الرقابية'};
+const PR={normal:'عادية',high:'عالية',urgent:'عاجلة'};
+const SLA={normal:10,high:5,urgent:2};
+const CH0={amana:'منصة بلدي · 940',water:'تطبيق وقنوات شركة المياه الوطنية',sec:'تطبيق الكهرباء · 933',health:'مركز الاتصال الصحي · 937',edu:'منصة تواصل بوزارة التعليم',roads:'مركز اتصال الهيئة · 938',traffic:'منصة أبشر',police:'مركز العمليات الأمنية',civil:'الدفاع المدني · 998',hrsd:'مركز اتصال الوزارة · 19911',commerce:'بلاغات التجارة · 1900',mewa:'مركز البلاغات · 939',uoh:'نظام التواصل بجامعة حائل',passports:'الجوازات · 992',civilaff:'منصة أبشر'};
+Object.keys(CH0).forEach(k=>{if(ENT[k])ENT[k].ch=CH0[k]});
+const chOf=k=>(ENT[k]&&ENT[k].ch)||'قناة الجهة الرسمية';
+const PCH=['القناة الرسمية للجهة','اتصال هاتفي','مراجعة حضورية','خطاب أو بريد رسمي'];
+const ENT_WAIT=7;
+const EXEMPT_CATS=['شبهة فساد أو تجاوز','سلامة عامة'];
+const REDIR=['الطلب من اختصاص الجهة مباشرة ولم يسبق رفعه إليها — يرجى رفعه عبر قناتها، وإن لم تتجاوب خلال 7 أيام صعّده للإمارة','لم تمضِ مهلة الجهة على طلبك السابق بعد — نأمل الانتظار حتى انقضائها ثم التصعيد','المعلومات المرفقة لا تثبت رفع الطلب للجهة — يرجى إرفاق رقم الطلب أو صورة منه'];
+function isExempt(t){return EXEMPT_CATS.includes(t.cat)||t.exempt||['secret','topsecret'].includes(suggest(t).lv)}
+const daysAgo=ts=>Math.max(0,Math.floor((NOW()-ts)/DAY));
+const TPL={
+ amana:[['بنية تحتية وطرق','حفريات مفتوحة منذ أشهر أمام المنازل'],['نظافة وتشوه بصري','تراكم النفايات وتأخر رفعها في الحي'],['انقطاع أو ضعف خدمة','إنارة الشارع معطلة بالكامل'],['تأخر في إنجاز معاملة','تأخر إصدار رخصة البناء رغم اكتمال المتطلبات'],['مخالفة أنظمة','محل يمارس نشاطاً مخالفاً داخل حي سكني']],
+ water:[['انقطاع أو ضعف خدمة','انقطاع المياه عن الحي لأكثر من ثلاثة أيام'],['بنية تحتية وطرق','تسرب مياه الصرف في الشارع العام'],['تأخر في إنجاز معاملة','تأخر توصيل عداد المياه للمنزل الجديد']],
+ sec:[['انقطاع أو ضعف خدمة','انقطاعات متكررة للكهرباء وقت الذروة'],['سلامة عامة','محول كهربائي مكشوف بجوار مدرسة'],['تأخر في إنجاز معاملة','تأخر إيصال التيار لمزرعة']],
+ health:[['خدمات صحية','طول مدة انتظار المواعيد في المستشفى'],['سوء تعامل موظف','سوء تعامل في قسم الطوارئ'],['خدمات صحية','نقص أدوية الأمراض المزمنة في المركز الصحي']],
+ edu:[['خدمات تعليمية','تكدس الطلاب في الفصول'],['بنية تحتية وطرق','تعطل التكييف في المدرسة'],['تأخر في إنجاز معاملة','تأخر معاملة نقل معلمة']],
+ roads:[['بنية تحتية وطرق','تهالك الطريق الرابط بين المحافظة والمدينة'],['سلامة عامة','غياب اللوحات الإرشادية عند منعطف خطر'],['بنية تحتية وطرق','تأخر تنفيذ مشروع ازدواج الطريق']],
+ traffic:[['سلامة عامة','تكرار الحوادث عند تقاطع بدون إشارة'],['تأخر في إنجاز معاملة','تأخر الاعتراض على مخالفة مرورية']],
+ police:[['سلامة عامة','تجمعات وتفحيط في ساعات متأخرة'],['تأخر في إنجاز معاملة','تأخر متابعة بلاغ سابق']],
+ civil:[['سلامة عامة','مبنى تجاري يفتقر لمخارج الطوارئ']],
+ hrsd:[['تأخر في إنجاز معاملة','تأخر صرف مستحقات الضمان الاجتماعي'],['مخالفة أنظمة','منشأة تتأخر في صرف رواتب العاملين']],
+ commerce:[['مخالفة أنظمة','رفع أسعار مبالغ فيه في متجر'],['مخالفة أنظمة','بيع منتجات منتهية الصلاحية']],
+ mewa:[['مخالفة أنظمة','احتطاب جائر في روضة قريبة'],['تأخر في إنجاز معاملة','تأخر صرف دعم المزارعين']],
+ uoh:[['خدمات تعليمية','تأخر رصد الدرجات'],['تأخر في إنجاز معاملة','تأخر معادلة شهادة']],
+ passports:[['تأخر في إنجاز معاملة','صعوبة الحصول على موعد']],
+ civilaff:[['تأخر في إنجاز معاملة','تأخر إصدار سجل الأسرة']]
+};
+const SECRET_TPL=[['شبهة فساد أو تجاوز','ادعاء بمحاباة في ترسية مشروع صيانة','secret'],['شبهة فساد أو تجاوز','طلب مقابل مالي لتسريع معاملة','secret'],['سوء تعامل موظف','ادعاء بإساءة استخدام سلطة من مسؤول','secret'],['سلامة عامة','معلومات عن نشاط تهريب في منطقة حدودية','topsecret'],['شبهة فساد أو تجاوز','تلاعب في محاضر استلام مشروع','secret']];
+const SUGG=['إنشاء ممشى مظلل في حي النقرة','تطبيق موحد لمواعيد مراكز الرعاية الأولية في المحافظات','لوحات تعريفية سياحية بجبال أجا وسلمى','نقل عام ترددي بين بقعاء ومدينة حائل','حاويات فرز النفايات في المجمعات التجارية','مسارات دراجات حول بحيرة السمراء','برنامج تطوع شبابي لصيانة الحدائق','ساحات ألعاب آمنة في محافظة الشنان','مركز خدمات حكومية موحد في محافظة الحائط','إشارات ذكية في تقاطعات طريق الملك عبدالعزيز'];
+const NAMES=['عبدالله','فهد','سعد','نورة','مشاعل','خالد','عبدالعزيز','ريم','ماجد','هيا','بندر','منيرة','تركي','العنود','سلطان','فيصل','مها','نايف','حصة','مشعل'];
+const FAM=['الشمري','الرشيد','العنزي','الحربي','الرمالي','التميمي','السبهان','الفايز','المطيري','السويلم'];
+
+let seed=1448;
+const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const pickW=o=>{const ks=Object.keys(o);const tot=ks.reduce((a,k)=>a+o[k].w,0);let r=rnd()*tot;for(const k of ks){r-=o[k].w;if(r<=0)return k}return ks[0]};
+const pick=a=>a[Math.floor(rnd()*a.length)];
+
+const ek2=k=>({amana:'BL',water:'NWC',sec:'SEC',health:'HC',edu:'EDU',roads:'RGA',traffic:'TR',police:'PL',civil:'CD',hrsd:'HR',commerce:'MC',mewa:'MW',uoh:'UOH',passports:'JW',civilaff:'CA'})[k]||'GV';
+function seedData(){
+  seed=1448;const T=[];let n=10230;const now=NOW();const EW={};Object.keys(ENT).forEach(k=>{if(TPL[k])EW[k]=ENT[k]});
+  const mk=(o)=>{const t=Object.assign({id:'HL-'+(n++),votes:0,rating:null,citizenConfirm:null,falseClose:false,hist:[]},o);T.push(t);return t};
+  for(let i=0;i<460;i++){
+    const age=Math.pow(rnd(),1.35)*182*DAY;const created=now-age;
+    const sec=rnd()<.075;let ent=pickW(EW),cat,title,lv;
+    if(sec){const s=pick(SECRET_TPL);cat=s[0];title=s[1];lv=s[2]}
+    else{const s=pick(TPL[ent]);cat=s[0];title=s[1];const r=rnd();lv=r<.74?'public':'restricted'}
+    const gov=pickW(GOV),pr=rnd()<.08?'urgent':rnd()<.25?'high':'normal',sla=SLA[pr];
+    const perf=ENT[ent].p;const ok=rnd()<perf;
+    const resDays=ok?sla*(.25+rnd()*.7):sla*(1.05+rnd()*1.8);
+    const assignedAt=created+DAY*(.1+rnd()*.6);const resolvedAt=assignedAt+resDays*DAY;
+    const t=mk({type:rnd()<.12?'report':'complaint',ent,cat,title,desc:title+'. أرجو التكرم بالنظر في الموضوع ومعالجته.',gov,
+      citizen:{name:pick(NAMES)+' '+pick(FAM),nid:'1•••••••'+Math.floor(rnd()*90+10),phone:'05•••••'+Math.floor(rnd()*900+100)},
+      hideId:lv!=='public'&&rnd()<.6,sensitive:lv!=='public'&&rnd()<.5,level:lv,priority:sec?'high':pr,slaDays:sla,created,assignedAt,route:sec?(rnd()<.3?'nazaha':'oversight'):'entity'});
+    if(!sec&&rnd()<Math.min(.85,(1-perf)*1.1+.12)){const pd=created-DAY*(ENT_WAIT+2+rnd()*30);t.prior={done:true,ref:ek2(ent)+'-'+Math.floor(100000+rnd()*899999),date:pd,channel:rnd()<.7?PCH[0]:pick(PCH),files:rnd()<.75?[{name:rnd()<.6?'صورة-الطلب.jpg':'إشعار-الجهة.pdf',type:'x'}]:[],verified:rnd()<.85}}
+    t.hist.push({ts:created,t:'استلام البلاغ عبر بوابة الإمارة'+(t.prior?' — مع إثبات رفعه سابقاً للجهة':'')});
+    t.hist.push({ts:assignedAt,t:'تصنيف «'+LV[lv].n+'» و'+(sec?'إحالة لوحدة الرقابة بالإمارة':'إحالة إلى '+ENT[ent].n)});
+    if(resolvedAt<now){
+      const confirm=rnd()<Math.min(.97,perf+.12);
+      t.respondedAt=resolvedAt;t.citizenConfirm=confirm;t.falseClose=!confirm;
+      t.hist.push({ts:resolvedAt,t:'ردّ الجهة: تمت المعالجة'});
+      if(confirm){t.status='closed';t.closedAt=resolvedAt+DAY*rnd()*2;t.rating=rnd()<.7?5-Math.floor(rnd()*2):3;t.hist.push({ts:t.closedAt,t:'أكد المواطن حل المشكلة وأُغلق البلاغ'})}
+      else{t.rating=1+Math.floor(rnd()*2);t.hist.push({ts:resolvedAt+DAY,t:'أفاد المواطن بعدم حل المشكلة — أُعيد فتح البلاغ وتصعيده'});
+        if(resolvedAt+sla*DAY<now&&rnd()<.6){t.status='closed';t.closedAt=resolvedAt+sla*DAY;t.hist.push({ts:t.closedAt,t:'معالجة نهائية بعد التصعيد وأُغلق البلاغ'})}else t.status='reopened'}
+      if(sec&&t.status!=='closed')t.status='internal';
+    }else if(created>now-DAY*.7&&rnd()<.6){t.status='triage';t.level=null;t.assignedAt=null;t.hist.length=1;
+      t.suggestedSeed=lv}
+    else t.status=sec?'internal':(rnd()<.4?'assigned':'progress');
+  }
+  // suggestions
+  SUGG.forEach((s,i)=>{const c=now-rnd()*90*DAY;mk({type:'suggestion',ent:pick(['amana','health','roads','traffic','edu']),cat:'مقترح تطويري',title:s,desc:s,gov:pickW(GOV),citizen:{name:pick(NAMES)+' '+pick(FAM)},level:'public',priority:'normal',slaDays:30,created:c,status:i%3===0?'closed':'progress',votes:Math.floor(40+rnd()*620),hist:[{ts:c,t:'استلام المقترح'}],adopted:i%3===0})});
+  for(let i=0;i<64;i++){const ent=pickW(EW),s=pick(TPL[ent]),c=now-rnd()*150*DAY;const r=pick([REDIR[0],REDIR[0],REDIR[0],REDIR[1],REDIR[2]]);
+    const tt=mk({type:'complaint',ent,cat:s[0],title:s[1],desc:s[1]+'.',gov:pickW(GOV),citizen:{name:pick(NAMES)+' '+pick(FAM),nid:'1•••••••'+Math.floor(rnd()*90+10)},level:null,priority:'normal',slaDays:10,created:c,status:'redirected',route:'entity',prior:{done:false},redirect:{reason:r,ts:c+DAY*.4},hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.4,t:'وُجّه المواطن لرفع طلبه للجهة مباشرة'}]});
+    if(rnd()<.3){tt.status='closed';tt.closedAt=c+DAY*5;tt.hist.push({ts:tt.closedAt,t:'أُغلق — لم يُصعَّد من المواطن خلال المهلة'})}}
+  return T;
+}
+const DB={tickets:[],audit:[],directives:[]};
+/* ================= CLASSIFICATION ENGINE ================= */
+function suggest(t){
+  const txt=(t.title+' '+t.desc).replace(/[أإآ]/g,'ا');let lv='public';const R=[];
+  const up=(l,r)=>{if(LVORD.indexOf(l)>LVORD.indexOf(lv))lv=l;R.push({l,r})};
+  if(/تهريب|ارهاب|سلاح|مخدرات|تهديد|امن وطني|تجسس/.test(txt))up('topsecret','يتضمن معلومات قد تمس الأمن الوطني أو سلامة المجتمع');
+  if(/فساد|رشوه|رشوة|اختلاس|محاباه|محاباة|تزوير|واسطه|واسطة|مقابل مالي|تلاعب|استغلال/.test(txt)||t.cat==='شبهة فساد أو تجاوز')up('secret','ادعاء بشبهة فساد أو تجاوز إداري/مالي — لا يُحال للجهة المشكو منها');
+  if(/مسؤول|مدير|رئيس قسم/.test(txt)&&/اساءه|إساءة|اساءة|سوء|تجاوز|سلطه|سلطة/.test(txt))up('secret','يتضمن ادعاءً ضد مسؤول مسمى بعينه');
+  if(t.ent==='health'||/مريض|علاج|تشخيص|نفسي|اعاقه|إعاقة|طلاق|ابني|ابنتي|زوجتي/.test(txt))up('restricted','يحتوي على بيانات صحية أو أسرية شخصية');
+  if(t.cat==='سوء تعامل موظف')up('restricted','يتعلق بسلوك موظف محدد');
+  if(t.hideId)up('restricted','طلب المواطن حجب هويته عن الجهة');
+  if(t.sensitive)up('restricted','أشار المواطن إلى حساسية محتوى البلاغ');
+  if(!R.length)R.push({l:'public',r:'لا يتضمن بيانات شخصية حساسة أو ادعاءات رقابية'});
+  return{lv,R};
+}
+
+/* ================= HELPERS ================= */
+const lvB=l=>l?`<span class="bdg lv-${l}">${LV[l].n}</span>`:'<span class="bdg lv-none">غير مصنف</span>';
+const stB=s=>`<span class="bdg st-b">${ST[s]}</span>`;
+const prB=p=>`<span class="bdg pr-${p}">أولوية ${PR[p]}</span>`;
+const typeIco={complaint:'📣',report:'🚩',suggestion:'💡',inquiry:'❔'};
+function toast(m){const e=$('#toast');e.innerHTML=m;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),3400)}
+function modal(html){$('#mbox').innerHTML=html;$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+function slaLeft(t){if(!t.assignedAt)return null;const due=t.assignedAt+t.slaDays*DAY;return(due-NOW())/DAY}
+function slaB(t){const l=slaLeft(t);if(l==null||['closed','responded'].includes(t.status))return'';
+  return l<0?`<span class="bdg lv-topsecret">متأخر ${Math.ceil(-l)} يوم</span>`:`<span class="bdg ${l<2?'lv-secret':'lv-public'}">متبقٍ ${Math.ceil(l)} يوم</span>`}
+function tick(){const d=new Date();$('#clock').textContent=greg.format(d)+' · '+hij.format(d)+' · '+tm.format(d)}
+setInterval(tick,15000);
+/* ================= STARFIELD ================= */
+(function stars(){const c=$('#stars'),x=c.getContext('2d');let S=[];
+  const rs=()=>{c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio;S=Array.from({length:520},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.3*devicePixelRatio+.2,a:Math.random(),s:Math.random()*.02+.004}))};
+  rs();addEventListener('resize',rs);
+  (function f(){x.clearRect(0,0,c.width,c.height);for(const s of S){s.a+=s.s;const o=.35+Math.abs(Math.sin(s.a))*.65;x.fillStyle=`rgba(255,248,225,${o})`;x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill()}requestAnimationFrame(f)})();
+})();
+
+/* ================= INTRO + GLOBE FLY ================= */
+requestAnimationFrame(()=>$('#logoStage').parentElement.classList.add('play'));
+const SAT='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+if(window.maplibregl&&window.__EARTH){try{maplibregl.addProtocol('earth',async p=>{const k=p.url.replace('earth://','');const b=window.__EARTH[k];if(!b)throw new Error('none');const bin=atob(b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return{data:u.buffer}})}catch(e){}}
+let NETOK=false;
+const NET=new Promise(res=>{const i=new Image();let d=false;const f=v=>{if(!d){d=true;NETOK=v;res(v)}};i.onload=()=>f(true);i.onerror=()=>f(false);i.src='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/6/27/41?t='+Date.now();setTimeout(()=>f(false),4500)});
+function mapStyle(o){o=o||{};const st={version:8,sources:{earth:{type:'raster',tiles:['earth://{z}/{x}/{y}'],tileSize:256,maxzoom:4,attribution:'NASA Blue Marble'},sat:{type:'raster',tiles:[SAT],tileSize:256,maxzoom:19,attribution:'Imagery © Esri, Maxar, Earthstar Geographics'}},
+  layers:[{id:'bg',type:'background',paint:{'background-color':o.bg||'#03100a'}},{id:'earth',type:'raster',source:'earth',paint:Object.assign({'raster-fade-duration':0},o.paint||{})},{id:'sat',type:'raster',source:'sat',paint:Object.assign({'raster-fade-duration':250},o.paint||{})}]};
+  if(o.globe){st.projection={type:'globe'};st.sky={'atmosphere-blend':['interpolate',['linear'],['zoom'],0,1,5,1,8,0]};st.layers.shift()}
+  return st}
+let gmap=null,flown=false;
+function initGlobe(){
+  if(!window.maplibregl){return null}
+  try{
+    gmap=new maplibregl.Map({container:'globe',interactive:false,attributionControl:{compact:true},
+      style:mapStyle({globe:true}),
+      center:[-20,18],zoom:.9,pitch:0,bearing:0,maxPitch:75});
+    gmap.on('move',hudUpdate);
+    gmap.on('load',()=>{if(!flown)idleSpin()});
+  }catch(e){gmap=null}
+  return gmap;
+}
+let spinOn=true;
+function idleSpin(){if(!spinOn||!gmap)return;const c=gmap.getCenter();gmap.easeTo({center:[c.lng+8,c.lat],duration:2000,easing:t=>t});gmap.once('moveend',idleSpin)}
+function hudUpdate(){if(!gmap)return;const z=gmap.getZoom(),c=gmap.getCenter(),lat=c.lat*Math.PI/180;
+  const alt=Math.max(.15,(40075*Math.cos(lat)/Math.pow(2,z))*1.1);
+  $('#hAlt').textContent=alt>1000?fmt(Math.round(alt))+' كم':alt>2?alt.toFixed(1)+' كم':Math.round(alt*1000)+' م';
+  $('#hCoord').textContent=c.lat.toFixed(4)+'°N · '+c.lng.toFixed(4)+'°E';
+  const L=$('#hLbl'),S=$('#hSub');
+  const set=(a,b)=>{if(L.textContent!==a){L.textContent=a;S.textContent=b}};
+  if(!flown)return;
+  if(z<2.6)set('كوكب الأرض','الاقتراب من شبه الجزيرة العربية');
+  else if(z<5.4)set('المملكة العربية السعودية','قلب العالم العربي والإسلامي');
+  else if(z<9)set('منطقة حائل','عروس الشمال · بين جبلي أجا وسلمى');
+  else if(z<13.5)set('مدينة حائل','حي السمراء');
+  else set('إمارة منطقة حائل','مقر الإمارة · GM9W+GR');
+}
+function fly(){
+  if(flown)return;flown=true;spinOn=false;
+  $('#intro').classList.add('gone');
+  if(!gmap){enterApp();return}
+  $('#globe').classList.add('on');$('#hud').classList.add('on');
+  gmap.stop();
+  gmap.jumpTo({center:[20,22],zoom:1.1});
+  NET.then(ok=>{
+    const tgt=ok?{center:HQ,zoom:16.6,pitch:62,bearing:-28}:{center:[41.75,27.35],zoom:6.3,pitch:40,bearing:-12};
+    gmap.flyTo({...tgt,duration:ok?11000:8500,curve:1.55,essential:true,easing:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2});
+    gmap.once('moveend',()=>{
+      const el=document.createElement('div');el.className='pin';el.innerHTML='<div class="pin-lbl">'+(NETOK?'مقر إمارة منطقة حائل':'منطقة حائل · مقر الإمارة')+'</div>';
+      new maplibregl.Marker({element:el}).setLngLat(HQ).addTo(gmap);
+      gmap.easeTo({bearing:40,duration:9000,easing:t=>t});
+      setTimeout(enterApp,3800);
+    });
+  });
+  setTimeout(()=>{if(!$('#app').classList.contains('on'))enterApp()},22000);
+}
+let entered=false;
+function enterApp(){
+  if(entered)return;entered=true;
+  $('#hud').classList.remove('on');$('#intro').classList.add('gone');
+  $('#app').classList.add('on');document.body.classList.remove('dark');document.documentElement.classList.remove('dark');setTimeout(()=>{$('#globe').style.display='none';$('#stars').style.display='none';if(gmap){gmap.remove();gmap=null}},900);tick();go('hub');
+}
+$('#goFly').onclick=fly;$('#skip').onclick=()=>{flown=true;spinOn=false;if(gmap){gmap.jumpTo({center:HQ,zoom:15.5,pitch:55,bearing:-20});$('#globe').classList.add('on')}enterApp()};
+addEventListener('keydown',e=>{if(e.code==='Space'&&!flown){e.preventDefault();fly()}});
+
+/* ================= BACKEND ================= */
+const sb=window.supabase&&window.supabase.createClient?window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'hv-auth'}}):null;
+let PROFILE=null,PUB={stats:{total:0,closed:0,open:0,entities:0},sugg:[]},MY=[];
+const ROLE_N={admin:'مدير المنصة',triage:'مكتب الفرز',focal:'ضابط اتصال',prince:'مركز القيادة'};
+const ACCESS={triage:['admin','triage'],entity:['admin','focal'],prince:['admin','prince'],admin:['admin']};
+const myCodes=()=>store.get('hv_my',[]);
+const addCode=(id,code)=>{const a=myCodes().filter(x=>x.id!==id);a.unshift({id,code});store.set('hv_my',a.slice(0,40))};
+const codeOf=id=>(myCodes().find(x=>x.id===id)||{}).code;
+const rowToT=r=>Object.assign({},r.data||{},{id:r.id,type:r.type,ent:r.entity_key,status:r.status,level:r.level,route:r.route,demo:r.demo});
+function tToRow(t){const {id,type,ent,status,level,route,demo,code,mine,masked,classified,...data}=t;return{id,type,entity_key:ent,status,level:level||null,route:route||'entity',data}}
+const errMsg=e=>(e&&(e.message||e.error_description))||'خطأ غير معروف';
+function need(){if(!sb)throw new Error('تعذر تحميل مكتبة الاتصال بقاعدة البيانات');}
+async function persist(t){need();const r=tToRow(t);const{error}=await sb.from('tickets').update({status:r.status,level:r.level,route:r.route,entity_key:r.entity_key,data:r.data}).eq('id',t.id);if(error){toast('تعذر الحفظ: '+errMsg(error));throw error}}
+async function loadEntities(){
+  if(!sb)return;try{const{data,error}=await sb.from('entities').select('*').order('sort');if(error||!data||!data.length)return;
+    const nx={};data.forEach(e=>{const d=DEF[e.key]||{};nx[e.key]={n:e.name,ch:e.channel||'',p:d.p??.75,w:d.w??2,active:e.active,sort:e.sort}});
+    Object.keys(ENT).forEach(k=>delete ENT[k]);Object.assign(ENT,nx)}catch(e){}
+}
+async function loadProfile(){
+  PROFILE=null;if(!sb)return renderAuth();
+  try{const{data:{session}}=await sb.auth.getSession();if(session){const{data}=await sb.from('profiles').select('*').eq('id',session.user.id).maybeSingle();PROFILE=data||{id:session.user.id,email:session.user.email,role:null}}}catch(e){}
+  renderAuth();
+}
+async function loadAll(){
+  need();const out=[];
+  for(let from=0;;from+=1000){const{data,error}=await sb.from('tickets').select('id,type,entity_key,status,level,route,demo,data').order('created_at',{ascending:false}).range(from,from+999);if(error)throw error;out.push(...data.map(rowToT));if(data.length<1000)break}
+  DB.tickets=out;
+}
+async function loadDirectives(){try{const{data}=await sb.from('directives').select('*').order('created_at',{ascending:false}).limit(100);DB.directives=(data||[]).map(d=>({id:d.id,ent:d.entity_key,txt:d.txt,ts:new Date(d.created_at).getTime(),due:d.due?new Date(d.due).getTime():null}))}catch(e){DB.directives=[]}}
+async function loadAudit(){try{const{data}=await sb.from('audit').select('*').order('ts',{ascending:false}).limit(300);DB.audit=(data||[]).map(a=>({ts:new Date(a.ts).getTime(),actor:a.actor,action:a.action,id:a.ticket_id}))}catch(e){DB.audit=[]}}
+async function loadPublic(){need();const[s,g]=await Promise.all([sb.rpc('public_stats'),sb.rpc('public_suggestions')]);if(s.data)PUB.stats=s.data;PUB.sugg=(g.data||[]).map(x=>({...x,type:'suggestion'}))}
+async function loadMine(){need();const cs=myCodes();const res=await Promise.all(cs.map(c=>sb.rpc('track_ticket',{p_id:c.id,p_code:c.code})));MY=res.map(r=>r.data).filter(Boolean).map(t=>({...t,mine:true}))}
+function audit(actor,action,id){DB.audit.unshift({ts:NOW(),actor:(PROFILE&&(PROFILE.full_name||PROFILE.email))||actor,action,id});if(sb&&PROFILE&&PROFILE.role)sb.rpc('log_audit',{p_action:action,p_ticket:id||null}).then(()=>{},()=>{})}
+const T=()=>DB.tickets;
+const findT=id=>(VIEW==='citizen'?(MY.find(x=>x.id===id)||PUB.sugg.find(x=>x.id===id)):null)||T().find(x=>x.id===id)||MY.find(x=>x.id===id)||PUB.sugg.find(x=>x.id===id);
+const who=()=>(PROFILE&&(PROFILE.full_name||PROFILE.email))||'';
+function renderAuth(){
+  const b=$('#authBox');if(!b)return;
+  b.innerHTML=PROFILE?`<span class="chip"><b>${esc(PROFILE.full_name||PROFILE.email)}</b> · ${PROFILE.role?ROLE_N[PROFILE.role]:'بانتظار الصلاحية'}${PROFILE.role==='focal'&&ENT[PROFILE.entity_key]?' · '+esc(ENT[PROFILE.entity_key].n.split('–')[0]):''}</span><button class="btn sm" data-act="logout">خروج</button>`
+    :`<button class="btn sm" data-act="login">دخول الموظفين</button>`;
+  const na=$('#navAdmin');if(na)na.hidden=!(PROFILE&&PROFILE.role==='admin');const ns=document.querySelector('#nav [data-nav=staff]');if(ns)ns.hidden=!!PROFILE;
+}
+async function uploadFiles(list){
+  const out=[];for(const f of list){const o={name:f.name,type:f.type,size:f.size};
+    if(f.file&&sb){try{const ext=(f.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,5)||'bin';const path=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2))+'.'+ext;
+      const{error}=await sb.storage.from('evidence').upload(path,f.file,{contentType:f.type||'application/octet-stream',upsert:false});if(!error)o.path=path}catch(e){}}
+    out.push(o)}return out;
+}
+function loginModal(target,msg){
+  modal(`<div style="max-width:420px;margin:0 auto"><div class="verify" style="padding:10px 0 4px"><img src="${LOGOG}" style="width:96px"><div class="h2">دخول الموظفين</div><p class="mut" style="font-size:13.5px">لموظفي الإمارة وضباط الاتصال في الجهات الحكومية.</p></div>
+   ${msg?`<div class="reason" style="margin-bottom:12px">${msg}</div>`:''}
+   <label class="f">البريد الإلكتروني</label><input class="inp" id="lgE" type="email" dir="ltr" autocomplete="username">
+   <label class="f" style="margin-top:12px">كلمة المرور</label><input class="inp" id="lgP" type="password" dir="ltr" autocomplete="current-password">
+   <div class="row" style="margin-top:18px;justify-content:space-between"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-act="doLogin" data-target="${target||''}">دخول</button></div></div>`);
+  setTimeout(()=>{const e=$('#lgE');if(e)e.focus()},50);
+  $('#lgP').addEventListener('keydown',e=>{if(e.key==='Enter')document.querySelector('[data-act=doLogin]').click()});
+}
+const defaultView=r=>({admin:'admin',triage:'triage',focal:'entity',prince:'prince'})[r]||'hub';
+
+/* ================= ROUTER ================= */
+let VIEW='hub',STATE={};
+const charts=[];let ccMap=null,liveT=null,heroMap=null;
+function cleanup(){charts.splice(0).forEach(c=>c.destroy());if(ccMap){ccMap.remove();ccMap=null}if(heroMap){heroMap.remove();heroMap=null}clearInterval(liveT)}
+const VIEWS=()=>({hub:rHub,citizen:rCitizen,triage:rTriage,entity:rEntity,prince:rPrince,admin:rAdmin});
+const loading=()=>{$('#view').innerHTML='<div class="verify" style="padding:90px 10px"><div class="spin"></div><p class="mut">جارٍ تحميل البيانات…</p></div>'};
+async function go(v,st){
+  if(ACCESS[v]&&!(PROFILE&&ACCESS[v].includes(PROFILE.role))){
+    loginModal(v,PROFILE?(PROFILE.role?'حسابك لا يملك صلاحية الدخول لهذه الواجهة.':'حسابك بانتظار تعيين الصلاحية من إدارة المنصة.'):'');return}
+  cleanup();VIEW=v;STATE=Object.assign({},st||{});
+  const names={hub:'الرئيسية',citizen:'بوابة المواطن',triage:'مكتب الفرز والتصنيف',entity:'بوابة الجهات الحكومية',prince:'مركز القيادة',admin:'إدارة المنصة'};
+  const navKey=v==='hub'?'hub':v==='citizen'?(STATE.tab||'new'):v==='admin'?'admin':'staff';
+  document.querySelectorAll('#nav [data-nav]').forEach(b=>b.classList.toggle('on',b.dataset.nav===navKey&&v!=='prince'));
+  $('#crumb').innerHTML=v==='hub'||v==='prince'?'':`<a data-go="hub">الرئيسية</a> / ${names[v]}`;
+  $('#crumb').style.display=v==='hub'||v==='prince'?'none':'block';
+  scrollTo({top:0});
+  if(!(v==='citizen'&&(STATE.tab||'new')==='new'))loading();
+  try{await ensureData(v)}catch(e){$('#view').innerHTML=`<div class="glass card" style="max-width:640px;margin:40px auto;text-align:center"><div class="h2" style="justify-content:center">تعذر الاتصال بقاعدة البيانات</div><p class="mut" style="margin-top:10px;line-height:1.8">${esc(errMsg(e))}</p><button class="btn gold" style="margin-top:16px" data-act="retry">إعادة المحاولة</button></div>`;return}
+  if(VIEW!==v)return;
+  VIEWS()[v]();
+}
+async function ensureData(v){
+  if(v==='hub')return loadPublic();
+  if(v==='citizen'){const tab=STATE.tab||'new';if(tab==='mine')return loadMine();if(tab==='ideas')return loadPublic();return}
+  if(v==='entity'&&PROFILE.role==='focal'){need();const{data,error}=await sb.rpc('focal_tickets');if(error)throw error;DB.tickets=(data||[]);await loadDirectives();return}
+  await Promise.all([loadAll(),loadDirectives(),loadAudit()]);
+}
+const render=()=>VIEWS()[VIEW]();
+
+/* ================= HUB ================= */
+const SV=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
+function rHub(){
+  const S=PUB.stats,ideas=PUB.sugg.slice(0,3);
+  $('#view').innerHTML=`
+  <section class="hero"><div id="heroMap"></div><div class="in">
+    <div>
+      <span class="loc">📍 مقر إمارة منطقة حائل · حي السمراء</span>
+      <h1>صوتك يصل إلى إمارة منطقة حائل</h1>
+      <p class="lead">قدّم شكواك أو بلاغك أو مقترحك بشأن أي جهة حكومية في المنطقة، وتابعه خطوة بخطوة. لا يُغلق طلبك إلا بعد أن تؤكد أن مشكلتك حُلّت.</p>
+      <div class="acts"><button class="btn gold" data-go="citizen" data-tab="new">رفع طلب جديد</button><button class="btn out" data-go="citizen" data-tab="ideas">شارك بمقترح</button></div>
+    </div>
+    <div class="track"><h3>تتبّع طلبك</h3><p>أدخل رقم الطلب ورمز المتابعة اللذين ظهرا لك عند رفعه.</p>
+      <div class="grid" style="grid-template-columns:1.3fr 1fr auto;gap:8px"><input class="inp" id="trkId" placeholder="HL-20001" dir="ltr" style="text-align:left"><input class="inp" id="trkCode" placeholder="الرمز" dir="ltr" style="text-align:left;text-transform:uppercase"><button class="btn gold" data-act="track">تتبّع</button></div>
+      ${myCodes().length?`<div class="ex">طلباتك على هذا الجهاز: <a href="#" data-go="citizen" data-tab="mine">${myCodes().length} طلب</a></div>`:''}</div>
+  </div></section>
+  <div class="stats">
+    <div><b>${fmt(S.total||0)}</b><span>طلب استقبلته المنصة</span></div>
+    <div><b>${fmt(S.closed||0)}</b><span>طلب حُلّ بتأكيد المواطن</span></div>
+    <div><b>${fmt(S.open||0)}</b><span>طلب قيد المعالجة</span></div>
+    <div><b>${S.entities||Object.keys(ENT).length}</b><span>جهة حكومية في ${Object.keys(GOV).length} محافظات</span></div>
+  </div>
+  <div class="sec-h"><div><h2>خدمات المنصة</h2><p>اختر ما تحتاجه، والإمارة تتولى توجيهه للجهة المختصة.</p></div></div>
+  <div class="svc">
+    <div class="s" data-go="citizen" data-tab="new" data-type="complaint"><div class="ic">${SV('<path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/>')}</div><div><h3>تقديم شكوى</h3><p>على تأخر معاملة، أو خلل في خدمة، أو سوء تعامل من جهة حكومية.</p></div></div>
+    <div class="s" data-go="citizen" data-tab="new" data-type="report"><div class="ic">${SV('<path d="M5 21V4h11l-1.5 4L16 12H5"/>')}</div><div><h3>رفع بلاغ</h3><p>عن مخالفة أو خطر على السلامة العامة، مع إمكانية حجب هويتك.</p></div></div>
+    <div class="s" data-go="citizen" data-tab="new" data-type="suggestion"><div class="ic">${SV('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/>')}</div><div><h3>تقديم مقترح</h3><p>فكرة لتحسين خدمة أو مرفق في حيّك أو محافظتك، يصوّت عليها الأهالي.</p></div></div>
+    <div class="s" data-go="citizen" data-tab="new" data-type="inquiry"><div class="ic">${SV('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/>')}</div><div><h3>استفسار</h3><p>سؤال عن إجراء أو معاملة لدى إحدى جهات المنطقة.</p></div></div>
+    <div class="s" data-go="citizen" data-tab="mine"><div class="ic">${SV('<path d="M3 12h4l3-8 4 16 3-8h4"/>')}</div><div><h3>متابعة طلباتي</h3><p>مراحل كل طلب، ورد الجهة، وتأكيد الحل أو تصعيده للإمارة.</p></div></div>
+    <div class="s" data-act="charter"><div class="ic">${SV('<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>')}</div><div><h3>سرية بياناتك</h3><p>كيف تُصنّف الطلبات، ومن يحق له الاطلاع على كل درجة.</p></div></div>
+  </div>
+  <div class="sec-h"><div><h2>رحلة الطلب</h2><p>من لحظة الرفع حتى تأكيدك بأن المشكلة حُلّت.</p></div></div>
+  <div class="journey">
+    <div><em>1</em><b>ترفع طلبك</b><p>تختار الجهة والموضوع، وتذكر إن كنت رفعته للجهة سابقاً.</p></div>
+    <div><em>2</em><b>الإمارة تصنّفه</b><p>مصنِّف معتمد يحدد درجة السرية والأولوية والمهلة.</p></div>
+    <div><em>3</em><b>يُحال أو يُوجَّه</b><p>للجهة المختصة، أو لوحدة الرقابة، أو يوجهك لقناة الجهة أولاً.</p></div>
+    <div><em>4</em><b>تعالجه الجهة</b><p>ضابط الاتصال يرد ضمن مهلة من يومين إلى عشرة أيام.</p></div>
+    <div><em>5</em><b>تؤكد الحل</b><p>إن لم يُحل فعلاً يعود للإمارة مصعَّداً.</p></div>
+    <div><em>6</em><b>يصل لسمو الأمير</b><p>مؤشرات أداء كل جهة ومحافظة في لوحة واحدة.</p></div>
+  </div>
+  <div class="sec-h" id="staffSec"><div><h2>بوابات الإمارة والجهات</h2><p>دخول الموظفين المخوّلين وفق الصلاحيات.</p></div></div>
+  <div class="staff">
+    <div class="p" data-go="triage"><span class="lk">🔒 موظفو الإمارة</span><h3>مكتب الفرز والتصنيف</h3><p>اعتماد درجة السرية والأولوية ومسار الإحالة، بمساعدة اقتراح آلي يوضح أسبابه.</p><span class="go">دخول المكتب</span></div>
+    <div class="p" data-go="entity"><span class="lk">🔒 ضباط الاتصال</span><h3>بوابة الجهات الحكومية</h3><p>كل ضابط اتصال يرى ما أُحيل لجهته فقط، ويرد ضمن المهلة، ويستقبل توجيهات سمو الأمير.</p><span class="go">دخول البوابة</span></div>
+    <div class="p prince" data-go="prince"><span class="lk">🔒 دخول مخصص</span><h3>مركز قيادة سمو الأمير</h3><p>أداء الجهات، وخريطة المحافظات، والإغلاق الشكلي، والملفات السرية، وإصدار التوجيهات.</p><span class="go">الدخول الآمن</span></div>
+  </div>
+  ${ideas.length?`<div class="sec-h"><div><h2>أبرز مقترحات الأهالي</h2><p>الأعلى تصويتاً.</p></div><button class="btn sm" data-go="citizen" data-tab="ideas">كل المقترحات</button></div>
+  <div class="svc">${ideas.map(x=>`<div class="s" data-go="citizen" data-tab="ideas"><div class="ic" style="background:var(--acc1);color:var(--acc);font-weight:700;width:auto;padding:0 12px;font-size:14px">▲ ${fmt(x.votes)}</div><div><h3>${esc(x.title)}</h3><p>${esc(x.gov||'')} · ${ENT[x.ent]?ENT[x.ent].n:''}</p></div></div>`).join('')}</div>`:''}`;
+  if(window.maplibregl){try{
+    heroMap=new maplibregl.Map({container:'heroMap',interactive:false,attributionControl:{compact:true},style:mapStyle({bg:'#0E3B28'}),center:NETOK?HQ:[41.2,27.3],zoom:NETOK?14.6:6.2,pitch:NETOK?58:35,bearing:-30});
+    const el=document.createElement('div');el.className='pin';new maplibregl.Marker({element:el}).setLngLat(HQ).addTo(heroMap);
+    const rot=()=>{if(!heroMap)return;heroMap.easeTo({bearing:heroMap.getBearing()+30,duration:12000,easing:x=>x});heroMap.once('moveend',rot)};heroMap.once('load',rot);
+  }catch(e){}}
+}
+
+/* ================= CITIZEN ================= */
+const blankDraft=()=>({type:'complaint',ent:'',cat:'',gov:'حائل',title:'',desc:'',hideId:false,sensitive:false,files:[],prior:null,pref:'',pdate:'',pch:PCH[0],pfiles:[],exempt:false});
+let draft=blankDraft();
+let ME=store.get('hv_me',{name:'',nid:'',phone:''});
+function rCitizen(){
+  const tab=STATE.tab||'new';
+  $('#view').innerHTML=`
+  <div class="page-head"><div><div class="h2">بوابة المواطن</div><p>ارفع طلبك وتابعه برقم الطلب ورمز المتابعة، دون الحاجة لإنشاء حساب.</p></div>
+    <div class="tabs"><button class="${tab==='new'?'on':''}" data-tab="new">رفع طلب جديد</button><button class="${tab==='mine'?'on':''}" data-tab="mine">طلباتي ومتابعتها</button><button class="${tab==='ideas'?'on':''}" data-tab="ideas">مقترحات المواطنين</button></div></div>
+  <div id="cbody"></div>`;
+  ({new:cNew,mine:cMine,ideas:cIdeas})[tab]();
+}
+function fileChips(fs,act){return fs.map((f,i)=>`<span class="chip" style="margin:4px 0 0 6px">${/pdf/i.test(f.type)||/\.pdf$/i.test(f.name)?'📄':'🖼️'} ${esc(f.name)}${act?` <a href="#" data-act="${act}" data-i="${i}" style="color:var(--top);text-decoration:none">✕</a>`:''}</span>`).join('')}
+function readFiles(list,cb){const out=[];[...list].forEach(f=>{if(f.size>5*1024*1024){toast('الملف '+f.name+' أكبر من 5 ميجابايت');return}out.push({name:f.name,type:f.type,size:f.size,file:f})});cb(out)}
+
+function cNew(){
+  const d=draft;const ex=d.ent&&isExempt({cat:d.cat,title:d.title,desc:d.desc,exempt:d.exempt});
+  $('#cbody').innerHTML=`
+  <div class="split" style="grid-template-columns:1fr 340px">
+   <div class="glass card">
+    <div class="h3">بيانات مقدّم الطلب</div>
+    <div class="grid" style="grid-template-columns:1.4fr 1fr 1fr;margin-bottom:18px">
+      <div><label class="f">الاسم الكامل</label><input class="inp" id="mName" value="${esc(ME.name)}" autocomplete="name"></div>
+      <div><label class="f">رقم الهوية الوطنية</label><input class="inp" id="mNid" value="${esc(ME.nid)}" dir="ltr" inputmode="numeric" maxlength="10" style="text-align:left"></div>
+      <div><label class="f">رقم الجوال</label><input class="inp" id="mPhone" value="${esc(ME.phone)}" dir="ltr" inputmode="tel" maxlength="10" placeholder="05XXXXXXXX" style="text-align:left"></div>
+    </div>
+    <div class="h3">نوع الطلب</div>
+    <div class="seg" id="sType">${Object.entries(TYPES).map(([k,v])=>`<button data-k="${k}" class="${d.type===k?'on':''}">${typeIco[k]} ${v}</button>`).join('')}</div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:18px">
+      <div><label class="f">الجهة الحكومية المعنية</label><select class="inp" id="fEnt"><option value="">— اختر الجهة —</option>${Object.entries(ENT).filter(([k,v])=>v.active!==false).map(([k,v])=>`<option value="${k}" ${d.ent===k?'selected':''}>${v.n}</option>`).join('')}</select></div>
+      <div><label class="f">التصنيف الموضوعي</label><select class="inp" id="fCat"><option value="">— اختر —</option>${(d.type==='suggestion'?['مقترح تطويري','تحسين خدمة','مبادرة مجتمعية']:CATS).map(c=>`<option ${d.cat===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <div><label class="f">المحافظة</label><select class="inp" id="fGov">${Object.keys(GOV).map(g=>`<option ${d.gov===g?'selected':''}>${g}</option>`).join('')}</select></div>
+      <div><label class="f">عنوان مختصر</label><input class="inp" id="fTitle" value="${esc(d.title)}" placeholder="مثال: انقطاع المياه في الحي"></div>
+    </div>
+    <div style="margin-top:14px"><label class="f">التفاصيل</label><textarea class="inp" id="fDesc" placeholder="اكتب ما حدث، ومتى، وأين، وما الذي تطلبه...">${esc(d.desc)}</textarea></div>
+    ${d.type==='suggestion'?'':`
+    <div class="glass" style="margin-top:18px;padding:18px;box-shadow:none;background:var(--g05);border-color:#CFE5D8">
+      <div class="h3" style="margin-bottom:6px">هل سبق أن رفعت هذا الطلب للجهة نفسها؟</div>
+      <p class="mut" style="font-size:13px;line-height:1.8;margin-bottom:12px">الإمارة مستوى متابعة أعلى. إثبات أنك رفعت طلبك للجهة ولم تتجاوب يقوّي طلبك ويرفع أولويته.</p>
+      <div class="seg" id="sPrior"><button data-p="1" class="${d.prior===true?'on':''}">نعم، رفعته ولم تتجاوب</button><button data-p="0" class="${d.prior===false?'on':''}">لا، لم أرفعه بعد</button></div>
+      ${d.prior===true?`<div class="grid" style="grid-template-columns:1fr 1fr 1fr;margin-top:14px">
+        <div><label class="f">رقم الطلب لدى الجهة</label><input class="inp" id="pRef" dir="ltr" style="text-align:left" value="${esc(d.pref)}" placeholder="مثال: ${d.ent?ek2(d.ent):'BL'}-458120"></div>
+        <div><label class="f">تاريخ رفعه</label><input class="inp" type="date" id="pDate" value="${esc(d.pdate)}"></div>
+        <div><label class="f">القناة</label><select class="inp" id="pCh">${PCH.map(c=>`<option ${d.pch===c?'selected':''}>${c}</option>`).join('')}</select></div></div>
+        <label class="drop" style="display:block;margin-top:12px">📎 إرفاق إثبات (صورة الطلب، رسالة الجهة، PDF)<input type="file" id="pFile" accept="image/*,application/pdf" multiple hidden></label>
+        <div>${fileChips(d.pfiles,'rmP')}</div>
+        <p class="dim" style="font-size:12px;margin-top:8px">لا تملك إثباتاً؟ يكفي ذكر التاريخ والقناة، ومكتب الفرز يقدّر ذلك.</p>`:''}
+      ${d.prior===false&&d.ent?(ex?`<div class="reason" style="margin-top:12px;background:#EAF6EF;border-color:#BFE0CD">✅ طلبك من الحالات التي تستقبلها الإمارة مباشرة (شبهة فساد، أو سلامة عامة، أو شكوى ضد الجهة نفسها). لا يلزمك الرفع للجهة أولاً.</div>`
+        :`<div class="reason" style="margin-top:12px">ننصحك برفع طلبك أولاً عبر <b>${chOf(d.ent)}</b>. معظم الطلبات تُحل هناك أسرع. إن لم تتجاوب الجهة خلال ${ENT_WAIT} أيام، ارجع وصعّد طلبك للإمارة مع رقمه.<br><span class="dim">يمكنك الإرسال الآن، وقد يعيد مكتب الفرز توجيهك للجهة.</span></div>`):''}
+      <label class="toggle" style="margin-top:12px;background:#fff"><input type="checkbox" id="fEx" ${d.exempt?'checked':''}><span class="sw"></span><span><b>الشكوى ضد الجهة نفسها أو أحد مسؤوليها</b><small>تُستقبل في الإمارة مباشرة ولا تُعاد للجهة المشكو منها.</small></span></label>
+    </div>`}
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:14px">
+      <label class="toggle"><input type="checkbox" id="fHide" ${d.hideId?'checked':''}><span class="sw"></span><span><b>حجب هويتي عن الجهة المعنية</b><small>تبقى هويتك لدى الإمارة فقط، ولا تظهر للجهة المشكو منها.</small></span></label>
+      <label class="toggle"><input type="checkbox" id="fSens" ${d.sensitive?'checked':''}><span class="sw"></span><span><b>البلاغ يتضمن معلومات حساسة</b><small>إشارة للإمارة لمراجعة درجة السرية. الإمارة هي من تعتمد التصنيف النهائي.</small></span></label>
+    </div>
+    <label class="drop" style="display:block;margin-top:14px">📷 مرفقات توضح المشكلة (صور، مستندات)<input type="file" id="fFile" accept="image/*,application/pdf" multiple hidden></label>
+    <div>${fileChips(d.files,'rmF')}</div>
+    <div class="row" style="margin-top:18px;justify-content:space-between">
+      <span class="dim" style="font-size:12.5px">بإرسالك تقر بصحة المعلومات، وتُعامل بياناتك وفق نظام حماية البيانات الشخصية.</span>
+      <button class="btn gold" data-act="submit">إرسال إلى إمارة المنطقة</button>
+    </div>
+   </div>
+   <div class="grid" style="align-content:start">
+    <div class="glass card"><div class="h3">متى أرفع للإمارة مباشرة؟</div>
+      <p class="mut" style="font-size:13.5px;line-height:1.9">• رفعت طلبك للجهة ولم تتجاوب خلال ${ENT_WAIT} أيام<br>• أُغلق طلبك لدى الجهة دون حل<br>• الشكوى ضد الجهة نفسها أو أحد مسؤوليها<br>• شبهة فساد أو خطر على السلامة العامة<br>• المشكلة تتداخل فيها أكثر من جهة</p></div>
+    ${d.ent?`<div class="glass card"><div class="h3">قناة ${ENT[d.ent].n.split('–')[0]}</div><p style="font-size:15px;font-weight:600;color:var(--g8)">${chOf(d.ent)}</p></div>`:''}
+    <div class="glass card"><div class="h3">سرية طلبك</div>
+      <p class="mut" style="font-size:13px;line-height:1.85">أنت تحدد حجب الهوية وتشير إلى الحساسية، أما درجة السرية الرسمية فيعتمدها مكتب الفرز بالإمارة وفق ميثاق التصنيف.</p>
+      <button class="btn sm" style="margin-top:12px" data-act="charter">عرض ميثاق التصنيف</button></div>
+   </div>
+  </div>`;
+  const sync=()=>{const v=id=>{const e=$('#'+id);return e?e.value:undefined};ME={name:v('mName')||'',nid:v('mNid')||'',phone:v('mPhone')||''};store.set('hv_me',ME);d.ent=v('fEnt');d.cat=v('fCat');d.gov=v('fGov');d.title=v('fTitle');d.desc=v('fDesc');d.hideId=$('#fHide').checked;d.sensitive=$('#fSens').checked;
+    if($('#fEx'))d.exempt=$('#fEx').checked;if($('#pRef')){d.pref=v('pRef');d.pdate=v('pDate');d.pch=v('pCh')}};
+  $('#cbody').addEventListener('input',sync);
+  $('#cbody').addEventListener('change',e=>{sync();if(['fEnt','fCat','fEx'].includes(e.target.id))cNew()});
+  $('#sType').onclick=e=>{const b=e.target.closest('button');if(!b)return;sync();d.type=b.dataset.k;d.cat='';cNew()};
+  if($('#sPrior'))$('#sPrior').onclick=e=>{const b=e.target.closest('button');if(!b)return;sync();d.prior=b.dataset.p==='1';cNew()};
+  if($('#pFile'))$('#pFile').onchange=e=>{sync();readFiles(e.target.files,o=>{d.pfiles.push(...o);cNew()})};
+  $('#fFile').onchange=e=>{sync();readFiles(e.target.files,o=>{d.files.push(...o);cNew()})};
+}
+function stageIdx(t){return{redirected:1,triage:1,assigned:2,progress:3,internal:3,reopened:3,responded:4,closed:5}[t.status]??0}
+function priorBox(t,mode){const p=t.prior;if(!p)return'';
+  if(!p.done)return mode==='tri'?`<div class="reason" style="margin-top:14px">لم يُرفع للجهة سابقاً${isExempt(t)?' — <b>لكنه من الحالات المستثناة التي تُستقبل مباشرة</b>':''}.</div>`:'';
+  const late=p.date?daysAgo(p.date):null;
+  return `<div class="glass" style="padding:16px;margin-top:16px;box-shadow:none;background:#FAFBFA">
+   <div class="row" style="justify-content:space-between"><b style="font-size:14px">🧾 رفعه المواطن للجهة سابقاً</b>${p.verified===true?'<span class="bdg lv-public">تحققت الإمارة من الإثبات</span>':p.verified===false?'<span class="bdg lv-topsecret">الإثبات غير كافٍ</span>':'<span class="bdg lv-none">بانتظار التحقق</span>'}</div>
+   <dl class="kv" style="margin-top:10px;font-size:13.5px"><dt>رقم الطلب</dt><dd class="idc">${esc(p.ref||'—')}</dd><dt>التاريخ</dt><dd>${p.date?hij.format(new Date(p.date))+` <span class="dim">(منذ ${late} يوم)</span>`:'—'}</dd><dt>القناة</dt><dd>${esc(p.channel||'—')}</dd></dl>
+   ${p.files&&p.files.length?`<div style="margin-top:8px">${p.files.map((f,i)=>`<button class="chip" style="cursor:pointer;margin:4px 0 0 6px" data-act="viewFile" data-id="${t.id}" data-i="${i}">${/pdf/i.test(f.type)||/\.pdf$/i.test(f.name)?'📄':'🖼️'} ${esc(f.name)}</button>`).join('')}</div>`:''}
+   ${mode==='tri'&&late!==null&&late<ENT_WAIT?`<div class="reason">لم تمضِ مهلة الجهة (${ENT_WAIT} أيام) على الطلب السابق بعد.</div>`:''}
+   ${mode==='tri'?`<div class="row" style="margin-top:12px"><button class="btn sm grn" data-act="verify" data-v="1" data-id="${t.id}">الإثبات مطابق</button><button class="btn sm red" data-act="verify" data-v="0" data-id="${t.id}">الإثبات غير كافٍ</button></div>`:''}
+  </div>`}
+function redirBox(t){if(t.status!=='redirected'||!t.redirect)return'';
+  const esc0=STATE.escF;
+  return `<div class="glass" style="padding:18px;margin-top:16px;border-color:#E6D3A8;background:var(--acc1);box-shadow:none">
+   <b style="color:#7A5A16">توجيه من مكتب الفرز بالإمارة</b>
+   <p style="margin-top:6px;line-height:1.85;font-size:14px">${esc(t.redirect.reason)}</p>
+   <p style="margin-top:8px;font-size:14px">قناة الجهة: <b style="color:var(--g8)">${chOf(t.ent)}</b></p>
+   ${t.mine?(esc0?`<div class="grid" style="grid-template-columns:1fr 1fr;margin-top:14px">
+      <div><label class="f">رقم طلبك لدى الجهة</label><input class="inp" id="eRef" dir="ltr" style="text-align:left"></div>
+      <div><label class="f">تاريخ رفعه</label><input class="inp" type="date" id="eDate"></div></div>
+      <label class="drop" style="display:block;margin-top:10px;background:#fff">📎 إرفاق إثبات<input type="file" id="eFile" accept="image/*,application/pdf" multiple hidden></label><div id="eChips"></div>
+      <div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn gold" data-act="doEscalate" data-id="${t.id}">إرسال للإمارة مع الإثبات</button></div>`
+     :`<div class="row" style="margin-top:14px"><button class="btn gold" data-act="escalate" data-id="${t.id}">رفعته للجهة ولم تتجاوب — صعّد للإمارة</button></div>`):''}
+  </div>`}
+function cDetail(t){
+  const si=stageIdx(t);const stages=['الاستلام','الفرز والتصنيف','الإحالة','المعالجة','رد الجهة','تأكيدك والإغلاق'];
+  return `<div class="row" style="justify-content:space-between"><div><span class="idc">${t.id}</span><div class="h2" style="font-size:19px;margin-top:4px">${esc(t.title)}</div></div><div class="row">${t.level?lvB(t.level):''}${stB(t.status==='internal'?'progress':t.status)}</div></div>
+  <div class="stepper">${stages.map((s,i)=>`<div class="${i<=si?'on':''}" title="${s}"></div>`).join('')}</div>
+  <div class="row mut" style="font-size:12.5px;justify-content:space-between">${stages.map((s,i)=>`<span style="${i===si?'color:var(--gold2);font-weight:600':''}">${s}</span>`).join('')}</div>
+  <dl class="kv" style="margin-top:18px"><dt>الجهة</dt><dd>${ENT[t.ent]?ENT[t.ent].n:t.ent}</dd><dt>التصنيف</dt><dd>${esc(t.cat)}</dd><dt>المحافظة</dt><dd>${t.gov}</dd><dt>تاريخ الرفع</dt><dd>${hij.format(new Date(t.created))}</dd><dt>الوصف</dt><dd class="mut" style="line-height:1.8">${esc(t.desc)}</dd></dl>
+  ${redirBox(t)}${priorBox(t,'cit')}
+  ${t.entityResponse?`<div class="glass" style="padding:14px;margin-top:16px;background:rgba(63,182,114,.07)"><b style="font-size:13px;color:var(--pub)">رد ${ENT[t.ent]?ENT[t.ent].n:t.ent}</b><p style="margin-top:6px;font-size:14px;line-height:1.8">${esc(t.entityResponse)}</p></div>`:''}
+  ${t.status==='responded'?`<div class="glass" style="padding:18px;margin-top:14px;border-color:var(--gold)">
+     <div class="h3">هل حُلّت مشكلتك فعلاً؟</div><p class="mut" style="font-size:13px">رأيك هو المعيار — لن يُغلق الطلب إلا بتأكيدك، وإن لم تُحل يُصعَّد مباشرة للإمارة.</p>
+     <div class="stars" id="stars5">${[1,2,3,4,5].map(i=>`<button data-r="${i}">★</button>`).join('')}</div>
+     <textarea class="inp" id="cNote" placeholder="ملاحظة اختيارية" style="min-height:70px;margin-top:8px"></textarea>
+     <div class="row" style="margin-top:12px"><button class="btn grn" data-act="confirm" data-id="${t.id}">نعم، حُلّت ✓</button><button class="btn red" data-act="reject" data-id="${t.id}">لا، لم تُحل — صعّد للإمارة</button></div></div>`:''}
+  ${t.rating?`<p style="margin-top:14px" class="mut">تقييمك: <span style="color:var(--gold)">${'★'.repeat(t.rating)}</span>${'☆'.repeat(5-t.rating)}</p>`:''}
+  <div class="h3" style="margin-top:20px">السجل الزمني</div>
+  <div class="timeline">${t.hist.map((h,i)=>`<div class="tl ${i<t.hist.length-1?'done':'cur'}"><b>${esc(h.t)}</b><p>${hij.format(new Date(h.ts))} · ${tm.format(new Date(h.ts))}</p></div>`).join('')}</div>`;
+}
+let tri={lv:null,pr:'normal',route:'entity',ent:null};
+function rTriage(){
+  const tab=STATE.tab||'queue';
+  const q=T().filter(t=>t.status==='triage').sort((a,b)=>a.created-b.created);
+  const esc2=T().filter(t=>t.status==='reopened').sort((a,b)=>b.respondedAt-a.respondedAt);
+  const list=tab==='queue'?q:tab==='esc'?esc2:null;
+  const sel=STATE.sel||(list&&list[0]?.id);const t=T().find(x=>x.id===sel);
+  $('#view').innerHTML=`
+  <div class="page-head"><div><div class="h2">مكتب الفرز والتصنيف — إمارة منطقة حائل</div><p>${esc(who())} · ${ROLE_N[PROFILE.role]} · ${fmt(T().length)} طلب في النظام</p></div>
+   <div class="tabs"><button class="${tab==='queue'?'on':''}" data-tab="queue">بانتظار التصنيف (${q.length})</button><button class="${tab==='esc'?'on':''}" data-tab="esc">مُعادة للتصعيد (${esc2.length})</button><button class="${tab==='audit'?'on':''}" data-tab="audit">سجل التدقيق</button></div></div>
+  ${tab==='audit'?auditView():`<div class="split"><div class="glass card"><div class="tlist">${list.length?list.map(x=>`
+    <div class="titem ${x.id===sel?'on':''}" data-sel="${x.id}"><div class="row" style="justify-content:space-between"><span class="idc">${x.id}</span><span class="dim" style="font-size:12px">${dShort(x.created)}</span></div>
+    <div class="t">${typeIco[x.type]} ${esc(x.title)}</div><div class="m"><span>${ENT[x.ent]?ENT[x.ent].n:x.ent}</span><span>${x.gov}</span>${x.hideId?'<span>🔒 هوية محجوبة</span>':''}${x.sensitive?'<span>⚠️ حساس</span>':''}</div></div>`).join(''):'<div class="empty">لا توجد طلبات — أحسنتم 👏</div>'}</div></div>
+   <div class="glass card">${t&&list.includes(t)?triDetail(t,tab):'<div class="empty">اختر طلباً من القائمة</div>'}</div></div>`}`;
+}
+function triDetail(t,tab){
+  const s=suggest(t);
+  if(tri._id!==t.id){tri={_id:t.id,lv:t.level||s.lv,pr:tab==='esc'||(t.prior&&t.prior.done)?'high':(s.lv==='topsecret'?'urgent':t.priority),route:['secret','topsecret'].includes(t.level||s.lv)?'oversight':'entity',ent:t.ent}}
+  return `<div class="row" style="justify-content:space-between"><div><span class="idc">${t.id}</span> · <span class="mut">${TYPES[t.type]}</span><div class="h2" style="font-size:19px;margin-top:4px">${esc(t.title)}</div></div>${tab==='esc'?'<span class="bdg lv-topsecret">أفاد المواطن بعدم الحل</span>':''}</div>
+  <dl class="kv" style="margin-top:14px"><dt>مقدّم الطلب</dt><dd>${esc((t.citizen||{}).name)} · <span dir="ltr">${esc((t.citizen||{}).nid||'')}</span> · <span dir="ltr">${esc((t.citizen||{}).phone||'')}</span></dd><dt>الجهة المختارة</dt><dd>${ENT[t.ent]?ENT[t.ent].n:t.ent}</dd><dt>الموضوع</dt><dd>${esc(t.cat)} · ${t.gov}</dd><dt>الوصف</dt><dd class="mut" style="line-height:1.8">${esc(t.desc)}</dd>
+  ${t.entityResponse?`<dt>رد الجهة السابق</dt><dd class="mut">${esc(t.entityResponse)}</dd>`:''}</dl>
+  ${priorBox(t,'tri')}
+  <div class="glass" style="padding:16px;margin-top:16px;background:rgba(240,163,58,.04)">
+   <div class="row" style="justify-content:space-between"><b>🤖 التصنيف المقترح آلياً</b>${lvB(s.lv)}</div>
+   ${s.R.map(r=>`<div class="reason">${lvB(r.l)} ${esc(r.r)}</div>`).join('')}
+   <p class="dim" style="font-size:12px;margin-top:8px">الاقتراح استرشادي، والقرار النهائي للمصنِّف المعتمد ويُسجَّل باسمه.</p></div>
+  <div class="h3" style="margin-top:18px">درجة السرية المعتمدة</div>
+  <div class="lvopt" id="lvopt">${LVORD.map(l=>`<button data-lv="${l}" class="${tri.lv===l?'on':''}" style="${tri.lv===l?`border-color:var(--${l==='public'?'pub':l==='restricted'?'res':l==='secret'?'sec':'top'})`:''}"><b class="${'lv-'+l}" style="background:none;border:0">${LV[l].n}</b><small>${LV[l].d}</small></button>`).join('')}</div>
+  ${tri.lv==='topsecret'?'<p class="reason" style="margin-top:10px">«سري للغاية» يتجاوز صلاحيتك — سيُرفع لاعتماد وكيل الإمارة تلقائياً.</p>':''}
+  <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:14px">
+   <div><label class="f">الأولوية</label><div class="seg" id="prs">${Object.entries(PR).map(([k,v])=>`<button data-pr="${k}" class="${tri.pr===k?'on':''}">${v} · ${SLA[k]} يوم</button>`).join('')}</div></div>
+   <div><label class="f">مسار الإحالة</label><select class="inp" id="route">
+     ${['public','restricted'].includes(tri.lv)?`<option value="entity" ${tri.route==='entity'?'selected':''}>الجهة المختصة</option>`:''}
+     <option value="oversight" ${tri.route==='oversight'?'selected':''}>وحدة الرقابة والمتابعة بالإمارة</option>
+     <option value="nazaha" ${tri.route==='nazaha'?'selected':''}>إحالة إلى هيئة الرقابة ومكافحة الفساد</option></select></div>
+   ${['public','restricted'].includes(tri.lv)?`<div style="grid-column:1/-1"><label class="f">الجهة المحال إليها</label><select class="inp" id="tEnt">${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${tri.ent===k?'selected':''}>${v.n}</option>`).join('')}</select></div>`:''}
+  </div>
+  <div class="row" style="margin-top:18px;justify-content:flex-end">${tab!=='esc'&&!(t.prior&&t.prior.done&&t.prior.verified!==false)&&!isExempt(t)?`<button class="btn" data-act="redirect" data-id="${t.id}">إعادة توجيه للجهة</button>`:''}<button class="btn gold" data-act="assign" data-id="${t.id}">اعتماد التصنيف والإحالة</button></div>`;
+}
+async function doAssign(id){
+  const t=T().find(x=>x.id===id);if(!t)return;const now=NOW();
+  if($('#route'))tri.route=$('#route').value;if($('#tEnt'))tri.ent=$('#tEnt').value;
+  if(['secret','topsecret'].includes(tri.lv)&&tri.route==='entity')tri.route='oversight';
+  const wasEsc=t.status==='reopened';
+  t.level=tri.lv;t.priority=tri.pr;t.slaDays=t.type==='suggestion'?30:SLA[tri.pr];t.route=tri.route;if(tri.route==='entity')t.ent=tri.ent;
+  t.assignedAt=now;t.status=tri.route==='entity'?'assigned':'internal';
+  const dest=tri.route==='entity'?ENT[t.ent].n:tri.route==='nazaha'?'هيئة الرقابة ومكافحة الفساد':'وحدة الرقابة والمتابعة بالإمارة';
+  t.hist.push({ts:now,t:(wasEsc?'إعادة إحالة بعد التصعيد · ':'')+'تصنيف «'+LV[t.level].n+'» وإحالة إلى '+dest});
+  try{await persist(t)}catch(e){return}
+  audit(who(),'تصنيف «'+LV[t.level].n+'» → '+dest,id);
+  toast('تم اعتماد التصنيف وإحالة '+id);STATE.sel=null;tri._id=null;rTriage();
+}
+function auditView(){return `<div class="glass card"><div class="h3">سجل التدقيق — كل اطلاع وقرار موثّق بالاسم والوقت</div>
+ ${DB.audit.length?`<div style="overflow:auto"><table><thead><tr><th>الوقت</th><th>المستخدم</th><th>الإجراء</th><th>الطلب</th></tr></thead><tbody>${DB.audit.map(a=>`<tr><td class="mut">${dShort(a.ts)} ${tm.format(new Date(a.ts))}</td><td>${esc(a.actor)}</td><td>${esc(a.action)}</td><td class="idc">${a.id||'—'}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">لا توجد عمليات بعد — جرّب رفع طلب أو تصنيفه</div>'}</div>`}
+
+/* ================= ENTITY ================= */
+function rEntity(){
+  const isF=PROFILE.role==='focal';const ek=isF?PROFILE.entity_key:(STATE.ent||Object.keys(ENT)[0]);const E=ENT[ek]||{n:ek};
+  const mine=T().filter(t=>t.ent===ek&&t.route==='entity'&&['public','restricted'].includes(t.level)&&t.type!=='suggestion'&&!['triage','redirected','internal'].includes(t.status));
+  const act=mine.filter(t=>['assigned','progress','reopened'].includes(t.status)).sort((a,b)=>(slaLeft(a)??99)-(slaLeft(b)??99));
+  const m=metrics(mine);const dir=DB.directives.filter(d=>d.ent===ek);const done=mine.filter(t=>['responded','closed'].includes(t.status)).slice(0,30);
+  const sel=STATE.sel||act[0]?.id;const t=act.find(x=>x.id===sel);
+  $('#view').innerHTML=`
+  <div class="page-head"><div><div class="h2">${isF?esc(E.n):'بوابة الجهات الحكومية'}</div><p>${isF?'ضابط الاتصال: '+esc(who())+' · تصلك هنا الطلبات المحالة لجهتك فقط، دون الطلبات السرية':'عرض الإدارة · اختر الجهة لمعاينة ما يراه ضابط الاتصال'}</p></div>
+   <div class="row">${isF?'':`<select class="inp" id="entSel" style="width:auto;min-width:280px">${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${k===ek?'selected':''}>${v.n}</option>`).join('')}</select>`}<button class="btn sm" data-act="refresh">تحديث</button></div></div>
+  ${dir.map(d=>`<div class="directive"><img src="${LOGOG}" alt=""><div><b style="color:var(--gold2)">توجيه من سمو أمير منطقة حائل</b> <span class="dim" style="font-size:12px">· ${hij.format(new Date(d.ts))}</span><p style="margin-top:4px;line-height:1.8">${esc(d.txt)}</p><p class="mut" style="font-size:12.5px">المهلة: ${hij.format(new Date(d.due))}</p></div></div>`).join('')}
+  <div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
+   ${kpi('طلبات مفتوحة',act.length,'')}${kpi('الالتزام بالمهلة',m.sla+'<small>%</small>','',m.sla>=75)}${kpi('تأكيد المواطنين للحل',m.conf+'<small>%</small>','',m.conf>=85)}${kpi('رضا المواطنين',m.sat+'<small>/5</small>','',m.sat>=4)}
+  </div>
+  <div class="split"><div class="glass card"><div class="h3">الطلبات النشطة (${act.length})</div><div class="tlist">${act.length?act.map(x=>`
+   <div class="titem ${x.id===sel?'on':''}" data-sel="${x.id}"><div class="row" style="justify-content:space-between"><span class="idc">${x.id}</span>${slaB(x)}</div>
+   <div class="t">${esc(x.title)}</div><div class="m">${lvB(x.level)}${x.status==='reopened'?'<span class="bdg lv-topsecret">مُصعَّد</span>':''}${x.prior&&x.prior.done?'<span class="bdg lv-secret">سبق رفعه لديكم</span>':''}<span>${x.gov}</span></div></div>`).join(''):'<div class="empty">لا توجد طلبات مفتوحة</div>'}</div></div>
+  <div class="glass card">${t?`<div class="row" style="justify-content:space-between"><div><span class="idc">${t.id}</span><div class="h2" style="font-size:19px;margin-top:4px">${esc(t.title)}</div></div><div class="row">${lvB(t.level)}${prB(t.priority)}${slaB(t)}</div></div>
+    <dl class="kv" style="margin-top:14px"><dt>مقدّم الطلب</dt><dd>${t.masked||t.hideId||t.level==='restricted'?'<span class="bdg lv-restricted">🔒 محجوبة بموجب التصنيف</span>':esc((t.citizen||{}).name)+' · <span dir="ltr">'+esc((t.citizen||{}).phone||'')+'</span>'}</dd>
+    <dt>المحافظة</dt><dd>${t.gov}</dd><dt>الموضوع</dt><dd>${esc(t.cat)}</dd><dt>الوصف</dt><dd class="mut" style="line-height:1.8">${esc(t.desc)}</dd></dl>
+    ${t.prior&&t.prior.done?`<div class="reason" style="margin-top:12px">🧾 وصل هذا الطلب للإمارة لأنه رُفع لديكم برقم <b class="idc">${esc(t.prior.ref||'—')}</b>${t.prior.date?' قبل '+daysAgo(t.prior.date)+' يوم':''} دون تجاوب. يُحتسب في مؤشر «إخفاق القناة الأولى».</div>`:''}
+    ${t.status==='reopened'?'<div class="reason" style="margin-top:12px">⚠️ سبق الرد على هذا الطلب وأفاد المواطن بعدم حل المشكلة. يُحتسب ذلك في مؤشر «الإغلاق الشكلي» لدى سمو الأمير.</div>':''}
+    <div style="margin-top:16px"><label class="f">الإجراء المتخذ</label><textarea class="inp" id="eResp" placeholder="صف ما تم فعلياً على أرض الواقع..."></textarea></div>
+    <div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn" data-act="eProg" data-id="${t.id}">تحديث: قيد المعالجة</button><button class="btn gold" data-act="eDone" data-id="${t.id}">تمت المعالجة — إرسال للمواطن للتأكيد</button></div>
+    <div class="h3" style="margin-top:18px">السجل</div><div class="timeline">${t.hist.map((h,i)=>`<div class="tl ${i<t.hist.length-1?'done':'cur'}"><b>${esc(h.t)}</b><p>${hij.format(new Date(h.ts))}</p></div>`).join('')}</div>`
+  :'<div class="empty">اختر طلباً من القائمة</div>'}</div></div>
+  ${done.length?`<div class="glass card" style="margin-top:16px"><div class="h3">آخر ما تمت معالجته</div><div style="overflow:auto"><table><thead><tr><th>الطلب</th><th>الموضوع</th><th>الحالة</th><th>تأكيد المواطن</th></tr></thead><tbody>${done.map(x=>`<tr><td class="idc">${x.id}</td><td>${esc(x.title)}</td><td>${stB(x.status)}</td><td>${x.citizenConfirm===true?'<span class="bdg lv-public">حُلّت</span>':x.citizenConfirm===false?'<span class="bdg lv-topsecret">لم تُحل</span>':'<span class="bdg lv-none">بانتظار</span>'}</td></tr>`).join('')}</tbody></table></div></div>`:''}`;
+  if($('#entSel'))$('#entSel').onchange=e=>go('entity',{ent:e.target.value});
+}
+/* ================= METRICS ================= */
+function metrics(list){
+  const all0=list;list=list.filter(t=>t.status!=='redirected');
+  const resp=list.filter(t=>t.respondedAt&&t.assignedAt);
+  const inSla=resp.filter(t=>(t.respondedAt-t.assignedAt)/DAY<=t.slaDays).length;
+  const dec=list.filter(t=>t.citizenConfirm!==null&&t.citizenConfirm!==undefined);
+  const conf=dec.filter(t=>t.citizenConfirm).length;
+  const rated=list.filter(t=>t.rating);
+  const avgD=resp.length?resp.reduce((a,t)=>a+(t.respondedAt-t.assignedAt)/DAY,0)/resp.length:0;
+  const overdue=list.filter(t=>['assigned','progress','reopened','internal'].includes(t.status)&&slaLeft(t)<0).length;
+  const r={n:list.length,sla:resp.length?Math.round(inSla/resp.length*100):0,conf:dec.length?Math.round(conf/dec.length*100):0,
+    falseC:dec.length?Math.round((dec.length-conf)/dec.length*100):0,sat:rated.length?(rated.reduce((a,t)=>a+t.rating,0)/rated.length).toFixed(1):'—',
+    avg:avgD.toFixed(1),open:list.filter(t=>t.status!=='closed').length,overdue,
+    ff:list.length?Math.round(list.filter(t=>t.prior&&t.prior.done).length/list.length*100):0,ffN:list.filter(t=>t.prior&&t.prior.done).length,redir:all0.filter(t=>t.status==='redirected'||t.redirect).length};
+  r.score=Math.round(r.sla*.4+r.conf*.35+(rated.length?(+r.sat)/5*100:60)*.25);return r;
+}
+const grade=s=>s>=85?['أ','#3fb672']:s>=72?['ب','#9cc75b']:s>=60?['ج','#f0a33a']:['د','#e5514a'];
+function kpi(l,v,d,good){return `<div class="glass kpi"><div class="l">${l}</div><div class="v">${v}</div>${d?`<div class="d">${d}</div>`:good===undefined?'':`<div class="d ${good?'up':'dn'}">${good?'▲ ضمن المستهدف':'▼ دون المستهدف'}</div>`}</div>`}
+let princeAuthed=false,vaultOpen=false;
+function rPrince(){
+  if(!princeAuthed){$('#view').innerHTML=`<div class="glass" style="max-width:520px;margin:60px auto"><div class="verify"><img src="${LOGOG}" style="width:120px"><div class="h2">الدخول الآمن لمركز القيادة</div><div class="spin"></div><p class="mut">التحقق متعدد العوامل · مطابقة الجهاز المعتمد · تشفير الجلسة</p></div></div>`;
+    setTimeout(()=>{princeAuthed=true;audit(who(),'دخول مركز القيادة');if(VIEW==='prince')rPrince()},1700);return}
+  const all0=T().filter(t=>t.type!=='suggestion');
+  if(!all0.length){$('#view').innerHTML=`<section class="cc-band"><div class="in"><div><h1><img src="${LOGO}" alt="">مركز قيادة سمو أمير منطقة حائل</h1><p>لا توجد طلبات في النظام بعد</p></div></div></section><div class="glass card" style="text-align:center;padding:50px 20px"><div class="h2" style="justify-content:center">اللوحة جاهزة وتنتظر أول الطلبات</div><p class="mut" style="margin-top:10px">ستظهر المؤشرات فور وصول طلبات المواطنين.${PROFILE.role==='admin'?' ولعرض تجريبي، حمّل البيانات التجريبية من صفحة الإدارة.':''}</p>${PROFILE.role==='admin'?'<button class="btn gold" style="margin-top:16px" data-go="admin" data-tab="data">صفحة الإدارة</button>':''}</div>`;return}
+  const all=T().filter(t=>t.type!=='suggestion');const m=metrics(all);const now=NOW();
+  const last30=all.filter(t=>t.created>now-30*DAY).length,prev30=all.filter(t=>t.created>now-60*DAY&&t.created<=now-30*DAY).length;
+  const growth=prev30?Math.round((last30-prev30)/prev30*100):0;
+  const secretN=all.filter(t=>['secret','topsecret'].includes(t.level));const secOpen=secretN.filter(t=>t.status!=='closed');
+  let ents=Object.keys(ENT).map(k=>({k,...metrics(all.filter(t=>t.ent===k&&t.route==='entity'&&t.level!=='secret'&&t.level!=='topsecret'))})).filter(e=>e.n>0).sort((a,b)=>b.score-a.score);
+  if(!ents.length)ents=[{k:Object.keys(ENT)[0],...metrics([])}];
+  const worstSla=[...ents].sort((a,b)=>a.sla-b.sla)[0],worstFalse=[...ents].sort((a,b)=>b.falseC-a.falseC)[0];
+  const govC={};all.forEach(t=>{govC[t.gov]=(govC[t.gov]||0)+1});
+  const per=Object.keys(GOV).map(g=>({g,n:govC[g]||0,pc:(govC[g]||0)/(GOV[g].w)}));const hot=[...per].filter(p=>p.g!=='حائل').sort((a,b)=>b.n-a.n)[0]||per[0];
+  const hotCat={};all.filter(t=>t.gov===hot.g).forEach(t=>hotCat[t.cat]=(hotCat[t.cat]||0)+1);const hc=Object.entries(hotCat).sort((a,b)=>b[1]-a[1])[0];
+  const pend=T().filter(t=>t.status==='triage').length;
+  const ideas=T().filter(t=>t.type==='suggestion').sort((a,b)=>b.votes-a.votes).slice(0,5);
+  $('#view').innerHTML=`
+  <section class="cc-band"><div class="in"><div><h1><img src="${LOGO}" alt="">مركز قيادة سمو أمير منطقة حائل</h1><p>${greg.format(new Date())} · ${hij.format(new Date())} · ${fmt(all.length)} طلب من ${Object.keys(ENT).length} جهة و${Object.keys(GOV).length} محافظات · آخر تحديث ${tm.format(new Date())}</p></div>
+   <div class="row"><button class="btn sm" data-act="refresh">تحديث</button><button class="btn sm" data-act="directive">إصدار توجيه</button><button class="btn sm" data-act="exportCsv">تصدير مؤشرات الجهات</button><button class="btn sm" data-act="print">طباعة التقرير</button></div></div></section>
+  <div class="glass ticker"><span class="live"><i></i> مباشر</span><span class="txt" id="tick">آخر الطلبات الواردة…</span></div>
+  <div class="kpis">
+   ${kpi('إجمالي البلاغات (6 أشهر)',fmt(m.n),`<span class="${growth>0?'dn':'up'}">${growth>0?'▲':'▼'} ${Math.abs(growth)}% آخر 30 يوماً</span>`)}
+   ${kpi('قيد المعالجة',fmt(m.open),`<span class="dn">${fmt(m.overdue)} متجاوزة للمهلة</span>`)}
+   ${kpi('الالتزام بالمهلة',m.sla+'<small>%</small>','',m.sla>=75)}
+   ${kpi('الحل المؤكَّد من المواطن',m.conf+'<small>%</small>','',m.conf>=85)}
+   ${kpi('الإغلاق الشكلي',m.falseC+'<small>%</small>','<span class="mut">ردت الجهة بالحل ونفى المواطن</span>')}
+   ${kpi('رضا المواطنين',m.sat+'<small>/5</small>',`<span class="mut">متوسط المعالجة ${m.avg} يوم</span>`)}
+  </div>
+  <div class="cc-grid">
+   <div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="h3" style="margin:0">🗺️ خريطة البلاغات على محافظات المنطقة</div><span class="dim" style="font-size:12px">حجم الدائرة = عدد البلاغات · اللون = الالتزام بالمهلة</span></div><div id="ccMap"></div></div>
+   <div class="glass card"><div class="h3">🧭 ما يستوجب انتباه سموكم</div>
+    <div class="insight"><div class="dot" style="background:rgba(229,81,74,.15)">⏱️</div><p><b>${ENT[worstSla.k].n}</b> الأدنى التزاماً بالمهلة بنسبة ${worstSla.sla}%، ولديها ${worstSla.overdue} طلبات متأخرة حالياً.</p></div>
+    <div class="insight"><div class="dot" style="background:rgba(240,163,58,.15)">🔁</div><p><b>${ENT[worstFalse.k].n}</b> الأعلى في الإغلاق الشكلي: ${worstFalse.falseC}% من ردودها بالحل نفاها المواطنون.</p></div>
+    <div class="insight"><div class="dot" style="background:rgba(58,166,216,.15)">📍</div><p>محافظة <b>${hot.g}</b> الأعلى بلاغاً خارج المدينة (${hot.n})، وأكثرها «${hc?hc[0]:'—'}».</p></div>
+    <div class="insight"><div class="dot" style="background:rgba(214,178,92,.15)">🔐</div><p><b>${secOpen.length}</b> ملفات سرية مفتوحة لدى وحدة الرقابة، و<b>${pend}</b> طلبات جديدة بانتظار التصنيف.</p></div>
+    <button class="btn sm gold" data-act="directive" data-ent="${worstSla.k}" style="margin-top:4px">إصدار توجيه لـ ${ENT[worstSla.k].n.split('–')[0]}</button>
+   </div>
+  </div>
+  <div class="cc-3">
+   <div class="glass card"><div class="h3">📈 الاتجاه الشهري</div><div style="height:250px"><canvas id="chTrend"></canvas></div></div>
+   <div class="glass card"><div class="h3">🏷️ أبرز موضوعات البلاغات</div><div style="height:250px"><canvas id="chCat"></canvas></div></div>
+   <div class="glass card"><div class="h3">🛡️ توزيع درجات السرية</div><div style="height:250px"><canvas id="chLv"></canvas></div></div>
+  </div>
+  <div class="glass card" style="margin-top:16px"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="h3" style="margin:0">🏛️ مؤشر أداء الجهات الحكومية في المنطقة</div><span class="dim" style="font-size:12px">المؤشر = 40% التزام بالمهلة + 35% حل مؤكد من المواطن + 25% رضا</span></div>
+   <div style="overflow:auto"><table><thead><tr><th>#</th><th>الجهة</th><th>التقدير</th><th>المؤشر</th><th>البلاغات</th><th>مفتوحة</th><th>متأخرة</th><th>الالتزام بالمهلة</th><th>حل مؤكَّد</th><th>إغلاق شكلي</th><th>الرضا</th><th></th></tr></thead>
+   <tbody>${ents.map((e,i)=>{const g=grade(e.score);return `<tr><td class="dim">${i+1}</td><td><b>${(ENT[e.k]||{n:e.k}).n}</b></td><td><span class="grade" style="background:${g[1]}22;color:${g[1]};border:1px solid ${g[1]}66">${g[0]}</span></td><td><b style="font-size:16px">${e.score}</b></td><td>${e.n}</td><td>${e.open}</td><td class="${e.overdue?'dn':''}">${e.overdue}</td>
+    <td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar"><i style="width:${e.sla}%;background:${e.sla>=75?'var(--pub)':e.sla>=60?'var(--sec)':'var(--top)'}"></i></div>${e.sla}%</div></td><td>${e.conf}%</td><td class="${e.falseC>15?'dn':''}">${e.falseC}%</td><td>${e.sat}</td>
+    <td><button class="btn sm ghost" data-act="directive" data-ent="${e.k}">توجيه</button></td></tr>`}).join('')}</tbody></table></div></div>
+  ${(()=>{const ff=[...ents].sort((a,b)=>b.ff-a.ff);const tot=metrics(all);const pr=all.filter(t=>t.prior&&t.prior.done&&t.prior.date&&t.assignedAt);const wait=pr.length?Math.round(pr.reduce((a,t)=>a+(t.created-t.prior.date)/DAY,0)/pr.length):0;
+   return `<div class="cc-grid" style="grid-template-columns:1.3fr 1fr"><div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:6px"><div class="h3" style="margin:0">🧾 جودة نوافذ الشكاوى لدى الجهات</div><span class="dim" style="font-size:12px">نسبة طلبات الجهة التي وصلت الإمارة بعد إخفاق قناتها</span></div>
+    <table><thead><tr><th>الجهة</th><th>إخفاق القناة الأولى</th><th>طلبات بإثبات</th><th>أُعيد توجيهها</th></tr></thead><tbody>${ff.slice(0,8).map(e=>`<tr><td><b>${(ENT[e.k]||{n:e.k}).n}</b></td><td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar" style="min-width:110px"><i style="width:${e.ff}%;background:${e.ff>=45?'var(--top)':e.ff>=28?'var(--sec)':'var(--pub)'}"></i></div><b>${e.ff}%</b></div></td><td>${e.ffN}</td><td>${e.redir}</td></tr>`).join('')}</tbody></table></div>
+    <div class="glass card"><div class="h3">⚖️ الإمارة مستوى متابعة أعلى</div>
+     <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+      <div class="kpi glass" style="box-shadow:none"><div class="l">وصلت بعد إخفاق الجهة</div><div class="v">${tot.ff}<small>%</small></div></div>
+      <div class="kpi glass" style="box-shadow:none;border-top-color:var(--acc)"><div class="l">أُعيد توجيهها للجهات</div><div class="v">${fmt(tot.redir)}</div></div>
+      <div class="kpi glass" style="box-shadow:none;border-top-color:var(--res)"><div class="l">متوسط انتظار المواطن لدى الجهة</div><div class="v">${wait}<small> يوم</small></div></div>
+      <div class="kpi glass" style="box-shadow:none;border-top-color:var(--top)"><div class="l">الأعلى إخفاقاً</div><div class="v" style="font-size:17px;line-height:1.5">${ENT[ff[0].k].n.split('–')[0]}</div></div>
+     </div>
+     <p class="mut" style="font-size:13px;line-height:1.85;margin-top:12px">ارتفاع النسبة لدى جهة يعني أن نافذة الشكاوى لديها لا تعمل، حتى لو بدت أرقامها الداخلية جيدة.</p>
+     <button class="btn sm gold" data-act="directive" data-ent="${ff[0].k}" style="margin-top:10px">توجيه بتفعيل نافذة شكاوى ${ENT[ff[0].k].n.split('–')[0]}</button></div></div>`})()}
+  <div class="cc-2">
+   <div class="glass card vault ${vaultOpen?'':'locked'}" id="vault"><div class="h3">🔐 الملفات السرية — وحدة الرقابة</div>
+    <div class="vbody">${vaultOpen?'<div class="wm">'+Array(12).fill('سري · '+esc('اطلاع سمو الأمير')).map(x=>`<span>${x}</span>`).join('')+'</div>':''}
+     <div class="row" style="margin-bottom:12px">${lvB('secret')} <b>${secretN.filter(t=>t.level==='secret').length}</b> <span class="dim">·</span> ${lvB('topsecret')} <b>${secretN.filter(t=>t.level==='topsecret').length}</b> <span class="dim">·</span> <span class="mut">مُحال لنزاهة: ${secretN.filter(t=>t.route==='nazaha').length}</span></div>
+     <div class="tlist">${secOpen.slice(0,6).map(t=>`<div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><span class="idc">${t.id}</span>${lvB(t.level)}</div><div class="t">${vaultOpen?esc(t.title):'████████████████'}</div><div class="m"><span>${vaultOpen?'الجهة المعنية: '+ENT[t.ent].n:'██████'}</span><span>${t.route==='nazaha'?'مُحال لهيئة الرقابة ومكافحة الفساد':'وحدة الرقابة بالإمارة'}</span><span>${dShort(t.created)}</span></div></div>`).join('')}</div></div>
+    ${vaultOpen?'':`<div class="vlock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>محتوى مصنّف «سري» و«سري للغاية»</b><p class="mut" style="font-size:13px">يتطلب تحققاً إضافياً، ويُسجَّل كل اطلاع في سجل التدقيق.</p><button class="btn gold" data-act="unlock">التحقق والاطلاع</button></div>`}
+   </div>
+   <div class="glass card"><div class="h3">💡 أعلى مقترحات المواطنين تصويتاً</div>
+    <div class="tlist">${ideas.map(t=>`<div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><div class="t" style="margin:0">${esc(t.title)}</div><span class="bdg lv-secret">▲ ${fmt(t.votes)}</span></div>
+     <div class="row" style="justify-content:space-between;margin-top:8px"><span class="m">${t.gov} · ${ENT[t.ent]?ENT[t.ent].n:t.ent}</span>${t.adopted?'<span class="bdg lv-public">معتمد للدراسة</span>':`<button class="btn sm" data-act="adopt" data-id="${t.id}">اعتماد للدراسة</button>`}</div></div>`).join('')||'<div class="empty">لا توجد مقترحات بعد</div>'}</div></div>
+  </div>`;
+  drawCharts(all);drawMap(all);startLive();
+}
+function drawCharts(all){
+  if(!window.Chart)return;
+  Chart.defaults.font.family='"IBM Plex Sans Arabic"';Chart.defaults.color='#5F6B65';Chart.defaults.borderColor='#EDF0EE';
+  const now=NOW(),labels=[],rec=[],clo=[];
+  for(let i=5;i>=0;i--){const a=now-(i+1)*30*DAY,b=now-i*30*DAY;labels.push(hijM.format(new Date(b-15*DAY)));rec.push(all.filter(t=>t.created>a&&t.created<=b).length);clo.push(all.filter(t=>t.closedAt&&t.closedAt>a&&t.closedAt<=b).length)}
+  charts.push(new Chart($('#chTrend'),{type:'line',data:{labels,datasets:[{label:'وارد',data:rec,borderColor:'#1B8354',backgroundColor:'rgba(27,131,84,.10)',fill:true,tension:.35,pointRadius:3},{label:'مغلق بتأكيد المواطن',data:clo,borderColor:'#B48A3C',tension:.35,pointRadius:3}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10}}},scales:{y:{beginAtZero:true}}}}));
+  const cc={};all.forEach(t=>cc[t.cat]=(cc[t.cat]||0)+1);const ce=Object.entries(cc).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  charts.push(new Chart($('#chCat'),{type:'bar',data:{labels:ce.map(c=>c[0]),datasets:[{data:ce.map(c=>c[1]),backgroundColor:'#1B8354',borderRadius:5}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true},y:{ticks:{font:{size:11}}}}}}));
+  const lc=LVORD.map(l=>all.filter(t=>t.level===l).length);
+  charts.push(new Chart($('#chLv'),{type:'doughnut',data:{labels:LVORD.map(l=>LV[l].n),datasets:[{data:lc,backgroundColor:['#1B8354','#1D6FA5','#D98A1C','#C4321F'],borderColor:'#fff',borderWidth:3}]},options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}}}));
+}
+function drawMap(all){
+  const el=$('#ccMap');if(!window.maplibregl){el.innerHTML='<div class="empty">تعذر تحميل الخريطة</div>';return}
+  try{
+  ccMap=new maplibregl.Map({container:el,attributionControl:{compact:true},style:mapStyle({bg:'#06120c',paint:{'raster-brightness-max':.88,'raster-saturation':-.1}}),center:[41.5,26.9],zoom:6.3,pitch:30,cooperativeGestures:false});
+  ccMap.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
+  const mx=Math.max(...Object.keys(GOV).map(g=>all.filter(t=>t.gov===g).length));
+  Object.entries(GOV).forEach(([g,o])=>{
+    const L=all.filter(t=>t.gov===g);const m=metrics(L);const sz=26+Math.sqrt(L.length/mx)*46;
+    const col=m.sla>=75?'rgba(63,182,114,.85)':m.sla>=60?'rgba(240,163,58,.85)':'rgba(229,81,74,.85)';
+    const d=document.createElement('div');d.className='gov-m';d.innerHTML=`<div class="c" style="width:${sz}px;height:${sz}px;background:${col}">${L.length}</div><div class="n">${g}</div>`;
+    const top={};L.forEach(t=>top[t.cat]=(top[t.cat]||0)+1);const tc=Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    const pop=new maplibregl.Popup({offset:20,closeButton:false}).setHTML(`<div style="font-family:IBM Plex Sans Arabic;direction:rtl;color:#111;min-width:180px"><b style="font-size:15px">محافظة ${g}</b><br>البلاغات: ${L.length} · مفتوحة: ${m.open}<br>الالتزام بالمهلة: ${m.sla}%<br>الرضا: ${m.sat}/5<hr style="margin:6px 0;border:0;border-top:1px solid #ddd">${tc.map(c=>c[0]+' ('+c[1]+')').join('<br>')}</div>`);
+    new maplibregl.Marker({element:d}).setLngLat(o.c).setPopup(pop).addTo(ccMap);
+  });
+  const hq=document.createElement('div');hq.className='pin';hq.style.transform='scale(.6)';new maplibregl.Marker({element:hq}).setLngLat(HQ).addTo(ccMap);
+  }catch(e){el.innerHTML='<div class="empty">تعذر تحميل الخريطة</div>'}
+}
+function directiveModal(ent){
+  modal(`<div class="h2">✍️ توجيه من سمو أمير المنطقة</div><p class="mut" style="margin:6px 0 16px">يظهر التوجيه فوراً في بوابة الجهة، ويُتابع حتى المهلة المحددة.</p>
+   <label class="f">الجهة</label><select class="inp" id="dEnt">${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${k===ent?'selected':''}>${v.n}</option>`).join('')}</select>
+   <label class="f" style="margin-top:12px">نص التوجيه</label><textarea class="inp" id="dTxt">نوجّه بمعالجة الطلبات المتأخرة خلال سبعة أيام، ورفع تقرير بالأسباب الجذرية والإجراءات التصحيحية.</textarea>
+   <label class="f" style="margin-top:12px">المهلة</label><div class="seg" id="dDue"><button data-d="7" class="on">7 أيام</button><button data-d="14">14 يوماً</button><button data-d="30">30 يوماً</button></div>
+   <div class="row" style="justify-content:flex-end;margin-top:18px"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-act="sendDir">إصدار التوجيه</button></div>`);
+  $('#dDue').onclick=e=>{const b=e.target.closest('button');if(!b)return;[...$('#dDue').children].forEach(x=>x.classList.toggle('on',x===b))};
+}
+function unlockModal(){
+  modal(`<div class="verify"><svg viewBox="0 0 24 24" style="width:50px;height:50px;stroke:var(--gold);fill:none;stroke-width:1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+   <div class="h2">تحقق إضافي للاطلاع على المحتوى السري</div><p class="mut">أدخل رمز التحقق المرسل إلى جهازك المعتمد</p>
+   <div class="pinbox">${[0,1,2,3].map(()=>'<input maxlength="1" inputmode="numeric">').join('')}</div>
+   <div class="row"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-act="doUnlock">تأكيد</button></div></div>`);
+  const ins=[...document.querySelectorAll('.pinbox input')];ins[0].focus();
+  ins.forEach((i,n)=>i.addEventListener('input',()=>{i.value=i.value.replace(/\D/g,'');if(i.value&&ins[n+1])ins[n+1].focus();if(ins.every(x=>x.value))document.querySelector('[data-act=doUnlock]').click()}));
+}
+function charter(){
+  modal(`<div class="row" style="justify-content:space-between"><div class="h2">ميثاق الحوكمة والتصنيف</div><button class="btn sm" data-act="close">إغلاق</button></div>
+  <p class="mut" style="margin:10px 0 16px;line-height:1.9">المبدأ: <b style="color:var(--txt)">المواطن لا يحدد درجة السرية</b>، بل يملك خيارين يحميانه: حجب هويته عن الجهة، والإشارة إلى حساسية بلاغه. ودرجة السرية الرسمية يعتمدها مصنِّف معتمد في الإمارة، بمساعدة محرك آلي مُعلَّل، ووفق مستويات تصنيف البيانات الوطنية (عام · مقيّد · سري · سري للغاية).</p>
+  <div style="overflow:auto"><table class="matrix"><thead><tr><th>الصلاحية</th><th>${lvB('public')}</th><th>${lvB('restricted')}</th><th>${lvB('secret')}</th><th>${lvB('topsecret')}</th></tr></thead><tbody>
+   <tr><td>المواطن مقدّم الطلب</td><td class="yes">طلبه كاملاً</td><td class="yes">طلبه كاملاً</td><td class="part">الحالة فقط</td><td class="part">الحالة فقط</td></tr>
+   <tr><td>الجهة المعنية</td><td class="yes">كامل</td><td class="part">المحتوى بدون الهوية</td><td class="no">لا تُحال إليها</td><td class="no">لا تُحال إليها</td></tr>
+   <tr><td>مكتب الفرز بالإمارة</td><td class="yes">كامل</td><td class="yes">كامل</td><td class="yes">كامل + يصنّف</td><td class="part">يرفعه للاعتماد</td></tr>
+   <tr><td>وحدة الرقابة والمتابعة</td><td class="yes">كامل</td><td class="yes">كامل</td><td class="yes">كامل · تعالجه</td><td class="part">بتكليف</td></tr>
+   <tr><td>وكيل الإمارة</td><td class="yes">كامل</td><td class="yes">كامل</td><td class="yes">كامل</td><td class="yes">يعتمد التصنيف</td></tr>
+   <tr><td>سمو أمير المنطقة</td><td class="yes">كامل</td><td class="yes">كامل</td><td class="yes">بتحقق إضافي</td><td class="yes">بتحقق إضافي</td></tr>
+   <tr><td>التقارير والمؤشرات</td><td class="yes">تفصيلية</td><td class="part">مجمّعة</td><td class="part">أعداد فقط</td><td class="part">أعداد فقط</td></tr>
+  </tbody></table></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px">
+   <div class="glass card"><div class="h3">متى يُرفع التصنيف تلقائياً؟</div><p class="mut" style="font-size:13px;line-height:1.9">• شبهة فساد أو رشوة أو تلاعب ← <b class="lv-secret" style="background:none;border:0">سري</b><br>• ادعاء ضد مسؤول بعينه ← سري<br>• ما يمس الأمن أو السلامة العامة ← سري للغاية<br>• بيانات صحية أو أسرية، أو طلب حجب الهوية ← مقيّد</p></div>
+   <div class="glass card"><div class="h3">ضمانات الحوكمة</div><p class="mut" style="font-size:13px;line-height:1.9">• كل تصنيف واطلاع يُسجَّل باسم المستخدم ووقته<br>• لا يُغلق الطلب إلا بتأكيد المواطن<br>• نفي المواطن للحل يعيد الطلب للإمارة ويُحتسب «إغلاقاً شكلياً»<br>• خفض درجة السرية يتطلب اعتماد مستوى أعلى</p></div>
+  </div>`);
+}
+
+
+async function submitTicket(btn){
+  const d=draft;
+  if((ME.name||'').trim().length<3){toast('اكتب اسمك الكامل');return}
+  if(!/^[12]\d{9}$/.test((ME.nid||'').trim())){toast('رقم الهوية يتكون من 10 أرقام ويبدأ بـ 1 أو 2');return}
+  if(!/^05\d{8}$/.test((ME.phone||'').trim())){toast('رقم الجوال بصيغة 05XXXXXXXX');return}
+  if(!d.ent||!d.cat||(d.title||'').trim().length<4||(d.desc||'').trim().length<10){toast('أكمل الجهة والتصنيف والعنوان والتفاصيل');return}
+  if(d.type!=='suggestion'&&d.prior===null){toast('أجب عن سؤال: هل سبق أن رفعت الطلب للجهة؟');$('#sPrior').scrollIntoView({behavior:'smooth',block:'center'});return}
+  if(d.prior===true&&!d.pref&&!d.pdate&&!d.pfiles.length){toast('أضف رقم الطلب لدى الجهة أو تاريخه أو إثباتاً');return}
+  if(!sb){toast('تعذر الاتصال بقاعدة البيانات');return}
+  if(btn){btn.disabled=true;btn.textContent='جارٍ الإرسال…'}
+  try{
+    const files=await uploadFiles(d.files),pfiles=d.type==='suggestion'?[]:await uploadFiles(d.pfiles);
+    const prior=d.type==='suggestion'?null:d.prior?{done:true,ref:d.pref,date:d.pdate?new Date(d.pdate).getTime():null,channel:d.pch,files:pfiles}:{done:false};
+    const payload={type:d.type,ent:d.ent,cat:d.cat,gov:d.gov,title:d.title.trim(),desc:d.desc.trim(),citizen:{name:ME.name.trim(),nid:ME.nid.trim(),phone:ME.phone.trim()},hideId:d.hideId,sensitive:d.sensitive,exempt:d.exempt,files,prior};
+    const{data,error}=await sb.rpc('submit_ticket',{p:payload});if(error)throw error;
+    addCode(data.id,data.code);draft=blankDraft();
+    modal(`<div class="verify"><div style="font-size:54px">✅</div><div class="h2">تم استلام طلبك</div>
+     <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:420px">
+      <div class="glass" style="padding:14px;box-shadow:none"><p class="mut" style="font-size:12.5px">رقم الطلب</p><div class="idc" style="font-size:22px">${data.id}</div></div>
+      <div class="glass" style="padding:14px;box-shadow:none"><p class="mut" style="font-size:12.5px">رمز المتابعة</p><div class="idc" style="font-size:22px;color:var(--acc)">${data.code}</div></div></div>
+     <p class="mut" style="max-width:460px;line-height:1.8">احتفظ بالرقم والرمز لمتابعة طلبك من أي جهاز. ${prior&&prior.done?'أرفقت ما يثبت رفعه للجهة سابقاً، وسيُعامل بأولوية عالية.':'سيراجع مكتب الفرز طلبك، ويحيله للجهة المختصة أو يوجهك لقناتها المباشرة.'}</p>
+     <div class="row"><button class="btn gold" data-act="trackNew" data-id="${data.id}">متابعة الطلب</button><button class="btn" data-act="close">إغلاق</button></div></div>`);
+  }catch(e){toast('تعذر إرسال الطلب: '+errMsg(e));if(btn){btn.disabled=false;btn.textContent='إرسال إلى إمارة المنطقة'}}
+}
+function cMine(){
+  const mine=[...MY].sort((a,b)=>(b.created||0)-(a.created||0));
+  const sel=STATE.sel||mine[0]?.id;const t=mine.find(x=>x.id===sel);
+  $('#cbody').innerHTML=`<div class="split">
+   <div class="glass card"><div class="h3">طلباتي على هذا الجهاز (${mine.length})</div>
+    <div class="grid" style="grid-template-columns:1.3fr 1fr auto;gap:8px;margin-bottom:14px"><input class="inp" id="trkId" placeholder="رقم الطلب" dir="ltr" style="text-align:left"><input class="inp" id="trkCode" placeholder="الرمز" dir="ltr" style="text-align:left;text-transform:uppercase"><button class="btn sm gold" data-act="track">إضافة</button></div>
+    <div class="tlist">${mine.map(x=>`
+     <div class="titem ${x.id===sel?'on':''}" data-sel="${x.id}"><div class="row" style="justify-content:space-between"><span class="idc">${x.id}</span>${stB(x.status==='internal'?'progress':x.status)}</div>
+     <div class="t">${typeIco[x.type]||''} ${esc(x.title)}</div><div class="m"><span>${ENT[x.ent]?ENT[x.ent].n:''}</span><span>${x.created?dShort(x.created):''}</span></div>
+     ${x.status==='responded'?'<div class="bdg lv-secret" style="margin-top:8px">بانتظار تأكيدك</div>':''}${x.status==='redirected'?'<div class="bdg lv-secret" style="margin-top:8px">وُجّه للجهة</div>':''}</div>`).join('')||'<div class="empty">لا توجد طلبات محفوظة على هذا الجهاز. أضف طلبك برقمه ورمزه.</div>'}</div></div>
+   <div class="glass card">${t?cDetail(t):'<div class="empty">اختر طلباً لعرض تفاصيله</div>'}</div></div>`;
+}
+function cIdeas(){
+  const ideas=PUB.sugg;const voted=store.get('hv_votes',[]);
+  $('#cbody').innerHTML=`<div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:14px"><div class="h3" style="margin:0">💡 مقترحات أهالي المنطقة</div><button class="btn sm gold" data-act="newIdea">أضف مقترحك</button></div>
+   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">${ideas.map(t=>`
+    <div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><span class="dim" style="font-size:12px">${esc(t.gov||'')} · ${ENT[t.ent]?ENT[t.ent].n:''}</span>${t.adopted?'<span class="bdg lv-public">اعتمدته الإمارة للدراسة</span>':''}</div>
+    <div class="t">${esc(t.title)}</div>
+    <div class="row" style="justify-content:space-between;margin-top:8px"><span class="mut" style="font-size:12.5px">${esc(t.by||'')}</span>
+    <button class="btn sm ${voted.includes(t.id)?'gold':''}" data-act="vote" data-id="${t.id}">▲ ${fmt(t.votes)}</button></div></div>`).join('')||'<div class="empty">لا توجد مقترحات بعد — كن أول من يقترح.</div>'}</div></div>`;
+}
+async function entAct(id,done){
+  const t=T().find(x=>x.id===id);const txt=($('#eResp').value||'').trim();
+  if(done&&txt.length<6){toast('اكتب الإجراء المتخذ فعلياً');return}
+  try{
+    if(PROFILE.role==='focal'){const{data,error}=await sb.rpc('focal_respond',{p_id:id,p_done:done,p_text:txt});if(error)throw error;Object.assign(t,data)}
+    else{const now=NOW();if(done){t.status='responded';t.respondedAt=now;t.entityResponse=txt;t.hist.push({ts:now,t:'ردّ الجهة: تمت المعالجة — بانتظار تأكيد المواطن'})}else{t.status='progress';t.hist.push({ts:now,t:'الجهة: قيد المعالجة'+(txt?' — '+txt:'')})}await persist(t);audit(who(),done?'رد بالمعالجة (نيابة عن الجهة)':'تحديث حالة',id)}
+    toast(done?'أُرسل الرد للمواطن، ولن يُغلق الطلب إلا بتأكيده':'تم التحديث');STATE.sel=null;rEntity();
+  }catch(e){toast('تعذر الحفظ: '+errMsg(e))}
+}
+function startLive(){
+  const list=T().filter(t=>t.type!=='suggestion').slice(0,8);let i=0;
+  const show=()=>{const el=$('#tick');if(!el||!list.length)return;const t=list[i++%list.length];el.style.animation='none';void el.offsetWidth;el.style.animation='';
+    el.innerHTML=`<span class="idc">${t.id}</span> · ${['secret','topsecret'].includes(t.level)?'طلب مصنّف':esc(t.title)} — محافظة <b>${esc(t.gov||'')}</b> · ${ENT[t.ent]?ENT[t.ent].n:''} · ${ST[t.status]||''}`};
+  show();liveT=setInterval(show,6000);
+}
+
+/* ================= ADMIN ================= */
+function rAdmin(){
+  const tab=STATE.tab||'accounts';
+  $('#view').innerHTML=`
+  <div class="page-head"><div><div class="h2">إدارة المنصة</div><p>الحسابات والصلاحيات، والجهات الحكومية، وبيانات العرض، وسجل التدقيق.</p></div>
+   <div class="tabs"><button class="${tab==='accounts'?'on':''}" data-tab="accounts">الحسابات وضباط الاتصال</button><button class="${tab==='entities'?'on':''}" data-tab="entities">الجهات</button><button class="${tab==='data'?'on':''}" data-tab="data">البيانات</button><button class="${tab==='audit'?'on':''}" data-tab="audit">سجل التدقيق</button></div></div>
+  <div id="abody"><div class="verify"><div class="spin"></div></div></div>`;
+  ({accounts:aAccounts,entities:aEntities,data:aData,audit:()=>{$('#abody').innerHTML=auditView()}})[tab]();
+}
+const roleOpts=(r)=>`<option value="">— بلا صلاحية —</option>${Object.entries(ROLE_N).map(([k,v])=>`<option value="${k}" ${r===k?'selected':''}>${v}</option>`).join('')}`;
+const entOpts=(e)=>`<option value="">—</option>${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${e===k?'selected':''}>${v.n}</option>`).join('')}`;
+async function aAccounts(){
+  const{data,error}=await sb.from('profiles').select('*').order('created_at');
+  if(error){$('#abody').innerHTML=`<div class="empty">${esc(errMsg(error))}</div>`;return}
+  const focal=data.filter(p=>p.role==='focal');const covered=new Set(focal.map(p=>p.entity_key));
+  const missing=Object.keys(ENT).filter(k=>ENT[k].active!==false&&!covered.has(k));
+  $('#abody').innerHTML=`
+  <div class="split" style="grid-template-columns:380px 1fr">
+   <div class="glass card"><div class="h3">إنشاء حساب جديد</div>
+    <label class="f">الاسم</label><input class="inp" id="nuName">
+    <label class="f" style="margin-top:10px">البريد الإلكتروني</label><input class="inp" id="nuEmail" type="email" dir="ltr">
+    <label class="f" style="margin-top:10px">كلمة المرور المؤقتة</label><div class="row" style="flex-wrap:nowrap;gap:8px"><input class="inp" id="nuPass" dir="ltr" value="${genPass()}"><button class="btn sm" data-act="genPass">توليد</button></div>
+    <label class="f" style="margin-top:10px">الصلاحية</label><select class="inp" id="nuRole">${roleOpts('focal')}</select>
+    <label class="f" style="margin-top:10px">الجهة (لضابط الاتصال)</label><select class="inp" id="nuEnt">${entOpts(missing[0]||'')}</select>
+    <button class="btn gold" style="margin-top:16px;width:100%;justify-content:center" data-act="createUser">إنشاء الحساب</button>
+    <p class="dim" style="font-size:12px;margin-top:10px;line-height:1.7">سلّم ضابط الاتصال بريده وكلمة المرور المؤقتة، ويدخل من «دخول الموظفين» فتظهر له تذاكر جهته مباشرة.</p></div>
+   <div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><div class="h3" style="margin:0">الحسابات (${data.length})</div><span class="dim" style="font-size:12.5px">جهات بلا ضابط اتصال: ${missing.length}</span></div>
+    ${missing.length?`<div class="reason" style="margin-bottom:12px">جهات لم يُعيَّن لها ضابط اتصال بعد: ${missing.map(k=>esc(ENT[k].n)).join('، ')}</div>`:''}
+    <div style="overflow:auto"><table><thead><tr><th>الاسم</th><th>البريد</th><th>الصلاحية</th><th>الجهة</th><th>نشط</th><th></th></tr></thead><tbody>
+    ${data.map(p=>`<tr data-pid="${p.id}"><td><input class="inp" data-f="full_name" value="${esc(p.full_name||'')}" style="min-width:140px;padding:7px 10px"></td><td dir="ltr" style="text-align:left;font-size:12.5px">${esc(p.email||'')}</td>
+      <td><select class="inp" data-f="role" style="padding:7px 10px;min-width:130px" ${p.id===PROFILE.id?'disabled':''}>${roleOpts(p.role)}</select></td>
+      <td><select class="inp" data-f="entity_key" style="padding:7px 10px;min-width:180px">${entOpts(p.entity_key)}</select></td>
+      <td><input type="checkbox" data-f="active" ${p.active?'checked':''} ${p.id===PROFILE.id?'disabled':''}></td>
+      <td><button class="btn sm" data-act="saveUser" data-pid="${p.id}">حفظ</button></td></tr>`).join('')}</tbody></table></div></div></div>`;
+}
+function genPass(){const c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';let s='';const a=new Uint32Array(12);crypto.getRandomValues(a);a.forEach(n=>s+=c[n%c.length]);return s+'!9'}
+async function createUser(btn){
+  const name=$('#nuName').value.trim(),email=$('#nuEmail').value.trim(),pass=$('#nuPass').value,role=$('#nuRole').value,ent=$('#nuEnt').value;
+  if(name.length<3||!/^\S+@\S+\.\S+$/.test(email)||pass.length<8){toast('أكمل الاسم والبريد وكلمة مرور من 8 أحرف على الأقل');return}
+  if(role==='focal'&&!ent){toast('اختر الجهة لضابط الاتصال');return}
+  btn.disabled=true;
+  try{
+    const tmp=window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'hv-tmp-'+Date.now()}});
+    const{data,error}=await tmp.auth.signUp({email,password:pass,options:{data:{full_name:name}}});if(error)throw error;
+    const uid=data.user&&data.user.id;if(!uid)throw new Error('لم يُنشأ الحساب');
+    if(data.user.identities&&data.user.identities.length===0)throw new Error('هذا البريد مسجّل مسبقاً');
+    const{error:e2}=await sb.from('profiles').update({full_name:name,role:role||null,entity_key:role==='focal'?ent:null,active:true}).eq('id',uid);if(e2)throw e2;
+    audit(who(),'إنشاء حساب '+(ROLE_N[role]||'')+' '+email+(role==='focal'?' — '+ENT[ent].n:''));
+    modal(`<div class="verify"><div style="font-size:46px">🔐</div><div class="h2">تم إنشاء الحساب</div>
+      <div class="glass" style="padding:16px;box-shadow:none;text-align:right;width:100%;max-width:440px"><dl class="kv"><dt>الاسم</dt><dd>${esc(name)}</dd><dt>الصلاحية</dt><dd>${ROLE_N[role]||'—'}${role==='focal'?' · '+esc(ENT[ent].n):''}</dd><dt>البريد</dt><dd dir="ltr" style="text-align:left">${esc(email)}</dd><dt>كلمة المرور</dt><dd dir="ltr" style="text-align:left" class="idc">${esc(pass)}</dd><dt>رابط الدخول</dt><dd dir="ltr" style="text-align:left;font-size:12.5px">${esc(location.origin+location.pathname)}</dd></dl></div>
+      ${data.session?'':'<p class="reason" style="max-width:440px">إن كان تأكيد البريد مفعّلاً في Supabase فسيصله بريد تفعيل أولاً.</p>'}
+      <button class="btn gold" data-act="close">تم</button></div>`);
+    aAccounts();
+  }catch(e){toast('تعذر إنشاء الحساب: '+errMsg(e))}finally{btn.disabled=false}
+}
+async function saveUser(pid){
+  const tr=document.querySelector(`tr[data-pid="${pid}"]`);const g=f=>tr.querySelector(`[data-f="${f}"]`);
+  const upd={full_name:g('full_name').value.trim(),entity_key:g('entity_key').value||null};
+  if(!g('role').disabled){upd.role=g('role').value||null;upd.active=g('active').checked}
+  if(upd.role==='focal'&&!upd.entity_key){toast('اختر الجهة لضابط الاتصال');return}
+  const{error}=await sb.from('profiles').update(upd).eq('id',pid);
+  if(error)return toast('تعذر الحفظ: '+errMsg(error));audit(who(),'تعديل صلاحيات حساب');toast('تم الحفظ');
+}
+async function aEntities(){
+  const{data,error}=await sb.from('entities').select('*').order('sort');
+  if(error){$('#abody').innerHTML=`<div class="empty">${esc(errMsg(error))}</div>`;return}
+  $('#abody').innerHTML=`<div class="split" style="grid-template-columns:340px 1fr">
+   <div class="glass card"><div class="h3">إضافة جهة</div>
+    <label class="f">الاسم</label><input class="inp" id="neName" placeholder="مثال: فرع وزارة الشؤون الإسلامية">
+    <label class="f" style="margin-top:10px">رمز مختصر بالإنجليزية</label><input class="inp" id="neKey" dir="ltr" placeholder="islamic" style="text-align:left">
+    <label class="f" style="margin-top:10px">قناة الشكاوى لدى الجهة</label><input class="inp" id="neCh" placeholder="مثال: مركز الاتصال · 1933">
+    <button class="btn gold" style="margin-top:16px;width:100%;justify-content:center" data-act="addEnt">إضافة الجهة</button></div>
+   <div class="glass card"><div class="h3">الجهات (${data.length})</div><div style="overflow:auto"><table><thead><tr><th>الرمز</th><th>الاسم</th><th>قناة الشكاوى</th><th>الترتيب</th><th>نشطة</th><th></th></tr></thead><tbody>
+    ${data.map(e=>`<tr data-ek="${e.key}"><td class="idc">${e.key}</td><td><input class="inp" data-f="name" value="${esc(e.name)}" style="padding:7px 10px;min-width:200px"></td><td><input class="inp" data-f="channel" value="${esc(e.channel||'')}" style="padding:7px 10px;min-width:180px"></td><td><input class="inp" data-f="sort" value="${e.sort}" style="padding:7px 10px;width:70px" inputmode="numeric"></td><td><input type="checkbox" data-f="active" ${e.active?'checked':''}></td><td><button class="btn sm" data-act="saveEnt" data-ek="${e.key}">حفظ</button></td></tr>`).join('')}
+   </tbody></table></div></div></div>`;
+}
+async function aData(){
+  const all=T(),demo=all.filter(t=>t.demo).length;
+  $('#abody').innerHTML=`<div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">${kpi('إجمالي الطلبات',fmt(all.length),'')}${kpi('طلبات حقيقية',fmt(all.length-demo),'')}${kpi('بيانات تجريبية',fmt(demo),'')}${kpi('بانتظار الفرز',fmt(all.filter(t=>t.status==='triage').length),'')}</div>
+   <div class="cc-2" style="margin-top:0"><div class="glass card"><div class="h3">بيانات العرض التجريبي</div><p class="mut" style="font-size:13.5px;line-height:1.85">تُنشئ قرابة 530 طلباً واقعياً موزعة على الجهات والمحافظات خلال ستة أشهر، لتظهر مؤشرات مركز القيادة كاملة أثناء العرض. تُعلَّم كلها «تجريبية» ويمكن حذفها بضغطة واحدة دون المساس بالطلبات الحقيقية.</p>
+    <div class="row" style="margin-top:14px"><button class="btn gold" data-act="seed">تحميل البيانات التجريبية</button><button class="btn red" data-act="clearDemo" ${demo?'':'disabled'}>حذف البيانات التجريبية</button></div><p id="seedMsg" class="mut" style="margin-top:10px;font-size:13px"></p></div>
+    <div class="glass card"><div class="h3">تصدير</div><p class="mut" style="font-size:13.5px;line-height:1.85">تصدير مؤشرات أداء الجهات بصيغة CSV تفتح في Excel.</p><button class="btn" style="margin-top:14px" data-act="exportCsv">تصدير مؤشرات الجهات</button></div></div>`;
+}
+async function doSeed(){
+  const m=$('#seedMsg');const say=x=>{if(m)m.textContent=x};
+  try{
+    say('جارٍ حذف البيانات التجريبية السابقة…');await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);
+    const rows=seedData().filter(t=>!t.mine).map(t=>{const r=tToRow(t);return{...r,demo:true,created_at:new Date(t.created).toISOString()}});
+    for(let i=0;i<rows.length;i+=150){say(`جارٍ الرفع… ${Math.min(i+150,rows.length)} / ${rows.length}`);const{error}=await sb.from('tickets').insert(rows.slice(i,i+150));if(error)throw error}
+    await sb.from('directives').insert({entity_key:'roads',txt:'رفع خطة زمنية خلال أسبوعين لمعالجة الطرق المتهالكة في محافظتي الحائط والشملي.',due:new Date(NOW()+11*DAY).toISOString(),demo:true});
+    audit(who(),'تحميل بيانات العرض التجريبي');await loadAll();say('تم تحميل '+rows.length+' طلباً تجريبياً.');toast('اكتمل تحميل البيانات التجريبية');aData();
+  }catch(e){say('');toast('تعذر التحميل: '+errMsg(e))}
+}
+
+/* ================= EVENTS ================= */
+document.addEventListener('click',async e=>{
+  const g=e.target.closest('[data-go]');if(g){e.preventDefault();closeModal();if(g.dataset.type){draft.type=g.dataset.type;draft.cat=''}go(g.dataset.go,g.dataset.tab?{tab:g.dataset.tab}:null);return}
+  const tb=e.target.closest('[data-tab]');if(tb){if(VIEW==='citizen'||VIEW==='admin'){go(VIEW,{tab:tb.dataset.tab});return}STATE.tab=tb.dataset.tab;STATE.sel=null;render();return}
+  const sl=e.target.closest('[data-sel]');if(sl){STATE.sel=sl.dataset.sel;STATE.escF=false;render();return}
+  const lv=e.target.closest('[data-lv]');if(lv){tri.lv=lv.dataset.lv;if(['secret','topsecret'].includes(tri.lv))tri.route='oversight';else tri.route='entity';rTriage();return}
+  const pr=e.target.closest('[data-pr]');if(pr){tri.pr=pr.dataset.pr;rTriage();return}
+  const r=e.target.closest('[data-r]');if(r){const n=+r.dataset.r;STATE.rate=n;[...document.querySelectorAll('#stars5 button')].forEach((b,i)=>b.classList.toggle('on',i<n));return}
+  const a=e.target.closest('[data-act]');if(!a)return;const id=a.dataset.id;const act=a.dataset.act;
+  if(act!=='close')e.preventDefault();
+  const t=id&&findT(id);const now=NOW();
+  try{switch(act){
+   case 'hub':go('hub');break;
+   case 'retry':case 'refresh':go(VIEW,STATE);break;
+   case 'login':loginModal('');break;
+   case 'doLogin':{const em=$('#lgE').value.trim(),pw=$('#lgP').value;if(!em||!pw){toast('أدخل البريد وكلمة المرور');break}
+     a.disabled=true;const{error}=await sb.auth.signInWithPassword({email:em,password:pw});a.disabled=false;
+     if(error){toast(/invalid/i.test(error.message)?'البريد أو كلمة المرور غير صحيحة':errMsg(error));break}
+     await loadProfile();closeModal();
+     if(!PROFILE||!PROFILE.role){loginModal('','تم الدخول، لكن حسابك بانتظار تعيين الصلاحية من إدارة المنصة.');break}
+     audit(who(),'تسجيل دخول');const tg=a.dataset.target;go(tg&&ACCESS[tg]&&ACCESS[tg].includes(PROFILE.role)?tg:defaultView(PROFILE.role));break}
+   case 'logout':await sb.auth.signOut();PROFILE=null;princeAuthed=false;vaultOpen=false;DB.tickets=[];renderAuth();go('hub');break;
+   case 'rmP':draft.pfiles.splice(+a.dataset.i,1);cNew();break;
+   case 'rmF':draft.files.splice(+a.dataset.i,1);cNew();break;
+   case 'viewFile':{const f=t.prior.files[+a.dataset.i];let url=f.url;
+     if(!url&&f.path){const{data,error}=await sb.storage.from('evidence').createSignedUrl(f.path,600);if(!error)url=data.signedUrl}
+     modal(`<div class="row" style="justify-content:space-between"><div class="h2" style="font-size:18px">${esc(f.name)}</div><button class="btn sm" data-act="close">إغلاق</button></div><div style="margin-top:14px">${url?(/pdf/i.test(f.type||f.name)?`<iframe src="${url}" style="width:100%;height:65vh;border:1px solid var(--line);border-radius:8px"></iframe><p style="margin-top:8px"><a href="${url}" target="_blank" rel="noopener">فتح في نافذة جديدة</a></p>`:`<img src="${url}" style="max-width:100%;border-radius:8px;border:1px solid var(--line)">`):`<div class="empty">المرفق مسجّل باسمه فقط ولا تتوفر نسخة منه.</div>`}</div>`);audit(who(),'اطلاع على إثبات',id);break}
+   case 'verify':t.prior.verified=a.dataset.v==='1';t.hist.push({ts:now,t:t.prior.verified?'تحقق مكتب الفرز من إثبات الرفع السابق للجهة':'إثبات الرفع السابق غير كافٍ'});await persist(t);audit(who(),t.prior.verified?'تحقق من إثبات':'رفض إثبات',id);tri._id=null;rTriage();break;
+   case 'redirect':modal(`<div class="h2">إعادة توجيه الطلب للجهة</div><p class="mut" style="margin:6px 0 14px">يرى المواطن السبب وقناة الجهة عند متابعة طلبه، ويمكنه التصعيد لاحقاً بضغطة واحدة مع الإثبات.</p>
+     <label class="f">سبب التوجيه</label>${REDIR.map((r,i)=>`<label class="toggle" style="margin-bottom:8px;background:#fff"><input type="radio" name="rr" value="${i}" ${i===0?'checked':''} style="display:inline;margin-top:4px"><span style="font-size:13.5px;line-height:1.7">${r}</span></label>`).join('')}
+     <p style="font-size:14px;margin-top:6px">قناة الجهة التي ستظهر للمواطن: <b style="color:var(--g8)">${esc(chOf(t.ent))}</b></p>
+     <div class="row" style="justify-content:flex-end;margin-top:16px"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-act="doRedirect" data-id="${id}">إرسال التوجيه للمواطن</button></div>`);break;
+   case 'doRedirect':{const i=+(document.querySelector('input[name=rr]:checked')||{value:0}).value;t.status='redirected';t.redirect={reason:REDIR[i],ts:now};t.hist.push({ts:now,t:'وُجّه المواطن لرفع طلبه للجهة مباشرة'});await persist(t);audit(who(),'إعادة توجيه للجهة',id);closeModal();toast('أُرسل التوجيه للمواطن مع قناة الجهة');STATE.sel=null;tri._id=null;rTriage();break}
+   case 'escalate':STATE.escF=true;STATE.escFiles=[];cMine();setTimeout(()=>{const f=$('#eFile');if(f)f.onchange=e=>readFiles(e.target.files,o=>{STATE.escFiles.push(...o);$('#eChips').innerHTML=fileChips(STATE.escFiles)})},50);break;
+   case 'doEscalate':{const ref=$('#eRef').value.trim(),dt=$('#eDate').value;if(!ref&&!dt&&!STATE.escFiles.length){toast('أضف رقم الطلب لدى الجهة أو تاريخه أو إثباتاً');break}
+     a.disabled=true;const files=await uploadFiles(STATE.escFiles||[]);
+     const{data,error}=await sb.rpc('citizen_action',{p_id:id,p_code:codeOf(id),p_action:'escalate',p:{prior:{ref,date:dt?new Date(dt).getTime():null,channel:PCH[0],files}}});
+     if(error){a.disabled=false;toast('تعذر التصعيد: '+errMsg(error));break}
+     Object.assign(t,data);STATE.escF=false;toast('وصل طلبك للإمارة بأولوية عالية');cMine();break}
+   case 'staff':if(VIEW!=='hub')await go('hub');setTimeout(()=>{const s=$('#staffSec');if(s)s.scrollIntoView({behavior:'smooth'})},120);break;
+   case 'track':{const q=($('#trkId').value||'').trim().toUpperCase(),c=($('#trkCode').value||'').trim().toUpperCase();if(!q||!c){toast('أدخل رقم الطلب ورمز المتابعة');break}
+     const{data,error}=await sb.rpc('track_ticket',{p_id:q,p_code:c});if(error||!data){toast('لم نجد طلباً بهذا الرقم والرمز. تأكد منهما كما ظهرا لك عند الرفع');break}
+     addCode(data.id,c);go('citizen',{tab:'mine',sel:data.id});break}
+   case 'charter':charter();break;
+   case 'close':closeModal();break;
+   case 'submit':submitTicket(a);break;
+   case 'trackNew':closeModal();go('citizen',{tab:'mine',sel:id});break;
+   case 'confirm':case 'reject':{const{data,error}=await sb.rpc('citizen_action',{p_id:id,p_code:codeOf(id),p_action:act,p:{rating:STATE.rate||(act==='confirm'?5:1),note:($('#cNote')||{}).value||''}});
+     if(error){toast('تعذر الإرسال: '+errMsg(error));break}Object.assign(t,data);toast(act==='confirm'?'شكراً لك — أُغلق الطلب بتأكيدك':'تم تصعيد طلبك إلى مكتب المتابعة بالإمارة');cMine();break}
+   case 'vote':{const v=store.get('hv_votes',[]);if(v.includes(id)){toast('سبق أن صوّتّ لهذا المقترح');break}const{data,error}=await sb.rpc('vote_suggestion',{p_id:id});if(error){toast(errMsg(error));break}v.push(id);store.set('hv_votes',v);t.votes=data;cIdeas();break}
+   case 'newIdea':draft.type='suggestion';draft.cat='';go('citizen',{tab:'new'});break;
+   case 'assign':doAssign(id);break;
+   case 'eProg':entAct(id,false);break;
+   case 'eDone':entAct(id,true);break;
+   case 'directive':directiveModal(a.dataset.ent||Object.keys(ENT)[0]);break;
+   case 'sendDir':{const d=+document.querySelector('#dDue .on').dataset.d;const ent=$('#dEnt').value;const txt=$('#dTxt').value.trim();if(txt.length<6){toast('اكتب نص التوجيه');break}
+     const{error}=await sb.from('directives').insert({entity_key:ent,txt,due:new Date(now+d*DAY).toISOString()});if(error){toast('تعذر الإصدار: '+errMsg(error));break}
+     audit(who(),'إصدار توجيه إلى '+ENT[ent].n);await loadDirectives();closeModal();toast('صدر التوجيه وظهر في بوابة '+ENT[ent].n);break}
+   case 'unlock':unlockModal();break;
+   case 'doUnlock':{const ins=[...document.querySelectorAll('.pinbox input')];if(!ins.every(x=>x.value)){toast('أدخل رمز التحقق');break}vaultOpen=true;audit(who(),'اطلاع على الملفات السرية');closeModal();toast('تم التحقق — الاطلاع مسجّل');rPrince();setTimeout(()=>$('#vault').scrollIntoView({behavior:'smooth',block:'center'}),300);break}
+   case 'adopt':t.adopted=true;t.status='closed';t.hist.push({ts:now,t:'اعتمدت الإمارة المقترح للدراسة'});await persist(t);audit(who(),'اعتماد مقترح للدراسة',id);toast('اعتُمد المقترح للدراسة');rPrince();break;
+   case 'print':window.print();break;
+   case 'exportCsv':{const all=T().filter(t=>t.type!=='suggestion');const rows=[['الجهة','المؤشر','البلاغات','مفتوحة','متأخرة','الالتزام بالمهلة %','حل مؤكد %','إغلاق شكلي %','إخفاق القناة الأولى %','الرضا']];
+     Object.keys(ENT).forEach(k=>{const m=metrics(all.filter(t=>t.ent===k&&t.route==='entity'));rows.push([ENT[k].n,m.score,m.n,m.open,m.overdue,m.sla,m.conf,m.falseC,m.ff,m.sat])});
+     const csv='﻿'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const b=new Blob([csv],{type:'text/csv;charset=utf-8'});const u=URL.createObjectURL(b);const l=document.createElement('a');l.href=u;l.download='مؤشرات-الجهات-حائل.csv';l.click();setTimeout(()=>URL.revokeObjectURL(u),2000);break}
+   case 'genPass':$('#nuPass').value=genPass();break;
+   case 'createUser':createUser(a);break;
+   case 'saveUser':saveUser(a.dataset.pid);break;
+   case 'addEnt':{const name=$('#neName').value.trim(),key=$('#neKey').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,''),ch=$('#neCh').value.trim();if(name.length<3||key.length<2){toast('أكمل اسم الجهة ورمزها بالإنجليزية');break}
+     const{error}=await sb.from('entities').insert({key,name,channel:ch,sort:100});if(error){toast('تعذر الإضافة: '+errMsg(error));break}audit(who(),'إضافة جهة '+name);await loadEntities();toast('أُضيفت الجهة');aEntities();break}
+   case 'saveEnt':{const tr=document.querySelector(`tr[data-ek="${a.dataset.ek}"]`);const g=f=>tr.querySelector(`[data-f="${f}"]`);
+     const{error}=await sb.from('entities').update({name:g('name').value.trim(),channel:g('channel').value.trim(),sort:+g('sort').value||100,active:g('active').checked}).eq('key',a.dataset.ek);if(error){toast('تعذر الحفظ: '+errMsg(error));break}audit(who(),'تعديل جهة '+a.dataset.ek);await loadEntities();toast('تم الحفظ');break}
+   case 'seed':a.disabled=true;await doSeed();break;
+   case 'clearDemo':{if(!confirm('حذف كل البيانات التجريبية؟ لن تتأثر الطلبات الحقيقية.'))break;const{error}=await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);if(error){toast(errMsg(error));break}audit(who(),'حذف البيانات التجريبية');await loadAll();toast('حُذفت البيانات التجريبية');aData();break}
+  }}catch(err){toast('حدث خطأ: '+errMsg(err))}
+});
+
+/* ================= BOOT ================= */
+(async()=>{
+  sb&&sb.auth.onAuthStateChange((ev)=>{if(ev==='SIGNED_OUT'){PROFILE=null;renderAuth()}});
+  await Promise.race([(async()=>{await loadEntities();await loadProfile()})(),new Promise(r=>setTimeout(r,3500))]);
+  const start=()=>{window.__startPlatform=null;
+    if(/[?&]intro=1/.test(location.search)||window.__wantIntro){initGlobe();setTimeout(()=>{if(!flown&&!entered)fly()},9000)}
+    else{flown=true;spinOn=false;$('#intro').style.display='none';enterApp()}};
+  if(document.getElementById('pitch')&&!window.__wantPlatform){$('#intro').style.visibility='hidden';window.__startPlatform=()=>{$('#intro').style.visibility='';start()}}else start();
+})();
+
+})();</script>
+</body>
+</html>
