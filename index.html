@@ -149,8 +149,9 @@ body.pitching{overflow:hidden}
 
 @media(max-width:980px){.pk-g4,.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-ladder{grid-template-columns:1fr 1fr}.pk-rung{border-radius:14px!important;margin:5px}.pk-rung::after{display:none}}
 @media(max-width:640px){
-.pk-slide{align-items:flex-start;padding:62px 16px 150px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.pk-slide{align-items:flex-start;padding:62px 16px 0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .pk-wrap{max-height:none;overflow:visible}
+.pk-wrap::after{content:"";display:block;height:calc(150px + env(safe-area-inset-bottom,0px))}
 h2{font-size:clamp(23px,6.6vw,30px);line-height:1.35}
 .pk-lead{font-size:14.5px;line-height:1.85;margin-top:10px}
 .pk-kick{font-size:13px;margin-bottom:10px}
@@ -175,7 +176,7 @@ h2{font-size:clamp(23px,6.6vw,30px);line-height:1.35}
 .pk-credit{bottom:8px;font-size:10.5px}
 }
 @media(min-width:641px) and (max-width:1024px){
-.pk-slide{padding:70px 32px 120px;overflow-y:auto}.pk-wrap{max-height:none;overflow:visible}
+.pk-slide{padding:70px 32px 0;overflow-y:auto}.pk-wrap{max-height:none;overflow:visible}.pk-wrap::after{content:"";display:block;height:calc(130px + env(safe-area-inset-bottom,0px))}
 .pk-g4{grid-template-columns:1fr 1fr}.pk-ladder{grid-template-columns:1fr 1fr}.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-g3{grid-template-columns:1fr 1fr 1fr}
 .pk-fade{display:block}
 }
@@ -1194,7 +1195,6 @@ function rHub(){
   $('#view').innerHTML=`
   <section class="hero"><div id="heroMap"></div><div class="in">
     <div>
-      <span class="loc">📍 مقر إمارة منطقة حائل · حي السمراء</span>
       <h1>صوتك يصل إلى إمارة منطقة حائل</h1>
       <p class="lead">قدّم شكواك أو بلاغك أو مقترحك بشأن أي جهة حكومية في المنطقة، وتابعه خطوة بخطوة. لا يُغلق طلبك إلا بعد أن تؤكد أن مشكلتك حُلّت.</p>
       <div class="acts"><button class="btn gold" data-go="citizen" data-tab="new">رفع طلب جديد</button><button class="btn out" data-go="citizen" data-tab="ideas">شارك بمقترح</button></div>
