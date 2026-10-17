@@ -526,7 +526,7 @@ tr:hover td{background:#FAFCFB}
 .modal.on{display:flex;animation:fade .2s}
 .modal .box{width:min(880px,100%);max-height:90vh;overflow:auto;padding:26px;background:#fff}
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(30px);z-index:120;padding:13px 20px;border-radius:10px;background:var(--g9);color:#fff;opacity:0;transition:.3s;font-size:14px;max-width:92vw;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-.toast.on{opacity:1;transform:translateX(-50%)}.toast{pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}.toast{pointer-events:none;bottom:calc(76px + env(safe-area-inset-bottom))}
 .verify{display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 10px;text-align:center}
 .spin{width:56px;height:56px;border-radius:50%;border:3px solid var(--g1);border-top-color:var(--g6);animation:spin 1s linear infinite}
 .pinbox{display:flex;gap:10px;direction:ltr}
@@ -683,6 +683,27 @@ tr:hover td{background:#FAFCFB}
 @media(max-width:900px){.pd-hero,.pd-grid,.pd-grid.g3{grid-template-columns:minmax(0,1fr)}.pd-gauge svg{max-width:180px}.rc{grid-template-columns:18px 1fr 1.2fr 40px 70px}.rc .ra{display:none}#pdMap{height:320px}}
 @media(max-width:560px){.pd-subs{grid-template-columns:1fr}.ar{grid-template-columns:1fr 1fr}.pd-hello img{height:50px}.rc{grid-template-columns:16px 1fr 1fr 38px}.rc .ro{display:none}.pa-in .pbtn{padding:10px}}
 @media print{.topbar,.gov-strip,.footer,.btn,#stars,#globe{display:none!important}}
+
+.dbar{position:fixed;z-index:60;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));display:flex;gap:6px;padding:5px;border-radius:999px;background:rgba(10,22,16,.88);backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.28);border:1px solid rgba(214,178,92,.35)}
+.dbar button{font-family:inherit;border:0;border-radius:999px;padding:9px 14px;font-size:13.5px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.08);color:#fff}
+.dbar button.gold{background:linear-gradient(135deg,#d6b25c,#b48a3c);color:#1a1405}
+.dbar button:hover{filter:brightness(1.1)}
+body.pitching .dbar,body.dark .dbar{display:none}
+#app.on{padding-bottom:64px}
+@media(max-width:640px){.dbar{left:10px;bottom:calc(10px + env(safe-area-inset-bottom))}.dbar button{padding:9px 12px;font-size:13px}}
+.acc-g{margin-top:10px}.acc-h{font-size:13px;font-weight:700;color:#5f6b65;margin:6px 2px}
+.acc{display:flex;align-items:center;gap:12px;width:100%;text-align:right;font-family:inherit;background:#fff;border:1px solid #e2e6e3;border-radius:12px;padding:10px 12px;margin-bottom:6px;cursor:pointer;transition:border-color .2s,background .2s}
+.acc:hover{border-color:#1B8354;background:#f4faf6}.acc.cur{border-color:#b48a3c;background:#fbf6ea}.acc.busy{opacity:.55;pointer-events:none}
+.acc .ic{font-size:22px;width:34px;text-align:center}.acc .tx{display:flex;flex-direction:column;flex:1}.acc .tx b{font-size:14.5px;color:#1c2621}.acc .tx small{font-size:12px;color:#5f6b65;text-align:right}
+.acc em{font-style:normal;font-size:11.5px;color:#8a6a25;background:#f3e6c4;padding:3px 8px;border-radius:99px}
+.acc-x{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.acc-x .btn{flex:1;min-width:150px}
+.demo-ov{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:rgba(6,16,11,.72);backdrop-filter:blur(6px);opacity:0;transition:opacity .35s;padding:16px}
+.demo-ov.on{opacity:1}
+.dov-c{background:#0f1f17;border:1px solid rgba(214,178,92,.4);border-radius:20px;padding:28px 26px;width:min(420px,100%);text-align:center;color:#fff}
+.dov-ic{font-size:30px;color:#d6b25c;animation:dspin 2.4s linear infinite;display:inline-block}@keyframes dspin{to{transform:rotate(360deg)}}
+.dov-c b{display:block;font-size:18px;margin-top:8px}.dov-c p{font-size:13.5px;color:#a9bdb1;margin:6px 0 16px}
+.dov-bar{height:8px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}.dov-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1B8354,#d6b25c);transition:width .3s}
+.dov-c small{display:block;margin-top:10px;color:#d6b25c;font-size:12.5px}
 </style>
 </head>
 <body class="dark pitching">
@@ -708,8 +729,8 @@ tr:hover td{background:#FAFCFB}
 </section>
 
 <!-- arrive -->
-<section class="pk-slide" data-globe="hail" data-part="">
-  <div class="pk-wrap" style="text-align:center">
+<section class="pk-slide" data-globe="hail" data-part="" style="align-items:flex-end;padding-bottom:clamp(96px,14vh,130px)">
+  <div class="pk-wrap" style="text-align:center;background:radial-gradient(ellipse at center,rgba(4,12,8,.78),rgba(4,12,8,.35) 60%,transparent 75%);padding:18px 10px">
     <div class="pk-kick pk-rv" style="justify-content:center">من هنا تبدأ الحكاية</div>
     <h2 class="pk-rv" style="margin:0 auto">كل يوم تصل إلى الإمارة مئات الخطابات، ويرفع الأهالي مئات الأصوات</h2>
     <p class="pk-lead pk-rv" style="margin:16px auto 0">هذه قصة يوم واحد في إمارة منطقة حائل، بقسميه: ما يجري داخل الإمارة، وما يصلها من صوت المواطن.</p>
@@ -1009,10 +1030,10 @@ async function globeTo(mode){
   GSTATE=mode;spinning=false;map.stop();
   if(mode==='space'){spinning=true;map.flyTo({center:[20,22],zoom:SZ(),pitch:0,bearing:0,padding:SP(),duration:2500});map.once('moveend',spin);return}
   const ok=await NET;
-  if(mode==='hail'){map.flyTo({center:ok?[41.69,27.51]:[41.75,27.35],zoom:ok?11.2:6.3,pitch:ok?55:38,bearing:-18,padding:NP,duration:9000,curve:1.5,essential:true,easing:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2});addPin()}
+  if(mode==='hail'){map.flyTo({center:ok?HQ:[41.75,27.35],zoom:ok?16.6:6.3,pitch:ok?58:38,bearing:-18,padding:{top:0,left:0,right:0,bottom:Math.round(innerHeight*.42)},duration:11000,curve:1.5,essential:true,easing:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2});addPin()}
   if(mode==='hq'){map.flyTo({center:ok?HQ:[41.75,27.35],zoom:ok?16.4:6.5,pitch:ok?62:40,bearing:30,padding:NP,duration:5000,essential:true});addPin()}
 }
-function addPin(){if(pin||!map)return;const el=document.createElement('div');el.style.cssText='width:18px;height:18px;border-radius:50%;background:#d6b25c;box-shadow:0 0 0 5px rgba(214,178,92,.35),0 0 28px #d6b25c';pin=new maplibregl.Marker({element:el}).setLngLat(HQ).addTo(map)}
+function addPin(){if(pin||!map)return;const el=document.createElement('div');el.style.cssText='position:relative;width:22px;height:22px;border-radius:50%;background:#d6b25c;border:3px solid #fff;box-shadow:0 0 30px #d6b25c,0 4px 14px rgba(0,0,0,.5)';const lb=document.createElement('b');lb.textContent='مقر إمارة منطقة حائل';lb.style.cssText='position:absolute;top:32px;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 13px "IBM Plex Sans Arabic",sans-serif;color:#fff;background:rgba(10,22,16,.85);border:1px solid #d6b25c;padding:5px 10px;border-radius:99px;pointer-events:none';el.appendChild(lb);[0,1].forEach(k=>{const r=document.createElement('i');r.style.cssText='position:absolute;inset:-3px;border-radius:50%;border:3px solid #d6b25c;pointer-events:none';el.appendChild(r);r.animate([{transform:'scale(1)',opacity:.9},{transform:'scale(4.2)',opacity:0}],{duration:2200,iterations:Infinity,delay:k*1100,easing:'ease-out'})});pin=new maplibregl.Marker({element:el}).setLngLat(HQ).addTo(map)}
 
 /* journey */
 const ST=[['📝','ترفع طلبك','يختار المواطن الجهة والموضوع والمحافظة، ويذكر إن كان قد رفعه للجهة سابقاً مع الإثبات، ويختار حجب هويته إن أراد.'],
@@ -1046,7 +1067,7 @@ function show(n){
   const pt=slides[n].dataset.part||'';const pc=$('#partchip');pc.classList.toggle('hide',!pt);pc.querySelectorAll('span').forEach(x=>{const on=pt==='both'||x.dataset.p===pt;x.classList.toggle('on',on);x.classList.toggle('o',x.dataset.p==='out')});
   if(history.replaceState)history.replaceState(null,'','#p'+(n+1));
 }
-window.__exitPitch=()=>{if(!PON)return;PON=false;try{map&&map.remove()}catch(e){}PITCH.style.transition='opacity .6s';PITCH.style.opacity='0';setTimeout(()=>{PITCH.remove();document.body.classList.remove('pitching')},650);if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#app');(window.__startPlatform?window.__startPlatform():window.__wantPlatform=true)};
+window.__exitPitch=()=>{if(!PON)return;PON=false;try{sessionStorage.setItem('hv_slide',String(cur+1))}catch(e){}try{map&&map.remove()}catch(e){}PITCH.style.transition='opacity .6s';PITCH.style.opacity='0';setTimeout(()=>{PITCH.remove();document.body.classList.remove('pitching')},650);if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#app');(window.__startPlatform?window.__startPlatform():window.__wantPlatform=true)};
 PITCH.addEventListener('click',e=>{const a=e.target.closest('[data-enter]');if(!a)return;e.preventDefault();if(a.dataset.enter==='intro'){window.__wantIntro=true}if(a.dataset.login||a.dataset.view){window.__demo={login:a.dataset.login||'',view:a.dataset.view||''}}window.__exitPitch()});
 $('#p_next').onclick=()=>show(cur+1);$('#p_prev').onclick=()=>show(cur-1);
 $('#p_dots').onclick=e=>{const d=e.target.closest('[data-i]');if(d)show(+d.dataset.i)};
@@ -1403,6 +1424,7 @@ async function loadProfile(){
   try{const{data:{session}}=await sb.auth.getSession();if(session){const{data}=await sb.from('profiles').select('*').eq('id',session.user.id).maybeSingle();PROFILE=data||{id:session.user.id,email:session.user.email,role:null}}}catch(e){}
   if(PROFILE&&PROFILE.role==='citizen'){ME={name:PROFILE.full_name||'',nid:PROFILE.nid||'',phone:PROFILE.phone||''}}
   renderAuth();
+  if(PROFILE&&PROFILE.role)setTimeout(()=>window.__autoDemo&&__autoDemo(),700);
 }
 async function loadAll(){
   need();const out=[];
@@ -2310,6 +2332,60 @@ async function seedGovUpload(say){
   return D.TX.length;
 }
 
+
+/* ---------- live demo data for every account + demo bar ---------- */
+const DEMO_ACC=[['HailLeader','Leader@2026','سمو الأمير','👑','داخلي'],['HailDeputy','Deputy@2026','وكيل الإمارة','🏛️','داخلي'],['HailManager','Manager@2026','مدير إدارة الحقوق العامة','📁','داخلي'],['HailEmp1','Emp@2026','موظف الحقوق العامة','🧑‍💼','داخلي'],['HailComms','Comms@2026','الاتصال المؤسسي','📢','داخلي'],['HailRep','Rep@2026','ممثل الإمارة · إدارة المنصة','🛡️','صوت حائل'],['HailTeam1','Team@2026','فريق الفرز بالإمارة','🗂️','صوت حائل'],['HailAmana','Amana@2026','مسؤول أمانة المنطقة','🏢','صوت حائل'],['Citizen1','Citizen@2026','مواطن مسجّل','👤','صوت حائل']];
+let demoBusy=false;
+async function demoLoad(say){
+  need();demoBusy=true;say=say||(()=>{});
+  try{
+    const G=seedGov();
+    const T=seedData().map(t=>{const r=tToRow(t);return{...r,mine:!!t.mine,created_at:new Date(t.created).toISOString()}});
+    say('تهيئة…',2);{const{error}=await sb.rpc('demo_reset');if(error)throw error}
+    const parts=[['tickets',T,'شكاوى صوت حائل'],['transactions',G.TX,'المعاملات'],['meetings',G.ME,'الاجتماعات'],['appointments',G.AP,'المواعيد'],['attendance',G.AT,'سجلات الدوام'],['leave_requests',G.LV,'طلبات الإذن']];
+    const total=parts.reduce((a,p)=>a+p[1].length,0);let done=0;
+    for(const[t,rows,lbl] of parts){for(let i=0;i<rows.length;i+=250){const{error}=await sb.rpc('demo_put',{p_table:t,p_rows:rows.slice(i,i+250)});if(error)throw error;done+=Math.min(250,rows.length-i);say(lbl,Math.round(5+done/total*95))}}
+    return{tickets:T.length,tx:G.TX.length};
+  }finally{demoBusy=false}}
+function demoOverlay(on,lbl,pc){let o=$('#demoOv');if(!on){if(o){o.classList.remove('on');setTimeout(()=>o.remove(),400)}return}
+  if(!o){o=document.createElement('div');o.id='demoOv';o.className='demo-ov';o.innerHTML='<div class="dov-c"><div class="dov-ic">✦</div><b>جارٍ تجهيز بيانات العرض الحيّة</b><p>معاملات وبرقيات واجتماعات ودوام وشكاوى لكل الحسابات</p><div class="dov-bar"><i></i></div><small id="dovL"></small></div>';document.body.appendChild(o);requestAnimationFrame(()=>o.classList.add('on'))}
+  if(lbl)$('#dovL').textContent=lbl;if(pc!=null)o.querySelector('.dov-bar i').style.width=pc+'%'}
+async function autoDemo(force){
+  if(!sb||!PROFILE||!PROFILE.role||demoBusy)return;
+  try{
+    if(!force){const{data,error}=await sb.rpc('demo_status');if(error||!data)return;const age=data.seeded_at?Date.now()-new Date(data.seeded_at).getTime():Infinity;if(data.tx>50&&data.tickets>50&&age<12*HOUR)return}
+    demoOverlay(true,'تهيئة…',1);
+    await demoLoad((l,pc)=>demoOverlay(true,l,pc));
+    demoOverlay(true,'اكتمل',100);setTimeout(()=>demoOverlay(false),500);
+    if(VIEW&&VIEW!=='hub')go(VIEW,STATE);
+  }catch(e){demoOverlay(false);if(force)toast('تعذر تجهيز البيانات: '+errMsg(e)+' — تأكد من تشغيل ملف SQL الأخير')}}
+window.__autoDemo=autoDemo;
+async function switchAcc(u,p){
+  const b=document.querySelector(`[data-g="acc:${u}"]`);if(b)b.classList.add('busy');
+  try{await sb.auth.signOut()}catch(e){}PROFILE=null;princeAuthed=false;vaultOpen=false;DB.tickets=[];
+  const{error}=await sb.auth.signInWithPassword({email:toEmail(u),password:p});
+  if(error){if(b)b.classList.remove('busy');renderAuth();toast(/invalid/i.test(error.message)?'الحساب غير موجود بعد — شغّل ملف SQL في Supabase':errMsg(error));return}
+  await loadProfile();closeModal();if(!PROFILE||!PROFILE.role){go('hub');return}
+  toast('دخلت باسم '+(PROFILE.full_name||u));
+  if(PROFILE.role==='citizen')go('citizen',{tab:'mine'});else go(defaultView(PROFILE.role))}
+function backToDeck(){let n=1;try{n=+sessionStorage.getItem('hv_slide')||1}catch(e){}
+  history.replaceState(null,'',location.pathname+'#p'+n);location.reload()}
+function accSheet(){const me=PROFILE&&(PROFILE.username||'').toLowerCase();
+  const grp=g=>DEMO_ACC.filter(a=>a[4]===g).map(([u,p,l,ic])=>`<button class="acc ${me===u.toLowerCase()?'cur':''}" data-g="acc:${u}"><span class="ic">${ic}</span><span class="tx"><b>${l}</b><small dir="ltr">${u}</small></span>${me===u.toLowerCase()?'<em>الحالي</em>':''}</button>`).join('');
+  modal(`<div class="h2">جرّب المنصة بأي حساب</div><p class="mut" style="margin:4px 0 12px">اضغط على الحساب وتدخل مباشرة بدون كتابة.</p>
+   <div class="acc-g"><div class="acc-h">🏛️ داخل الإمارة</div>${grp('داخلي')}</div>
+   <div class="acc-g"><div class="acc-h">📣 صوت حائل</div>${grp('صوت حائل')}<button class="acc" data-g="acc:anon"><span class="ic">✍️</span><span class="tx"><b>زائر بدون حساب</b><small>رفع شكوى كمواطن</small></span></button></div>
+   <div class="acc-x"><button class="btn" data-g="deck">▶ الرجوع للعرض</button>${PROFILE&&PROFILE.role?'<button class="btn" data-g="demorefresh">🔄 تجديد بيانات العرض</button>':''}</div>`)}
+function demoBar(){if($('#dbar'))return;const d=document.createElement('div');d.id='dbar';d.className='dbar';
+  d.innerHTML='<button data-g="deck" title="الرجوع للعرض">▶ <span>العرض</span></button><button data-g="accs" class="gold" title="تبديل الحساب">👥 <span>الحسابات</span></button>';document.body.appendChild(d)}
+demoBar();
+document.addEventListener('click',async e=>{const g=e.target.closest('[data-g]');if(!g)return;const k=g.dataset.g;
+  if(k==='deck'){e.preventDefault();e.stopPropagation();backToDeck();return}
+  if(k==='accs'){e.preventDefault();e.stopPropagation();accSheet();return}
+  if(k==='demorefresh'){e.preventDefault();e.stopPropagation();closeModal();autoDemo(true);return}
+  if(k.startsWith('acc:')){e.preventDefault();e.stopPropagation();const u=k.slice(4);if(u==='anon'){try{await sb.auth.signOut()}catch(x){}PROFILE=null;DB.tickets=[];renderAuth();closeModal();go('citizen',{tab:'new'});return}
+    const a=DEMO_ACC.find(x=>x[0]===u);if(a)switchAcc(a[0],a[1]);return}},true);
+
 /* ---------- events ---------- */
 document.addEventListener('click',async e=>{
   const tr=e.target.closest('[data-tx]');if(tr&&!e.target.closest('button')){txModal(tr.dataset.tx);return}
@@ -2502,12 +2578,7 @@ async function aData(){
 async function doSeed(){
   const m=$('#seedMsg');const say=x=>{if(m)m.textContent=x};
   try{
-    say('جارٍ حذف البيانات التجريبية السابقة…');await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);
-    const{data:cits}=await sb.from('profiles').select('id,full_name,nid,phone').eq('role','citizen').order('created_at').limit(1);const cit=(cits||[])[0];
-    const rows=seedData().filter(t=>!t.mine||cit).map(t=>{if(t.mine){t.citizen={name:cit.full_name,nid:cit.nid||'',phone:cit.phone||''}}const r=tToRow(t);const o={...r,demo:true,created_at:new Date(t.created).toISOString()};if(t.mine)o.owner=cit.id;return o});
-    for(let i=0;i<rows.length;i+=150){say(`جارٍ الرفع… ${Math.min(i+150,rows.length)} / ${rows.length}`);const{error}=await sb.from('tickets').insert(rows.slice(i,i+150));if(error)throw error}
-    await sb.from('directives').insert({entity_key:'roads',txt:'رفع خطة زمنية خلال أسبوعين لمعالجة الطرق المتهالكة في محافظتي الحائط والشملي.',due:new Date(NOW()+11*DAY).toISOString(),demo:true});
-    say('جارٍ تجهيز المعاملات والاجتماعات والدوام…');const ntx=await seedGovUpload(say);audit(who(),'تحميل بيانات العرض التجريبي');await loadAll();say('تم تحميل '+rows.length+' شكوى و'+ntx+' معاملة مع الاجتماعات والمواعيد وسجلات الدوام.');toast('اكتمل تحميل البيانات التجريبية');aData();
+    const r=await demoLoad((l,pc)=>say(`جارٍ رفع ${l}… ${pc}%`));audit(who(),'تحميل بيانات العرض التجريبي');await loadAll();say('تم تحميل '+r.tickets+' شكوى و'+r.tx+' معاملة مع الاجتماعات والمواعيد وسجلات الدوام لكل الحسابات.');toast('اكتمل تحميل البيانات التجريبية');aData();
   }catch(e){say('');toast('تعذر التحميل: '+errMsg(e))}
 }
 
