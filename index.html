@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="author" content="SULAIMAN O. ALKHATEEB">
-<meta name="creator" content="SULAIMAN O. ALKHATEEB">
-<meta name="description" content="منصة صوت حائل — بوابة إمارة منطقة حائل لحوكمة البلاغات والمقترحات ومتابعة أداء الجهات الحكومية">
-<title>صوت حائل | إمارة منطقة حائل</title>
+<meta name="author" content="تهاني الشمري">
+<meta name="creator" content="مشاري الجميل، سليمان الخطيب">
+<meta name="description" content="نظام الحوكمة الرقمية الذكي لإمارة منطقة حائل — المعاملات والخطابات والبرقيات، ومكتب الوكيل، والموارد البشرية، وشكاوى المواطنين">
+<title>نظام الحوكمة الرقمية | إمارة منطقة حائل</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="libs.js"></script>
 <style>
-#pitch{--bg:#04110b;--ink:#eef4ef;--mut:#a7bfb1;--dim:#6f8a7b;--gold:#d6b25c;--gold2:#f3dc98;--g6:#1B8354;--g4:#3fb672;--line:rgba(214,178,92,.22);--card:rgba(14,46,31,.62);--red:#e5654f;--amb:#e9a23b;--blu:#4aa8dc}
+#pitch{--bar:96px;--bg:#04110b;--ink:#eef4ef;--mut:#a7bfb1;--dim:#6f8a7b;--gold:#d6b25c;--gold2:#f3dc98;--g6:#1B8354;--g4:#3fb672;--line:rgba(214,178,92,.22);--card:rgba(14,46,31,.62);--red:#e5654f;--amb:#e9a23b;--blu:#4aa8dc}
 
 body.pitching{overflow:hidden}
 #pitch button{font-family:inherit;color:inherit}
@@ -27,8 +27,8 @@ body.pitching{overflow:hidden}
 #pitch.deep .pk-veil{background:linear-gradient(180deg,rgba(4,17,11,.82),rgba(4,17,11,.9))}
 
 /* deck */
-.pk-deck{position:fixed;inset:0;z-index:5}
-.pk-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:70px clamp(18px,5vw,90px) 90px;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.pk-deck{position:fixed;top:0;left:0;right:0;bottom:var(--bar);z-index:5}
+.pk-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:64px clamp(18px,5vw,90px) 28px;overflow-y:auto;scrollbar-width:none;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
 .pk-slide.on{opacity:1;visibility:visible}
 .pk-wrap{width:min(1180px,100%);max-height:100%;overflow:auto;scrollbar-width:none}
 .pk-wrap::-webkit-scrollbar{display:none}
@@ -40,7 +40,7 @@ body.pitching{overflow:hidden}
 #pitch h2{font-family:"Reem Kufi","IBM Plex Sans Arabic";font-weight:700;font-size:clamp(28px,4.2vw,52px);line-height:1.25;color:#fff;max-width:20em}
 .pk-lead{color:var(--mut);font-size:clamp(15px,1.6vw,19px);line-height:1.9;margin-top:16px;max-width:42em}
 .pk-grid{display:grid;gap:16px;margin-top:34px}
-.pk-g2{grid-template-columns:1fr 1fr}.pk-g3{grid-template-columns:repeat(3,1fr)}.pk-g4{grid-template-columns:repeat(4,1fr)}
+.pk-g2{grid-template-columns:1fr 1fr}.pk-g3{grid-template-columns:repeat(3,1fr)}.pk-g4{grid-template-columns:repeat(4,1fr)}.pk-g5{grid-template-columns:repeat(5,1fr)}
 .pk-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(10px)}
 .pk-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:#fff}
 .pk-card p{font-size:14px;line-height:1.8;color:var(--mut)}
@@ -51,6 +51,9 @@ body.pitching{overflow:hidden}
 .pk-cover{text-align:center;display:flex;flex-direction:column;align-items:center}
 .pk-cover img{width:min(250px,52vw);filter:drop-shadow(0 0 26px rgba(214,178,92,.45))}
 .pk-cover h1{font-family:"Reem Kufi";font-weight:700;font-size:clamp(44px,7.5vw,92px);color:var(--gold2);margin-top:18px;line-height:1.15}
+.pk-cover p.pk-owner{color:var(--gold2);font-size:15px;margin-top:14px;font-weight:600}
+.pk-cover p.pk-team{color:var(--mut);font-size:13.5px;margin-top:4px}
+.pk-cover div.pk-team{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}.pk-cover div.pk-team span{display:flex;flex-direction:column;gap:2px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);font-size:14px;font-weight:600}.pk-cover div.pk-team small{font-size:11.5px;color:var(--gold2);font-weight:500}
 .pk-cover p{color:#d5e4da;font-size:clamp(15px,1.9vw,22px);margin-top:12px;max-width:30em;line-height:1.7}
 .pk-cover .pk-hint{margin-top:34px;font-size:13px;color:var(--dim)}
 .pk-loc{position:fixed;z-index:6;top:22px;right:26px;font-size:12.5px;color:var(--mut);line-height:1.7;pointer-events:none;transition:opacity .6s}
@@ -98,6 +101,7 @@ body.pitching{overflow:hidden}
 .pk-mock .pk-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .pk-mock .pk-f{border:1px solid #cbd2ce;border-radius:8px;padding:9px 12px;font-size:13px;background:#fff;direction:ltr;text-align:left;color:#3d4a43}
 .pk-mock .pk-att{margin-top:10px;border:1.5px dashed #bfc8c3;border-radius:8px;padding:10px;text-align:center;font-size:13px;color:#5f6b65}
+.pk-mock .pk-mt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.pk-mock .pk-mt span{border:1px solid #e2e6e3;border-radius:10px;padding:10px;font-size:12.5px;position:relative;overflow:hidden;background:#fff}.pk-mock .pk-mt b{display:block;font-size:16px;color:#14573A}.pk-mock .pk-mt i{position:absolute;bottom:0;right:0;height:4px;background:#1B8354}.pk-mock .pk-mt .pk-ov b{color:#C4321F}.pk-mock .pk-mt .pk-ov i{background:#C4321F}
 .pk-mock .pk-ok{margin-top:12px;padding:10px 12px;border-radius:8px;background:#fdf4e5;border:1px solid #f1d3a3;font-size:13px;color:#7a5a16;line-height:1.7}
 
 /* roles */
@@ -147,20 +151,20 @@ body.pitching{overflow:hidden}
 .pk-count{font-size:12.5px;color:var(--mut);font-variant-numeric:tabular-nums;min-width:42px;text-align:center}
 .pk-prog{position:fixed;z-index:8;top:0;right:0;height:3px;background:var(--gold);transition:width .6s ease}
 
-@media(max-width:980px){.pk-g4,.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-ladder{grid-template-columns:1fr 1fr}.pk-rung{border-radius:14px!important;margin:5px}.pk-rung::after{display:none}}
+@media(max-width:980px){.pk-g4,.pk-g5,.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-ladder{grid-template-columns:1fr 1fr}.pk-rung{border-radius:14px!important;margin:5px}.pk-rung::after{display:none}}
 @media(max-width:640px){
-.pk-slide{align-items:flex-start;padding:62px 16px 0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#pitch{--bar:calc(96px + env(safe-area-inset-bottom))}
+.pk-slide{align-items:flex-start;padding:62px 16px 28px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .pk-wrap{max-height:none;overflow:visible}
-.pk-wrap::after{content:"";display:block;height:calc(150px + env(safe-area-inset-bottom,0px))}
 h2{font-size:clamp(23px,6.6vw,30px);line-height:1.35}
 .pk-lead{font-size:14.5px;line-height:1.85;margin-top:10px}
 .pk-kick{font-size:13px;margin-bottom:10px}
 .pk-grid{gap:10px;margin-top:20px}
-.pk-g2,.pk-g3,.pk-g4,.pk-ladder{grid-template-columns:1fr}
+.pk-g2,.pk-g3,.pk-g4,.pk-g5,.pk-ladder{grid-template-columns:1fr}
 .pk-card,.pk-lvl,.pk-role,.pk-phase,.pk-kp{padding:15px 16px;border-radius:13px}
 .pk-card h3{font-size:15.5px;margin-bottom:4px}.pk-card p,.pk-lvl p,.pk-role ul,.pk-phase ul,.pk-kp p{font-size:13px;line-height:1.75}
 .pk-ic{width:38px;height:38px;font-size:18px;margin-bottom:8px;border-radius:10px}
-.pk-g4 .pk-card{display:grid;grid-template-columns:38px 1fr;gap:4px 12px;align-items:start}.pk-g4 .pk-card .pk-ic{grid-row:span 2;margin:0}
+.pk-g4 .pk-card,.pk-g5 .pk-card{display:grid;grid-template-columns:38px 1fr;gap:4px 12px;align-items:start}.pk-g4 .pk-card .pk-ic,.pk-g5 .pk-card .pk-ic{grid-row:span 2;margin:0}
 .pk-ladder{margin-top:22px;gap:8px}.pk-rung{margin:0;padding:14px 16px}.pk-rung b{font-size:16px;margin:2px 0}.pk-rung p{font-size:13px}
 .pk-steps{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}.pk-st{padding:10px 8px;text-align:center}.pk-st i{margin:0 auto 6px;width:26px;height:26px;font-size:13px}.pk-st b{font-size:12.5px;line-height:1.4}
 .pk-detail{min-height:0;margin-top:10px}.pk-detail .pk-card{grid-template-columns:44px 1fr;gap:12px}.pk-detail .pk-big{font-size:30px}.pk-detail p{font-size:13.5px!important}
@@ -171,17 +175,72 @@ h2{font-size:clamp(23px,6.6vw,30px);line-height:1.35}
 .pk-phase b{font-size:16px;margin:4px 0 6px}
 .pk-cover{padding-top:4vh}.pk-cover h1{font-size:clamp(40px,12vw,56px)}.pk-cover p{font-size:15px}.pk-cta{padding:15px 28px;margin-top:24px}
 .pk-loc{display:none}.pk-dots{display:none}
-.pk-nav{bottom:30px;padding:6px 8px;gap:10px}.pk-nav button{width:42px;height:42px}
+.pk-nav{bottom:calc(28px + env(safe-area-inset-bottom));padding:6px 8px;gap:10px}.pk-nav button{width:42px;height:42px}
 .pk-fade{display:block}
-.pk-credit{bottom:8px;font-size:10.5px}
+.pk-credit{bottom:calc(6px + env(safe-area-inset-bottom));font-size:10.5px}
 }
 @media(min-width:641px) and (max-width:1024px){
-.pk-slide{padding:70px 32px 0;overflow-y:auto}.pk-wrap{max-height:none;overflow:visible}.pk-wrap::after{content:"";display:block;height:calc(130px + env(safe-area-inset-bottom,0px))}
-.pk-g4{grid-template-columns:1fr 1fr}.pk-ladder{grid-template-columns:1fr 1fr}.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-g3{grid-template-columns:1fr 1fr 1fr}
+.pk-slide{padding:68px 32px 28px}.pk-wrap{max-height:none;overflow:visible}
+.pk-g4,.pk-g5{grid-template-columns:1fr 1fr}.pk-ladder{grid-template-columns:1fr 1fr}.pk-steps{grid-template-columns:repeat(3,1fr)}.pk-g3{grid-template-columns:1fr 1fr 1fr}
 .pk-fade{display:block}
 }
 @media(max-height:760px) and (min-width:1025px){.pk-slide{overflow-y:auto;align-items:flex-start}.pk-wrap{max-height:none;overflow:visible}.pk-fade{display:block}}
-.pk-fade{display:none;position:fixed;z-index:7;left:0;right:0;bottom:0;height:140px;pointer-events:none;background:linear-gradient(0deg,var(--bg) 35%,rgba(4,17,11,0))}
+.pk-fade{display:block!important;position:fixed;z-index:6;left:0;right:0;bottom:0;height:var(--bar);pointer-events:none;background:linear-gradient(0deg,rgba(4,17,11,.97) 70%,rgba(4,17,11,.55));border-top:1px solid rgba(214,178,92,.12)}
+.pk-slide::-webkit-scrollbar{display:none}
+
+.pk-partchip{position:fixed;z-index:8;top:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;background:rgba(4,17,11,.6);border:1px solid var(--line);border-radius:99px;padding:5px;backdrop-filter:blur(8px);transition:opacity .4s}
+.pk-partchip span{font-size:12.5px;padding:5px 12px;border-radius:99px;color:var(--mut);white-space:nowrap}
+.pk-partchip span.on{background:var(--gold);color:#1a1205;font-weight:700}
+.pk-partchip span.on.o{background:var(--g4);color:#04110b}
+.pk-partchip.hide{opacity:0;pointer-events:none}
+.pk-two{display:grid;grid-template-columns:1fr 150px 1fr;gap:14px;align-items:stretch;margin-top:30px}
+.pk-half{border-radius:18px;padding:24px;background:var(--card);border:1px solid var(--line);position:relative}
+.pk-half.pk-in{border-color:rgba(214,178,92,.55);background:linear-gradient(160deg,rgba(214,178,92,.16),rgba(14,46,31,.6))}
+.pk-half.pk-out{border-color:rgba(63,182,114,.55);background:linear-gradient(160deg,rgba(63,182,114,.16),rgba(14,46,31,.6))}
+.pk-half .pk-pn{font-family:"Reem Kufi";font-size:44px;line-height:1;color:var(--gold2)}.pk-half.pk-out .pk-pn{color:#8fe0b0}
+.pk-half b{display:block;font-size:22px;margin:6px 0 4px}.pk-half p{color:var(--mut);font-size:14px}
+.pk-half ul{list-style:none;margin-top:12px;font-size:14.5px;line-height:2}.pk-half li::before{content:"— ";color:var(--gold)}.pk-half.pk-out li::before{color:var(--g4)}
+.pk-half small{display:block;margin-top:12px;color:var(--dim);font-size:12.5px}
+.pk-meet{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:18px;border:1px dashed rgba(214,178,92,.5);padding:14px}
+.pk-meet div{font-size:34px}.pk-meet b{font-size:15px;margin-top:6px}.pk-meet small{color:var(--mut);font-size:12px;margin-top:4px}
+.pk-chap{text-align:center}
+.pk-chn{font-family:"Reem Kufi";font-size:clamp(90px,16vw,170px);line-height:1;color:var(--gold2);text-shadow:0 0 40px rgba(214,178,92,.35)}
+.pk-chap-out .pk-chn{color:#8fe0b0;text-shadow:0 0 40px rgba(63,182,114,.35)}
+.pk-cht{color:var(--gold);font-weight:600;letter-spacing:.5px;margin-top:4px}.pk-chap-out .pk-cht{color:var(--g4)}
+.pk-chap h2{margin:6px auto 0;font-size:clamp(34px,5.5vw,64px)}.pk-chap .pk-lead{margin:16px auto 0}
+.pk-chi{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pk-chi span{padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:15px}
+.pk-chap-out .pk-chi span{border-color:rgba(63,182,114,.4)}
+.pk-phases{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.pk-phases span{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:13.5px;color:var(--mut);text-align:center}
+.pk-phases b{display:block;color:var(--gold2);font-size:15px}
+.pk-dots i.pi{background:rgba(214,178,92,.35)}.pk-dots i.po{background:rgba(63,182,114,.4)}.pk-dots i.on{background:var(--gold)}
+@media(max-width:900px){.pk-two{grid-template-columns:1fr}.pk-meet{flex-direction:row;gap:10px;padding:10px}.pk-meet div{font-size:24px}.pk-meet b{margin:0}}
+@media(max-width:640px){.pk-partchip{top:12px}.pk-partchip span{font-size:11px;padding:4px 9px}.pk-half{padding:16px}.pk-half b{font-size:18px}.pk-half ul{font-size:13px;line-height:1.8}.pk-chi span{font-size:13px;padding:8px 12px}}
+
+.pk-story{display:grid;grid-template-columns:230px 1fr;gap:18px;margin-top:22px;align-items:stretch}
+.pk-ssteps{display:flex;flex-direction:column;gap:6px}
+.pk-sst{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:center;text-align:right;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;color:var(--mut);cursor:pointer;font-family:inherit;transition:all .25s}
+.pk-sst em{font-style:normal;font-size:12px;color:var(--dim);unicode-bidi:plaintext}.pk-sst b{font-size:14px}
+.pk-sst.done{color:#cfe0d6}.pk-sst.done em{color:var(--gold)}
+.pk-sst.on{background:rgba(214,178,92,.15);border-color:var(--gold);color:#fff}.pk-sst.on em{color:var(--gold2)}
+.pk-sstage{position:relative;min-height:300px}
+.pk-spanel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px) scale(.98);transition:opacity .45s,transform .45s;pointer-events:none}
+.pk-spanel.on{opacity:1;transform:none;pointer-events:auto}
+.pk-spanel .pk-mock{width:min(520px,100%)}
+.pk-sp-t{font-size:16px;line-height:1.8;margin-top:10px;color:#1c2621}
+.pk-sp-r{display:flex;flex-direction:column;gap:8px;margin-top:12px}.pk-sp-r span{padding:9px 12px;border-radius:8px;background:#f3f6f4;border:1px solid #e2e6e3;font-size:14px;color:#1c2621}.pk-sp-r span.g{background:#eaf6ef;border-color:#bfe0cd;color:#14573a;font-weight:700}
+.pk-sp-path{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}.pk-sp-path span{padding:8px 12px;border-radius:8px;border:1px solid #cbd2ce;background:#fff;font-size:13.5px;color:#1c2621}.pk-sp-path span.on{background:#1B8354;color:#fff;border-color:#1B8354}.pk-sp-path i{font-style:normal;color:#b48a3c}
+.pk-sp-c{text-align:center}.pk-cd2 b{display:block;font-size:48px;font-weight:700;color:#1B8354;direction:ltr;font-family:ui-monospace,monospace}.pk-cd2 small{font-size:14px;color:#5f6b65}.pk-sp-c.warn .pk-cd2 b{color:#c4321f}
+.pk-sp-bar{height:10px;border-radius:9px;background:#e6eae7;margin-top:14px;overflow:hidden}.pk-sp-bar i{display:block;height:100%;background:#1B8354;border-radius:9px}.pk-sp-c.warn .pk-sp-bar i{background:#c4321f}
+.pk-sp-k{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.pk-sp-k div{border:1px solid #e2e6e3;border-radius:10px;padding:14px;text-align:center}.pk-sp-k b{display:block;font-size:30px;color:#14573a}.pk-sp-k small{font-size:12.5px;color:#5f6b65}
+.pk-sp-st{font-size:34px;color:#e0a526;letter-spacing:4px;margin-top:8px;text-align:center}
+.pk-tries{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.pk-tryb{display:flex;flex-direction:column;gap:4px;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .2s,border-color .2s}
+.pk-tryb:hover{transform:translateY(-3px);border-color:var(--gold)}
+.pk-tryb b{font-size:16px}.pk-tryb small{color:var(--mut);font-size:13px}.pk-tryb span{margin-top:8px;font-family:ui-monospace,monospace;font-size:12.5px;color:var(--gold2);background:rgba(0,0,0,.25);padding:6px 8px;border-radius:8px;text-align:center}
+@media(max-width:980px){.pk-tries{grid-template-columns:1fr 1fr}.pk-story{grid-template-columns:180px 1fr}}
+@media(max-width:640px){.pk-story{grid-template-columns:1fr;gap:10px}.pk-ssteps{flex-direction:row;overflow-x:auto;scrollbar-width:none;gap:6px}.pk-ssteps::-webkit-scrollbar{display:none}.pk-sst{grid-template-columns:1fr;min-width:92px;text-align:center;padding:6px}.pk-sst b{font-size:12.5px}.pk-sstage{min-height:300px}.pk-sp-t{font-size:14.5px}.pk-cd2 b{font-size:36px}.pk-tries{grid-template-columns:1fr;gap:8px}.pk-tryb{padding:12px 14px}}
 
 #pitch{position:fixed;inset:0;z-index:60;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}</style>
 
@@ -467,7 +526,7 @@ tr:hover td{background:#FAFCFB}
 .modal.on{display:flex;animation:fade .2s}
 .modal .box{width:min(880px,100%);max-height:90vh;overflow:auto;padding:26px;background:#fff}
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(30px);z-index:120;padding:13px 20px;border-radius:10px;background:var(--g9);color:#fff;opacity:0;transition:.3s;font-size:14px;max-width:92vw;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-.toast.on{opacity:1;transform:translateX(-50%)}
+.toast.on{opacity:1;transform:translateX(-50%)}.toast{pointer-events:none}
 .verify{display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 10px;text-align:center}
 .spin{width:56px;height:56px;border-radius:50%;border:3px solid var(--g1);border-top-color:var(--g6);animation:spin 1s linear infinite}
 .pinbox{display:flex;gap:10px;direction:ltr}
@@ -514,6 +573,115 @@ tr:hover td{background:#FAFCFB}
  .topbar .btn.gold.sm{padding:7px 10px}
 }
 @media(max-width:560px){#authBox .chip{display:none}.gov-strip .in>span:last-child{display:none}}
+
+/* ===== workspace ===== */
+.ws{display:grid;grid-template-columns:250px minmax(0,1fr);gap:18px;align-items:start}
+.side{position:sticky;top:96px;background:linear-gradient(180deg,#0E3B28,#14573A);border-radius:14px;padding:10px 0 12px;color:#fff;max-height:calc(100vh - 116px);overflow:auto;scrollbar-width:thin}
+.sg{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.sgt{font-size:13px;font-weight:700;color:#e8d6a8;padding:8px 16px 4px}
+.si{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:0;color:#d7e6dc;text-align:right;padding:8px 18px 8px 14px;font-size:14px;cursor:pointer;border-inline-start:3px solid transparent}
+.si:hover{background:rgba(255,255,255,.06);color:#fff}
+.si.on{background:#d6b25c;color:#1a1205;font-weight:700;border-inline-start-color:#fff}
+.si em{font-style:normal;font-size:11.5px;background:rgba(255,255,255,.18);border-radius:99px;padding:1px 8px}
+.si.on em{background:rgba(0,0,0,.15)}
+.sme{padding:12px 16px 2px;font-size:12.5px;color:#b9d0c2;line-height:1.6}.sme b{display:block;color:#fff;font-size:13.5px}
+.wsb{min-width:0}
+.fbar{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:8px;padding:12px;margin-bottom:12px}
+.txt td{font-size:13.5px}.trx{cursor:pointer}.trx:hover td{background:#F3F9F5}
+.tele{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.tcard{cursor:pointer;border-top:4px solid var(--sec)}.tcard.late{border-top-color:var(--top)}.tcard b{display:block;margin:8px 0 4px;font-size:15px}.tcard p{font-size:12.5px}
+.cd{margin-top:10px;font-weight:700;font-size:18px;color:var(--sec)}
+.steps2{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.s2{border:1px solid var(--line);border-radius:10px;padding:10px;position:relative;overflow:hidden;background:#fff}
+.s2 b{font-size:13px;display:block}.s2 span{font-size:15px;font-weight:700;color:var(--g8)}.s2 small{display:block;font-size:11px;color:var(--dim);margin-top:4px}
+.s2 i{position:absolute;bottom:0;right:0;height:4px;background:var(--pub)}.s2.over i{background:var(--top)}.s2.over span{color:var(--top)}.s2.cur{border-color:var(--g6);box-shadow:inset 0 0 0 1px var(--g6)}
+.g2f{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g3f{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.kpis.k4{grid-template-columns:repeat(4,1fr)}.kpis.k3{grid-template-columns:repeat(3,1fr)}
+.ov4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ovc{cursor:pointer;border-top:3px solid var(--g6);transition:border-color .15s}.ovc:hover{border-color:var(--acc)}
+.ovh{font-size:14px;font-weight:700;color:var(--ink2)}.ovn{font-size:34px;font-weight:700;color:var(--g9);margin:6px 0 4px}.ovn small{font-size:14px;color:var(--mut);font-weight:500}.ovc p{font-size:13px;color:var(--mut)}
+.att2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.att2 div{background:var(--g05);border:1px solid var(--line2);border-radius:10px;padding:12px;text-align:center}.att2 span{font-size:12.5px;color:var(--mut)}.att2 b{display:block;font-size:24px;color:var(--g9);direction:ltr}
+.wm-wrap{position:relative}
+@media(max-width:1100px){.ov4{grid-template-columns:1fr 1fr}.fbar{grid-template-columns:1fr 1fr 1fr}.fbar #fq{grid-column:1/-1}}
+@media(max-width:900px){.ws{grid-template-columns:minmax(0,1fr)}.side{position:sticky;top:0;z-index:20;display:flex;gap:4px;overflow-x:auto;max-height:none;padding:8px;border-radius:12px;scrollbar-width:none}.side::-webkit-scrollbar{display:none}.sg{display:flex;gap:4px;border:0;padding:0;align-items:center}.sgt{display:none}.si{white-space:nowrap;border-radius:8px;padding:8px 12px;border:0;width:auto;gap:6px}.sme{display:none}.kpis.k4{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.fbar,.g2f,.g3f{grid-template-columns:minmax(0,1fr)}.ov4{grid-template-columns:1fr 1fr}.ovn{font-size:26px}.kpis.k3{grid-template-columns:1fr 1fr 1fr}.txt th:nth-child(3),.txt td:nth-child(3),.txt th:nth-child(7),.txt td:nth-child(7){display:none}}
+
+/* ===== unified dashboard (dark) ===== */
+.pd{width:100vw;margin:-20px calc(50% - 50vw) -70px;background:radial-gradient(1200px 600px at 85% -10%,rgba(214,178,92,.16),transparent 60%),radial-gradient(900px 500px at 0% 30%,rgba(63,182,114,.12),transparent 60%),linear-gradient(180deg,#071a11,#04110b);color:#eef4ef;padding:26px 0 40px;min-height:100vh}
+.pd-in{max-width:1440px;margin:0 auto;padding:0 var(--gut)}
+.pd .idc{color:#f3dc98}
+.pd-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.pd-hello{display:flex;gap:16px;align-items:center}.pd-hello img{height:70px;filter:drop-shadow(0 0 14px rgba(214,178,92,.4))}
+.pd-g{color:#e9cf86;font-size:15px;font-weight:600}.pd-hello h1{font-size:clamp(22px,2.6vw,32px);font-weight:700;line-height:1.3}.pd-hello p{color:#9fb8a9;font-size:13.5px;margin-top:4px}
+.pbtn{border:1px solid rgba(214,178,92,.3);background:rgba(255,255,255,.04);color:#eef4ef;padding:8px 14px;border-radius:10px;cursor:pointer;font-size:13.5px;font-weight:600;font-family:inherit;transition:background .15s,border-color .15s}
+.pbtn:hover{border-color:#d6b25c;background:rgba(214,178,92,.1)}.pbtn.on,.pbtn.gold{background:#d6b25c;color:#1a1205;border-color:#d6b25c}.pbtn.sm{padding:5px 10px;font-size:12px}.pbtn.wide{width:100%;margin-top:14px;padding:12px}
+.pd-acts{gap:8px}
+.pd-hero{display:grid;grid-template-columns:260px 1fr 1.35fr;gap:16px;margin-top:22px}
+.pd-gauge,.pd-subs,.pd-brief,.pc,.pd-ask{background:rgba(255,255,255,.035);border:1px solid rgba(214,178,92,.18);border-radius:18px;backdrop-filter:blur(10px)}
+.pd-gauge{position:relative;display:grid;place-items:center;padding:16px}
+.pd-gauge svg{width:100%;max-width:220px;transform:rotate(-90deg)}
+.pd-gauge .gt{fill:none;stroke:rgba(255,255,255,.07);stroke-width:14}
+.pd-gauge .gv{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 8px currentColor)}
+.gn{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.gn b{font-size:58px;font-weight:700;line-height:1;color:#fff}.gn span{font-size:13px;color:#e9cf86;margin-top:6px;font-weight:600}.gn small{font-size:11.5px;color:#9fb8a9;margin-top:2px}
+.pd-subs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px}
+.ps{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;cursor:pointer;transition:background .15s}.ps:hover{background:rgba(255,255,255,.05)}
+.ps b{font-size:14px;display:block}.ps small{color:#9fb8a9;font-size:12px}
+.ring{--p:0;--c:#3fb672;flex:none;width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.08) 0);display:grid;place-items:center;position:relative}
+.ring::before{content:"";position:absolute;inset:7px;border-radius:50%;background:#0a1d13}
+.ring b{position:relative;font-size:17px;color:#fff}.ring i{position:absolute;bottom:13px;font-style:normal;font-size:9px;color:#9fb8a9}
+.pd-brief{padding:16px 18px}
+.pb-h{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:10px}.pb-h small{font-weight:400;color:#9fb8a9;font-size:12.5px}
+.ai{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:8px;background:linear-gradient(135deg,#d6b25c,#3fb672);color:#04110b;font-size:13px;font-weight:700;flex:none}
+.bi{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:start;padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.03);border-inline-start:3px solid #4aa8dc;margin-bottom:7px;animation:bin .35s ease}
+.bi.r{border-color:#e5654f}.bi.y{border-color:#e9b949}.bi.g{border-color:#3fb672}
+.bi p{font-size:13.5px;line-height:1.75;min-height:1.75em}.bi:not(.done) p::after{content:"▍";color:#e9cf86;animation:blink 1s infinite}
+.bi .pbtn{opacity:0;transition:opacity .3s}.bi.done .pbtn{opacity:1}.bic{font-size:18px;line-height:1.5}
+@keyframes bin{from{opacity:0;transform:translateY(6px)}}
+.pd-ask{margin-top:16px;padding:14px 16px}.pa-in input{min-width:0;flex:1 1 auto;width:100%}.pa-in .pbtn{flex:none}
+.pa-in{display:flex;gap:10px;align-items:center}.pa-in input{flex:1;background:rgba(0,0,0,.25);border:1px solid rgba(214,178,92,.25);border-radius:12px;padding:12px 14px;color:#fff;font-size:15px;font-family:inherit;outline:none}.pa-in input:focus{border-color:#d6b25c}
+.pa-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pa-chips button{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#cfe0d6;border-radius:99px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}.pa-chips button:hover{border-color:#d6b25c;color:#fff}
+.ans{margin-top:12px;border-radius:14px;background:rgba(0,0,0,.2);border:1px solid rgba(214,178,92,.2);padding:12px;opacity:0;transform:translateY(6px);transition:all .35s}.ans.in{opacity:1;transform:none}
+.ans-h{display:flex;gap:8px;align-items:center;font-weight:700;margin-bottom:8px}
+.ar{display:grid;grid-template-columns:1.3fr 2fr 1fr 1fr;gap:10px;align-items:center;width:100%;text-align:right;background:none;border:0;border-top:1px solid rgba(255,255,255,.06);padding:9px 6px;color:#eef4ef;font-family:inherit;font-size:13.5px;cursor:pointer}.ar:hover{background:rgba(255,255,255,.04)}
+.ar span{color:#b9d0c2}.bad{color:#ff8a76!important}
+.pd-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:16px}.pd-grid.g3{grid-template-columns:1fr 1fr 1fr}
+.pc{padding:16px}.pc-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px;flex-wrap:wrap}.pc-h b{font-size:15.5px}.pc-h small{color:#9fb8a9;font-size:12px}
+.rc{display:grid;grid-template-columns:22px 130px 1fr 44px 62px 78px;gap:10px;align-items:center;width:100%;background:none;border:0;border-radius:10px;padding:7px 6px;color:#eef4ef;font-family:inherit;cursor:pointer;text-align:right}.rc:hover{background:rgba(255,255,255,.05)}
+.rn{color:#9fb8a9;font-size:12px}.rl{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rb{height:10px;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden}.rb i{display:block;height:100%;width:0;border-radius:9px;background:var(--c);box-shadow:0 0 12px var(--c);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}.rb i.go{width:var(--w)}
+.rv2{font-weight:700;font-size:14px}.ra{font-size:12px;color:#9fb8a9}.ro{font-size:11.5px;color:#ff8a76}.ro.ok{color:#5d7a6b}
+#pdMap{height:420px;border-radius:12px;overflow:hidden}
+.gm2{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.gm2 .c{border-radius:50%;display:grid;place-items:center;background:rgba(var(--c),.85);border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 0 rgba(var(--c),.6);animation:gp 2.4s infinite}
+.gm2 .c b{color:#fff;font-size:12px}.gm2 .n{margin-top:4px;font-size:11.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:1px 7px;border-radius:6px;white-space:nowrap}
+@keyframes gp{0%{box-shadow:0 0 0 0 rgba(var(--c),.55)}70%{box-shadow:0 0 0 16px rgba(var(--c),0)}100%{box-shadow:0 0 0 0 rgba(var(--c),0)}}
+.tl2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.07);margin-bottom:8px;cursor:pointer;transition:border-color .2s}
+.tl2 b{display:block;font-size:13.5px;margin:2px 0}.tl2 small{color:#9fb8a9;font-size:11.5px}
+.cdn{font-family:ui-monospace,monospace;font-size:20px;font-weight:700;color:#3fb672;direction:ltr}.tl2.warn{border-color:rgba(233,185,73,.5)}.tl2.warn .cdn{color:#e9b949}.tl2.late{border-color:rgba(229,101,79,.6);background:rgba(229,101,79,.07)}.tl2.late .cdn{color:#ff8a76;animation:blink 1.2s infinite}
+.agenda{display:flex;flex-direction:column;gap:12px}
+.ag-track{position:relative;height:56px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,.03),rgba(255,255,255,.06));margin-top:4px}
+.ag{position:absolute;top:8px;right:calc(var(--x) - 6px);width:12px;height:24px;border-radius:6px;background:#3fb672}.ag.a{background:#4aa8dc}.ag.u{background:#e5654f}
+.ag span{position:absolute;top:28px;right:50%;transform:translateX(50%);font-size:10px;color:#9fb8a9;direction:ltr;white-space:nowrap}
+.ag-now{position:absolute;top:0;bottom:0;right:var(--x);width:2px;background:#e9cf86;box-shadow:0 0 10px #e9cf86}
+.ag-scale{position:absolute;bottom:-2px;left:6px;right:6px;display:flex;justify-content:space-between;font-size:9.5px;color:#5d7a6b;direction:ltr;flex-direction:row-reverse}
+.ag-list{max-height:200px;overflow:auto}.agi{display:grid;grid-template-columns:52px 1fr;gap:2px 10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.06)}.agi b{color:#e9cf86;font-size:13px}.agi span{font-size:13px}.agi small{grid-column:2;color:#9fb8a9;font-size:11.5px}.agi.u b{color:#ff8a76}
+.heat{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;direction:ltr}.hw{display:grid;gap:4px}.hw i{display:block;aspect-ratio:1;border-radius:4px;background:rgba(233,185,73,var(--a))}
+.hl2{display:flex;gap:4px;align-items:center;justify-content:flex-end;margin-top:8px;font-size:11px;color:#9fb8a9;direction:ltr}.hl2 i{width:12px;height:12px;border-radius:3px;background:rgba(233,185,73,var(--a))}
+.pd-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.pd-mini div{background:rgba(255,255,255,.04);border-radius:10px;padding:10px;text-align:center}.pd-mini b{display:block;font-size:20px}.pd-mini small{color:#9fb8a9;font-size:11.5px}
+.pd-empty{color:#7f9a8b;text-align:center;padding:24px 8px;font-size:13.5px}
+.pd-foot{text-align:center;color:#5d7a6b;font-size:12px;margin-top:26px}
+.drawer{position:fixed;top:0;bottom:0;left:0;z-index:90;width:min(420px,100vw);background:linear-gradient(180deg,#0b2216,#06140d);color:#eef4ef;border-inline-end:1px solid rgba(214,178,92,.3);box-shadow:20px 0 60px rgba(0,0,0,.5);transform:translateX(-105%);transition:transform .4s cubic-bezier(.2,.8,.2,1);overflow:auto;padding:20px}
+.drawer.on{transform:none}
+.dr-h{display:flex;justify-content:space-between;align-items:flex-start}.dr-h small{color:#e9cf86;font-size:12px}.dr-h b{display:block;font-size:20px}
+.dr-k{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px}.dr-k div{background:rgba(255,255,255,.05);border-radius:10px;padding:10px 6px;text-align:center}.dr-k b{display:block;font-size:17px}.dr-k small{font-size:11px;color:#9fb8a9}
+.dr-s{margin-top:14px;background:rgba(0,0,0,.2);border-radius:12px;padding:10px}.dr-s small{color:#9fb8a9;font-size:11.5px}.dr-s svg{width:100%;height:70px;margin-top:6px}
+.dr-t{font-weight:700;margin:16px 0 8px;font-size:14px;color:#e9cf86}
+.dr-m{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px solid rgba(255,255,255,.06);font-size:13px}.dr-m span{color:#9fb8a9;font-size:12px}
+.dr-x{display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid rgba(255,255,255,.06);cursor:pointer;font-size:13px}.dr-x:hover b{color:#f3dc98}
+@media(max-width:1200px){.pd-hero{grid-template-columns:240px 1fr}.pd-brief{grid-column:1/-1}.pd-grid.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.pd-hero,.pd-grid,.pd-grid.g3{grid-template-columns:minmax(0,1fr)}.pd-gauge svg{max-width:180px}.rc{grid-template-columns:18px 1fr 1.2fr 40px 70px}.rc .ra{display:none}#pdMap{height:320px}}
+@media(max-width:560px){.pd-subs{grid-template-columns:1fr}.ar{grid-template-columns:1fr 1fr}.pd-hello img{height:50px}.rc{grid-template-columns:16px 1fr 1fr 38px}.rc .ro{display:none}.pa-in .pbtn{padding:10px}}
 @media print{.topbar,.gov-strip,.footer,.btn,#stars,#globe{display:none!important}}
 </style>
 </head>
@@ -523,177 +691,264 @@ tr:hover td{background:#FAFCFB}
 <div class="pk-veil"></div>
 <div class="pk-prog" id="p_prog"></div>
 <div class="pk-loc" id="p_loc">إمارة منطقة حائل<br><b id="p_coord">7HV3GM9W+GR</b></div>
-<div class="pk-top"><a href="#app" data-enter="app">المنصة</a></div>
+<div class="pk-top"><a href="#app" data-enter="app">النظام</a></div>
+<div class="pk-partchip hide" id="partchip"><span data-p="in">١ · داخل الإمارة</span><span data-p="out">٢ · صوت حائل</span></div>
 
 <main class="pk-deck" id="p_deck">
 
-<!-- 1 cover -->
-<section class="pk-slide" data-globe="space">
+<!-- cover -->
+<section class="pk-slide" data-globe="space" data-part="">
   <div class="pk-cover">
     <img class="pk-rv" data-logo="gold" src="data:," alt="إمارة منطقة حائل">
-    <h1 class="pk-rv">صوت حائل</h1>
-    <p class="pk-rv">منصة إمارة منطقة حائل لحوكمة الشكاوى والبلاغات ومتابعة أداء الجهات الحكومية</p>
-    <div class="pk-hint pk-rv">اضغط ← أو اسحب للبدء</div>
+    <h1 class="pk-rv">نظام الحوكمة الرقمية الذكي</h1>
+    <p class="pk-rv">لإمارة منطقة حائل: منظومة واحدة تحكم العمل داخل الإمارة، وتفتح بابها لصوت المواطن، تحت نظر سمو الأمير</p>
+    <p class="pk-rv pk-owner">صاحبة الفكرة: تهاني الشمري</p>
+    <p class="pk-rv pk-team">فريق العمل: مشاري الجميل وسليمان الخطيب</p>
   </div>
 </section>
 
-<!-- 2 arrive -->
-<section class="pk-slide" data-globe="hail">
+<!-- arrive -->
+<section class="pk-slide" data-globe="hail" data-part="">
   <div class="pk-wrap" style="text-align:center">
     <div class="pk-kick pk-rv" style="justify-content:center">من هنا تبدأ الحكاية</div>
-    <h2 class="pk-rv" style="margin:0 auto">كل صوت في محافظات المنطقة العشر يصل إلى مقر الإمارة</h2>
-    <p class="pk-lead pk-rv" style="margin:16px auto 0">حائل، بقعاء، الغزالة، الشنان، الحائط، السليمي، الشملي، موقق، سميراء، والحليفة السفلى.</p>
+    <h2 class="pk-rv" style="margin:0 auto">كل يوم تصل إلى الإمارة مئات الخطابات، ويرفع الأهالي مئات الأصوات</h2>
+    <p class="pk-lead pk-rv" style="margin:16px auto 0">هذه قصة يوم واحد في إمارة منطقة حائل، بقسميه: ما يجري داخل الإمارة، وما يصلها من صوت المواطن.</p>
   </div>
 </section>
 
-<!-- 3 problem -->
-<section class="pk-slide" data-globe="deep">
+<!-- map of the two parts -->
+<section class="pk-slide" data-globe="deep" data-part="">
   <div class="pk-wrap">
-    <div class="pk-kick pk-rv">الواقع اليوم</div>
-    <h2 class="pk-rv">الشكاوى موجودة، لكنها متفرقة ولا تصل كصورة واحدة</h2>
-    <div class="pk-grid pk-g4">
-      <div class="pk-card pk-rv"><div class="pk-ic">🧩</div><h3>قنوات متفرقة</h3><p>كل جهة لها نافذتها، ولا توجد رؤية موحدة لما يعانيه المواطن عبر الجهات.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">🔁</div><h3>إغلاق شكلي</h3><p>تُغلق الشكوى في نظام الجهة بينما المشكلة قائمة على أرض الواقع.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">⏳</div><h3>مهل غير مرئية</h3><p>لا يُعرف كم انتظر المواطن، ولا أي جهة تتأخر بانتظام.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">🔐</div><h3>حساسية بلا ضوابط</h3><p>بلاغات شبهات الفساد قد تعود للجهة نفسها المشكو منها.</p></div>
+    <div class="pk-kick pk-rv">المنظومة</div>
+    <h2 class="pk-rv">قسمان، وقصتان، تلتقيان عند سمو الأمير</h2>
+    <div class="pk-two pk-rv">
+      <div class="pk-half pk-in"><span class="pk-pn">١</span><b>داخل الإمارة</b><p>الحوكمة الداخلية لعمل الإمارة وإداراتها</p><ul><li>المعاملات والخطابات والبرقيات</li><li>مكتب الوكيل: الاجتماعات والمواعيد</li><li>الموارد البشرية: الدوام والإذن</li></ul><small>للأمير والوكلاء والمدراء والموظفين</small></div>
+      <div class="pk-meet"><div>👑</div><b>اللوحة الموحدة</b><small>سمو الأمير والوكلاء</small></div>
+      <div class="pk-half pk-out"><span class="pk-pn">٢</span><b>صوت حائل</b><p>البوابة الخارجية بين المواطن والجهات والإمارة</p><ul><li>شكاوى المواطنين ومقترحاتهم</li><li>متابعة الجهات الحكومية في المنطقة</li><li>الإمارة مستوى متابعة أعلى</li></ul><small>للمواطنين ومسؤولي الجهات وفريق الإمارة</small></div>
     </div>
   </div>
 </section>
 
-<!-- 4 idea -->
-<section class="pk-slide" data-globe="deep">
+<!-- PART 1 divider -->
+<section class="pk-slide pk-chap-in" data-globe="deep" data-part="in">
+  <div class="pk-wrap pk-chap">
+    <div class="pk-chn pk-rv">١</div>
+    <div class="pk-cht pk-rv">القسم الأول</div>
+    <h2 class="pk-rv">داخل الإمارة</h2>
+    <p class="pk-lead pk-rv">العمل يُنجز اليوم، لكن لا أحد يرى الصورة كاملة: معاملات بلا مسار زمني مرئي، وبرقيات عاجلة تُعامل كأي بريد، ومرئيات اجتماعات تتوقف عند المحضر.</p>
+    <div class="pk-chi pk-rv"><span>✉️ المعاملات والبرقيات</span><span>🏛️ مكتب الوكيل</span><span>👥 الموارد البشرية</span></div>
+  </div>
+</section>
+
+<!-- story: telegram -->
+<section class="pk-slide" data-globe="deep" data-part="in">
   <div class="pk-wrap">
-    <div class="pk-kick pk-rv">الفكرة</div>
-    <h2 class="pk-rv">الإمارة مستوى متابعة أعلى، لا نافذة شكاوى إضافية</h2>
-    <p class="pk-lead pk-rv">المواطن يبدأ من قناة الجهة. وإن لم تتجاوب، يصعد إلى الإمارة ومعه الإثبات، فتتحول كل شكوى إلى مؤشر على أداء الجهة.</p>
-    <div class="pk-ladder pk-rv">
-      <div class="pk-rung"><em>المواطن</em><b>يرفع طلبه</b><p>شكوى، بلاغ، مقترح، أو استفسار عن أي جهة في المنطقة.</p></div>
-      <div class="pk-rung"><em>المستوى الأول</em><b>قناة الجهة</b><p>بلدي، 937، 938… الجهة تعالج أولاً عبر نافذتها.</p></div>
-      <div class="pk-rung pk-hl"><em>المستوى الثاني</em><b>إمارة المنطقة</b><p>تستقبل ما أخفقت فيه الجهة، والحالات المستثناة مباشرة.</p></div>
-      <div class="pk-rung"><em>القرار</em><b>سمو الأمير</b><p>يرى أداء كل جهة، ويصدر توجيهاته بضغطة واحدة.</p></div>
+    <div class="pk-kick pk-rv">القصة الأولى · رحلة برقية</div>
+    <h2 class="pk-rv">الثامنة واثنتا عشرة دقيقة صباحاً، تصل برقية عاجلة</h2>
+    <div class="pk-story pk-rv" data-story="2700">
+      <div class="pk-ssteps">
+        <button class="pk-sst" data-si><em>08:12</em><b>وصول البرقية</b></button>
+        <button class="pk-sst" data-si><em>08:13</em><b>التوجيه الذكي</b></button>
+        <button class="pk-sst" data-si><em>08:20</em><b>إحالة الوكيل</b></button>
+        <button class="pk-sst" data-si><em>09:00</em><b>العدّاد يعمل</b></button>
+        <button class="pk-sst" data-si><em>13:40</em><b>تنبيه المهلة</b></button>
+        <button class="pk-sst" data-si><em>14:05</em><b>الإنجاز</b></button>
+        <button class="pk-sst" data-si><em>مساءً</em><b>عند سمو الأمير</b></button>
+      </div>
+      <div class="pk-sstage">
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">⚡ برقية · عاجل جداً</div><p class="pk-sp-t">من وزارة الداخلية: بشأن رفع الجاهزية لموسم الحالة المطرية في محافظات المنطقة</p><div class="pk-ok">تُسجَّل تلقائياً برقم <b>م-1342</b> وتوقيت وصولها، ولا تضيع بين البريد.</div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">🤖 التوجيه الذكي</div><div class="pk-sp-r"><span class="g">الجهة المقترحة: الوكيل المساعد للشؤون الأمنية</span><span>📢 يُقترح إشراك الاتصال المؤسسي للتوعية</span><span>⚡ تصنيف: عاجل جداً · مهلة 6 ساعات</span></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">↩️ مسار الإحالة</div><div class="pk-sp-path"><span>مكتب الوكيل</span><i>←</i><span>وكيل الأمنية</span><i>←</i><span class="on">الشؤون الأمنية</span></div><div class="pk-ok">شرح الوكيل: «للتنفيذ الفوري ورفع خطة الجاهزية» · نسخة للاتصال المؤسسي</div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock pk-sp-c"><div class="pk-cd2"><b>5:12:40</b><small>متبقٍ على المهلة لدى الشؤون الأمنية</small></div><div class="pk-sp-bar"><i style="width:14%"></i></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock pk-sp-c warn"><div class="pk-cd2"><b>0:30:00</b><small>تبقّت نصف ساعة · نُبّه مدير الإدارة ووكيل الأمنية</small></div><div class="pk-sp-bar"><i style="width:92%"></i></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">✅ أُنجزت في 5 ساعات و53 دقيقة</div><div class="pk-mt"><span>مكتب الوكيل<b>8 د</b><i style="width:5%"></i></span><span>وكيل الأمنية<b>40 د</b><i style="width:15%"></i></span><span>الشؤون الأمنية<b>5.1 س</b><i style="width:85%"></i></span></div><div class="pk-ok">كل دقيقة محسوبة لكل جهة، ومحفوظة في سجلها.</div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">👑 لوحة سمو الأمير</div><div class="pk-sp-k"><div><b>92%</b><small>الشؤون الأمنية ضمن المهلة</small></div><div><b>🏅</b><small>مدير الإدارة الأعلى التزاماً هذا الأسبوع</small></div></div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 5 journey -->
-<section class="pk-slide" data-globe="deep">
-  <div class="pk-wrap">
-    <div class="pk-kick pk-rv">رحلة الطلب</div>
-    <h2 class="pk-rv">ست مراحل، لا يُغلق الطلب إلا بكلمة المواطن</h2>
-    <div class="pk-steps pk-rv" id="p_steps"></div>
-    <div class="pk-detail pk-rv" id="p_detail"></div>
-  </div>
-</section>
-
-<!-- 6 governance -->
-<section class="pk-slide" data-globe="deep">
-  <div class="pk-wrap">
-    <div class="pk-kick pk-rv">الحوكمة والسرية</div>
-    <h2 class="pk-rv">المواطن يحمي هويته، والإمارة تعتمد درجة السرية</h2>
-    <p class="pk-lead pk-rv">أربع درجات مستمدة من مستويات تصنيف البيانات الوطنية. يقترح محرك آلي الدرجة ويذكر سببها، ويعتمدها مصنِّف معتمد يُسجَّل قراره باسمه.</p>
-    <div class="pk-grid pk-g4">
-      <div class="pk-lvl pk-l1 pk-rv"><b>عام</b><p>يُحال للجهة كاملاً، ويظهر في التقارير التفصيلية.</p></div>
-      <div class="pk-lvl pk-l2 pk-rv"><b>مقيّد</b><p>يُحال للجهة مع حجب هوية المواطن وبياناته الشخصية.</p></div>
-      <div class="pk-lvl pk-l3 pk-rv"><b>سري</b><p>شبهات الفساد والادعاءات ضد مسؤولين: لا يُحال أبداً للجهة المشكو منها.</p></div>
-      <div class="pk-lvl pk-l4 pk-rv"><b>سري للغاية</b><p>لسمو الأمير ووكيل الإمارة فقط، بتحقق إضافي وسجل لكل اطلاع.</p></div>
-    </div>
-    <div class="pk-pill pk-rv">🛡️ كل تصنيف وكل اطلاع موثّق في سجل تدقيق باسم المستخدم ووقته</div>
-  </div>
-</section>
-
-<!-- 7 evidence -->
-<section class="pk-slide" data-globe="deep">
+<!-- transactions -->
+<section class="pk-slide" data-globe="deep" data-part="in">
   <div class="pk-wrap">
     <div class="pk-grid pk-g2" style="margin-top:0;align-items:center;gap:40px">
       <div>
-        <div class="pk-kick pk-rv">الإثبات والتصعيد</div>
-        <h2 class="pk-rv">من سبق أن اشتكى للجهة، يصل للإمارة أقوى</h2>
-        <p class="pk-lead pk-rv">يذكر المواطن رقم طلبه لدى الجهة وتاريخه ويرفق صورة أو PDF، فيُعامل طلبه بأولوية عالية. ومن لم يرفعه بعد، يُوجَّه لقناة الجهة الصحيحة، ثم يصعّد بضغطة واحدة إن لم تتجاوب.</p>
-        <p class="pk-lead pk-rv" style="font-size:15px">الاستثناءات تدخل الإمارة مباشرة: شبهة فساد، أو خطر على السلامة العامة، أو شكوى ضد الجهة نفسها.</p>
+        <div class="pk-kick pk-rv">المعاملات والخطابات والبرقيات</div>
+        <h2 class="pk-rv">كل ساعة تقضيها المعاملة لدى أي مدير، محسوبة</h2>
+        <p class="pk-lead pk-rv">من لحظة الإحالة يبدأ العداد. لكل أولوية مهلة: عادي 72 ساعة لكل جهة، وعاجل 24، والبرقية العاجلة جداً 6 ساعات. فتظهر الفجوات بالاسم، ويُكرَّم المتميزون بالأرقام.</p>
+        <div class="pk-grid pk-g2 pk-rv" style="margin-top:20px;gap:10px">
+          <div class="pk-card"><h3>🤖 توجيه ذكي</h3><p>يقترح الإدارة المختصة من موضوع المعاملة، والقرار للموظف.</p></div>
+          <div class="pk-card"><h3>📢 الاتصال المؤسسي</h3><p>يُشرك تلقائياً في المعاملات ذات البعد الإعلامي.</p></div>
+          <div class="pk-card"><h3>⚡ البرقيات العاجلة</h3><p>عدّاد تنازلي لكل برقية موجهة للقطاعات الحكومية.</p></div>
+          <div class="pk-card"><h3>📊 المتابعة</h3><p>حجم البريد، ومصادره، والمعاملات التي تجاوزت شروحاتها.</p></div>
+        </div>
       </div>
       <div class="pk-mock pk-rv">
-        <div class="pk-q">هل سبق أن رفعت هذا الطلب للجهة نفسها؟</div>
-        <div class="pk-seg"><span class="on">نعم، رفعته ولم تتجاوب</span><span>لا، لم أرفعه بعد</span></div>
-        <div class="pk-row"><div class="pk-f">NWC-551209</div><div class="pk-f">2026-10-02</div></div>
-        <div class="pk-att">📎 صورة-الطلب.jpg · إشعار-الجهة.pdf</div>
-        <div class="pk-ok">🧾 سبق رفعه للجهة منذ 14 يوماً دون تجاوب. رُفعت الأولوية، ويُحتسب في مؤشر «إخفاق القناة الأولى».</div>
+        <div class="pk-q">م-1318 · متابعة تنفيذ حكم قضائي</div>
+        <div class="pk-mt"><span>وكيل الإمارة<b>3 س</b><i style="width:20%"></i></span><span>وكيل الأمنية<b>19 س</b><i style="width:70%"></i></span><span class="pk-ov">الحقوق العامة<b>3.4 يوم</b><i style="width:100%"></i></span></div>
+        <div class="pk-ok">⏱️ تجاوزت المعاملة مهلة 72 ساعة لدى إدارة الحقوق العامة، وتظهر في مؤشر الإدارة ولدى سمو الأمير.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8 roles -->
-<section class="pk-slide" data-globe="deep">
+<!-- office & hr -->
+<section class="pk-slide" data-globe="deep" data-part="in">
   <div class="pk-wrap">
-    <div class="pk-kick pk-rv">من يستخدم المنصة</div>
-    <h2 class="pk-rv">لكل دور بوابته، ولكل جهة ضابط اتصال</h2>
+    <div class="pk-kick pk-rv">مكتب الوكيل والموارد البشرية</div>
+    <h2 class="pk-rv">الاجتماع لا ينتهي بالمحضر، ينتهي بإنجاز مرئياته</h2>
+    <div class="pk-grid pk-g3">
+      <div class="pk-card pk-rv"><div class="pk-ic">📅</div><h3>جدول الاجتماعات</h3><p>التاريخ والوقت والموضوع والجهة، والمحضر، والإدارة المسؤولة، ومسار متابعة كل مرئية بمهلتها حتى تُنجز.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🤝</div><h3>جدول المواعيد</h3><p>طارئ أو عادي، مواطن أو مسؤول، والموضوع والمرئيات، في الشاشة الخاصة بمكتب الوكيل.</p></div>
+      <div class="pk-card pk-rv"><div class="pk-ic">🕘</div><h3>الدوام والإذن</h3><p>تسجيل الحضور والانصراف، وطلب الإذن يعتمده مدير الإدارة، ونسب الحضور لكل إدارة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- internal roles & secrecy -->
+<section class="pk-slide" data-globe="deep" data-part="in">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">الصلاحيات داخل الإمارة</div>
+    <h2 class="pk-rv">كل مستخدم يرى ما يخصه، والسري لأهله فقط</h2>
     <div class="pk-grid pk-g4">
-      <div class="pk-role pk-rv"><small>بلا حساب</small><b>المواطن</b><ul><li>يرفع طلبه برقم هويته</li><li>يتابعه برقم ورمز سري</li><li>يؤكد الحل أو يصعّده</li><li>يقترح ويصوّت</li></ul></div>
-      <div class="pk-role pk-rv"><small>موظفو الإمارة</small><b>مكتب الفرز</b><ul><li>يعتمد درجة السرية</li><li>يتحقق من الإثبات</li><li>يحيل أو يعيد التوجيه</li><li>يتابع المصعَّد</li></ul></div>
-      <div class="pk-role pk-rv"><small>حساب لكل جهة</small><b>ضابط الاتصال</b><ul><li>يرى تذاكر جهته فقط</li><li>يرد ضمن المهلة</li><li>لا يرى هوية المحجوب</li><li>يستقبل توجيهات سمو الأمير</li></ul></div>
-      <div class="pk-role pk-k pk-rv"><small>دخول مخصص</small><b>مركز القيادة</b><ul><li>أداء كل جهة ومحافظة</li><li>الإغلاق الشكلي</li><li>الملفات السرية</li><li>إصدار التوجيهات</li></ul></div>
+      <div class="pk-role pk-k pk-rv"><small>اللوحة الموحدة</small><b>سمو الأمير والوكلاء</b><ul><li>أداء كل الإدارات</li><li>البرقيات والمواعيد</li><li>البحث السري</li><li>اعتماد المرئيات</li></ul></div>
+      <div class="pk-role pk-rv"><small>مساحة العمل</small><b>مدراء الإدارات</b><ul><li>وارد الإدارة وصادرها</li><li>الإحالة والإنجاز</li><li>مرئيات إدارتهم</li><li>اعتماد طلبات الإذن</li></ul></div>
+      <div class="pk-role pk-rv"><small>مساحة العمل</small><b>الموظفون</b><ul><li>إنشاء البريد الداخلي</li><li>الشرح والمتابعة</li><li>تسجيل الدوام</li><li>طلب الإذن</li></ul></div>
+      <div class="pk-role pk-rv"><small>بالإشراك</small><b>الاتصال المؤسسي</b><ul><li>المعاملات الإعلامية</li><li>إضافة الشرح</li><li>التغطية والحملات</li><li>دون صلاحية الإحالة</li></ul></div>
+    </div>
+    <div class="pk-pill pk-rv">🔒 المعاملات «السرية» لا تظهر إلا للإدارة المختصة والوكلاء، و«السري للغاية» لسمو الأمير والوكيل فقط، وكل بحث سري مسجّل باسم صاحبه</div>
+  </div>
+</section>
+
+<!-- try internal -->
+<section class="pk-slide" data-globe="deep" data-part="in">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">جرّب بنفسك · القسم الأول</div>
+    <h2 class="pk-rv">ادخل المنصة الداخلية الآن</h2>
+    <p class="pk-lead pk-rv">اختر دوراً، فيفتح النظام ببيانات الدخول جاهزة. أنشئ معاملة، وأحلها، وراقب العدّاد.</p>
+    <div class="pk-tries"><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailDeputy|Deputy@2026" data-view="prince"><b>وكيل الإمارة</b><small>اللوحة الموحدة ومكتب الوكيل</small><span dir="ltr">HailDeputy · Deputy@2026</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailManager|Manager@2026" data-view="ws"><b>مدير إدارة الحقوق العامة</b><small>الوارد والإحالة واعتماد الإذن</small><span dir="ltr">HailManager · Manager@2026</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailEmp1|Emp@2026" data-view="ws"><b>موظف</b><small>البريد الداخلي والدوام</small><span dir="ltr">HailEmp1 · Emp@2026</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailComms|Comms@2026" data-view="ws"><b>الاتصال المؤسسي</b><small>المعاملات الإعلامية</small><span dir="ltr">HailComms · Comms@2026</span></a></div>
+  </div>
+</section>
+
+<!-- PART 2 divider -->
+<section class="pk-slide pk-chap-out" data-globe="deep" data-part="out">
+  <div class="pk-wrap pk-chap">
+    <div class="pk-chn pk-rv">٢</div>
+    <div class="pk-cht pk-rv">القسم الثاني</div>
+    <h2 class="pk-rv">صوت حائل</h2>
+    <p class="pk-lead pk-rv">البوابة الخارجية: شكاوى المواطنين ومقترحاتهم بشأن أي جهة حكومية في المنطقة. الشكاوى موجودة اليوم، لكنها متفرقة بين قنوات الجهات، وتُغلق أحياناً في أنظمتها بينما المشكلة قائمة.</p>
+    <div class="pk-chi pk-rv"><span>👤 المواطن</span><span>🏢 الجهات الحكومية</span><span>🏛️ فريق الإمارة</span></div>
+  </div>
+</section>
+
+<!-- story: citizen -->
+<section class="pk-slide" data-globe="deep" data-part="out">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">القصة الثانية · رحلة أم فهد</div>
+    <h2 class="pk-rv">انقطعت المياه عن بيت أم فهد في حي النقرة</h2>
+    <div class="pk-story pk-rv" data-story="2700">
+      <div class="pk-ssteps">
+        <button class="pk-sst" data-si><em>اليوم 1</em><b>الانقطاع</b></button>
+        <button class="pk-sst" data-si><em>اليوم 1</em><b>بلاغ للشركة</b></button>
+        <button class="pk-sst" data-si><em>اليوم 8</em><b>لا أحد يرد</b></button>
+        <button class="pk-sst" data-si><em>اليوم 8</em><b>صوت حائل</b></button>
+        <button class="pk-sst" data-si><em>اليوم 8</em><b>فريق الإمارة</b></button>
+        <button class="pk-sst" data-si><em>اليوم 10</em><b>رد الجهة</b></button>
+        <button class="pk-sst" data-si><em>اليوم 10</em><b>أم فهد تؤكد</b></button>
+      </div>
+      <div class="pk-sstage">
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">💧 حي النقرة · حائل</div><p class="pk-sp-t">المياه مقطوعة منذ الصباح، وفي البيت كبار سن وأطفال.</p></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">📱 قناة شركة المياه</div><p class="pk-sp-t">ترفع أم فهد بلاغاً عبر قناة الشركة، ويصلها رقم البلاغ.</p><div class="pk-sp-r"><span dir="ltr">NWC-551209</span></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock pk-sp-c warn"><div class="pk-cd2"><b>7 أيام</b><small>بلا تجاوب من الجهة</small></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">هل سبق أن رفعت هذا الطلب للجهة نفسها؟</div><div class="pk-seg"><span class="on">نعم، رفعته ولم تتجاوب</span><span>لا، لم أرفعه بعد</span></div><div class="pk-row"><div class="pk-f">NWC-551209</div><div class="pk-f">قبل 7 أيام</div></div><div class="pk-att">📎 صورة-البلاغ.jpg</div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">🏛️ مكتب الفرز بالإمارة</div><div class="pk-sp-r"><span class="g">✓ الإثبات مطابق</span><span>تصنيف: عام · أولوية عالية · مهلة 5 أيام</span><span>إحالة إلى: شركة المياه الوطنية – حائل</span></div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">🏢 مسؤول شركة المياه</div><p class="pk-sp-t">«تم استبدال المحبس الرئيسي المغذي للحي وإعادة ضخ المياه.»</p><div class="pk-ok">لا يُغلق الطلب بهذا الرد. يُرسل لأم فهد لتؤكد.</div></div></div>
+        <div class="pk-spanel" data-sp><div class="pk-mock"><div class="pk-q">هل حُلّت مشكلتك فعلاً؟</div><div class="pk-sp-st">★★★★★</div><div class="pk-sp-r"><span class="g">نعم، حُلّت — أُغلق الطلب بتأكيدها</span></div><div class="pk-ok">ولدى سمو الأمير: يرتفع مؤشر «إخفاق القناة الأولى» لشركة المياه، فيصدر التوجيه بتفعيل نافذتها.</div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 9 command center -->
-<section class="pk-slide" data-globe="deep">
+<!-- ladder + evidence -->
+<section class="pk-slide" data-globe="deep" data-part="out">
   <div class="pk-wrap">
-    <div class="pk-kick pk-rv">مركز قيادة سمو الأمير</div>
-    <h2 class="pk-rv">ثلاثة مؤشرات تكشف ما لا تقوله الأرقام الداخلية</h2>
-    <div class="pk-grid pk-g3">
-      <div class="pk-kp pk-rv"><div class="pk-l">الإغلاق الشكلي</div><div class="pk-v" data-count="18">0<small>%</small></div><p>ردّت الجهة بأن المشكلة حُلّت، ونفى المواطن ذلك.</p></div>
-      <div class="pk-kp pk-rv" style="border-top-color:var(--red)"><div class="pk-l">إخفاق القناة الأولى</div><div class="pk-v" data-count="37">0<small>%</small></div><p>طلبات وصلت الإمارة بعد أن رُفعت للجهة دون تجاوب.</p></div>
-      <div class="pk-kp pk-rv" style="border-top-color:var(--g4)"><div class="pk-l">الالتزام بالمهلة</div><div class="pk-v" data-count="71">0<small>%</small></div><p>ردود الجهات التي وصلت ضمن المهلة المعتمدة.</p></div>
+    <div class="pk-kick pk-rv">الإمارة مستوى متابعة أعلى</div>
+    <h2 class="pk-rv">المواطن يبدأ من الجهة، والإمارة لما لا تحله الجهة</h2>
+    <div class="pk-ladder pk-rv">
+      <div class="pk-rung"><em>المواطن</em><b>يرفع طلبه</b><p>شكوى، بلاغ، مقترح، أو استفسار عن أي جهة في المنطقة.</p></div>
+      <div class="pk-rung"><em>المستوى الأول</em><b>قناة الجهة</b><p>بلدي، 937، 938… الجهة تعالج أولاً عبر نافذتها.</p></div>
+      <div class="pk-rung pk-hl"><em>المستوى الثاني</em><b>إمارة المنطقة</b><p>تستقبل ما أخفقت فيه الجهة ومعه الإثبات، والحالات المستثناة مباشرة.</p></div>
+      <div class="pk-rung"><em>الإغلاق</em><b>بكلمة المواطن</b><p>لا يُغلق الطلب إلا بتأكيده، وإن نفى الحل عاد للإمارة مصعَّداً.</p></div>
     </div>
-    <div class="pk-card pk-rv" style="margin-top:16px"><h3>إخفاق القناة الأولى حسب الجهة — مثال توضيحي</h3>
+    <div class="pk-grid pk-g3" style="margin-top:16px">
+      <div class="pk-card pk-rv"><h3>🧾 الإثبات يقوّي الطلب</h3><p>رقم الطلب لدى الجهة وتاريخه وصورة أو PDF، فيرتفع للأولوية العالية.</p></div>
+      <div class="pk-card pk-rv"><h3>↩️ إعادة التوجيه</h3><p>من لم يرفعه للجهة يُوجَّه لقناتها الصحيحة، ثم يصعّد بضغطة واحدة.</p></div>
+      <div class="pk-card pk-rv"><h3>⚖️ استثناءات مباشرة</h3><p>شبهة فساد، أو خطر على السلامة، أو شكوى ضد الجهة نفسها.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- external secrecy & roles -->
+<section class="pk-slide" data-globe="deep" data-part="out">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">السرية في صوت حائل</div>
+    <h2 class="pk-rv">المواطن يحمي هويته، والإمارة تعتمد درجة السرية</h2>
+    <div class="pk-grid pk-g4">
+      <div class="pk-lvl pk-l1 pk-rv"><b>عام</b><p>يُحال لمسؤول الجهة كاملاً.</p></div>
+      <div class="pk-lvl pk-l2 pk-rv"><b>مقيّد</b><p>يُحال للجهة مع حجب هوية المواطن.</p></div>
+      <div class="pk-lvl pk-l3 pk-rv"><b>سري</b><p>شبهات الفساد: لا يُحال أبداً للجهة المشكو منها.</p></div>
+      <div class="pk-lvl pk-l4 pk-rv"><b>سري للغاية</b><p>لسمو الأمير والوكيل فقط، بتحقق إضافي.</p></div>
+    </div>
+    <div class="pk-grid pk-g3" style="margin-top:16px">
+      <div class="pk-role pk-rv"><small>بوابة عامة</small><b>المواطن</b><ul><li>يرفع ويتابع ويؤكد الحل</li><li>يرفق الإثبات</li></ul></div>
+      <div class="pk-role pk-rv"><small>حساب لكل جهة</small><b>مسؤول الجهة</b><ul><li>شكاوى جهته فقط</li><li>يرد ضمن المهلة</li></ul></div>
+      <div class="pk-role pk-rv"><small>داخل الإمارة</small><b>فريق الإمارة</b><ul><li>يصنّف ويحيل</li><li>يتحقق من الإثبات</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- try external -->
+<section class="pk-slide" data-globe="deep" data-part="out">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">جرّب بنفسك · القسم الثاني</div>
+    <h2 class="pk-rv">ادخل صوت حائل الآن</h2>
+    <p class="pk-lead pk-rv">ارفع شكوى كمواطن، ثم ادخل بحساب مسؤول الجهة وفريق الإمارة وشاهدها تتحرك.</p>
+    <div class="pk-tries"><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-view="citizen-new"><b>ارفع شكوى كمواطن</b><small>بدون حساب: الاسم والهوية والجوال</small><span>بوابة المواطن</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="Citizen1|Citizen@2026" data-view="citizen"><b>مواطن مسجّل</b><small>طلباتي وتأكيد الحل</small><span dir="ltr">Citizen1 · Citizen@2026</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailAmana|Amana@2026" data-view="entity"><b>مسؤول أمانة المنطقة</b><small>شكاوى الأمانة فقط</small><span dir="ltr">HailAmana · Amana@2026</span></a><a class="pk-tryb pk-rv" href="#app" data-enter="app" data-login="HailTeam1|Team@2026" data-view="triage"><b>فريق الإمارة</b><small>الفرز والتصنيف والإحالة</small><span dir="ltr">HailTeam1 · Team@2026</span></a></div>
+  </div>
+</section>
+
+<!-- unified dashboard -->
+<section class="pk-slide" data-globe="deep" data-part="both">
+  <div class="pk-wrap">
+    <div class="pk-kick pk-rv">حيث يلتقي القسمان</div>
+    <h2 class="pk-rv">لوحة واحدة لسمو الأمير والوكلاء</h2>
+    <div class="pk-grid pk-g4">
+      <div class="pk-kp pk-rv"><div class="pk-l">✉️ معاملات تجاوزت المهلة</div><div class="pk-v" data-count="11">0</div><p>بالإدارة والمدير المسؤول.</p></div>
+      <div class="pk-kp pk-rv" style="border-top-color:var(--amb)"><div class="pk-l">🏛️ مرئيات قيد المتابعة</div><div class="pk-v" data-count="15">0</div><p>من اجتماعات مكتب الوكيل.</p></div>
+      <div class="pk-kp pk-rv" style="border-top-color:var(--g4)"><div class="pk-l">👥 الحضور</div><div class="pk-v" data-count="96">0<small>%</small></div><p>لكل إدارة، والمتأخرون بالاسم.</p></div>
+      <div class="pk-kp pk-rv" style="border-top-color:var(--red)"><div class="pk-l">📣 الإغلاق الشكلي</div><div class="pk-v" data-count="15">0<small>%</small></div><p>ردّت الجهة بالحل ونفاه المواطن.</p></div>
+    </div>
+    <div class="pk-card pk-rv" style="margin-top:16px"><h3>أداء الإدارات في إنجاز المعاملات ضمن المهلة — مثال توضيحي</h3>
       <div class="pk-bars">
-        <div>الطرق<s><i style="--w:68%;background:var(--red)"></i></s>68%</div>
-        <div>المياه<s><i style="--w:56%;background:var(--red)"></i></s>56%</div>
-        <div>الأمانة<s><i style="--w:48%;background:var(--amb)"></i></s>48%</div>
-        <div>الكهرباء<s><i style="--w:37%;background:var(--amb)"></i></s>37%</div>
-        <div>التجمع الصحي<s><i style="--w:21%;background:var(--g4)"></i></s>21%</div>
+        <div>الموارد البشرية<s><i style="--w:88%;background:var(--g4)"></i></s>88%</div>
+        <div>الحقوق العامة<s><i style="--w:83%;background:var(--g4)"></i></s>83%</div>
+        <div>الشؤون الأمنية<s><i style="--w:62%;background:var(--amb)"></i></s>62%</div>
+        <div>الشؤون المالية<s><i style="--w:61%;background:var(--amb)"></i></s>61%</div>
+        <div>التنمية والتطوير<s><i style="--w:37%;background:var(--red)"></i></s>37%</div>
       </div></div>
+    <div style="text-align:center"><a class="pk-cta pk-rv" href="#app" data-enter="app" data-login="HailLeader|Leader@2026" data-view="prince" style="margin-top:22px">افتح لوحة سمو الأمير</a></div>
   </div>
 </section>
 
-<!-- 10 tech -->
-<section class="pk-slide" data-globe="deep">
-  <div class="pk-wrap">
-    <div class="pk-kick pk-rv">البنية والأمان</div>
-    <h2 class="pk-rv">جاهزة للتشغيل اليوم، وقابلة للتكامل غداً</h2>
-    <div class="pk-grid pk-g3">
-      <div class="pk-card pk-rv"><div class="pk-ic">🗄️</div><h3>قاعدة بيانات مُدارة</h3><p>PostgreSQL مع صلاحيات على مستوى الصف: كل دور يرى ما يحق له فقط، والقاعدة نفسها تفرض ذلك.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">🔑</div><h3>حسابات وصلاحيات</h3><p>إدارة تنشئ حسابات ضباط الاتصال وتربط كل حساب بجهته، وتعطّله متى شاءت.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">📎</div><h3>مرفقات محمية</h3><p>صور الإثبات وملفات PDF في مخزن خاص، لا تُفتح إلا لموظفي الإمارة بروابط مؤقتة.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">🧾</div><h3>سجل تدقيق</h3><p>كل دخول، وتصنيف، وإحالة، واطلاع على ملف سري مسجّل بالاسم والوقت.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">📱</div><h3>تعمل على كل جهاز</h3><p>واجهة عربية بهوية البوابات الحكومية، على الجوال والحاسب دون تثبيت.</p></div>
-      <div class="pk-card pk-rv"><div class="pk-ic">🔗</div><h3>تكامل لاحق</h3><p>الدخول بالنفاذ الوطني، والتحقق الآلي من أرقام تذاكر الجهات عبر أنظمتها.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 11 roadmap -->
-<section class="pk-slide" data-globe="deep">
-  <div class="pk-wrap">
-    <div class="pk-kick pk-rv">خطة الإطلاق</div>
-    <h2 class="pk-rv">نبدأ صغاراً، ونقيس، ثم نعمّم</h2>
-    <div class="pk-grid pk-g3">
-      <div class="pk-phase pk-rv"><em>المرحلة الأولى · 30 يوماً</em><b>تجربة محدودة</b><ul><li>ثلاث جهات عالية الطلب</li><li>تدريب ضباط الاتصال</li><li>اعتماد ميثاق التصنيف</li></ul></div>
-      <div class="pk-phase pk-rv"><em>المرحلة الثانية · 60 يوماً</em><b>جميع جهات المنطقة</b><ul><li>ضابط اتصال لكل جهة</li><li>تقرير شهري لسمو الأمير</li><li>متابعة التوجيهات</li></ul></div>
-      <div class="pk-phase pk-rv"><em>المرحلة الثالثة</em><b>التكامل</b><ul><li>الدخول بالنفاذ الوطني</li><li>ربط أنظمة شكاوى الجهات</li><li>إشعارات نصية للمواطن</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- 12 end -->
-<section class="pk-slide" data-globe="hq">
+<!-- end -->
+<section class="pk-slide" data-globe="hq" data-part="">
   <div class="pk-cover">
-    <img class="pk-rv" data-logo="gold" src="data:," alt="" style="width:min(170px,40vw)">
-    <h1 class="pk-rv" style="font-size:clamp(34px,5.5vw,64px)">المنصة جاهزة للتجربة</h1>
-    <p class="pk-rv">ارفع طلباً كمواطن، ثم ادخل بحساب مكتب الفرز وضابط الاتصال، وشاهد كيف يصل إلى مركز القيادة.</p>
-    <a class="pk-cta pk-rv" href="#app" data-enter="app">زيارة المنصة</a>
+    <img class="pk-rv" data-logo="gold" src="data:," alt="" style="width:min(150px,36vw)">
+    <h1 class="pk-rv" style="font-size:clamp(32px,5vw,58px)">النظام جاهز للتجربة</h1>
+    <div class="pk-phases pk-rv"><span><b>٣٠ يوماً</b>مكتب الوكيل وإدارتان</span><span><b>٦٠ يوماً</b>كل الإدارات وصوت حائل</span><span><b>بعدها</b>النفاذ الوطني والربط والبصمة</span></div>
+    <a class="pk-cta pk-rv" href="#app" data-enter="app">زيارة النظام</a>
     <a class="pk-cta2 pk-rv" href="#app" data-enter="intro">أو ابدأ برحلة الوصول من الفضاء</a>
+    <div class="pk-team pk-rv"><span><small>صاحبة الفكرة</small>تهاني الشمري</span><span><small>فريق العمل</small>مشاري الجميل · سليمان الخطيب</span></div>
   </div>
 </section>
 
@@ -706,7 +961,7 @@ tr:hover td{background:#FAFCFB}
   <button id="p_next" aria-label="التالي">←</button>
 </nav>
 <div class="pk-fade"></div>
-<div class="pk-credit">تم تطوير هذه المنصة بواسطة سليمان الخطيب <span>0559965929</span></div>
+<div class="pk-credit">صاحبة الفكرة: تهاني الشمري · فريق العمل: مشاري الجميل وسليمان الخطيب</div>
 
 </div>
 <script>window.__fillLogos&&__fillLogos()</script>
@@ -762,19 +1017,23 @@ function addPin(){if(pin||!map)return;const el=document.createElement('div');el.
 /* journey */
 const ST=[['📝','ترفع طلبك','يختار المواطن الجهة والموضوع والمحافظة، ويذكر إن كان قد رفعه للجهة سابقاً مع الإثبات، ويختار حجب هويته إن أراد.'],
  ['🏛️','الإمارة تصنّفه','يقترح المحرك درجة السرية مع أسبابها، ويعتمدها مصنِّف معتمد مع الأولوية والمهلة: يومان للعاجل، وخمسة للعالي، وعشرة للعادي.'],
- ['📤','يُحال أو يُوجَّه','إلى ضابط اتصال الجهة، أو إلى وحدة الرقابة إن كان سرياً، أو يُوجَّه المواطن لقناة الجهة أولاً مع رابطها الصحيح.'],
- ['⏱️','تعالجه الجهة','ضابط الاتصال يرى تذاكر جهته فقط، ويرد بما تم فعلياً على أرض الواقع، والعداد يحسب المهلة لحظة بلحظة.'],
+ ['📤','يُحال أو يُوجَّه','إلى مسؤول جهة الجهة، أو إلى وحدة الرقابة إن كان سرياً، أو يُوجَّه المواطن لقناة الجهة أولاً مع رابطها الصحيح.'],
+ ['⏱️','تعالجه الجهة','مسؤول الجهة يرى تذاكر جهته فقط، ويرد بما تم فعلياً على أرض الواقع، والعداد يحسب المهلة لحظة بلحظة.'],
  ['✅','المواطن يؤكد','لا يُغلق الطلب إلا بتأكيد المواطن. وإن نفى الحل، يعود للإمارة مصعَّداً ويُحتسب على الجهة «إغلاقاً شكلياً».'],
  ['📊','يصل لسمو الأمير','كل طلب يغذي مؤشرات الجهة والمحافظة في مركز القيادة، ومنه تصدر التوجيهات مباشرة إلى بوابة الجهة.']];
 let si=0;
-function drawSteps(){$('#p_steps').innerHTML=ST.map((s,i)=>`<button class="pk-st ${i===si?'on':''}" data-st="${i}"><i>${i+1}</i><b>${s[1]}</b></button>`).join('');
+function drawSteps(){if(!$('#p_steps'))return;$('#p_steps').innerHTML=ST.map((s,i)=>`<button class="pk-st ${i===si?'on':''}" data-st="${i}"><i>${i+1}</i><b>${s[1]}</b></button>`).join('');
   $('#p_detail').innerHTML=`<div class="pk-card"><div class="pk-big">${ST[si][0]}</div><div><h3>${ST[si][1]}</h3><p style="font-size:15px">${ST[si][2]}</p></div></div>`}
 drawSteps();
-$('#p_steps').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;si=+b.dataset.st;drawSteps()});
+$('#p_steps')&&$('#p_steps').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;si=+b.dataset.st;drawSteps()});
 
 /* deck */
 const slides=[...document.querySelectorAll('.pk-slide')];let cur=-1;
-$('#p_dots').innerHTML=slides.map((_,i)=>`<i data-i="${i}" title="${i+1}"></i>`).join('');
+document.querySelectorAll('[data-story]').forEach(root=>{const steps=[...root.querySelectorAll('[data-si]')],panels=[...root.querySelectorAll('[data-sp]')];let k=0,timer=null;
+  const set=i=>{k=i;steps.forEach((x,j)=>{x.classList.toggle('on',j===i);x.classList.toggle('done',j<i)});panels.forEach((x,j)=>x.classList.toggle('on',j===i));const a=steps[i];if(a&&a.parentElement.scrollWidth>a.parentElement.clientWidth)a.scrollIntoView({block:'nearest',inline:'center'})};
+  root._play=()=>{clearInterval(timer);set(0);timer=setInterval(()=>{if(k<steps.length-1)set(k+1);else clearInterval(timer)},+root.dataset.story||2700)};
+  root._stop=()=>clearInterval(timer);steps.forEach((x,j)=>x.addEventListener('click',e=>{e.stopPropagation();clearInterval(timer);set(j)}));set(0)});
+$('#p_dots').innerHTML=slides.map((sl,i)=>`<i data-i="${i}" title="${i+1}" class="${sl.dataset.part==='in'?'pi':sl.dataset.part==='out'?'po':''}"></i>`).join('');
 function countUp(root){root.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,t0=performance.now(),sm=el.querySelector('small');const sh=sm?sm.outerHTML:'';
   (function f(t){const p=Math.min(1,(t-t0)/1400),v=Math.round(to*(1-Math.pow(1-p,3)));el.innerHTML=v+sh;if(p<1)requestAnimationFrame(f)})(t0)})}
 function show(n){
@@ -783,15 +1042,17 @@ function show(n){
   document.querySelectorAll('#p_dots i').forEach((d,i)=>d.classList.toggle('on',i===n));
   $('#p_count').textContent=(n+1)+' من '+slides.length;$('#p_prog').style.width=((n+1)/slides.length*100)+'%';
   globeTo(slides[n].dataset.globe||'deep');countUp(slides[n]);
+  document.querySelectorAll('[data-story]').forEach(r=>r._stop&&r._stop());slides[n].querySelectorAll('[data-story]').forEach(r=>setTimeout(()=>r._play(),500));
+  const pt=slides[n].dataset.part||'';const pc=$('#partchip');pc.classList.toggle('hide',!pt);pc.querySelectorAll('span').forEach(x=>{const on=pt==='both'||x.dataset.p===pt;x.classList.toggle('on',on);x.classList.toggle('o',x.dataset.p==='out')});
   if(history.replaceState)history.replaceState(null,'','#p'+(n+1));
 }
 window.__exitPitch=()=>{if(!PON)return;PON=false;try{map&&map.remove()}catch(e){}PITCH.style.transition='opacity .6s';PITCH.style.opacity='0';setTimeout(()=>{PITCH.remove();document.body.classList.remove('pitching')},650);if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#app');(window.__startPlatform?window.__startPlatform():window.__wantPlatform=true)};
-PITCH.addEventListener('click',e=>{const a=e.target.closest('[data-enter]');if(!a)return;e.preventDefault();if(a.dataset.enter==='intro'){window.__wantIntro=true}window.__exitPitch()});
+PITCH.addEventListener('click',e=>{const a=e.target.closest('[data-enter]');if(!a)return;e.preventDefault();if(a.dataset.enter==='intro'){window.__wantIntro=true}if(a.dataset.login||a.dataset.view){window.__demo={login:a.dataset.login||'',view:a.dataset.view||''}}window.__exitPitch()});
 $('#p_next').onclick=()=>show(cur+1);$('#p_prev').onclick=()=>show(cur-1);
 $('#p_dots').onclick=e=>{const d=e.target.closest('[data-i]');if(d)show(+d.dataset.i)};
 addEventListener('keydown',e=>{if(!PON)return;if(['ArrowLeft','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();show(cur+1)}else if(['ArrowRight','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(cur-1)}else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1)});
 let tx=null,ty=null;
-addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchstart',e=>{if(e.target.closest&&e.target.closest('[data-story] [data-si]')){tx=null;return}tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',e=>{if(!PON||tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(cur+(dx>0?1:-1));tx=null},{passive:true});
 document.addEventListener('click',e=>{if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;if(e.target.closest('a,button,.pk-st,.pk-nav'))return;if(e.clientX<innerWidth*.33)show(cur+1)});
 const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-1);
@@ -815,8 +1076,8 @@ const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-
     <img class="lg-cal" data-logo="gold" src="data:," alt="إمارة منطقة حائل">
   </div>
   <div class="intro-title">
-    <h1>منصّة صَوت حائل</h1>
-    <p>بوابة إمارة منطقة حائل لحوكمة البلاغات والمقترحات ومتابعة أداء الجهات الحكومية</p>
+    <h1>نظام الحوكمة الرقمية</h1>
+    <p>النظام الذكي لإمارة منطقة حائل: المعاملات والبرقيات، ومكتب الوكيل، والموارد البشرية، وصوت المواطن</p>
   </div>
   <div class="intro-cta">
     <button class="ibtn pri" id="goFly">الانطلاق إلى حائل</button>
@@ -837,9 +1098,9 @@ const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-
 
 <!-- APP -->
 <div id="app">
-  <div class="gov-strip"><div class="in"><span class="flag"><i></i>منصة صوت حائل · تابعة لإمارة منطقة حائل</span><span id="clock"></span></div></div>
+  <div class="gov-strip"><div class="in"><span class="flag"><i></i>نظام الحوكمة الرقمية الذكي · إمارة منطقة حائل</span><span id="clock"></span></div></div>
   <header class="topbar"><div class="in">
-    <div class="lg" data-go="hub"><img data-logo="green" src="data:," alt="إمارة منطقة حائل"><span class="sep"></span><div class="brand"><b>صوت حائل</b><span>البلاغات والمقترحات ومتابعة الجهات</span></div></div>
+    <div class="lg" data-go="hub"><img data-logo="green" src="data:," alt="إمارة منطقة حائل"><span class="sep"></span><div class="brand"><b>الحوكمة الرقمية</b><span>إمارة منطقة حائل</span></div></div>
     <nav class="nav" id="nav">
       <button data-go="hub" data-nav="hub">الرئيسية</button>
       <button data-go="citizen" data-tab="new" data-nav="new">رفع طلب</button>
@@ -847,6 +1108,7 @@ const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-
       <button data-go="citizen" data-tab="ideas" data-nav="ideas">مقترحات المواطنين</button>
       <button data-act="charter">ميثاق التصنيف</button>
       <button data-act="staff" data-nav="staff">بوابات الموظفين</button>
+      <button data-go="ws" data-nav="ws" id="navWs" hidden>مساحة العمل</button>
       <button data-go="admin" data-nav="admin" id="navAdmin" hidden>الإدارة</button>
     </nav>
     <div class="row" id="authBox" style="gap:8px;flex-wrap:nowrap"></div>
@@ -856,12 +1118,12 @@ const h=parseInt((location.hash.match(/^#p(\d+)/)||[])[1],10);show(isNaN(h)?0:h-
   <main id="view"></main>
   <footer class="footer">
     <div class="in">
-      <div><img data-logo="gold" src="data:," alt=""><p style="margin-top:12px;max-width:26em">منصة تربط أهالي منطقة حائل بإمارة المنطقة، لرفع الشكاوى والبلاغات والمقترحات بشأن الجهات الحكومية ومتابعتها حتى الحل.</p></div>
+      <div><img data-logo="gold" src="data:," alt=""><p style="margin-top:12px;max-width:26em">نظام ذكي يربط إدارات الإمارة ببعضها وبسمو الأمير والوكلاء، ويربط أهالي المنطقة بالإمارة عبر «صوت حائل» لرفع الشكاوى والمقترحات ومتابعتها حتى الحل.</p></div>
       <div><h4>للمواطن</h4><ul><li><a data-go="citizen" data-tab="new">رفع طلب جديد</a></li><li><a data-go="citizen" data-tab="mine">متابعة طلباتي</a></li><li><a data-go="citizen" data-tab="ideas">مقترحات المواطنين</a></li></ul></div>
       <div><h4>للموظفين</h4><ul><li><a data-go="triage">مكتب الفرز والتصنيف</a></li><li><a data-go="entity">بوابة الجهات الحكومية</a></li><li><a data-go="prince">مركز القيادة</a></li><li><a data-go="admin">إدارة المنصة</a></li></ul></div>
-      <div><h4>الحوكمة</h4><ul><li><a data-act="charter">ميثاق التصنيف والصلاحيات</a></li><li><a data-go="triage" data-tab="audit">سجل التدقيق</a></li><li><a data-act="login">دخول الموظفين</a></li><li><a href="?#p1" onclick="location.href=location.pathname;return false">العرض التعريفي</a></li></ul></div>
+      <div><h4>الحوكمة</h4><ul><li><a data-act="charter">ميثاق التصنيف والصلاحيات</a></li><li><a data-go="triage" data-tab="audit">سجل التدقيق</a></li><li><a data-act="login">تسجيل الدخول</a></li><li><a href="?#p1" onclick="location.href=location.pathname;return false">العرض التعريفي</a></li></ul></div>
     </div>
-    <div class="bot"><span style="direction:rtl">© إمارة منطقة حائل — منصة صوت حائل</span><span style="direction:rtl">تم تطوير هذه المنصة بواسطة سليمان الخطيب <span>0559965929</span></span></div>
+    <div class="bot"><span style="direction:rtl">© إمارة منطقة حائل — نظام الحوكمة الرقمية الذكي</span><span style="direction:rtl">صاحبة الفكرة: تهاني الشمري · فريق العمل: مشاري الجميل وسليمان الخطيب</span></div>
   </footer>
 </div>
 
@@ -996,6 +1258,22 @@ function seedData(){
   for(let i=0;i<64;i++){const ent=pickW(EW),s=pick(TPL[ent]),c=now-rnd()*150*DAY;const r=pick([REDIR[0],REDIR[0],REDIR[0],REDIR[1],REDIR[2]]);
     const tt=mk({type:'complaint',ent,cat:s[0],title:s[1],desc:s[1]+'.',gov:pickW(GOV),citizen:{name:pick(NAMES)+' '+pick(FAM),nid:'1•••••••'+Math.floor(rnd()*90+10)},level:null,priority:'normal',slaDays:10,created:c,status:'redirected',route:'entity',prior:{done:false},redirect:{reason:r,ts:c+DAY*.4},hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.4,t:'وُجّه المواطن لرفع طلبه للجهة مباشرة'}]});
     if(rnd()<.3){tt.status='closed';tt.closedAt=c+DAY*5;tt.hist.push({ts:tt.closedAt,t:'أُغلق — لم يُصعَّد من المواطن خلال المهلة'})}}
+  // my tickets
+  const my=(o)=>mk(Object.assign({mine:true,citizen:ME,hideId:false,sensitive:false,gov:'حائل',route:'entity'},o));
+  let c=now-12*DAY;
+  my({prior:{done:true,ref:'NWC-338120',date:c-11*DAY,channel:'القناة الرسمية للجهة',files:[{name:'صورة-تذكرة-المياه.jpg',type:'x'}],verified:true},type:'complaint',ent:'water',cat:'انقطاع أو ضعف خدمة',title:'انقطاع المياه المتكرر في حي الوسيطاء',desc:'تنقطع المياه عن منزلنا في حي الوسيطاء بشكل متكرر منذ أسبوعين وتعود لساعات قليلة فقط.',level:'public',priority:'high',slaDays:5,created:c,assignedAt:c+DAY*.3,respondedAt:now-DAY*.5,status:'responded',entityResponse:'تم استبدال المحبس الرئيسي المغذي للحي وإعادة ضبط ضغط الشبكة. نأمل تأكيد استقرار الخدمة.',
+     hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.3,t:'تصنيف «عام» وإحالة إلى شركة المياه الوطنية – حائل'},{ts:c+DAY*2,t:'الجهة: جاري المعالجة ميدانياً'},{ts:now-DAY*.5,t:'ردّ الجهة: تمت المعالجة'}]});
+  c=now-4*DAY;
+  my({type:'complaint',ent:'amana',cat:'بنية تحتية وطرق',title:'حفرة كبيرة في طريق المدارس بحي صبابة',desc:'توجد حفرة عميقة في الطريق المؤدي لمدارس البنات وتشكل خطراً على المركبات.',level:'public',priority:'high',slaDays:5,created:c,assignedAt:c+DAY*.2,status:'progress',
+     hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.2,t:'تصنيف «عام» وإحالة إلى أمانة منطقة حائل'},{ts:c+DAY*1.5,t:'الجهة: تم تكليف فريق الصيانة'}]});
+  c=now-40*DAY;
+  my({type:'complaint',ent:'health',cat:'خدمات صحية',title:'تأخر موعد العيادة الجلدية',desc:'موعد العيادة بعد أربعة أشهر.',level:'restricted',sensitive:true,priority:'normal',slaDays:10,created:c,assignedAt:c+DAY*.4,respondedAt:c+DAY*6,closedAt:c+DAY*7,status:'closed',citizenConfirm:true,rating:5,entityResponse:'تم تقديم الموعد إلى الأسبوع القادم عبر العيادات المسائية.',
+     hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.4,t:'تصنيف «مقيّد» وإحالة إلى تجمع حائل الصحي'},{ts:c+DAY*6,t:'ردّ الجهة: تمت المعالجة'},{ts:c+DAY*7,t:'أكد المواطن حل المشكلة وأُغلق البلاغ'}]});
+  c=now-3*DAY;
+  my({type:'complaint',ent:'amana',cat:'نظافة وتشوه بصري',title:'تراكم مخلفات بناء في أرض فضاء بحي النقرة',desc:'أرض فضاء بجوار منزلنا تُرمى فيها مخلفات البناء منذ شهر.',level:null,priority:'normal',slaDays:10,created:c,status:'redirected',prior:{done:false},redirect:{reason:REDIR[0],ts:c+DAY*.3},
+     hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'},{ts:c+DAY*.3,t:'وُجّه المواطن لرفع طلبه للجهة مباشرة'}]});
+  c=now-DAY*.2;
+  my({type:'inquiry',ent:'hrsd',cat:'تأخر في إنجاز معاملة',title:'استفسار عن موعد صرف دعم الأسر المنتجة',desc:'تقدمت بطلب الدعم قبل ثلاثة أشهر ولم يصلني رد.',level:null,priority:'normal',slaDays:10,created:c,status:'triage',hist:[{ts:c,t:'استلام البلاغ عبر بوابة الإمارة'}]});
   return T;
 }
 const DB={tickets:[],audit:[],directives:[]};
@@ -1095,7 +1373,7 @@ let entered=false;
 function enterApp(){
   if(entered)return;entered=true;
   $('#hud').classList.remove('on');$('#intro').classList.add('gone');
-  $('#app').classList.add('on');document.body.classList.remove('dark');document.documentElement.classList.remove('dark');setTimeout(()=>{$('#globe').style.display='none';$('#stars').style.display='none';if(gmap){gmap.remove();gmap=null}},900);tick();go('hub');
+  $('#app').classList.add('on');document.body.classList.remove('dark');document.documentElement.classList.remove('dark');setTimeout(()=>{$('#globe').style.display='none';$('#stars').style.display='none';if(gmap){gmap.remove();gmap=null}},900);tick();go('hub');setTimeout(()=>window.__runDemo&&__runDemo(),450);
 }
 $('#goFly').onclick=fly;$('#skip').onclick=()=>{flown=true;spinOn=false;if(gmap){gmap.jumpTo({center:HQ,zoom:15.5,pitch:55,bearing:-20});$('#globe').classList.add('on')}enterApp()};
 addEventListener('keydown',e=>{if(e.code==='Space'&&!flown){e.preventDefault();fly()}});
@@ -1103,11 +1381,13 @@ addEventListener('keydown',e=>{if(e.code==='Space'&&!flown){e.preventDefault();f
 /* ================= BACKEND ================= */
 const sb=window.supabase&&window.supabase.createClient?window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:true,autoRefreshToken:true,storageKey:'hv-auth'}}):null;
 let PROFILE=null,PUB={stats:{total:0,closed:0,open:0,entities:0},sugg:[]},MY=[];
-const ROLE_N={admin:'مدير المنصة',triage:'مكتب الفرز',focal:'ضابط اتصال',prince:'مركز القيادة'};
-const ACCESS={triage:['admin','triage'],entity:['admin','focal'],prince:['admin','prince'],admin:['admin']};
+const ROLE_N={admin:'ممثل الإمارة (مشرف)',prince:'سمو الأمير',deputy:'وكيل الإمارة',manager:'مدير إدارة',employee:'موظف',triage:'فريق الإمارة (الشكاوى)',focal:'مسؤول جهة',citizen:'مواطن'};
+const UDOM='@hailvoice.local';
+const toEmail=u=>(u=(u||'').trim()).includes('@')?u:u.toLowerCase()+UDOM;
+const ACCESS={triage:['admin','triage'],entity:['admin','focal'],prince:['admin','prince','deputy'],admin:['admin'],ws:['admin','prince','deputy','manager','employee','triage']};
 const myCodes=()=>store.get('hv_my',[]);
 const addCode=(id,code)=>{const a=myCodes().filter(x=>x.id!==id);a.unshift({id,code});store.set('hv_my',a.slice(0,40))};
-const codeOf=id=>(myCodes().find(x=>x.id===id)||{}).code;
+const codeOf=id=>(myCodes().find(x=>x.id===id)||MY.find(x=>x.id===id)||{}).code||'';
 const rowToT=r=>Object.assign({},r.data||{},{id:r.id,type:r.type,ent:r.entity_key,status:r.status,level:r.level,route:r.route,demo:r.demo});
 function tToRow(t){const {id,type,ent,status,level,route,demo,code,mine,masked,classified,...data}=t;return{id,type,entity_key:ent,status,level:level||null,route:route||'entity',data}}
 const errMsg=e=>(e&&(e.message||e.error_description))||'خطأ غير معروف';
@@ -1121,6 +1401,7 @@ async function loadEntities(){
 async function loadProfile(){
   PROFILE=null;if(!sb)return renderAuth();
   try{const{data:{session}}=await sb.auth.getSession();if(session){const{data}=await sb.from('profiles').select('*').eq('id',session.user.id).maybeSingle();PROFILE=data||{id:session.user.id,email:session.user.email,role:null}}}catch(e){}
+  if(PROFILE&&PROFILE.role==='citizen'){ME={name:PROFILE.full_name||'',nid:PROFILE.nid||'',phone:PROFILE.phone||''}}
   renderAuth();
 }
 async function loadAll(){
@@ -1131,16 +1412,17 @@ async function loadAll(){
 async function loadDirectives(){try{const{data}=await sb.from('directives').select('*').order('created_at',{ascending:false}).limit(100);DB.directives=(data||[]).map(d=>({id:d.id,ent:d.entity_key,txt:d.txt,ts:new Date(d.created_at).getTime(),due:d.due?new Date(d.due).getTime():null}))}catch(e){DB.directives=[]}}
 async function loadAudit(){try{const{data}=await sb.from('audit').select('*').order('ts',{ascending:false}).limit(300);DB.audit=(data||[]).map(a=>({ts:new Date(a.ts).getTime(),actor:a.actor,action:a.action,id:a.ticket_id}))}catch(e){DB.audit=[]}}
 async function loadPublic(){need();const[s,g]=await Promise.all([sb.rpc('public_stats'),sb.rpc('public_suggestions')]);if(s.data)PUB.stats=s.data;PUB.sugg=(g.data||[]).map(x=>({...x,type:'suggestion'}))}
-async function loadMine(){need();const cs=myCodes();const res=await Promise.all(cs.map(c=>sb.rpc('track_ticket',{p_id:c.id,p_code:c.code})));MY=res.map(r=>r.data).filter(Boolean).map(t=>({...t,mine:true}))}
+async function loadMine(){need();const cs=myCodes();const res=await Promise.all(cs.map(c=>sb.rpc('track_ticket',{p_id:c.id,p_code:c.code})));MY=res.map(r=>r.data).filter(Boolean).map(t=>({...t,mine:true}));
+  if(PROFILE&&PROFILE.role==='citizen'){const{data}=await sb.rpc('my_tickets');(data||[]).forEach(t=>{if(!MY.some(x=>x.id===t.id))MY.push({...t,mine:true})})}}
 function audit(actor,action,id){DB.audit.unshift({ts:NOW(),actor:(PROFILE&&(PROFILE.full_name||PROFILE.email))||actor,action,id});if(sb&&PROFILE&&PROFILE.role)sb.rpc('log_audit',{p_action:action,p_ticket:id||null}).then(()=>{},()=>{})}
 const T=()=>DB.tickets;
 const findT=id=>(VIEW==='citizen'?(MY.find(x=>x.id===id)||PUB.sugg.find(x=>x.id===id)):null)||T().find(x=>x.id===id)||MY.find(x=>x.id===id)||PUB.sugg.find(x=>x.id===id);
-const who=()=>(PROFILE&&(PROFILE.full_name||PROFILE.email))||'';
+const who=()=>(PROFILE&&(PROFILE.full_name||PROFILE.username||PROFILE.email))||'';
 function renderAuth(){
   const b=$('#authBox');if(!b)return;
-  b.innerHTML=PROFILE?`<span class="chip"><b>${esc(PROFILE.full_name||PROFILE.email)}</b> · ${PROFILE.role?ROLE_N[PROFILE.role]:'بانتظار الصلاحية'}${PROFILE.role==='focal'&&ENT[PROFILE.entity_key]?' · '+esc(ENT[PROFILE.entity_key].n.split('–')[0]):''}</span><button class="btn sm" data-act="logout">خروج</button>`
-    :`<button class="btn sm" data-act="login">دخول الموظفين</button>`;
-  const na=$('#navAdmin');if(na)na.hidden=!(PROFILE&&PROFILE.role==='admin');const ns=document.querySelector('#nav [data-nav=staff]');if(ns)ns.hidden=!!PROFILE;
+  b.innerHTML=PROFILE?`<span class="chip"><b>${esc(PROFILE.full_name||PROFILE.username||'')}</b> · ${PROFILE.role?ROLE_N[PROFILE.role]:'بانتظار الصلاحية'}${PROFILE.role==='focal'&&ENT[PROFILE.entity_key]?' · '+esc(ENT[PROFILE.entity_key].n.split('–')[0]):''}</span><button class="btn sm" data-act="logout">خروج</button>`
+    :`<button class="btn sm" data-act="login">تسجيل الدخول</button>`;
+  const na=$('#navAdmin');if(na)na.hidden=!(PROFILE&&PROFILE.role==='admin');const ns=document.querySelector('#nav [data-nav=staff]');if(ns)ns.hidden=!!PROFILE;const nw=$('#navWs');if(nw)nw.hidden=!(PROFILE&&ACCESS.ws.includes(PROFILE.role));
 }
 async function uploadFiles(list){
   const out=[];for(const f of list){const o={name:f.name,type:f.type,size:f.size};
@@ -1149,28 +1431,28 @@ async function uploadFiles(list){
     out.push(o)}return out;
 }
 function loginModal(target,msg){
-  modal(`<div style="max-width:420px;margin:0 auto"><div class="verify" style="padding:10px 0 4px"><img src="${LOGOG}" style="width:96px"><div class="h2">دخول الموظفين</div><p class="mut" style="font-size:13.5px">لموظفي الإمارة وضباط الاتصال في الجهات الحكومية.</p></div>
+  modal(`<div style="max-width:420px;margin:0 auto"><div class="verify" style="padding:10px 0 4px"><img src="${LOGOG}" style="width:96px"><div class="h2">تسجيل الدخول</div><p class="mut" style="font-size:13.5px">للمواطنين، وفريق الإمارة، ومسؤولي الجهات الحكومية.</p></div>
    ${msg?`<div class="reason" style="margin-bottom:12px">${msg}</div>`:''}
-   <label class="f">البريد الإلكتروني</label><input class="inp" id="lgE" type="email" dir="ltr" autocomplete="username">
+   <label class="f">اسم المستخدم</label><input class="inp" id="lgE" type="text" dir="ltr" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false">
    <label class="f" style="margin-top:12px">كلمة المرور</label><input class="inp" id="lgP" type="password" dir="ltr" autocomplete="current-password">
    <div class="row" style="margin-top:18px;justify-content:space-between"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-act="doLogin" data-target="${target||''}">دخول</button></div></div>`);
   setTimeout(()=>{const e=$('#lgE');if(e)e.focus()},50);
   $('#lgP').addEventListener('keydown',e=>{if(e.key==='Enter')document.querySelector('[data-act=doLogin]').click()});
 }
-const defaultView=r=>({admin:'admin',triage:'triage',focal:'entity',prince:'prince'})[r]||'hub';
+const defaultView=r=>({admin:'ws',triage:'ws',focal:'entity',prince:'prince',deputy:'prince',manager:'ws',employee:'ws',citizen:'citizen'})[r]||'hub';
 
 /* ================= ROUTER ================= */
 let VIEW='hub',STATE={};
 const charts=[];let ccMap=null,liveT=null,heroMap=null;
 function cleanup(){charts.splice(0).forEach(c=>c.destroy());if(ccMap){ccMap.remove();ccMap=null}if(heroMap){heroMap.remove();heroMap=null}clearInterval(liveT)}
-const VIEWS=()=>({hub:rHub,citizen:rCitizen,triage:rTriage,entity:rEntity,prince:rPrince,admin:rAdmin});
+const VIEWS=()=>({hub:rHub,citizen:rCitizen,triage:rTriage,entity:rEntity,prince:rPrinceWrap,admin:rAdmin,ws:rWs});
 const loading=()=>{$('#view').innerHTML='<div class="verify" style="padding:90px 10px"><div class="spin"></div><p class="mut">جارٍ تحميل البيانات…</p></div>'};
 async function go(v,st){
   if(ACCESS[v]&&!(PROFILE&&ACCESS[v].includes(PROFILE.role))){
     loginModal(v,PROFILE?(PROFILE.role?'حسابك لا يملك صلاحية الدخول لهذه الواجهة.':'حسابك بانتظار تعيين الصلاحية من إدارة المنصة.'):'');return}
   cleanup();VIEW=v;STATE=Object.assign({},st||{});
-  const names={hub:'الرئيسية',citizen:'بوابة المواطن',triage:'مكتب الفرز والتصنيف',entity:'بوابة الجهات الحكومية',prince:'مركز القيادة',admin:'إدارة المنصة'};
-  const navKey=v==='hub'?'hub':v==='citizen'?(STATE.tab||'new'):v==='admin'?'admin':'staff';
+  const names={hub:'الرئيسية',citizen:'بوابة المواطن',triage:'مكتب الفرز والتصنيف',entity:'بوابة الجهات الحكومية',prince:'مركز القيادة',admin:'إدارة المنصة',ws:'مساحة العمل'};
+  const navKey=v==='hub'?'hub':v==='citizen'?(STATE.tab||'new'):v==='admin'?'admin':v==='ws'?'ws':'staff';
   document.querySelectorAll('#nav [data-nav]').forEach(b=>b.classList.toggle('on',b.dataset.nav===navKey&&v!=='prince'));
   $('#crumb').innerHTML=v==='hub'||v==='prince'?'':`<a data-go="hub">الرئيسية</a> / ${names[v]}`;
   $('#crumb').style.display=v==='hub'||v==='prince'?'none':'block';
@@ -1183,6 +1465,8 @@ async function go(v,st){
 async function ensureData(v){
   if(v==='hub')return loadPublic();
   if(v==='citizen'){const tab=STATE.tab||'new';if(tab==='mine')return loadMine();if(tab==='ideas')return loadPublic();return}
+  if(v==='ws')return govLoad();
+  if(v==='prince'){await Promise.all([loadAll(),loadDirectives(),loadAudit(),govLoad()]);return}
   if(v==='entity'&&PROFILE.role==='focal'){need();const{data,error}=await sb.rpc('focal_tickets');if(error)throw error;DB.tickets=(data||[]);await loadDirectives();return}
   await Promise.all([loadAll(),loadDirectives(),loadAudit()]);
 }
@@ -1223,14 +1507,14 @@ function rHub(){
     <div><em>1</em><b>ترفع طلبك</b><p>تختار الجهة والموضوع، وتذكر إن كنت رفعته للجهة سابقاً.</p></div>
     <div><em>2</em><b>الإمارة تصنّفه</b><p>مصنِّف معتمد يحدد درجة السرية والأولوية والمهلة.</p></div>
     <div><em>3</em><b>يُحال أو يُوجَّه</b><p>للجهة المختصة، أو لوحدة الرقابة، أو يوجهك لقناة الجهة أولاً.</p></div>
-    <div><em>4</em><b>تعالجه الجهة</b><p>ضابط الاتصال يرد ضمن مهلة من يومين إلى عشرة أيام.</p></div>
+    <div><em>4</em><b>تعالجه الجهة</b><p>مسؤول الجهة يرد ضمن مهلة من يومين إلى عشرة أيام.</p></div>
     <div><em>5</em><b>تؤكد الحل</b><p>إن لم يُحل فعلاً يعود للإمارة مصعَّداً.</p></div>
     <div><em>6</em><b>يصل لسمو الأمير</b><p>مؤشرات أداء كل جهة ومحافظة في لوحة واحدة.</p></div>
   </div>
   <div class="sec-h" id="staffSec"><div><h2>بوابات الإمارة والجهات</h2><p>دخول الموظفين المخوّلين وفق الصلاحيات.</p></div></div>
   <div class="staff">
     <div class="p" data-go="triage"><span class="lk">🔒 موظفو الإمارة</span><h3>مكتب الفرز والتصنيف</h3><p>اعتماد درجة السرية والأولوية ومسار الإحالة، بمساعدة اقتراح آلي يوضح أسبابه.</p><span class="go">دخول المكتب</span></div>
-    <div class="p" data-go="entity"><span class="lk">🔒 ضباط الاتصال</span><h3>بوابة الجهات الحكومية</h3><p>كل ضابط اتصال يرى ما أُحيل لجهته فقط، ويرد ضمن المهلة، ويستقبل توجيهات سمو الأمير.</p><span class="go">دخول البوابة</span></div>
+    <div class="p" data-go="entity"><span class="lk">🔒 مسؤولو الجهات</span><h3>بوابة الجهات الحكومية</h3><p>كل مسؤول جهة يرى ما أُحيل لجهته فقط، ويرد ضمن المهلة، ويستقبل توجيهات سمو الأمير.</p><span class="go">دخول البوابة</span></div>
     <div class="p prince" data-go="prince"><span class="lk">🔒 دخول مخصص</span><h3>مركز قيادة سمو الأمير</h3><p>أداء الجهات، وخريطة المحافظات، والإغلاق الشكلي، والملفات السرية، وإصدار التوجيهات.</p><span class="go">الدخول الآمن</span></div>
   </div>
   ${ideas.length?`<div class="sec-h"><div><h2>أبرز مقترحات الأهالي</h2><p>الأعلى تصويتاً.</p></div><button class="btn sm" data-go="citizen" data-tab="ideas">كل المقترحات</button></div>
@@ -1426,7 +1710,7 @@ function rEntity(){
   const m=metrics(mine);const dir=DB.directives.filter(d=>d.ent===ek);const done=mine.filter(t=>['responded','closed'].includes(t.status)).slice(0,30);
   const sel=STATE.sel||act[0]?.id;const t=act.find(x=>x.id===sel);
   $('#view').innerHTML=`
-  <div class="page-head"><div><div class="h2">${isF?esc(E.n):'بوابة الجهات الحكومية'}</div><p>${isF?'ضابط الاتصال: '+esc(who())+' · تصلك هنا الطلبات المحالة لجهتك فقط، دون الطلبات السرية':'عرض الإدارة · اختر الجهة لمعاينة ما يراه ضابط الاتصال'}</p></div>
+  <div class="page-head"><div><div class="h2">${isF?esc(E.n):'بوابة الجهات الحكومية'}</div><p>${isF?'مسؤول الجهة: '+esc(who())+' · تصلك هنا الطلبات المحالة لجهتك فقط، دون الطلبات السرية':'عرض الإدارة · اختر الجهة لمعاينة ما يراه مسؤول الجهة'}</p></div>
    <div class="row">${isF?'':`<select class="inp" id="entSel" style="width:auto;min-width:280px">${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${k===ek?'selected':''}>${v.n}</option>`).join('')}</select>`}<button class="btn sm" data-act="refresh">تحديث</button></div></div>
   ${dir.map(d=>`<div class="directive"><img src="${LOGOG}" alt=""><div><b style="color:var(--gold2)">توجيه من سمو أمير منطقة حائل</b> <span class="dim" style="font-size:12px">· ${hij.format(new Date(d.ts))}</span><p style="margin-top:4px;line-height:1.8">${esc(d.txt)}</p><p class="mut" style="font-size:12.5px">المهلة: ${hij.format(new Date(d.due))}</p></div></div>`).join('')}
   <div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
@@ -1468,7 +1752,7 @@ function kpi(l,v,d,good){return `<div class="glass kpi"><div class="l">${l}</div
 let princeAuthed=false,vaultOpen=false;
 function rPrince(){
   if(!princeAuthed){$('#view').innerHTML=`<div class="glass" style="max-width:520px;margin:60px auto"><div class="verify"><img src="${LOGOG}" style="width:120px"><div class="h2">الدخول الآمن لمركز القيادة</div><div class="spin"></div><p class="mut">التحقق متعدد العوامل · مطابقة الجهاز المعتمد · تشفير الجلسة</p></div></div>`;
-    setTimeout(()=>{princeAuthed=true;audit(who(),'دخول مركز القيادة');if(VIEW==='prince')rPrince()},1700);return}
+    setTimeout(()=>{princeAuthed=true;audit(who(),'دخول مركز القيادة');if(VIEW==='prince')render()},1700);return}
   const all0=T().filter(t=>t.type!=='suggestion');
   if(!all0.length){$('#view').innerHTML=`<section class="cc-band"><div class="in"><div><h1><img src="${LOGO}" alt="">مركز قيادة سمو أمير منطقة حائل</h1><p>لا توجد طلبات في النظام بعد</p></div></div></section><div class="glass card" style="text-align:center;padding:50px 20px"><div class="h2" style="justify-content:center">اللوحة جاهزة وتنتظر أول الطلبات</div><p class="mut" style="margin-top:10px">ستظهر المؤشرات فور وصول طلبات المواطنين.${PROFILE.role==='admin'?' ولعرض تجريبي، حمّل البيانات التجريبية من صفحة الإدارة.':''}</p>${PROFILE.role==='admin'?'<button class="btn gold" style="margin-top:16px" data-go="admin" data-tab="data">صفحة الإدارة</button>':''}</div>`;return}
   const all=T().filter(t=>t.type!=='suggestion');const m=metrics(all);const now=NOW();
@@ -1603,6 +1887,473 @@ function charter(){
 }
 
 
+/* ================= GOVERNANCE MODULES ================= */
+const UNITS={};
+const UNITS0=[['emir','مكتب سمو أمير المنطقة'],['deputy','مكتب وكيل الإمارة'],['asst_sec','الوكيل المساعد للشؤون الأمنية'],['asst_dev','الوكيل المساعد للشؤون التنموية'],['rights','إدارة الحقوق العامة'],['security','إدارة الشؤون الأمنية'],['dev','إدارة التنمية والتطوير'],['admin_fin','إدارة الشؤون الإدارية والمالية'],['hr','إدارة الموارد البشرية'],['followup','إدارة المتابعة'],['comms','إدارة الاتصال المؤسسي'],['it','إدارة تقنية المعلومات'],['complaints','إدارة خدمة المواطنين والشكاوى']];
+UNITS0.forEach(([k,n],i)=>UNITS[k]={n,sort:i});
+const uN=k=>(UNITS[k]||{n:k||'—'}).n;
+const uShort=k=>uN(k).replace(/^إدارة /,'').replace('الوكيل المساعد للشؤون','وكيل').replace('مكتب ','');
+const KIND={in:'وارد',out:'صادر',internal:'داخلي',circular:'تعميم'};
+const TTYPE={letter:'خطاب',telegram:'برقية',transaction:'معاملة',memo:'مذكرة'};
+const PRIO={normal:'عادي',urgent:'عاجل',flash:'عاجل جداً'};
+const CONF={normal:'عادي',secret:'سري',topsecret:'سري للغاية'};
+const TXST={new:'جديدة',progress:'قيد الإجراء',done:'منجزة',archived:'محفوظة'};
+const SLAH={normal:72,urgent:24,flash:6};
+const HOUR=36e5;
+const GV={tx:[],meet:[],appt:[],att:[],leave:[],loaded:false};
+const isExec=()=>PROFILE&&['prince','deputy','admin'].includes(PROFILE.role);
+const isTop=()=>PROFILE&&['prince','deputy'].includes(PROFILE.role);
+const myUnit=()=>PROFILE&&PROFILE.unit_key;
+const prioB=p=>`<span class="bdg ${p==='flash'?'lv-topsecret':p==='urgent'?'lv-secret':'lv-none'}">${PRIO[p]}</span>`;
+const confB=c=>c==='normal'?'':`<span class="bdg ${c==='topsecret'?'lv-topsecret':'lv-secret'}">🔒 ${CONF[c]}</span>`;
+const txStB=s=>`<span class="bdg ${s==='done'?'lv-public':s==='archived'?'lv-none':s==='new'?'lv-restricted':'st-b'}">${TXST[s]}</span>`;
+const dur=h=>h==null?'—':h<1?Math.max(1,Math.round(h*60))+' د':h<48?(Math.round(h*10)/10)+' س':(Math.round(h/24*10)/10)+' يوم';
+const dayKey=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+const todayKey=()=>dayKey(NOW());
+const fmtDay=s=>{try{return hij.format(new Date(s+'T12:00:00'))}catch(e){return s}};
+const wd=new Intl.DateTimeFormat('ar-SA-u-nu-latn',{weekday:'long'});
+
+async function loadUnits(){try{const{data}=await sb.from('units').select('*').order('sort');if(data&&data.length){Object.keys(UNITS).forEach(k=>delete UNITS[k]);data.forEach(u=>UNITS[u.key]={n:u.name,sort:u.sort,parent:u.parent,kind:u.kind,active:u.active})}}catch(e){}}
+async function pageAll(table,cols,order){const out=[];for(let f=0;;f+=1000){const{data,error}=await sb.from(table).select(cols||'*').order(order||'created_at',{ascending:false}).range(f,f+999);if(error)throw error;out.push(...data);if(data.length<1000)break}return out}
+async function govLoad(){
+  need();await loadUnits();
+  const tasks=[pageAll('transactions','*','created_at').then(r=>GV.tx=r)];
+  if(isExec()||PROFILE.role==='manager')tasks.push(pageAll('meetings','*','day').then(r=>GV.meet=r).catch(()=>GV.meet=[]));
+  if(isExec())tasks.push(pageAll('appointments','*','day').then(r=>GV.appt=r).catch(()=>GV.appt=[]));else GV.appt=[];
+  tasks.push(pageAll('attendance','*','day').then(r=>GV.att=r).catch(()=>GV.att=[]));
+  tasks.push(pageAll('leave_requests','*','created_at').then(r=>GV.leave=r).catch(()=>GV.leave=[]));
+  await Promise.all(tasks);GV.loaded=true;
+}
+
+/* ---------- SLA engine ---------- */
+function txSteps(t){
+  const mv=(t.data&&t.data.moves)||[];if(!mv.length)return[];
+  const steps=[];let cur={unit:mv[0].to,start:mv[0].ts,notes:0};
+  for(let i=1;i<mv.length;i++){const m=mv[i];
+    if(m.action==='إحالة'&&m.to!==cur.unit){cur.end=m.ts;cur.by=m.by;steps.push(cur);cur={unit:m.to,start:m.ts,notes:0}}
+    else if(m.action==='إنجاز'||m.action==='حفظ'){cur.end=m.ts;cur.by=m.by;steps.push(cur);cur=null;break}
+    else if(m.action==='شرح')cur.notes++;}
+  if(cur){cur.end=null;steps.push(cur)}
+  const lim=SLAH[t.priority]||72;
+  return steps.filter((s,i)=>!(i===0&&s.end!=null&&s.end-s.start<6e4&&steps.length>1)).map(s=>{const h=((s.end||NOW())-s.start)/HOUR;return{...s,hours:h,open:s.end==null,over:h>lim,lim}});
+}
+const txOpen=t=>['new','progress'].includes(t.status);
+const txAge=t=>(NOW()-new Date(t.created_at).getTime())/HOUR;
+const txCurHold=t=>{const s=txSteps(t);const l=s[s.length-1];return l&&l.open?l:null};
+const txOverdue=t=>{if(!txOpen(t))return false;const h=txCurHold(t);return!!(h&&h.over)};
+const txNotes=t=>((t.data&&t.data.moves)||[]).filter(m=>m.action==='إحالة'||m.action==='شرح').length;
+function unitStats(list){
+  const S={};const add=k=>S[k]||(S[k]={k,steps:0,inSla:0,hours:0,open:0,overdue:0,done:0});
+  list.forEach(t=>txSteps(t).forEach(s=>{const u=add(s.unit);if(s.open){if(txOpen(t)){u.open++;if(s.over)u.overdue++}}else{u.steps++;u.hours+=s.hours;if(!s.over)u.inSla++}}));
+  return Object.values(S).map(u=>({...u,avg:u.steps?u.hours/u.steps:null,sla:u.steps?Math.round(u.inSla/u.steps*100):null}));
+}
+function managerStats(list){
+  const S={};list.forEach(t=>txSteps(t).forEach(s=>{if(s.open||!s.by)return;const k=s.by+'|'+s.unit;const m=S[k]||(S[k]={name:s.by,unit:s.unit,n:0,inSla:0,hours:0});m.n++;m.hours+=s.hours;if(!s.over)m.inSla++}));
+  return Object.values(S).filter(m=>m.n>=3).map(m=>({...m,avg:m.hours/m.n,sla:Math.round(m.inSla/m.n*100)}));
+}
+
+/* ---------- smart routing ---------- */
+const ROUTES=[[/أمن|أمني|جنائ|سجن|موقوف|مخدرات|تهريب|حادث|تجمهر/,'security','يتعلق بشأن أمني'],[/حقوق|نزاع|دية|صلح|قضية|حكم|تنفيذ|ورثة|مطالبة/,'rights','يتعلق بحقوق خاصة أو عامة'],[/مشروع|تنمية|بلدية|أمانة|طرق|مياه|كهرباء|تطوير|محافظة|خدمات/,'dev','يتعلق بمشاريع وخدمات تنموية'],[/موظف|إجازة|تعيين|نقل|ترقية|دوام|انتداب/,'hr','شأن وظيفي'],[/عقد|مالي|ميزانية|مشتريات|صرف|فاتورة|منافسة/,'admin_fin','شأن مالي أو إداري'],[/نظام|تقني|شبكة|حاسب|برنامج|منصة/,'it','شأن تقني'],[/شكوى|مواطن|تظلم|بلاغ|استرحام/,'complaints','يخص مواطناً أو شكوى']];
+const COMMS_RX=/إعلام|صحف|حملة|فعالية|مناسبة|احتفال|زيارة|مؤتمر|تغطية|تواصل اجتماعي|يوم وطني|افتتاح|رعاية/;
+function suggestRoute(subj){const s=(subj||'').replace(/[أإآ]/g,'ا');const R={unit:null,reason:'',comms:false,flash:false};
+  for(const [rx,u,why] of ROUTES){if(rx.test(subj)||rx.test(s)){R.unit=u;R.reason=why;break}}
+  if(COMMS_RX.test(subj))R.comms=true;if(/عاجل|فوري|برقية/.test(subj))R.flash=true;return R}
+
+/* ---------- workspace shell ---------- */
+const SIDE=()=>{const r=PROFILE.role,ex=isExec(),top=isTop(),mgr=r==='manager';
+  return [
+   {t:'البريد',ic:'✉️',items:[['inbox','الوارد'],['out','الصادر'],['new','إنشاء بريد داخلي'],['tele','البرقيات العاجلة'],['track','متابعة المعاملات'],['circ','رسائل وتعميمات']]},
+   {t:'الأرشيف',ic:'🗂️',items:[['search','بحث'],...(top?[['secret','بحث سري']]:[])]},
+   ...(ex||mgr?[{t:'مكتب الوكيل',ic:'🏛️',items:ex?[['meet','جدول الاجتماعات'],['appt','جدول المواعيد']]:[['recs','توصيات إدارتي']]}]:[]),
+   {t:'الموارد البشرية',ic:'👥',items:[['att','متابعة الدوام'],['leave','طلب إذن']]},
+   {t:'المتابعة',ic:'📊',items:[['kpi','مؤشرات المعاملات'],...(ex?[['dash','اللوحة الموحدة']]:[])]},
+   ...(['admin','triage','prince','deputy'].includes(r)?[{t:'الشكاوى · صوت حائل',ic:'📣',items:[...(['admin','triage'].includes(r)?[['go:triage','مكتب الفرز']]:[]),...(['admin','prince','deputy'].includes(r)?[['go:prince:complaints','مؤشرات الشكاوى']]:[])]}]:[]),
+   ...(r==='admin'?[{t:'الإعدادات',ic:'⚙️',items:[['go:admin','إدارة المنصة']]}]:[])
+  ]};
+function rWs(){
+  const sec=STATE.sec||'inbox';const groups=SIDE();
+  const counts={inbox:GV.tx.filter(t=>t.current_unit===myUnit()&&txOpen(t)).length,tele:GV.tx.filter(t=>(t.ttype==='telegram'||t.priority==='flash')&&txOpen(t)).length,
+    leave:GV.leave.filter(l=>l.status==='pending'&&l.user_id!==PROFILE.id).length};
+  $('#view').innerHTML=`<div class="ws">
+   <aside class="side" id="side">${groups.map(g=>`<div class="sg"><div class="sgt">${g.ic} ${g.t}</div>${g.items.map(([k,l])=>`<button class="si ${k===sec?'on':''}" data-g="${k.startsWith('go:')?k:'sec:'+k}">${l}${counts[k]?`<em>${counts[k]}</em>`:''}</button>`).join('')}</div>`).join('')}
+    <div class="sme"><b>${esc(who())}</b><span>${ROLE_N[PROFILE.role]||''}${myUnit()?' · '+esc(uShort(myUnit())):''}</span></div></aside>
+   <section class="wsb" id="wsb"></section></div>`;
+  ({inbox:wsInbox,out:wsOut,new:wsNew,tele:wsTele,track:wsTrack,circ:wsCirc,search:wsSearch,secret:wsSecret,meet:wsMeet,appt:wsAppt,recs:wsRecs,att:wsAtt,leave:wsLeave,kpi:wsKpi,dash:()=>go('prince')}[sec]||wsInbox)();
+  const on=document.querySelector('#side .si.on');if(on&&innerWidth<900)on.scrollIntoView({block:'nearest',inline:'center'});
+}
+const wsHead=(t,p,act)=>`<div class="page-head" style="margin-bottom:16px"><div><div class="h2">${t}</div>${p?`<p>${p}</p>`:''}</div>${act||''}</div>`;
+function txRow(t){const h=txCurHold(t);return `<tr data-tx="${esc(t.id)}" class="trx"><td class="idc">${esc(t.id)}</td><td><b>${esc(t.subject)}</b><div class="dim" style="font-size:12px;margin-top:2px">${KIND[t.kind]} · ${TTYPE[t.ttype]}${t.source?' · '+esc(t.source):''}</div></td><td>${prioB(t.priority)} ${confB(t.conf)}${t.comms?' <span class="bdg lv-restricted">📢 اتصال مؤسسي</span>':''}</td><td>${esc(uShort(t.current_unit))}</td><td>${txStB(t.status)}</td><td>${txOpen(t)&&h?`<span class="bdg ${h.over?'lv-topsecret':'lv-public'}">${dur(h.hours)}</span>`:'—'}</td><td class="dim" style="white-space:nowrap">${dShort(new Date(t.created_at).getTime())}</td></tr>`}
+const txTable=(list,empty)=>list.length?`<div class="glass card" style="padding:0;overflow:auto"><table class="txt"><thead><tr><th>الرقم</th><th>الموضوع</th><th>الأولوية</th><th>لدى</th><th>الحالة</th><th>المدة لدى الجهة</th><th>التاريخ</th></tr></thead><tbody>${list.slice(0,300).map(txRow).join('')}</tbody></table></div>`:`<div class="glass card empty">${empty||'لا توجد معاملات'}</div>`;
+function filt(list){const f=STATE.f||{};return list.filter(t=>(!f.q||(t.subject+' '+t.id+' '+(t.source||'')+' '+(t.ext_ref||'')).includes(f.q))&&(!f.st||t.status===f.st)&&(!f.pr||t.priority===f.pr)&&(!f.u||t.current_unit===f.u)&&(!f.k||t.kind===f.k))}
+function filterBar(opts){const f=STATE.f||{};return `<div class="glass card fbar"><input class="inp" id="fq" placeholder="بحث بالرقم أو الموضوع أو الجهة" value="${esc(f.q||'')}">
+  <select class="inp" id="fst"><option value="">كل الحالات</option>${Object.entries(TXST).map(([k,v])=>`<option value="${k}" ${f.st===k?'selected':''}>${v}</option>`).join('')}</select>
+  <select class="inp" id="fpr"><option value="">كل الأولويات</option>${Object.entries(PRIO).map(([k,v])=>`<option value="${k}" ${f.pr===k?'selected':''}>${v}</option>`).join('')}</select>
+  ${opts&&opts.unit?`<select class="inp" id="fu"><option value="">كل الإدارات</option>${Object.entries(UNITS).map(([k,v])=>`<option value="${k}" ${f.u===k?'selected':''}>${v.n}</option>`).join('')}</select>`:''}
+  <select class="inp" id="fk"><option value="">وارد وصادر وداخلي</option>${Object.entries(KIND).map(([k,v])=>`<option value="${k}" ${f.k===k?'selected':''}>${v}</option>`).join('')}</select></div>`}
+function bindFilter(re){['fq','fst','fpr','fu','fk'].forEach(id=>{const e=$('#'+id);if(!e)return;e.addEventListener(id==='fq'?'input':'change',()=>{STATE.f={q:$('#fq').value.trim(),st:$('#fst').value,pr:$('#fpr').value,u:$('#fu')?$('#fu').value:'',k:$('#fk').value};clearTimeout(bindFilter._t);bindFilter._t=setTimeout(re,id==='fq'?250:0)})})}
+function wsList(title,sub,list,opts,empty){$('#wsb').innerHTML=wsHead(title,sub,opts&&opts.act)+filterBar(opts)+`<div id="txl">${txTable(filt(list),empty)}</div>`;bindFilter(()=>{$('#txl').innerHTML=txTable(filt(list),empty)})}
+function wsInbox(){const mine=GV.tx.filter(t=>t.current_unit===myUnit()&&txOpen(t)).sort((a,b)=>(b.priority==='flash')-(a.priority==='flash')||new Date(a.created_at)-new Date(b.created_at));
+  const over=mine.filter(txOverdue).length;
+  wsList('الوارد',`لدى ${esc(uN(myUnit()))} · ${mine.length} معاملة مفتوحة${over?` · <b class="dn">${over} تجاوزت المهلة</b>`:''}`,mine,{act:`<button class="btn gold" data-g="sec:new">+ بريد داخلي</button>`},'لا توجد معاملات واردة لإدارتك — أحسنتم')}
+function wsOut(){const mine=GV.tx.filter(t=>{const m=(t.data.moves||[])[0];return m&&m.from===myUnit()});wsList('الصادر','المعاملات التي أنشأتها إدارتك وأين وصلت',mine,{unit:true})}
+function wsTele(){const l=GV.tx.filter(t=>(t.ttype==='telegram'||t.priority==='flash')&&txOpen(t)).sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+  $('#wsb').innerHTML=wsHead('البرقيات العاجلة','البرقيات والمعاملات العاجلة جداً الموجهة للقطاعات الحكومية — مهلة كل جهة '+SLAH.flash+' ساعات')+
+   (l.length?`<div class="tele">${l.map(t=>{const h=txCurHold(t);const left=h?SLAH.flash-h.hours:0;return `<div class="glass card tcard ${left<0?'late':''}" data-tx="${esc(t.id)}"><div class="row" style="justify-content:space-between"><span class="idc">${esc(t.id)}</span>${confB(t.conf)}</div><b>${esc(t.subject)}</b><p class="dim">${esc(t.source||KIND[t.kind])} ← لدى ${esc(uShort(t.current_unit))}</p><div class="cd ${left<0?'dn':''}">${left<0?'متأخرة '+dur(-left):'متبقٍ '+dur(left)}</div></div>`}).join('')}</div>`:'<div class="glass card empty">لا توجد برقيات عاجلة مفتوحة</div>')}
+function wsTrack(){const l=[...GV.tx].sort((a,b)=>txOverdue(b)-txOverdue(a)||new Date(b.created_at)-new Date(a.created_at));wsList('متابعة المعاملات',`كل ما يحق لك الاطلاع عليه · ${GV.tx.filter(txOverdue).length} معاملة متجاوزة للمهلة`,l,{unit:true})}
+function wsCirc(){const l=GV.tx.filter(t=>t.kind==='circular');wsList('رسائل وتعميمات','التعميمات الصادرة والواردة',l,{act:`<button class="btn gold" data-g="newcirc">+ تعميم</button>`},'لا توجد تعميمات')}
+function wsSearch(){wsList('الأرشيف · بحث','البحث في المعاملات العادية المتاحة لك (السرية لا تظهر هنا)',GV.tx.filter(t=>t.conf==='normal'),{unit:true})}
+async function wsSecret(){if(!isTop()){$('#wsb').innerHTML='<div class="glass card empty">البحث السري متاح لسمو الأمير ووكيل الإمارة فقط</div>';return}
+  $('#wsb').innerHTML=wsHead('الأرشيف · بحث سري','يشمل المعاملات «السرية» و«السرية للغاية» · كل بحث يُسجَّل في سجل التدقيق باسمك')+`<div class="glass card fbar"><input class="inp" id="sq" placeholder="ابحث في المعاملات السرية"><button class="btn gold" data-g="ssearch">بحث</button></div><div id="sres"></div>`;
+  $('#sq').addEventListener('keydown',e=>{if(e.key==='Enter')document.querySelector('[data-g=ssearch]').click()});doSecret('')}
+async function doSecret(q){const{data,error}=await sb.rpc('tx_secret_search',{q});if(error){toast(errMsg(error));return}sb.rpc('log_secret_search',{q}).then(()=>{},()=>{});
+  (data||[]).forEach(t=>{if(!GV.tx.some(x=>x.id===t.id))GV.tx.push(t)});$('#sres').innerHTML=`<div class="wm-wrap">${txTable(data||[],'لا نتائج')}</div>`}
+
+/* ---------- create ---------- */
+let TXD={kind:'internal',ttype:'letter',priority:'normal',conf:'normal',to:'',subject:'',source:'',ext_ref:'',body:'',note:'',comms:false,auto:true};
+function wsNew(){const d=TXD;const sg=suggestRoute(d.subject);if(d.auto&&sg.unit&&!d.to)d.to=sg.unit;
+  $('#wsb').innerHTML=wsHead(d.kind==='circular'?'تعميم جديد':'إنشاء بريد / معاملة','يُسجَّل تلقائياً بتسلسل زمني، ويبدأ احتساب مدة الإنجاز من لحظة الإحالة')+`
+  <div class="split" style="grid-template-columns:1fr 320px"><div class="glass card">
+   <div class="grid g3f">
+    <div><label class="f">النوع</label><select class="inp" id="tk">${Object.entries(KIND).map(([k,v])=>`<option value="${k}" ${d.kind===k?'selected':''}>${v}</option>`).join('')}</select></div>
+    <div><label class="f">الصنف</label><select class="inp" id="tt">${Object.entries(TTYPE).map(([k,v])=>`<option value="${k}" ${d.ttype===k?'selected':''}>${v}</option>`).join('')}</select></div>
+    <div><label class="f">الأولوية</label><select class="inp" id="tp">${Object.entries(PRIO).map(([k,v])=>`<option value="${k}" ${d.priority===k?'selected':''}>${v} · ${SLAH[k]} ساعة لكل جهة</option>`).join('')}</select></div>
+   </div>
+   <label class="f" style="margin-top:12px">الموضوع</label><input class="inp" id="ts" value="${esc(d.subject)}" placeholder="مثال: طلب إفادة بشأن مشروع تطوير طريق محافظة بقعاء">
+   <div class="grid g3f" style="margin-top:12px">
+    <div><label class="f">جهة الورود / المرسل</label><input class="inp" id="tsrc" value="${esc(d.source)}" placeholder="مثال: وزارة الداخلية"></div>
+    <div><label class="f">رقم الخطاب لدى الجهة</label><input class="inp" id="tref" dir="ltr" value="${esc(d.ext_ref)}"></div>
+    <div><label class="f">درجة السرية</label><select class="inp" id="tc">${Object.entries(CONF).map(([k,v])=>`<option value="${k}" ${d.conf===k?'selected':''}>${v}</option>`).join('')}</select></div>
+   </div>
+   <label class="f" style="margin-top:12px">نص الخطاب / ملخص المعاملة</label><textarea class="inp" id="tb">${esc(d.body)}</textarea>
+   <div class="grid g2f" style="margin-top:12px">
+    <div><label class="f">الإحالة إلى</label><select class="inp" id="tto"><option value="">— اختر —</option>${Object.entries(UNITS).map(([k,v])=>`<option value="${k}" ${d.to===k?'selected':''}>${v.n}</option>`).join('')}</select></div>
+    <div><label class="f">الشرح / التوجيه</label><input class="inp" id="tn" value="${esc(d.note)}" placeholder="مثال: للاطلاع والإفادة"></div>
+   </div>
+   <label class="toggle" style="margin-top:12px"><input type="checkbox" id="tcm" ${d.comms?'checked':''}><span class="sw"></span><span><b>إشراك الاتصال المؤسسي</b><small>للمعاملات ذات البعد الإعلامي أو التشاركي، تظهر لإدارة الاتصال المؤسسي.</small></span></label>
+   <div class="row" style="justify-content:flex-end;margin-top:16px"><button class="btn gold" data-g="txcreate">إنشاء وإحالة</button></div>
+  </div>
+  <div class="glass card"><div class="h3">🤖 التوجيه الذكي</div><div id="sgbox">${sgHtml(sg)}</div>
+   <p class="dim" style="font-size:12px;margin-top:10px;line-height:1.7">يقترح النظام الجهة المختصة من موضوع المعاملة، والقرار لك.</p></div></div>`;
+  const sync=()=>{d.kind=$('#tk').value;d.ttype=$('#tt').value;d.priority=$('#tp').value;d.subject=$('#ts').value;d.source=$('#tsrc').value;d.ext_ref=$('#tref').value;d.conf=$('#tc').value;d.body=$('#tb').value;d.to=$('#tto').value;d.note=$('#tn').value;d.comms=$('#tcm').checked};
+  $('#wsb').addEventListener('input',e=>{sync();if(e.target.id==='ts'){$('#sgbox').innerHTML=sgHtml(suggestRoute(d.subject))}});
+  $('#wsb').addEventListener('change',e=>{sync();if(e.target.id==='tto')d.auto=false});
+}
+function sgHtml(sg){if(!sg.unit&&!sg.comms&&!sg.flash)return'<p class="mut" style="font-size:13.5px">اكتب الموضوع ليقترح النظام الجهة المختصة.</p>';
+  return `${sg.unit?`<div class="reason" style="background:#EAF6EF;border-color:#BFE0CD">الجهة المقترحة: <b>${esc(uN(sg.unit))}</b><br><span class="dim">${sg.reason}</span><br><button class="btn sm grn" style="margin-top:8px" data-g="applysg:${sg.unit}">اعتماد الاقتراح</button></div>`:''}${sg.comms?'<div class="reason">📢 الموضوع ذو بعد إعلامي — يُقترح إشراك الاتصال المؤسسي.</div>':''}${sg.flash?'<div class="reason">⚡ يُقترح تصنيفها «عاجل جداً».</div>':''}`}
+
+/* ---------- detail ---------- */
+function txModal(id){const t=GV.tx.find(x=>x.id===id);if(!t)return;const st=txSteps(t);const can=txOpen(t)&&(isExec()||t.current_unit===myUnit());const canC=txOpen(t)&&(can||(t.comms&&myUnit()==='comms'));
+  const sg=suggestRoute(t.subject);
+  modal(`<div class="row" style="justify-content:space-between;align-items:flex-start"><div><span class="idc">${esc(t.id)}</span><div class="h2" style="font-size:20px;margin-top:4px">${esc(t.subject)}</div><div class="row" style="margin-top:8px;gap:6px">${txStB(t.status)}${prioB(t.priority)}${confB(t.conf)}${t.comms?'<span class="bdg lv-restricted">📢 الاتصال المؤسسي</span>':''}</div></div><button class="btn sm" data-act="close">إغلاق</button></div>
+   <dl class="kv" style="margin-top:14px"><dt>النوع</dt><dd>${KIND[t.kind]} · ${TTYPE[t.ttype]}</dd><dt>جهة الورود</dt><dd>${esc(t.source||'—')}${t.ext_ref?` · <span dir="ltr">${esc(t.ext_ref)}</span>`:''}</dd><dt>لدى</dt><dd>${esc(uN(t.current_unit))}</dd><dt>التاريخ</dt><dd>${hij.format(new Date(t.created_at))} · ${tm.format(new Date(t.created_at))}</dd>${t.data.body?`<dt>النص</dt><dd class="mut" style="line-height:1.8">${esc(t.data.body)}</dd>`:''}</dl>
+   <div class="h3" style="margin-top:18px">المسار الزمني ومدة الإنجاز لدى كل جهة</div>
+   <div class="steps2">${st.map(s=>`<div class="s2 ${s.open?'cur':''} ${s.over?'over':''}"><b>${esc(uShort(s.unit))}</b><span>${dur(s.hours)}${s.open?' (حتى الآن)':''}</span><i style="width:${Math.min(100,s.hours/s.lim*100)}%"></i><small>${s.by?esc(s.by):s.open?'قيد الإجراء':''}${s.notes?' · '+s.notes+' شرح':''}</small></div>`).join('')}</div>
+   <div class="timeline" style="margin-top:14px">${(t.data.moves||[]).map((m,i,a)=>`<div class="tl ${i<a.length-1?'done':'cur'}"><b>${esc(m.action)}${m.action==='إحالة'?' إلى '+esc(uShort(m.to)):''}</b><p>${esc(m.by||'')} · ${hij.format(new Date(m.ts))} ${tm.format(new Date(m.ts))}${m.note?' — '+esc(m.note):''}</p></div>`).join('')}</div>
+   ${canC?`<div class="glass" style="padding:16px;margin-top:14px;box-shadow:none;background:var(--g05)"><div class="h3">إجراء</div>
+    ${can?`<div class="grid g2f"><div><label class="f">إحالة إلى</label><select class="inp" id="mto">${Object.entries(UNITS).filter(([k])=>k!==t.current_unit).map(([k,v])=>`<option value="${k}" ${sg.unit===k?'selected':''}>${v.n}${sg.unit===k?' (مقترح)':''}</option>`).join('')}</select></div><div><label class="f">الشرح</label><input class="inp" id="mnote" placeholder="مثال: للإفادة خلال يومين"></div></div>`:`<label class="f">الشرح</label><input class="inp" id="mnote">`}
+    <div class="row" style="margin-top:12px;justify-content:flex-end">${can?`<button class="btn" data-g="txa:forward:${esc(t.id)}">إحالة</button>`:''}<button class="btn" data-g="txa:comment:${esc(t.id)}">إضافة شرح</button>${can&&!t.comms?`<button class="btn" data-g="txa:comms:${esc(t.id)}">📢 إشراك الاتصال المؤسسي</button>`:''}${can?`<button class="btn" data-g="txa:archive:${esc(t.id)}">حفظ</button><button class="btn gold" data-g="txa:done:${esc(t.id)}">إنجاز</button>`:''}</div></div>`:''}`);
+}
+async function txAct(action,id){const to=$('#mto')?$('#mto').value:null,note=$('#mnote')?$('#mnote').value.trim():'';
+  if(action==='comment'&&!note){toast('اكتب الشرح');return}
+  const{data,error}=await sb.rpc('tx_act',{p_id:id,p_action:action,p_to:action==='forward'?to:null,p_note:note});if(error){toast(errMsg(error));return}
+  const i=GV.tx.findIndex(x=>x.id===id);if(i>=0)GV.tx[i]=data;closeModal();
+  toast({forward:'أُحيلت المعاملة إلى '+uN(to),done:'أُنجزت المعاملة',archive:'حُفظت المعاملة',comment:'أُضيف الشرح',comms:'أُشركت إدارة الاتصال المؤسسي'}[action]);
+  if(action==='forward'&&!isExec()){const t=GV.tx[i];if(t&&!t.path_units.includes(myUnit()))GV.tx.splice(i,1)}rWs();if(action==='comment'||action==='comms')txModal(id)}
+
+/* ---------- deputy office ---------- */
+const recsAll=()=>GV.meet.flatMap(m=>(m.recs||[]).map((r,i)=>({...r,i,m})));
+function wsMeet(){const tk=todayKey();const up=GV.meet.filter(m=>m.day>=tk).sort((a,b)=>(a.day+a.tm).localeCompare(b.day+b.tm)),past=GV.meet.filter(m=>m.day<tk).sort((a,b)=>b.day.localeCompare(a.day));
+  const R=recsAll(),open=R.filter(r=>r.status!=='done');
+  $('#wsb').innerHTML=wsHead('جدول الاجتماعات','التاريخ والوقت والموضوع والجهة والمحضر والإدارة المسؤولة ومسار متابعة المرئيات',`<button class="btn gold" data-g="meetnew">+ اجتماع</button>`)+
+  `<div class="kpis k4">${kpi('اجتماعات اليوم',GV.meet.filter(m=>m.day===tk).length,'')}${kpi('القادمة',up.length,'')}${kpi('مرئيات مفتوحة',open.length,'')}${kpi('مرئيات منجزة',R.length?Math.round((R.length-open.length)/R.length*100)+'<small>%</small>':'—','')}</div>
+   <div class="cc-grid" style="grid-template-columns:1.2fr 1fr"><div class="glass card"><div class="h3">القادمة</div>${mtList(up)||'<div class="empty">لا اجتماعات قادمة</div>'}<div class="h3" style="margin-top:18px">السابقة</div>${mtList(past.slice(0,12))||'<div class="empty">—</div>'}</div>
+   <div class="glass card"><div class="h3">مسار متابعة المرئيات</div>${recTable(open.slice(0,30))}</div></div>`}
+const mtList=l=>l.map(m=>{const R=m.recs||[],d=R.filter(r=>r.status==='done').length;return `<div class="titem" data-meet="${m.id}"><div class="row" style="justify-content:space-between"><b>${esc(m.topic)}</b><span class="bdg ${m.day===todayKey()?'lv-secret':'lv-none'}">${m.day===todayKey()?'اليوم':fmtDay(m.day)} · ${esc(m.tm||'')}</span></div><div class="m"><span>${esc(m.entity||'')}</span><span>${esc(uShort(m.unit_key))}</span>${R.length?`<span>المرئيات ${d}/${R.length}</span>`:''}${m.minutes?'<span>📝 محضر</span>':''}</div></div>`}).join('');
+const recSt={open:'لم تبدأ',progress:'قيد التنفيذ',done:'منجزة'};
+const recTable=l=>l.length?`<div style="overflow:auto"><table><thead><tr><th>المرئية</th><th>الإدارة</th><th>المهلة</th><th>الحالة</th></tr></thead><tbody>${l.map(r=>{const late=r.due&&r.status!=='done'&&r.due<todayKey();return `<tr data-meet="${r.m.id}" class="trx"><td>${esc(r.text)}<div class="dim" style="font-size:11.5px">${esc(r.m.topic)}</div></td><td>${esc(uShort(r.unit))}</td><td class="${late?'dn':''}">${r.due?fmtDay(r.due):'—'}</td><td><span class="bdg ${r.status==='done'?'lv-public':late?'lv-topsecret':r.status==='progress'?'lv-secret':'lv-none'}">${late&&r.status!=='done'?'متأخرة':recSt[r.status]}</span></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">لا مرئيات مفتوحة</div>';
+function wsRecs(){const R=recsAll().filter(r=>r.unit===myUnit());$('#wsb').innerHTML=wsHead('توصيات إدارتي','المرئيات المسندة لإدارتك من اجتماعات مكتب الوكيل')+`<div class="glass card">${recTable(R)}</div>`}
+function meetModal(id){const m=GV.meet.find(x=>x.id==id);if(!m)return;const ex=isExec();
+  modal(`<div class="row" style="justify-content:space-between"><div><div class="h2" style="font-size:20px">${esc(m.topic)}</div><p class="mut">${fmtDay(m.day)} · ${esc(m.tm||'')} · ${esc(m.entity||'')} · المسؤولة: ${esc(uN(m.unit_key))}</p></div><button class="btn sm" data-act="close">إغلاق</button></div>
+   <label class="f" style="margin-top:14px">محضر الاجتماع</label>${ex?`<textarea class="inp" id="mmin" style="min-height:110px">${esc(m.minutes||'')}</textarea>`:`<p class="mut" style="line-height:1.8">${esc(m.minutes||'لم يُرفع المحضر بعد')}</p>`}
+   <div class="h3" style="margin-top:16px">المرئيات والتوصيات</div>
+   <div class="tlist">${(m.recs||[]).map((r,i)=>{const can=ex||(PROFILE.role==='manager'&&r.unit===myUnit());return `<div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><b>${esc(r.text)}</b><span class="bdg ${r.status==='done'?'lv-public':r.status==='progress'?'lv-secret':'lv-none'}">${recSt[r.status]||r.status}</span></div><div class="m"><span>${esc(uN(r.unit))}</span>${r.due?`<span>المهلة ${fmtDay(r.due)}</span>`:''}${r.by?`<span>آخر تحديث: ${esc(r.by)}</span>`:''}${r.note?`<span>${esc(r.note)}</span>`:''}</div>${can&&r.status!=='done'?`<div class="row" style="margin-top:8px"><button class="btn sm" data-g="rec:${m.id}:${i}:progress">قيد التنفيذ</button><button class="btn sm grn" data-g="rec:${m.id}:${i}:done">منجزة</button></div>`:''}</div>`}).join('')||'<div class="empty">لا مرئيات</div>'}</div>
+   ${ex?`<div class="glass" style="padding:14px;margin-top:12px;box-shadow:none;background:var(--g05)"><div class="grid g3f"><div style="grid-column:span 1"><label class="f">مرئية جديدة</label><input class="inp" id="nrt"></div><div><label class="f">الإدارة</label><select class="inp" id="nru">${Object.entries(UNITS).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join('')}</select></div><div><label class="f">المهلة</label><input class="inp" type="date" id="nrd"></div></div>
+    <div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn" data-g="recadd:${m.id}">إضافة المرئية</button><button class="btn gold" data-g="minsave:${m.id}">حفظ المحضر</button></div></div>`:''}`)}
+function meetNewModal(){modal(`<div class="h2">اجتماع جديد</div><div class="grid g2f" style="margin-top:14px"><div><label class="f">التاريخ</label><input class="inp" type="date" id="nmd" value="${todayKey()}"></div><div><label class="f">الوقت</label><input class="inp" type="time" id="nmt" value="10:00"></div></div>
+  <label class="f" style="margin-top:10px">موضوع الاجتماع</label><input class="inp" id="nmtop"><div class="grid g2f" style="margin-top:10px"><div><label class="f">الجهة</label><input class="inp" id="nme" placeholder="مثال: أمانة منطقة حائل"></div><div><label class="f">الإدارة المسؤولة</label><select class="inp" id="nmu">${Object.entries(UNITS).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join('')}</select></div></div>
+  <div class="row" style="justify-content:flex-end;margin-top:16px"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-g="meetsave">حفظ</button></div>`)}
+function wsAppt(){const tk=todayKey();const l=[...GV.appt].sort((a,b)=>(a.day+(a.tm||'')).localeCompare(b.day+(b.tm||'')));const up=l.filter(a=>a.day>=tk&&a.status==='scheduled'),past=l.filter(a=>a.day<tk||a.status!=='scheduled').reverse();
+  const row=a=>`<tr><td style="white-space:nowrap">${a.day===tk?'<b>اليوم</b>':fmtDay(a.day)}<div class="dim" style="font-size:12px">${esc(a.tm||'')}</div></td><td><span class="bdg ${a.urgency==='urgent'?'lv-topsecret':'lv-none'}">${a.urgency==='urgent'?'طارئ':'عادي'}</span></td><td><span class="bdg ${a.visitor==='official'?'lv-restricted':'lv-public'}">${a.visitor==='official'?'مسؤول':'مواطن'}</span></td><td><b>${esc(a.name)}</b><div class="dim" style="font-size:12px">${esc(a.topic||'')}</div></td><td class="mut" style="font-size:13px">${esc(a.notes||'')}</td><td style="white-space:nowrap">${a.status==='scheduled'?`<button class="btn sm grn" data-g="appt:${a.id}:done">تم</button> <button class="btn sm ghost" data-g="appt:${a.id}:cancelled">إلغاء</button>`:`<span class="bdg ${a.status==='done'?'lv-public':'lv-none'}">${a.status==='done'?'تم':'ملغى'}</span>`}</td></tr>`;
+  const tbl=x=>x.length?`<div style="overflow:auto"><table><thead><tr><th>الموعد</th><th>النوع</th><th>الفئة</th><th>الزائر والموضوع</th><th>المرئيات</th><th></th></tr></thead><tbody>${x.map(row).join('')}</tbody></table></div>`:'<div class="empty">لا مواعيد</div>';
+  $('#wsb').innerHTML=wsHead('جدول المواعيد','مواعيد مكتب الوكيل: التاريخ والوقت والنوع (طارئ / عادي) والفئة (مواطن / مسؤول) والموضوع والمرئيات',`<button class="btn gold" data-g="apptnew">+ موعد</button>`)+
+   `<div class="kpis k4">${kpi('مواعيد اليوم',l.filter(a=>a.day===tk&&a.status!=='cancelled').length,'')}${kpi('طارئة قادمة',up.filter(a=>a.urgency==='urgent').length,'')}${kpi('مواطنون قادمون',up.filter(a=>a.visitor==='citizen').length,'')}${kpi('مسؤولون قادمون',up.filter(a=>a.visitor==='official').length,'')}</div>
+   <div class="glass card" style="margin-top:16px"><div class="h3">القادمة</div>${tbl(up)}</div><div class="glass card" style="margin-top:16px"><div class="h3">السابقة</div>${tbl(past.slice(0,30))}</div>`}
+function apptNewModal(){modal(`<div class="h2">موعد جديد</div><div class="grid g2f" style="margin-top:14px"><div><label class="f">التاريخ</label><input class="inp" type="date" id="nad" value="${todayKey()}"></div><div><label class="f">الوقت</label><input class="inp" type="time" id="nat" value="11:00"></div>
+  <div><label class="f">نوع الموعد</label><select class="inp" id="nau"><option value="normal">عادي</option><option value="urgent">طارئ</option></select></div><div><label class="f">الفئة</label><select class="inp" id="nav"><option value="citizen">مواطن</option><option value="official">مسؤول</option></select></div></div>
+  <label class="f" style="margin-top:10px">الاسم</label><input class="inp" id="nan"><label class="f" style="margin-top:10px">موضوع الموعد</label><input class="inp" id="natop"><label class="f" style="margin-top:10px">المرئيات</label><textarea class="inp" id="nano" style="min-height:70px"></textarea>
+  <div class="row" style="justify-content:flex-end;margin-top:16px"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-g="apptsave">حفظ</button></div>`)}
+
+/* ---------- HR ---------- */
+const LATE='07:45';
+const attRef=()=>{const tk=todayKey();if(GV.att.some(a=>a.day===tk&&a.user_id!==PROFILE.id))return tk;const ds=[...new Set(GV.att.map(a=>a.day))].filter(d=>d<=tk).sort();return ds[ds.length-1]||tk};
+const hhmm=ts=>ts?new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Riyadh'}):'—';
+function wsAtt(){const tk=todayKey();const mine=GV.att.filter(a=>a.user_id===PROFILE.id).sort((a,b)=>b.day.localeCompare(a.day));const today=mine.find(a=>a.day===tk);
+  const scope=GV.att.filter(a=>a.user_id!==PROFILE.id);const showTeam=isExec()||PROFILE.role==='manager';
+  const emps={};scope.forEach(a=>{const k=a.emp_name+'|'+a.unit_key;emps[k]=emps[k]||{n:a.emp_name,u:a.unit_key}});const tot=Object.keys(emps).length;
+  const rd=attRef();const td=scope.filter(a=>a.day===rd),late=td.filter(a=>a.check_in&&hhmm(a.check_in)>LATE);
+  const byU={};td.forEach(a=>{byU[a.unit_key]=byU[a.unit_key]||{p:0,l:0};byU[a.unit_key].p++;if(a.check_in&&hhmm(a.check_in)>LATE)byU[a.unit_key].l++});
+  const uTot={};Object.values(emps).forEach(e=>uTot[e.u]=(uTot[e.u]||0)+1);
+  $('#wsb').innerHTML=wsHead('متابعة الدوام','الحضور والانصراف مدمج مع نظام المعاملات')+
+   `<div class="cc-grid" style="grid-template-columns:340px 1fr;margin-top:0"><div class="glass card attc"><div class="h3">اليوم · ${wd.format(new Date())}</div>
+     <div class="att2"><div><span>الحضور</span><b>${hhmm(today&&today.check_in)}</b></div><div><span>الانصراف</span><b>${hhmm(today&&today.check_out)}</b></div></div>
+     ${!today||!today.check_out?`<button class="btn gold" style="width:100%;justify-content:center;margin-top:14px" data-g="hrcheck">${today?'تسجيل الانصراف':'تسجيل الحضور'}</button>`:'<p class="reason" style="text-align:center">اكتمل دوام اليوم</p>'}
+     <div class="h3" style="margin-top:18px">سجلي</div>${mine.length?`<table><tbody>${mine.slice(0,10).map(a=>`<tr><td>${fmtDay(a.day)}</td><td dir="ltr">${hhmm(a.check_in)} – ${hhmm(a.check_out)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty" style="padding:20px">لا سجلات بعد</div>'}</div>
+    ${showTeam?`<div class="glass card"><div class="h3">${isExec()?'حضور الإمارة':'حضور إدارتي'} · ${rd===tk?'اليوم':'آخر يوم عمل '+fmtDay(rd)}</div><div class="kpis k3">${kpi('الحضور',tot?Math.round(td.length/tot*100)+'<small>%</small>':'—',`<span class="mut">${td.length} من ${tot}</span>`)}${kpi('التأخر بعد '+LATE,late.length,'')}${kpi('الغياب',Math.max(0,tot-td.length),'')}</div>
+     <div style="overflow:auto;margin-top:12px"><table><thead><tr><th>الإدارة</th><th>الحضور</th><th>نسبة الحضور</th><th>المتأخرون</th></tr></thead><tbody>${Object.entries(uTot).sort((a,b)=>(UNITS[a[0]]||{}).sort-(UNITS[b[0]]||{}).sort).map(([u,n])=>{const x=byU[u]||{p:0,l:0};const pc=Math.round(x.p/n*100);return `<tr><td>${esc(uShort(u))}</td><td>${x.p} / ${n}</td><td><div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar"><i style="width:${pc}%;background:${pc>=90?'var(--pub)':pc>=75?'var(--sec)':'var(--top)'}"></i></div>${pc}%</div></td><td class="${x.l?'dn':''}">${x.l}</td></tr>`}).join('')}</tbody></table></div>
+     ${late.length?`<div class="h3" style="margin-top:14px">المتأخرون</div><div class="row" style="gap:6px">${late.slice(0,24).map(a=>`<span class="chip">${esc(a.emp_name)} · <b dir="ltr">${hhmm(a.check_in)}</b></span>`).join('')}</div>`:''}</div>`:'<div class="glass card empty">يظهر هنا حضور الإدارة لمدير الإدارة</div>'}</div>`}
+function wsLeave(){const mine=GV.leave.filter(l=>l.user_id===PROFILE.id);const pend=GV.leave.filter(l=>l.status==='pending'&&l.user_id!==PROFILE.id);const can=isExec()||PROFILE.role==='manager';
+  const LS={pending:'بانتظار الاعتماد',approved:'معتمد',rejected:'مرفوض'};const lb=s=>`<span class="bdg ${s==='approved'?'lv-public':s==='rejected'?'lv-topsecret':'lv-secret'}">${LS[s]}</span>`;
+  $('#wsb').innerHTML=wsHead('طلب إذن','استئذان خلال الدوام يعتمده مدير الإدارة')+
+  `<div class="cc-grid" style="grid-template-columns:340px 1fr;margin-top:0"><div class="glass card"><div class="h3">طلب جديد</div><label class="f">التاريخ</label><input class="inp" type="date" id="lvd" value="${todayKey()}"><div class="grid g2f" style="margin-top:10px"><div><label class="f">من</label><input class="inp" type="time" id="lvf" value="10:00"></div><div><label class="f">إلى</label><input class="inp" type="time" id="lvt" value="12:00"></div></div><label class="f" style="margin-top:10px">السبب</label><input class="inp" id="lvr" placeholder="مثال: مراجعة مستشفى"><button class="btn gold" style="width:100%;justify-content:center;margin-top:14px" data-g="lvsend">إرسال الطلب</button>
+   <div class="h3" style="margin-top:18px">طلباتي</div>${mine.length?mine.slice(0,10).map(l=>`<div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><b>${fmtDay(l.day)}</b>${lb(l.status)}</div><div class="m"><span dir="ltr">${esc(l.from_t)} – ${esc(l.to_t)}</span><span>${esc(l.reason)}</span>${l.decided_by?`<span>${esc(l.decided_by)}</span>`:''}</div></div>`).join(''):'<div class="empty" style="padding:20px">لا طلبات</div>'}</div>
+   ${can?`<div class="glass card"><div class="h3">بانتظار اعتمادك (${pend.length})</div>${pend.length?`<div style="overflow:auto"><table><thead><tr><th>الموظف</th><th>الإدارة</th><th>التاريخ والوقت</th><th>السبب</th><th></th></tr></thead><tbody>${pend.map(l=>`<tr><td><b>${esc(l.emp_name)}</b></td><td>${esc(uShort(l.unit_key))}</td><td style="white-space:nowrap">${fmtDay(l.day)}<div class="dim" dir="ltr" style="font-size:12px">${esc(l.from_t)} – ${esc(l.to_t)}</div></td><td>${esc(l.reason)}</td><td style="white-space:nowrap"><button class="btn sm grn" data-g="lvok:${l.id}:1">اعتماد</button> <button class="btn sm red" data-g="lvok:${l.id}:0">رفض</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">لا طلبات معلقة</div>'}
+    <div class="h3" style="margin-top:18px">آخر القرارات</div>${GV.leave.filter(l=>l.status!=='pending').slice(0,8).map(l=>`<div class="titem" style="cursor:default"><div class="row" style="justify-content:space-between"><b>${esc(l.emp_name)} · ${esc(uShort(l.unit_key))}</b>${lb(l.status)}</div><div class="m"><span>${fmtDay(l.day)}</span><span>${esc(l.reason)}</span></div></div>`).join('')||'<div class="empty">—</div>'}</div>`:'<div class="glass card empty">يعتمد مدير إدارتك الطلبات</div>'}</div>`}
+
+/* ---------- KPIs ---------- */
+function wsKpi(){const L=GV.tx;const us=unitStats(L).filter(u=>u.steps||u.open).sort((a,b)=>(b.sla??-1)-(a.sla??-1));const ms=managerStats(L).sort((a,b)=>b.sla-a.sla||a.avg-b.avg);
+  const N=STATE.nmax||4;const many=L.filter(t=>txNotes(t)>N);const src={};L.filter(t=>t.kind==='in').forEach(t=>src[t.source||'—']=(src[t.source||'—']||0)+1);
+  const done=L.filter(t=>['done','archived'].includes(t.status));const avgAll=done.length?done.reduce((a,t)=>a+txSteps(t).reduce((x,s)=>x+s.hours,0),0)/done.length:0;
+  $('#wsb').innerHTML=wsHead('مؤشرات المعاملات','مدة إنجاز المعاملات لدى كل إدارة وكل مدير (SLA) — عادي '+SLAH.normal+' ساعة، عاجل '+SLAH.urgent+'، عاجل جداً '+SLAH.flash)+
+  `<div class="kpis">${kpi('إجمالي المعاملات',fmt(L.length),'')}${kpi('مفتوحة',fmt(L.filter(txOpen).length),'')}${kpi('متجاوزة للمهلة',fmt(L.filter(txOverdue).length),'')}${kpi('متوسط الإنجاز',dur(avgAll),'')}${kpi('برقيات عاجلة مفتوحة',L.filter(t=>t.priority==='flash'&&txOpen(t)).length,'')}${kpi('بإشراك الاتصال المؤسسي',L.filter(t=>t.comms).length,'')}</div>
+  <div class="cc-grid"><div class="glass card"><div class="h3">حركة بريد الإدارات ومدة الإنجاز</div><div style="overflow:auto"><table><thead><tr><th>الإدارة</th><th>منجزة لديها</th><th>متوسط المدة</th><th>ضمن المهلة</th><th>مفتوحة الآن</th><th>متجاوزة</th></tr></thead><tbody>${us.map(u=>`<tr><td><b>${esc(uShort(u.k))}</b></td><td>${u.steps}</td><td>${dur(u.avg)}</td><td>${u.sla==null?'—':`<div class="row" style="gap:8px;flex-wrap:nowrap"><div class="bar"><i style="width:${u.sla}%;background:${u.sla>=85?'var(--pub)':u.sla>=65?'var(--sec)':'var(--top)'}"></i></div>${u.sla}%</div>`}</td><td>${u.open}</td><td class="${u.overdue?'dn':''}">${u.overdue}</td></tr>`).join('')}</tbody></table></div></div>
+   <div class="glass card"><div class="h3">🏅 تكريم المتميزين</div>${ms.slice(0,4).map((m,i)=>`<div class="insight"><div class="dot" style="background:rgba(214,178,92,.18)">${['🥇','🥈','🥉','🏅'][i]}</div><p><b>${esc(m.name)}</b> · ${esc(uShort(m.unit))}<br><span class="mut">${m.sla}% ضمن المهلة · متوسط ${dur(m.avg)} · ${m.n} معاملة</span></p></div>`).join('')||'<div class="empty">—</div>'}
+    <div class="h3" style="margin-top:14px">⚠️ الفجوات</div>${ms.slice(-3).reverse().map(m=>`<div class="insight"><div class="dot" style="background:rgba(229,81,74,.12)">⏱️</div><p><b>${esc(m.name)}</b> · ${esc(uShort(m.unit))}<br><span class="mut">${m.sla}% ضمن المهلة · متوسط ${dur(m.avg)}</span></p></div>`).join('')}</div></div>
+  <div class="cc-3"><div class="glass card"><div class="h3">حجم بريد الإمارة (آخر 12 أسبوعاً)</div><div style="height:240px"><canvas id="chVol"></canvas></div></div>
+   <div class="glass card"><div class="h3">البريد حسب مصدر وروده</div><div style="height:240px"><canvas id="chSrc"></canvas></div></div>
+   <div class="glass card"><div class="h3">تجاوزت شروحاتها <select class="inp" id="nmax" style="width:auto;display:inline-block;padding:4px 8px">${[3,4,5,6,8].map(n=>`<option ${n===N?'selected':''}>${n}</option>`).join('')}</select></div><div class="tlist" style="max-height:240px;overflow:auto">${many.slice(0,20).map(t=>`<div class="titem" data-tx="${esc(t.id)}"><div class="row" style="justify-content:space-between"><span class="idc">${esc(t.id)}</span><span class="bdg lv-secret">${txNotes(t)} شرح</span></div><div class="t" style="font-size:13.5px">${esc(t.subject)}</div></div>`).join('')||'<div class="empty">لا يوجد</div>'}</div></div></div>`;
+  $('#nmax').onchange=e=>{STATE.nmax=+e.target.value;wsKpi()};
+  if(window.Chart){Chart.defaults.font.family='"IBM Plex Sans Arabic"';Chart.defaults.color='#5F6B65';Chart.defaults.borderColor='#EDF0EE';
+    const labels=[],a=[],b=[],c=[];for(let i=11;i>=0;i--){const e=NOW()-i*7*DAY,s=e-7*DAY;labels.push(dShort(e).slice(0,5));const w=L.filter(t=>{const x=new Date(t.created_at).getTime();return x>s&&x<=e});a.push(w.filter(t=>t.kind==='in').length);b.push(w.filter(t=>t.kind==='out').length);c.push(w.filter(t=>t.kind==='internal'||t.kind==='circular').length)}
+    charts.push(new Chart($('#chVol'),{type:'bar',data:{labels,datasets:[{label:'وارد',data:a,backgroundColor:'#1B8354'},{label:'صادر',data:b,backgroundColor:'#B48A3C'},{label:'داخلي',data:c,backgroundColor:'#9CB8A8'}]},options:{maintainAspectRatio:false,scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true}},plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}}}));
+    const se=Object.entries(src).sort((x,y)=>y[1]-x[1]).slice(0,7);charts.push(new Chart($('#chSrc'),{type:'bar',data:{labels:se.map(x=>x[0]),datasets:[{data:se.map(x=>x[1]),backgroundColor:'#1B8354',borderRadius:5}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:11}}}}}}))}
+}
+
+/* ---------- unified dashboard (prince & deputies) ---------- */
+function rPrinceWrap(){const tab=STATE.tab||'overview';
+  if(tab==='complaints'){rPrince();const band=document.querySelector('.cc-band');if(band&&princeAuthed)band.insertAdjacentHTML('afterend','<div class="tabs" style="margin-bottom:16px;display:inline-flex"><button data-tab="overview">النظرة الشاملة</button><button class="on" data-tab="complaints">الشكاوى · صوت حائل</button></div>');return}
+  if(!princeAuthed){return rPrince()}
+  const D=dashData();
+  const hr=new Date().getHours();const greet=hr<12?'صباح الخير':hr<17?'نهارك سعيد':'مساء الخير';
+  const title=PROFILE.role==='deputy'?'سعادة وكيل الإمارة':PROFILE.role==='prince'?'صاحب السمو':'';
+  $('#view').innerHTML=`<section class="pd">
+   <div class="pd-in">
+    <div class="pd-top">
+     <div class="pd-hello"><img src="${LOGO}" alt=""><div><div class="pd-g">${greet}${title?'، '+title:''}</div><h1>اللوحة الموحدة لإمارة منطقة حائل</h1><p>${greg.format(new Date())} · ${hij.format(new Date())} · <span id="pdClock">${tm.format(new Date())}</span></p></div></div>
+     <div class="row pd-acts"><button class="pbtn" data-act="refresh">↻ تحديث</button><button class="pbtn" data-g="go:ws:track">مساحة العمل</button><button class="pbtn on" data-tab="overview">النظرة الشاملة</button><button class="pbtn" data-tab="complaints">الشكاوى</button></div>
+    </div>
+    <div class="pd-hero">
+     <div class="pd-gauge"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="84" class="gt"/><circle cx="100" cy="100" r="84" class="gv" id="gv" style="stroke:${D.gi>=80?'#3fb672':D.gi>=65?'#e9b949':'#e5654f'}"/></svg><div class="gn"><b id="giN">0</b><span>مؤشر الحوكمة العام</span><small>${D.gi>=80?'أداء متميز':D.gi>=65?'أداء جيد مع فرص تحسين':'يستوجب التدخل'}</small></div></div>
+     <div class="pd-subs">${D.subs.map(x=>`<div class="ps" ${x.go?`data-g="${x.go}"`:x.tab?`data-tab="${x.tab}"`:''}><div class="ring" style="--p:${x.v};--c:${x.c}"><b data-cnt="${x.v}">0</b><i>%</i></div><div><b>${x.l}</b><small>${x.d}</small></div></div>`).join('')}</div>
+     <div class="pd-brief"><div class="pb-h"><span class="ai">✦</span> الموجز الذكي <small>ما يستوجب انتباه ${PROFILE.role==='prince'?'سموكم':'سعادتكم'} اليوم</small></div><div id="brief"></div></div>
+    </div>
+    <div class="pd-ask"><div class="pa-in"><span class="ai">✦</span><input id="askQ" placeholder="اسأل اللوحة… مثال: أي إدارة الأبطأ؟" autocomplete="off"><button class="pbtn gold" data-g="ask">اسأل</button></div>
+     <div class="pa-chips">${['أي إدارة الأبطأ؟','من يستحق التكريم؟','البرقيات العاجلة','جدول اليوم','أكثر جهة عليها شكاوى','الحضور اليوم','المرئيات المتأخرة'].map(q=>`<button data-ask="${q}">${q}</button>`).join('')}</div><div id="askA"></div></div>
+    <div class="pd-grid">
+     <div class="pc pc-race"><div class="pc-h"><b>⏱️ سباق الإدارات</b><small>نسبة إنجاز المعاملات ضمن المهلة · اضغط أي إدارة للتفاصيل</small></div><div id="race">${D.units.map((u,i)=>`<button class="rc" data-unit="${u.k}"><span class="rn">${i+1}</span><span class="rl">${esc(uShort(u.k))}</span><span class="rb"><i style="--w:${u.sla}%;--c:${u.sla>=85?'#3fb672':u.sla>=65?'#e9b949':'#e5654f'}"></i></span><span class="rv2">${u.sla}%</span><span class="ra">${dur(u.avg)}</span>${u.overdue?`<span class="ro">${u.overdue} متأخرة</span>`:'<span class="ro ok">—</span>'}</button>`).join('')}</div></div>
+     <div class="pc pc-map"><div class="pc-h"><b>🗺️ صوت المحافظات</b><small>شكاوى المواطنين · اللون = الالتزام بالمهلة</small></div><div id="pdMap"></div></div>
+    </div>
+    <div class="pd-grid g3">
+     <div class="pc"><div class="pc-h"><b>⚡ البرقيات العاجلة</b><small>عدّاد حيّ لكل برقية مفتوحة</small></div><div id="tele">${D.tele.slice(0,5).map(t=>`<div class="tl2" data-tx="${esc(t.id)}" data-due="${t._due}"><div><span class="idc">${esc(t.id)}</span><b>${t.conf==='normal'||isTop()?esc(t.subject):'برقية سرية'}</b><small>لدى ${esc(uShort(t.current_unit))}</small></div><div class="cdn">--:--</div></div>`).join('')||'<div class="pd-empty">لا برقيات عاجلة مفتوحة</div>'}</div></div>
+     <div class="pc"><div class="pc-h"><b>📅 ${D.agDay===todayKey()?'جدول اليوم':'أقرب جدول · '+fmtDay(D.agDay)}</b><small>اجتماعات مكتب الوكيل ومواعيده</small></div><div class="agenda"><div class="ag-track">${D.agenda.map(x=>`<div class="ag ${x.k}" style="--x:${x.pos}%" title="${esc(x.t)}"><span>${esc(x.tm)}</span></div>`).join('')}${D.agDay===todayKey()?`<div class="ag-now" style="--x:${D.nowPos}%"></div>`:''}<div class="ag-scale"><span>7</span><span>9</span><span>11</span><span>13</span><span>15</span></div></div><div class="ag-list">${D.agenda.map(x=>`<div class="agi ${x.k}"><b dir="ltr">${esc(x.tm)}</b><span>${esc(x.t)}</span><small>${esc(x.s||'')}</small></div>`).join('')||'<div class="pd-empty">لا مواعيد</div>'}</div></div></div>
+     <div class="pc"><div class="pc-h"><b>🔥 نبض البريد</b><small>المعاملات الواردة يومياً · آخر 12 أسبوعاً</small></div><div class="heat">${D.heat.map(w=>`<div class="hw">${w.map(c=>`<i style="--a:${c.a}" title="${c.d}: ${c.n}"></i>`).join('')}</div>`).join('')}</div><div class="hl2"><span>أقل</span><i style="--a:.1"></i><i style="--a:.35"></i><i style="--a:.6"></i><i style="--a:.95"></i><span>أكثر</span></div>
+      <div class="pd-mini"><div><b>${fmt(D.txOpen)}</b><small>معاملة مفتوحة</small></div><div><b class="${D.txOver?'bad':''}">${D.txOver}</b><small>متجاوزة</small></div><div><b>${dur(D.avg)}</b><small>متوسط الإنجاز</small></div></div></div>
+    </div>
+    <p class="pd-foot">صاحبة الفكرة: تهاني الشمري · فريق العمل: مشاري الجميل وسليمان الخطيب</p>
+   </div></section>
+   <aside class="drawer" id="drawer"></aside>`;
+  requestAnimationFrame(()=>{const c=2*Math.PI*84;const gv=$('#gv');gv.style.strokeDasharray=c;gv.style.strokeDashoffset=c;setTimeout(()=>{gv.style.strokeDashoffset=c*(1-D.gi/100)},60);
+    countTo($('#giN'),D.gi,1400);document.querySelectorAll('[data-cnt]').forEach(e=>countTo(e,+e.dataset.cnt,1200));document.querySelectorAll('.rb i').forEach((e,i)=>setTimeout(()=>e.classList.add('go'),120+i*70))});
+  typeBrief(D.brief);
+  const tick=()=>{const c=$('#pdClock');if(c)c.textContent=tm.format(new Date());document.querySelectorAll('.tl2').forEach(el=>{const left=(+el.dataset.due-NOW())/1000;const a=Math.abs(left),h=Math.floor(a/3600),m=Math.floor(a%3600/60),s=Math.floor(a%60);const t=`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;const cd=el.querySelector('.cdn');cd.textContent=left<0?'+'+t:t;el.classList.toggle('late',left<0);el.classList.toggle('warn',left>=0&&left<3600)})};
+  tick();liveT=setInterval(tick,1000);
+  pdMap();
+  $('#askQ').addEventListener('keydown',e=>{if(e.key==='Enter')ask($('#askQ').value)});
+}
+function countTo(el,to,ms){if(!el)return;const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=v;if(p<1)requestAnimationFrame(f)})(t0)}
+function dashData(){
+  const L=GV.tx,tk=todayKey();const allU=unitStats(L);const units=allU.filter(u=>u.steps>=3).sort((a,b)=>b.sla-a.sla||a.avg-b.avg);
+  const st=allU.reduce((a,u)=>({s:a.s+u.steps,i:a.i+u.inSla}),{s:0,i:0});const txSla=st.s?Math.round(st.i/st.s*100):0;
+  const cT=T().filter(t=>t.type!=='suggestion'),cm=metrics(cT);
+  const R=recsAll(),openR=R.filter(r=>r.status!=='done'),lateR=openR.filter(r=>r.due&&r.due<tk),recPc=R.length?Math.round((R.length-openR.length)/R.length*100):0;
+  const emps=new Set(GV.att.map(a=>a.emp_name+'|'+a.unit_key)).size,ard=attRef(),pres=GV.att.filter(a=>a.day===ard),attPc=emps?Math.round(pres.length/emps*100):0;
+  const gi=Math.round(txSla*.35+(cm.conf||0)*.25+attPc*.2+recPc*.2);
+  const tele=L.filter(t=>(t.ttype==='telegram'||t.priority==='flash')&&txOpen(t)).map(t=>{const h=txCurHold(t);return{...t,_due:h?h.start+SLAH[t.priority]*HOUR:NOW()}}).sort((a,b)=>a._due-b._due);
+  const done=L.filter(t=>['done','archived'].includes(t.status));const avg=done.length?done.reduce((a,t)=>a+txSteps(t).reduce((x,s)=>x+s.hours,0),0)/done.length:0;
+  const subs=[{l:'المعاملات ضمن المهلة',v:txSla,d:`${L.filter(txOverdue).length} متجاوزة الآن`,c:'#e9b949',go:'go:ws:kpi'},{l:'شكاوى حُلّت بتأكيد المواطن',v:cm.conf||0,d:`${fmt(cm.open)} قيد المعالجة`,c:'#3fb672',tab:'complaints'},{l:'الحضور',v:attPc,d:ard===tk?'اليوم':'آخر يوم عمل',c:'#4aa8dc',go:'go:ws:att'},{l:'مرئيات منجزة',v:recPc,d:`${lateR.length} متأخرة`,c:'#c48ef0',go:'go:ws:meet'}];
+  // agenda
+  const days=[...new Set([...GV.meet.map(m=>m.day),...GV.appt.filter(a=>a.status!=='cancelled').map(a=>a.day)])].filter(d=>d>=tk).sort();const agDay=days.includes(tk)?tk:(days[0]||tk);
+  const pos=t=>{const[h,m]=(t||'09:00').split(':').map(Number);return Math.max(0,Math.min(100,((h+m/60)-7)/9*100))};
+  const agenda=[...GV.meet.filter(m=>m.day===agDay).map(m=>({tm:m.tm||'',t:'اجتماع: '+m.topic,s:m.entity,k:'m'})),...GV.appt.filter(a=>a.day===agDay&&a.status!=='cancelled').map(a=>({tm:a.tm||'',t:(a.urgency==='urgent'?'⚠️ ':'')+'موعد: '+a.name,s:a.topic,k:a.urgency==='urgent'?'u':'a'}))].sort((a,b)=>a.tm.localeCompare(b.tm)).map(x=>({...x,pos:pos(x.tm)}));
+  const nd=new Date();const nowPos=pos(nd.getHours()+':'+nd.getMinutes());
+  // heat
+  const cnt={};L.forEach(t=>{const k=dayKey(new Date(t.created_at));cnt[k]=(cnt[k]||0)+1});const mx=Math.max(1,...Object.values(cnt));const heat=[];
+  const start=NOW()-83*DAY;for(let w=0;w<12;w++){const col=[];for(let d=0;d<7;d++){const k=dayKey(start+(w*7+d)*DAY);const n=cnt[k]||0;col.push({d:k,n,a:n?(.15+.85*n/mx).toFixed(2):'.05'})}heat.push(col)}
+  // brief
+  const B=[];const worst=units[units.length-1],best=units[0];
+  if(worst)B.push({ic:'⏱️',c:'r',t:`${uShort(worst.k)} الأبطأ في إنجاز المعاملات: ${worst.sla}% فقط ضمن المهلة، ومتوسط بقاء المعاملة لديها ${dur(worst.avg)}${worst.overdue?`، ولديها الآن ${worst.overdue} ${worst.overdue>2&&worst.overdue<11?'معاملات متجاوزة':'معاملة متجاوزة'}`:''}.`,a:`unit:${worst.k}`,al:'التفاصيل'});
+  const lateT=tele.filter(t=>t._due<NOW());if(tele.length)B.push({ic:'⚡',c:lateT.length?'r':'y',t:`${tele.length} برقية عاجلة مفتوحة${lateT.length?`، منها ${lateT.length} تجاوزت مهلة الست ساعات`:'، جميعها ضمن المهلة حتى الآن'}.`,a:'go:ws:tele',al:'عرض'});
+  const ms=managerStats(L).sort((a,b)=>b.sla-a.sla||a.avg-b.avg);if(ms[0])B.push({ic:'🏅',c:'g',t:`${ms[0].name}${ms[0].name.includes(uShort(ms[0].unit))?'':' في '+uShort(ms[0].unit)} الأعلى التزاماً: ${ms[0].sla}% من ${ms[0].n} معاملة أنجزها ضمن المهلة، ويستحق التكريم.`,a:`unit:${ms[0].unit}`,al:'الإدارة'});
+  const ents=Object.keys(ENT).map(k=>({k,...metrics(cT.filter(t=>t.ent===k&&t.route==='entity'))})).filter(e=>e.n>=5);const ff=[...ents].sort((a,b)=>b.ff-a.ff)[0];
+  if(ff)B.push({ic:'📣',c:'y',t:`${ENT[ff.k].n}: ${ff.ff}% من شكاواها وصلت الإمارة بعد أن رفعها المواطنون للجهة دون تجاوب، والإغلاق الشكلي لديها ${ff.falseC}%.`,a:'tab:complaints',al:'الشكاوى'});
+  if(lateR.length)B.push({ic:'📋',c:'y',t:`${lateR.length} من مرئيات اجتماعات مكتب الوكيل تجاوزت مهلتها، من أصل ${openR.length} قيد المتابعة.`,a:'go:ws:meet',al:'المرئيات'});
+  const ag=agenda.filter(x=>x.k==='u').length;B.push({ic:'📅',c:'b',t:`${agDay===tk?'اليوم':'في '+fmtDay(agDay)}: ${agenda.filter(x=>x.k==='m').length} اجتماع و${agenda.filter(x=>x.k!=='m').length} موعد${ag?`، منها ${ag} موعد طارئ`:''}.`,a:'go:ws:appt',al:'الجدول'});
+  return{gi,subs,units,tele,agenda,agDay,nowPos,heat,brief:B.slice(0,6),txOpen:L.filter(txOpen).length,txOver:L.filter(txOverdue).length,avg};
+}
+let briefT=null;
+function typeBrief(B){const box=$('#brief');if(!box)return;box.innerHTML='';clearTimeout(briefT);let i=0;
+  const next=()=>{if(!$('#brief')||i>=B.length)return;const b=B[i++];const el=document.createElement('div');el.className='bi '+b.c;el.innerHTML=`<span class="bic">${b.ic}</span><p></p><button class="pbtn sm" data-g="${b.a}">${b.al}</button>`;box.appendChild(el);
+    const p=el.querySelector('p');let k=0;const tx=b.t;(function ty(){if(!document.body.contains(p))return;k+=3;p.textContent=tx.slice(0,k);if(k<tx.length)briefT=setTimeout(ty,14);else{el.classList.add('done');briefT=setTimeout(next,180)}})()};
+  next()}
+function ask(q){q=(q||'').trim();if(!q)return;$('#askQ').value=q;const A=$('#askA');const D=dashData();let h='',t='';
+  const card=(title,rows)=>`<div class="ans"><div class="ans-h"><span class="ai">✦</span>${esc(title)}</div>${rows||'<div class="pd-empty">لا يوجد ما يُعرض</div>'}</div>`;
+  if(/أبطأ|أسوأ|متأخر.*إدار|تأخير/.test(q)){const u=[...D.units].reverse().slice(0,5);h=card('الإدارات الأبطأ في إنجاز المعاملات',u.map(x=>`<button class="ar" data-unit="${x.k}"><b>${esc(uShort(x.k))}</b><span>${x.sla}% ضمن المهلة</span><span>متوسط ${dur(x.avg)}</span><span class="${x.overdue?'bad':''}">${x.overdue} متأخرة الآن</span></button>`).join(''))}
+  else if(/تكريم|متميز|أفضل|أعلى/.test(q)){const m=managerStats(GV.tx).sort((a,b)=>b.sla-a.sla||a.avg-b.avg).slice(0,5);h=card('الأعلى التزاماً بالمهلة',m.map((x,i)=>`<button class="ar" data-unit="${x.unit}"><b>${['🥇','🥈','🥉','🏅','🏅'][i]} ${esc(x.name)}</b><span>${esc(uShort(x.unit))}</span><span>${x.sla}% · ${x.n} معاملة</span><span>متوسط ${dur(x.avg)}</span></button>`).join(''))}
+  else if(/برقي/.test(q)){h=card('البرقيات العاجلة المفتوحة',D.tele.map(x=>`<button class="ar" data-tx="${esc(x.id)}"><b>${esc(x.id)}</b><span>${x.conf==='normal'||isTop()?esc(x.subject):'برقية سرية'}</span><span>لدى ${esc(uShort(x.current_unit))}</span><span class="${x._due<NOW()?'bad':''}">${x._due<NOW()?'متأخرة '+dur((NOW()-x._due)/HOUR):'متبقٍ '+dur((x._due-NOW())/HOUR)}</span></button>`).join(''))}
+  else if(/موعد|اجتماع|جدول|اليوم/.test(q)&&!/حضور|دوام/.test(q)){h=card((D.agDay===todayKey()?'جدول اليوم':'أقرب جدول · '+fmtDay(D.agDay)),D.agenda.map(x=>`<div class="ar"><b dir="ltr">${esc(x.tm)}</b><span>${esc(x.t)}</span><span>${esc(x.s||'')}</span></div>`).join(''))}
+  else if(/شكا|جهة|إغلاق|مواطن/.test(q)){const cT=T().filter(t=>t.type!=='suggestion');const e=Object.keys(ENT).map(k=>({k,...metrics(cT.filter(t=>t.ent===k&&t.route==='entity'))})).filter(x=>x.n).sort((a,b)=>b.n-a.n).slice(0,5);h=card('الجهات الأكثر شكاوى',e.map(x=>`<button class="ar" data-tab="complaints"><b>${esc(ENT[x.k].n)}</b><span>${x.n} شكوى</span><span>حل مؤكد ${x.conf}%</span><span class="${x.falseC>15?'bad':''}">إغلاق شكلي ${x.falseC}%</span></button>`).join(''))}
+  else if(/حضور|دوام|غياب|غائب/.test(q)){const rd=attRef();const tot={},pr={};GV.att.forEach(a=>{const k=a.emp_name+'|'+a.unit_key;tot[a.unit_key]=tot[a.unit_key]||new Set();tot[a.unit_key].add(k)});GV.att.filter(a=>a.day===rd).forEach(a=>pr[a.unit_key]=(pr[a.unit_key]||0)+1);
+    const r=Object.keys(tot).map(u=>({u,p:Math.round((pr[u]||0)/tot[u].size*100),n:pr[u]||0,t:tot[u].size})).sort((a,b)=>a.p-b.p);h=card('الحضور حسب الإدارة · '+(rd===todayKey()?'اليوم':'آخر يوم عمل'),r.map(x=>`<div class="ar"><b>${esc(uShort(x.u))}</b><span>${x.n} من ${x.t}</span><span class="${x.p<85?'bad':''}">${x.p}%</span></div>`).join(''))}
+  else if(/مرئي|توصي/.test(q)){const tk=todayKey();const l=recsAll().filter(r=>r.status!=='done'&&r.due&&r.due<tk);h=card('المرئيات المتأخرة',l.map(r=>`<button class="ar" data-meet="${r.m.id}"><b>${esc(r.text)}</b><span>${esc(uShort(r.unit))}</span><span class="bad">المهلة ${fmtDay(r.due)}</span><span>${esc(r.m.topic)}</span></button>`).join(''))}
+  else{const w=q.replace(/[؟?]/g,'').split(/\s+/).filter(x=>x.length>2);const l=GV.tx.filter(t=>w.some(x=>(t.subject+' '+(t.source||'')).includes(x))).slice(0,8);h=card('معاملات ذات صلة بـ «'+q+'»',l.map(x=>`<button class="ar" data-tx="${esc(x.id)}"><b>${esc(x.id)}</b><span>${esc(x.subject)}</span><span>${TXST[x.status]}</span><span>لدى ${esc(uShort(x.current_unit))}</span></button>`).join(''))}
+  A.innerHTML=h;A.querySelector('.ans').classList.add('in')}
+function pdMap(){const el=$('#pdMap');if(!el||!window.maplibregl)return;try{
+  const all=T().filter(t=>t.type!=='suggestion');
+  ccMap=new maplibregl.Map({container:el,attributionControl:{compact:true},style:mapStyle({bg:'#06140d',paint:{'raster-brightness-max':.75,'raster-saturation':-.35}}),center:[41.4,26.95],zoom:innerWidth<640?5.4:6.1,pitch:innerWidth<640?0:40,bearing:-8});
+  ccMap.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
+  const mx=Math.max(1,...Object.keys(GOV).map(g=>all.filter(t=>t.gov===g).length));
+  Object.entries(GOV).forEach(([g,o])=>{const L=all.filter(t=>t.gov===g);const m=metrics(L);const sz=22+Math.sqrt(L.length/mx)*42;const col=m.sla>=75?'63,182,114':m.sla>=60?'233,185,73':'229,101,79';
+    const d=document.createElement('div');d.className='gm2';d.innerHTML=`<div class="c" style="width:${sz}px;height:${sz}px;--c:${col}"><b>${L.length}</b></div><div class="n">${g}</div>`;
+    const pop=new maplibregl.Popup({offset:18,closeButton:false}).setHTML(`<div style="font-family:IBM Plex Sans Arabic;direction:rtl;color:#111;min-width:170px"><b style="font-size:15px">محافظة ${g}</b><br>الشكاوى: ${L.length} · مفتوحة: ${m.open}<br>الالتزام بالمهلة: ${m.sla}%<br>الرضا: ${m.sat}/5</div>`);
+    new maplibregl.Marker({element:d}).setLngLat(o.c).setPopup(pop).addTo(ccMap)});
+  const hq=document.createElement('div');hq.className='pin';hq.style.transform='scale(.55)';new maplibregl.Marker({element:hq}).setLngLat(HQ).addTo(ccMap);
+  let b=-8;const rot=()=>{if(!ccMap)return;b+=6;ccMap.easeTo({bearing:b,duration:9000,easing:x=>x});ccMap.once('moveend',rot)};ccMap.once('load',()=>{if(innerWidth>=640)rot()});
+  }catch(e){el.innerHTML='<div class="pd-empty">تعذر تحميل الخريطة</div>'}}
+function openUnit(k){const d=$('#drawer');if(!d)return;const L=GV.tx.filter(t=>txSteps(t).some(s=>s.unit===k));const u=unitStats(GV.tx).find(x=>x.k===k)||{sla:null,avg:null,open:0,overdue:0,steps:0};
+  const ms=managerStats(GV.tx).filter(m=>m.unit===k).sort((a,b)=>b.n-a.n);const open=GV.tx.filter(t=>t.current_unit===k&&txOpen(t)).sort((a,b)=>txOverdue(b)-txOverdue(a));
+  const wk=[];for(let i=11;i>=0;i--){const e=NOW()-i*7*DAY,s=e-7*DAY;let n=0,ok=0;L.forEach(t=>txSteps(t).forEach(st=>{if(st.unit===k&&st.end&&st.end>s&&st.end<=e){n++;if(!st.over)ok++}}));wk.push(n?Math.round(ok/n*100):null)}
+  const pts=wk.map((v,i)=>v==null?null:[i*20,60-v*.55]).filter(Boolean);const path=pts.map((p,i)=>(i?'L':'M')+p[0]+' '+p[1]).join(' ');
+  d.innerHTML=`<div class="dr-h"><div><small>إدارة</small><b>${esc(uN(k))}</b></div><button class="pbtn" data-g="drclose">✕</button></div>
+   <div class="dr-k"><div><b>${u.sla==null?'—':u.sla+'%'}</b><small>ضمن المهلة</small></div><div><b>${dur(u.avg)}</b><small>متوسط البقاء</small></div><div><b>${u.open}</b><small>مفتوحة الآن</small></div><div><b class="${u.overdue?'bad':''}">${u.overdue}</b><small>متجاوزة</small></div></div>
+   <div class="dr-s"><small>الإنجاز ضمن المهلة · آخر 12 أسبوعاً</small><svg viewBox="-4 0 228 64" preserveAspectRatio="none"><path d="${path}" fill="none" stroke="#e9b949" stroke-width="2.5" stroke-linejoin="round"/>${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#f3dc98"/>`).join('')}</svg></div>
+   ${ms.length?`<div class="dr-t">المدراء والمسؤولون</div>${ms.slice(0,3).map(m=>`<div class="dr-m"><b>${esc(m.name)}</b><span>${m.sla}% · ${m.n} معاملة · ${dur(m.avg)}</span></div>`).join('')}`:''}
+   <div class="dr-t">المعاملات المفتوحة لديها</div>${open.slice(0,8).map(t=>{const h=txCurHold(t);return `<div class="dr-x" data-tx="${esc(t.id)}"><span class="idc">${esc(t.id)}</span><b>${t.conf==='normal'||isTop()?esc(t.subject):'معاملة سرية'}</b><span class="${h&&h.over?'bad':''}">${dur(h&&h.hours)}</span></div>`}).join('')||'<div class="pd-empty">لا معاملات مفتوحة</div>'}
+   <button class="pbtn gold wide" data-g="dirunit:${k}">✍️ إصدار توجيه لهذه الإدارة</button>`;
+  d.classList.add('on')}
+
+/* ---------- smart demo entry from the presentation ---------- */
+function runDemo(){const d=window.__demo;if(!d)return;window.__demo=null;
+  if(d.login){const[u,p]=d.login.split('|');const go2=()=>{loginModal(d.view||'');setTimeout(()=>{const a=$('#lgE'),b=$('#lgP');if(a){a.value=u;b.value=p;document.querySelector('[data-act=doLogin]').focus()}},80)};
+    if(PROFILE&&(PROFILE.username||'').toLowerCase()===u.toLowerCase()){go(d.view||defaultView(PROFILE.role));return}
+    if(PROFILE){sb.auth.signOut().then(()=>{PROFILE=null;renderAuth();go2()})}else go2();return}
+  if(d.view==='citizen-new'){go('citizen',{tab:'new'});return}if(d.view)go(d.view)}
+window.__runDemo=runDemo;
+
+/* ---------- demo data ---------- */
+const SRCS=['وزارة الداخلية','الديوان الملكي','أمانة منطقة حائل','شرطة منطقة حائل','المديرية العامة للدفاع المدني','تجمع حائل الصحي','الإدارة العامة للتعليم','هيئة الرقابة ومكافحة الفساد','الديوان العام للمحاسبة','محافظة بقعاء','محافظة الغزالة','جامعة حائل','الهيئة العامة للطرق','مواطن'];
+const TXS={rights:['طلب إفادة بشأن نزاع على أرض زراعية','إنهاء صلح في قضية دية','متابعة تنفيذ حكم قضائي','مطالبة ورثة بحصر إرث'],security:['تقرير عن تجمهر في محافظة الشنان','برقية بشأن حادث مروري جسيم','متابعة موقوفين في قضية تهريب','خطة أمن المناسبات'],dev:['طلب اعتماد مشروع تطوير طريق بقعاء','متابعة تعثر مشروع شبكة مياه','تقرير خدمات محافظة الحائط','مقترح تنمية مركز سياحي في جبل أجا'],admin_fin:['اعتماد عقد صيانة مبنى الإمارة','طلب صرف مستحقات مقاول','مراجعة ميزانية الربع الثالث'],hr:['طلب نقل موظف بين الإدارات','اعتماد ترقيات الموظفين','طلب انتداب لموظف'],it:['ترقية نظام المعاملات الإلكترونية','طلب صلاحيات على النظام'],complaints:['تظلم مواطن من قرار بلدية','شكوى مواطن مرفوعة لسمو الأمير','استرحام بشأن قضية'],comms:['تغطية إعلامية لزيارة سمو الأمير','حملة توعوية لموسم الأمطار','ترتيبات احتفال اليوم الوطني']};
+const UPERF={emir:.35,deputy:.45,asst_sec:.6,asst_dev:.85,rights:.7,security:.95,dev:1.7,admin_fin:1.35,hr:.6,followup:.75,comms:.55,it:1.1,complaints:1.2};
+const UMGR={};
+function seedGov(R){
+  let s=777;const r=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};const pk=a=>a[Math.floor(r()*a.length)];
+  const mgr=u=>UMGR[u]||(UMGR[u]=u==='emir'?'مكتب سمو الأمير':u==='deputy'?'وكيل الإمارة':'أ. '+pk(NAMES)+' '+pk(FAM));Object.keys(UNITS).forEach(mgr);
+  const now=NOW(),TX=[];let n=1001;
+  const dept=['rights','security','dev','admin_fin','hr','it','complaints','comms'];
+  const gen=(created,fl)=>{
+    const u=pk(dept),subj=pk(TXS[u]),kind=r()<.55?'in':r()<.6?'internal':r()<.7?'out':'circular';
+    const pr=fl||/برقية|حادث|تجمهر/.test(subj)||r()<.08?'flash':r()<.25?'urgent':'normal';const lim=SLAH[pr];
+    const conf=u==='security'&&r()<.35?(r()<.25?'topsecret':'secret'):u==='rights'&&r()<.12?'secret':'normal';
+    const path=kind==='in'?['deputy',u==='security'||u==='rights'?'asst_sec':'asst_dev',u]:kind==='out'?[u,'deputy']:kind==='circular'?['deputy','hr']:[u,'deputy',u];
+    const from=kind==='in'?'deputy':path[0];const moves=[{ts:created,from,to:from,by:mgr(from),action:'إنشاء',note:''}];let ts=created,cur=from,closed=true;
+    const route=kind==='in'?path.slice(1):path.slice(1);
+    for(const nx of route){const hold=lim*UPERF[cur]*(.25+Math.pow(r(),1.6)*1.9)*HOUR;if(ts+hold>now){closed=false;break}
+      if(r()<.3){moves.push({ts:ts+hold*.5,from:cur,to:cur,by:mgr(cur),action:'شرح',note:'للدراسة والإفادة'})}
+      ts+=hold;moves.push({ts,from:cur,to:nx,by:mgr(cur),action:'إحالة',note:pk(['للاطلاع والإفادة','لاتخاذ اللازم','للدراسة والرفع','حسب الاختصاص'])});cur=nx}
+    let status='progress';if(closed){const hold=lim*UPERF[cur]*(.25+Math.pow(r(),1.6)*1.9)*HOUR;if(ts+hold<now){ts+=hold;moves.push({ts,from:cur,to:cur,by:mgr(cur),action:r()<.85?'إنجاز':'حفظ',note:'أُنجزت'});status=moves[moves.length-1].action==='إنجاز'?'done':'archived'}}
+    if(moves.length===1)status='new';
+    const comms=u==='comms'||COMMS_RX.test(subj);const pu=[...new Set(moves.map(m=>m.to).concat(comms?['comms']:[]))];
+    TX.push({id:'م-'+(n++),kind,ttype:pr==='flash'&&r()<.7?'telegram':pk(['letter','letter','transaction','memo']),subject:subj,source:kind==='in'?pk(SRCS):uN(from),ext_ref:kind==='in'?String(Math.floor(100000+r()*899999)):null,priority:pr,conf,current_unit:cur,status,comms,path_units:pu,demo:true,data:{moves,body:subj+'. نأمل الاطلاع واتخاذ ما يلزم.'},created_at:new Date(created).toISOString()});
+  };
+  for(let i=0;i<280;i++)gen(now-Math.pow(r(),1.25)*95*DAY);
+  for(let i=0;i<60;i++){const fl=i<12;gen(now-(fl?r()*15*HOUR:Math.pow(r(),1.2)*5*DAY),fl)}
+  TX.sort((a,b)=>a.created_at.localeCompare(b.created_at)).forEach((t,i)=>t.id='م-'+(1001+i));
+  const ME2=[];const ent=['أمانة منطقة حائل','شرطة منطقة حائل','تجمع حائل الصحي','الإدارة العامة للتعليم','الهيئة العامة للطرق','جامعة حائل','الغرفة التجارية بحائل','فرع وزارة البيئة'];
+  const top=['متابعة مشاريع الطرق في المحافظات','الاستعداد لموسم الأمطار','تطوير الخدمات الصحية في المحافظات','خطة العودة للمدارس','مشروع تطوير وسط مدينة حائل','لجنة السلامة المرورية','ملتقى حائل الاستثماري','متابعة مشاريع المياه'];
+  const recT=['رفع تقرير بنسب الإنجاز','تشكيل فريق عمل مشترك','إعداد خطة زمنية للمعالجة','حصر المشاريع المتعثرة','التنسيق مع الجهات ذات العلاقة','رفع توصيات اللجنة لسمو الأمير'];
+  for(let i=0;i<26;i++){const off=Math.round((r()-.62)*44);const d=dayKey(now+off*DAY);const past=off<0;const u=pk(['dev','security','rights','admin_fin','followup','comms']);
+    const recs=past?Array.from({length:1+Math.floor(r()*3)},()=>{const due=dayKey(now+(off+5+Math.floor(r()*20))*DAY);const st=due<todayKey()?(r()<.7?'done':pk(['progress','open'])):pk(['open','progress','done']);return{text:pk(recT),unit:pk(['dev','security','rights','admin_fin','followup','comms','hr']),due,status:st}}):[];
+    ME2.push({day:d,tm:pk(['09:00','10:00','11:30','12:30','13:00']),topic:pk(top),entity:pk(ent),unit_key:u,minutes:past?'ناقش الاجتماع الموضوع وخلص إلى المرئيات المدونة أدناه.':null,recs,status:past?'held':'scheduled',demo:true})}
+  const AP=[];for(let i=0;i<34;i++){const off=Math.round((r()-.55)*24);const d=dayKey(now+off*DAY);const off2=r()<.5;
+    AP.push({day:d,tm:pk(['08:30','09:15','10:00','10:45','11:30','12:15']),urgency:r()<.18?'urgent':'normal',visitor:off2?'official':'citizen',name:off2?pk(['مدير شرطة منطقة حائل','أمين منطقة حائل','مدير تجمع حائل الصحي','محافظ بقعاء','مدير التعليم']):pk(NAMES)+' '+pk(FAM),topic:off2?pk(['عرض مستجدات مشروع','تنسيق زيارة ميدانية','رفع تقرير']):pk(['طلب مساعدة','متابعة معاملة','تظلم من قرار','طلب مقابلة سمو الأمير']),notes:off<0?pk(['أُحيل للإدارة المختصة','تم التوجيه بالمتابعة','وعد بالرد خلال أسبوع','']):'',status:off<0?(r()<.9?'done':'cancelled'):'scheduled',demo:true})}
+  const AT=[],LV=[];const ue=['rights','security','dev','admin_fin','hr','followup','comms','it','complaints','deputy'];const EMP=[];
+  ue.forEach(u=>{const k=3+Math.floor(r()*6);for(let i=0;i<k;i++)EMP.push({n:pk(NAMES)+' '+pk(FAM),u,p:UPERF[u]})});
+  for(let dd=27;dd>=0;dd--){const day=new Date(now-dd*DAY);const dw=day.getDay();if(dw===5||dw===6)continue;const d=dayKey(day);const isToday=dd===0;
+    EMP.forEach(e=>{if(r()<.05+e.p*.04)return;const base=new Date(d+'T07:00:00+03:00').getTime();const ci=base+(r()*35+(r()<e.p*.18?40+r()*60:0))*6e4;if(isToday&&ci>now)return;const co=ci+(7+r()*1.2)*HOUR;
+      AT.push({emp_name:e.n,unit_key:e.u,day:d,check_in:new Date(ci).toISOString(),check_out:isToday||co>now?null:new Date(co).toISOString(),demo:true})})}
+  for(let i=0;i<36;i++){const e=pk(EMP);const off=Math.round((r()-.75)*20);LV.push({emp_name:e.n,unit_key:e.u,day:dayKey(now+off*DAY),from_t:pk(['08:30','09:00','10:00','11:00','12:00']),to_t:pk(['10:00','11:30','12:30','13:00','14:00']),reason:pk(['مراجعة مستشفى','ظرف عائلي','مراجعة جهة حكومية','موعد مدرسي للأبناء']),status:off<0?(r()<.85?'approved':'rejected'):r()<.6?'pending':'approved',decided_by:off<0?mgr(e.u):null,demo:true})}
+  return{TX,ME:ME2,AP,AT,LV};
+}
+async function seedGovUpload(say){
+  const D=seedGov();
+  for(const t of ['transactions','meetings','appointments','attendance','leave_requests']){const{error}=await sb.from(t).delete().eq('demo',true);if(error)throw error}
+  const up=async(t,rows,lbl)=>{for(let i=0;i<rows.length;i+=200){say(`جارٍ رفع ${lbl}… ${Math.min(i+200,rows.length)} / ${rows.length}`);const{error}=await sb.from(t).insert(rows.slice(i,i+200));if(error)throw error}};
+  await up('transactions',D.TX,'المعاملات');await up('meetings',D.ME,'الاجتماعات');await up('appointments',D.AP,'المواعيد');await up('attendance',D.AT,'سجلات الدوام');await up('leave_requests',D.LV,'طلبات الإذن');
+  return D.TX.length;
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',async e=>{
+  const tr=e.target.closest('[data-tx]');if(tr&&!e.target.closest('button')){txModal(tr.dataset.tx);return}
+  const mt=e.target.closest('[data-meet]');if(mt&&!e.target.closest('button')){meetModal(mt.dataset.meet);return}
+  const un=e.target.closest('[data-unit]');if(un){openUnit(un.dataset.unit);return}
+  const aq=e.target.closest('[data-ask]');if(aq){ask(aq.dataset.ask);return}
+  const g=e.target.closest('[data-g]');if(!g)return;e.preventDefault();const k=g.dataset.g,p=k.split(':');
+  if(p[0]==='unit'){openUnit(p[1]);return}
+  if(p[0]==='tab'){STATE.tab=p[1];render();return}
+  if(k==='drclose'){$('#drawer').classList.remove('on');return}
+  if(k==='ask'){ask($('#askQ').value);return}
+  if(p[0]==='dirunit'){modal(`<div class="h2">✍️ توجيه إلى ${esc(uN(p[1]))}</div><p class="mut" style="margin:6px 0 14px">يصل التوجيه للإدارة كمعاملة عاجلة باسم ${PROFILE.role==='prince'?'سمو الأمير':'وكيل الإمارة'}، ويبدأ عداد مهلتها فوراً.</p><textarea class="inp" id="dirT">نوجّه بإنجاز المعاملات المتأخرة لدى الإدارة خلال يومين، ورفع تقرير بالأسباب والإجراءات التصحيحية.</textarea><div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" data-act="close">إلغاء</button><button class="btn gold" data-g="dirsend:${p[1]}">إصدار التوجيه</button></div>`);return}
+  if(p[0]==='dirsend'){const txt=$('#dirT').value.trim();if(txt.length<6){toast('اكتب نص التوجيه');return}g.disabled=true;
+    const{data,error}=await sb.rpc('tx_create',{p:{kind:'internal',ttype:'memo',priority:'urgent',conf:'normal',to:p[1],subject:(PROFILE.role==='prince'?'توجيه سمو الأمير: ':'توجيه وكيل الإمارة: ')+txt.slice(0,200),body:txt,note:'للتنفيذ العاجل'}});g.disabled=false;
+    if(error){toast(errMsg(error));return}closeModal();toast('صدر التوجيه '+data.id+' إلى '+uN(p[1]));await govLoad();if(VIEW==='prince'){render();setTimeout(()=>openUnit(p[1]),300)}return}
+  try{
+  if(p[0]==='sec'){STATE.sec=p[1];STATE.f={};if(VIEW!=='ws')go('ws',{sec:p[1]});else rWs();scrollTo({top:0});return}
+  if(p[0]==='go'){closeModal();if(p[1]==='ws')go('ws',{sec:p[2]});else if(p[1]==='prince')go('prince',{tab:p[2]||'overview'});else go(p[1]);return}
+  if(k==='newcirc'){TXD={...TXD,kind:'circular',ttype:'memo',to:'hr',subject:'',auto:false};STATE.sec='new';rWs();return}
+  if(p[0]==='applysg'){TXD.to=p[1];TXD.auto=false;const s=$('#tto');if(s)s.value=p[1];toast('اعتُمد الاقتراح: '+uN(p[1]));const sg=suggestRoute(TXD.subject);if(sg.comms){TXD.comms=true;$('#tcm').checked=true}if(sg.flash){TXD.priority='flash';$('#tp').value='flash'}return}
+  if(k==='txcreate'){const d=TXD;if(d.subject.trim().length<4){toast('اكتب موضوع المعاملة');return}if(!d.to){toast('اختر الجهة المحال إليها');return}g.disabled=true;
+    const{data,error}=await sb.rpc('tx_create',{p:{kind:d.kind,ttype:d.ttype,priority:d.priority,conf:d.conf,to:d.to,subject:d.subject.trim(),source:d.source,ext_ref:d.ext_ref,body:d.body,note:d.note,comms:d.comms}});g.disabled=false;
+    if(error){toast(errMsg(error));return}toast('أُنشئت المعاملة '+data.id+' وأُحيلت إلى '+uN(d.to));TXD={kind:'internal',ttype:'letter',priority:'normal',conf:'normal',to:'',subject:'',source:'',ext_ref:'',body:'',note:'',comms:false,auto:true};
+    await govLoad();STATE.sec='out';rWs();txModal(data.id);return}
+  if(p[0]==='txa'){g.disabled=true;await txAct(p[1],p.slice(2).join(':'));return}
+  if(k==='ssearch'){await doSecret($('#sq').value.trim());return}
+  if(p[0]==='rec'){const{error}=await sb.rpc('rec_update',{p_meeting:+p[1],p_idx:+p[2],p_status:p[3]});if(error){toast(errMsg(error));return}const m=GV.meet.find(x=>x.id==p[1]);m.recs[+p[2]].status=p[3];m.recs[+p[2]].by=who();toast('حُدّثت حالة المرئية');meetModal(p[1]);return}
+  if(p[0]==='recadd'){const txt=$('#nrt').value.trim();if(txt.length<3){toast('اكتب المرئية');return}const m=GV.meet.find(x=>x.id==p[1]);const recs=[...(m.recs||[]),{text:txt,unit:$('#nru').value,due:$('#nrd').value||null,status:'open'}];
+    const{error}=await sb.from('meetings').update({recs}).eq('id',m.id);if(error){toast(errMsg(error));return}m.recs=recs;toast('أُضيفت المرئية وأُسندت للإدارة');meetModal(m.id);return}
+  if(p[0]==='minsave'){const m=GV.meet.find(x=>x.id==p[1]);const minutes=$('#mmin').value;const{error}=await sb.from('meetings').update({minutes,status:'held'}).eq('id',m.id);if(error){toast(errMsg(error));return}m.minutes=minutes;m.status='held';closeModal();toast('حُفظ المحضر');rWs();return}
+  if(k==='meetnew'){meetNewModal();return}
+  if(k==='meetsave'){const o={day:$('#nmd').value,tm:$('#nmt').value,topic:$('#nmtop').value.trim(),entity:$('#nme').value.trim(),unit_key:$('#nmu').value};if(!o.day||o.topic.length<3){toast('أكمل التاريخ والموضوع');return}
+    const{data,error}=await sb.from('meetings').insert(o).select().single();if(error){toast(errMsg(error));return}GV.meet.push(data);closeModal();toast('أُضيف الاجتماع');rWs();return}
+  if(k==='apptnew'){apptNewModal();return}
+  if(k==='apptsave'){const o={day:$('#nad').value,tm:$('#nat').value,urgency:$('#nau').value,visitor:$('#nav').value,name:$('#nan').value.trim(),topic:$('#natop').value.trim(),notes:$('#nano').value.trim()};if(!o.day||o.name.length<2){toast('أكمل التاريخ والاسم');return}
+    const{data,error}=await sb.from('appointments').insert(o).select().single();if(error){toast(errMsg(error));return}GV.appt.push(data);closeModal();toast('أُضيف الموعد');rWs();return}
+  if(p[0]==='appt'){const notes=p[2]==='done'?prompt('المرئيات (اختياري)')||undefined:undefined;const upd={status:p[2]};if(notes)upd.notes=notes;const{error}=await sb.from('appointments').update(upd).eq('id',+p[1]);if(error){toast(errMsg(error));return}Object.assign(GV.appt.find(a=>a.id==p[1]),upd);rWs();return}
+  if(k==='hrcheck'){const{data,error}=await sb.rpc('hr_check');if(error){toast(errMsg(error));return}const i=GV.att.findIndex(a=>a.id===data.id);if(i>=0)GV.att[i]=data;else GV.att.push(data);toast(data.check_out?'سُجّل الانصراف':'سُجّل الحضور');rWs();return}
+  if(k==='lvsend'){const{data,error}=await sb.rpc('hr_request',{p_day:$('#lvd').value,p_from:$('#lvf').value,p_to:$('#lvt').value,p_reason:$('#lvr').value.trim()});if(error){toast(errMsg(error));return}GV.leave.unshift(data);toast('أُرسل الطلب لمدير الإدارة');rWs();return}
+  if(p[0]==='lvok'){const{data,error}=await sb.rpc('hr_decide',{p_id:+p[1],p_ok:p[2]==='1'});if(error){toast(errMsg(error));return}const i=GV.leave.findIndex(l=>l.id==p[1]);GV.leave[i]=data;toast(p[2]==='1'?'اعتُمد الطلب':'رُفض الطلب');rWs();return}
+  }catch(err){toast('حدث خطأ: '+errMsg(err))}
+});
+
+
 async function submitTicket(btn){
   const d=draft;
   if((ME.name||'').trim().length<3){toast('اكتب اسمك الكامل');return}
@@ -1669,13 +2420,15 @@ function rAdmin(){
   const tab=STATE.tab||'accounts';
   $('#view').innerHTML=`
   <div class="page-head"><div><div class="h2">إدارة المنصة</div><p>الحسابات والصلاحيات، والجهات الحكومية، وبيانات العرض، وسجل التدقيق.</p></div>
-   <div class="tabs"><button class="${tab==='accounts'?'on':''}" data-tab="accounts">الحسابات وضباط الاتصال</button><button class="${tab==='entities'?'on':''}" data-tab="entities">الجهات</button><button class="${tab==='data'?'on':''}" data-tab="data">البيانات</button><button class="${tab==='audit'?'on':''}" data-tab="audit">سجل التدقيق</button></div></div>
+   <div class="tabs"><button class="${tab==='accounts'?'on':''}" data-tab="accounts">الفريق والحسابات</button><button class="${tab==='entities'?'on':''}" data-tab="entities">الجهات</button><button class="${tab==='data'?'on':''}" data-tab="data">البيانات</button><button class="${tab==='audit'?'on':''}" data-tab="audit">سجل التدقيق</button></div></div>
   <div id="abody"><div class="verify"><div class="spin"></div></div></div>`;
   ({accounts:aAccounts,entities:aEntities,data:aData,audit:()=>{$('#abody').innerHTML=auditView()}})[tab]();
 }
 const roleOpts=(r)=>`<option value="">— بلا صلاحية —</option>${Object.entries(ROLE_N).map(([k,v])=>`<option value="${k}" ${r===k?'selected':''}>${v}</option>`).join('')}`;
+const unitOpts=(u)=>`<option value="">—</option>${Object.entries(UNITS).map(([k,v])=>`<option value="${k}" ${u===k?'selected':''}>${v.n}</option>`).join('')}`;
 const entOpts=(e)=>`<option value="">—</option>${Object.entries(ENT).map(([k,v])=>`<option value="${k}" ${e===k?'selected':''}>${v.n}</option>`).join('')}`;
 async function aAccounts(){
+  await loadUnits();
   const{data,error}=await sb.from('profiles').select('*').order('created_at');
   if(error){$('#abody').innerHTML=`<div class="empty">${esc(errMsg(error))}</div>`;return}
   const focal=data.filter(p=>p.role==='focal');const covered=new Set(focal.map(p=>p.entity_key));
@@ -1684,46 +2437,45 @@ async function aAccounts(){
   <div class="split" style="grid-template-columns:380px 1fr">
    <div class="glass card"><div class="h3">إنشاء حساب جديد</div>
     <label class="f">الاسم</label><input class="inp" id="nuName">
-    <label class="f" style="margin-top:10px">البريد الإلكتروني</label><input class="inp" id="nuEmail" type="email" dir="ltr">
-    <label class="f" style="margin-top:10px">كلمة المرور المؤقتة</label><div class="row" style="flex-wrap:nowrap;gap:8px"><input class="inp" id="nuPass" dir="ltr" value="${genPass()}"><button class="btn sm" data-act="genPass">توليد</button></div>
-    <label class="f" style="margin-top:10px">الصلاحية</label><select class="inp" id="nuRole">${roleOpts('focal')}</select>
-    <label class="f" style="margin-top:10px">الجهة (لضابط الاتصال)</label><select class="inp" id="nuEnt">${entOpts(missing[0]||'')}</select>
+    <label class="f" style="margin-top:10px">اسم المستخدم (إنجليزي)</label><input class="inp" id="nuUser" dir="ltr" autocapitalize="off" placeholder="HailTeam2" style="text-align:left">
+    <label class="f" style="margin-top:10px">كلمة المرور</label><div class="row" style="flex-wrap:nowrap;gap:8px"><input class="inp" id="nuPass" dir="ltr" value="${genPass()}"><button class="btn sm" data-act="genPass">توليد</button></div>
+    <label class="f" style="margin-top:10px">الصلاحية</label><select class="inp" id="nuRole">${roleOpts('triage')}</select>
+    <label class="f" style="margin-top:10px">الإدارة (لمدير الإدارة والموظف)</label><select class="inp" id="nuUnit">${unitOpts('')}</select>
+    <label class="f" style="margin-top:10px">الجهة الحكومية (لمسؤول الجهة فقط)</label><select class="inp" id="nuEnt">${entOpts(missing[0]||'')}</select>
     <button class="btn gold" style="margin-top:16px;width:100%;justify-content:center" data-act="createUser">إنشاء الحساب</button>
-    <p class="dim" style="font-size:12px;margin-top:10px;line-height:1.7">سلّم ضابط الاتصال بريده وكلمة المرور المؤقتة، ويدخل من «دخول الموظفين» فتظهر له تذاكر جهته مباشرة.</p></div>
-   <div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><div class="h3" style="margin:0">الحسابات (${data.length})</div><span class="dim" style="font-size:12.5px">جهات بلا ضابط اتصال: ${missing.length}</span></div>
-    ${missing.length?`<div class="reason" style="margin-bottom:12px">جهات لم يُعيَّن لها ضابط اتصال بعد: ${missing.map(k=>esc(ENT[k].n)).join('، ')}</div>`:''}
-    <div style="overflow:auto"><table><thead><tr><th>الاسم</th><th>البريد</th><th>الصلاحية</th><th>الجهة</th><th>نشط</th><th></th></tr></thead><tbody>
-    ${data.map(p=>`<tr data-pid="${p.id}"><td><input class="inp" data-f="full_name" value="${esc(p.full_name||'')}" style="min-width:140px;padding:7px 10px"></td><td dir="ltr" style="text-align:left;font-size:12.5px">${esc(p.email||'')}</td>
+    <p class="dim" style="font-size:12px;margin-top:10px;line-height:1.75">«فريق الإمارة» لأعضاء فريقك الذين يفرزون الطلبات ويحيلونها. «مسؤول جهة» يرى طلبات جهته فقط. سلّم صاحب الحساب اسم المستخدم وكلمة المرور، ويدخل من «تسجيل الدخول».</p></div>
+   <div class="glass card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><div class="h3" style="margin:0">الحسابات (${data.length})</div><span class="dim" style="font-size:12.5px">جهات بلا مسؤول: ${missing.length}</span></div>
+    ${missing.length?`<div class="reason" style="margin-bottom:12px">جهات لم يُعيَّن لها مسؤول بعد: ${missing.map(k=>esc(ENT[k].n)).join('، ')}</div>`:''}
+    <div style="overflow:auto"><table><thead><tr><th>الاسم</th><th>اسم المستخدم</th><th>الصلاحية</th><th>الإدارة</th><th>الجهة الحكومية</th><th>نشط</th><th></th></tr></thead><tbody>
+    ${data.map(p=>`<tr data-pid="${p.id}"><td><input class="inp" data-f="full_name" value="${esc(p.full_name||'')}" style="min-width:140px;padding:7px 10px"></td><td dir="ltr" style="text-align:left;font-size:13px" class="idc">${esc(p.username||(p.email||'').replace(UDOM,''))}</td>
       <td><select class="inp" data-f="role" style="padding:7px 10px;min-width:130px" ${p.id===PROFILE.id?'disabled':''}>${roleOpts(p.role)}</select></td>
-      <td><select class="inp" data-f="entity_key" style="padding:7px 10px;min-width:180px">${entOpts(p.entity_key)}</select></td>
+      <td><select class="inp" data-f="unit_key" style="padding:7px 10px;min-width:170px">${unitOpts(p.unit_key)}</select></td>
+      <td><select class="inp" data-f="entity_key" style="padding:7px 10px;min-width:170px">${entOpts(p.entity_key)}</select></td>
       <td><input type="checkbox" data-f="active" ${p.active?'checked':''} ${p.id===PROFILE.id?'disabled':''}></td>
-      <td><button class="btn sm" data-act="saveUser" data-pid="${p.id}">حفظ</button></td></tr>`).join('')}</tbody></table></div></div></div>`;
+      <td style="white-space:nowrap"><button class="btn sm" data-act="saveUser" data-pid="${p.id}">حفظ</button> <button class="btn sm ghost" data-act="setPass" data-pid="${p.id}" data-name="${esc(p.full_name||p.username||'')}">كلمة المرور</button></td></tr>`).join('')}</tbody></table></div></div></div>`;
 }
 function genPass(){const c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';let s='';const a=new Uint32Array(12);crypto.getRandomValues(a);a.forEach(n=>s+=c[n%c.length]);return s+'!9'}
 async function createUser(btn){
-  const name=$('#nuName').value.trim(),email=$('#nuEmail').value.trim(),pass=$('#nuPass').value,role=$('#nuRole').value,ent=$('#nuEnt').value;
-  if(name.length<3||!/^\S+@\S+\.\S+$/.test(email)||pass.length<8){toast('أكمل الاسم والبريد وكلمة مرور من 8 أحرف على الأقل');return}
-  if(role==='focal'&&!ent){toast('اختر الجهة لضابط الاتصال');return}
+  const name=$('#nuName').value.trim(),user=$('#nuUser').value.trim(),pass=$('#nuPass').value,role=$('#nuRole').value,ent=$('#nuEnt').value,unit=$('#nuUnit').value;
+  if(['manager','employee'].includes(role)&&!unit){toast('اختر الإدارة');return}
+  if(name.length<3||!/^[A-Za-z0-9._-]{3,40}$/.test(user)||pass.length<8){toast('أكمل الاسم، واسم مستخدم بالإنجليزية، وكلمة مرور من 8 أحرف على الأقل');return}
+  if(!role){toast('اختر الصلاحية');return}
+  if(role==='focal'&&!ent){toast('اختر الجهة لمسؤول الجهة');return}
   btn.disabled=true;
   try{
-    const tmp=window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'hv-tmp-'+Date.now()}});
-    const{data,error}=await tmp.auth.signUp({email,password:pass,options:{data:{full_name:name}}});if(error)throw error;
-    const uid=data.user&&data.user.id;if(!uid)throw new Error('لم يُنشأ الحساب');
-    if(data.user.identities&&data.user.identities.length===0)throw new Error('هذا البريد مسجّل مسبقاً');
-    const{error:e2}=await sb.from('profiles').update({full_name:name,role:role||null,entity_key:role==='focal'?ent:null,active:true}).eq('id',uid);if(e2)throw e2;
-    audit(who(),'إنشاء حساب '+(ROLE_N[role]||'')+' '+email+(role==='focal'?' — '+ENT[ent].n:''));
+    const{error}=await sb.rpc('admin_create_user2',{p_username:user,p_password:pass,p_name:name,p_role:role,p_entity:role==='focal'?ent:null,p_unit:unit||null});if(error)throw error;
+    audit(who(),'إنشاء حساب '+(ROLE_N[role]||'')+' '+user+(role==='focal'?' — '+ENT[ent].n:''));
     modal(`<div class="verify"><div style="font-size:46px">🔐</div><div class="h2">تم إنشاء الحساب</div>
-      <div class="glass" style="padding:16px;box-shadow:none;text-align:right;width:100%;max-width:440px"><dl class="kv"><dt>الاسم</dt><dd>${esc(name)}</dd><dt>الصلاحية</dt><dd>${ROLE_N[role]||'—'}${role==='focal'?' · '+esc(ENT[ent].n):''}</dd><dt>البريد</dt><dd dir="ltr" style="text-align:left">${esc(email)}</dd><dt>كلمة المرور</dt><dd dir="ltr" style="text-align:left" class="idc">${esc(pass)}</dd><dt>رابط الدخول</dt><dd dir="ltr" style="text-align:left;font-size:12.5px">${esc(location.origin+location.pathname)}</dd></dl></div>
-      ${data.session?'':'<p class="reason" style="max-width:440px">إن كان تأكيد البريد مفعّلاً في Supabase فسيصله بريد تفعيل أولاً.</p>'}
+      <div class="glass" style="padding:16px;box-shadow:none;text-align:right;width:100%;max-width:440px"><dl class="kv"><dt>الاسم</dt><dd>${esc(name)}</dd><dt>الصلاحية</dt><dd>${ROLE_N[role]||'—'}${role==='focal'?' · '+esc(ENT[ent].n):''}</dd><dt>اسم المستخدم</dt><dd dir="ltr" style="text-align:left" class="idc">${esc(user)}</dd><dt>كلمة المرور</dt><dd dir="ltr" style="text-align:left" class="idc">${esc(pass)}</dd><dt>رابط الدخول</dt><dd dir="ltr" style="text-align:left;font-size:12.5px">${esc(location.origin+location.pathname)}#app</dd></dl></div>
       <button class="btn gold" data-act="close">تم</button></div>`);
     aAccounts();
   }catch(e){toast('تعذر إنشاء الحساب: '+errMsg(e))}finally{btn.disabled=false}
 }
 async function saveUser(pid){
   const tr=document.querySelector(`tr[data-pid="${pid}"]`);const g=f=>tr.querySelector(`[data-f="${f}"]`);
-  const upd={full_name:g('full_name').value.trim(),entity_key:g('entity_key').value||null};
+  const upd={full_name:g('full_name').value.trim(),entity_key:g('entity_key').value||null,unit_key:g('unit_key').value||null};
   if(!g('role').disabled){upd.role=g('role').value||null;upd.active=g('active').checked}
-  if(upd.role==='focal'&&!upd.entity_key){toast('اختر الجهة لضابط الاتصال');return}
+  if(upd.role==='focal'&&!upd.entity_key){toast('اختر الجهة لمسؤول الجهة');return}
   const{error}=await sb.from('profiles').update(upd).eq('id',pid);
   if(error)return toast('تعذر الحفظ: '+errMsg(error));audit(who(),'تعديل صلاحيات حساب');toast('تم الحفظ');
 }
@@ -1743,7 +2495,7 @@ async function aEntities(){
 async function aData(){
   const all=T(),demo=all.filter(t=>t.demo).length;
   $('#abody').innerHTML=`<div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">${kpi('إجمالي الطلبات',fmt(all.length),'')}${kpi('طلبات حقيقية',fmt(all.length-demo),'')}${kpi('بيانات تجريبية',fmt(demo),'')}${kpi('بانتظار الفرز',fmt(all.filter(t=>t.status==='triage').length),'')}</div>
-   <div class="cc-2" style="margin-top:0"><div class="glass card"><div class="h3">بيانات العرض التجريبي</div><p class="mut" style="font-size:13.5px;line-height:1.85">تُنشئ قرابة 530 طلباً واقعياً موزعة على الجهات والمحافظات خلال ستة أشهر، لتظهر مؤشرات مركز القيادة كاملة أثناء العرض. تُعلَّم كلها «تجريبية» ويمكن حذفها بضغطة واحدة دون المساس بالطلبات الحقيقية.</p>
+   <div class="cc-2" style="margin-top:0"><div class="glass card"><div class="h3">بيانات العرض التجريبي</div><p class="mut" style="font-size:13.5px;line-height:1.85">تُنشئ بيانات واقعية لستة أشهر: نحو 530 شكوى، و280 معاملة وبرقية بمساراتها الزمنية، و26 اجتماعاً بمرئياتها، و34 موعداً، وسجلات دوام نحو 60 موظفاً لأربعة أسابيع، وطلبات إذن. تُعلَّم كلها «تجريبية» وتُحذف بضغطة واحدة دون المساس بالبيانات الحقيقية.</p>
     <div class="row" style="margin-top:14px"><button class="btn gold" data-act="seed">تحميل البيانات التجريبية</button><button class="btn red" data-act="clearDemo" ${demo?'':'disabled'}>حذف البيانات التجريبية</button></div><p id="seedMsg" class="mut" style="margin-top:10px;font-size:13px"></p></div>
     <div class="glass card"><div class="h3">تصدير</div><p class="mut" style="font-size:13.5px;line-height:1.85">تصدير مؤشرات أداء الجهات بصيغة CSV تفتح في Excel.</p><button class="btn" style="margin-top:14px" data-act="exportCsv">تصدير مؤشرات الجهات</button></div></div>`;
 }
@@ -1751,10 +2503,11 @@ async function doSeed(){
   const m=$('#seedMsg');const say=x=>{if(m)m.textContent=x};
   try{
     say('جارٍ حذف البيانات التجريبية السابقة…');await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);
-    const rows=seedData().filter(t=>!t.mine).map(t=>{const r=tToRow(t);return{...r,demo:true,created_at:new Date(t.created).toISOString()}});
+    const{data:cits}=await sb.from('profiles').select('id,full_name,nid,phone').eq('role','citizen').order('created_at').limit(1);const cit=(cits||[])[0];
+    const rows=seedData().filter(t=>!t.mine||cit).map(t=>{if(t.mine){t.citizen={name:cit.full_name,nid:cit.nid||'',phone:cit.phone||''}}const r=tToRow(t);const o={...r,demo:true,created_at:new Date(t.created).toISOString()};if(t.mine)o.owner=cit.id;return o});
     for(let i=0;i<rows.length;i+=150){say(`جارٍ الرفع… ${Math.min(i+150,rows.length)} / ${rows.length}`);const{error}=await sb.from('tickets').insert(rows.slice(i,i+150));if(error)throw error}
     await sb.from('directives').insert({entity_key:'roads',txt:'رفع خطة زمنية خلال أسبوعين لمعالجة الطرق المتهالكة في محافظتي الحائط والشملي.',due:new Date(NOW()+11*DAY).toISOString(),demo:true});
-    audit(who(),'تحميل بيانات العرض التجريبي');await loadAll();say('تم تحميل '+rows.length+' طلباً تجريبياً.');toast('اكتمل تحميل البيانات التجريبية');aData();
+    say('جارٍ تجهيز المعاملات والاجتماعات والدوام…');const ntx=await seedGovUpload(say);audit(who(),'تحميل بيانات العرض التجريبي');await loadAll();say('تم تحميل '+rows.length+' شكوى و'+ntx+' معاملة مع الاجتماعات والمواعيد وسجلات الدوام.');toast('اكتمل تحميل البيانات التجريبية');aData();
   }catch(e){say('');toast('تعذر التحميل: '+errMsg(e))}
 }
 
@@ -1773,12 +2526,12 @@ document.addEventListener('click',async e=>{
    case 'hub':go('hub');break;
    case 'retry':case 'refresh':go(VIEW,STATE);break;
    case 'login':loginModal('');break;
-   case 'doLogin':{const em=$('#lgE').value.trim(),pw=$('#lgP').value;if(!em||!pw){toast('أدخل البريد وكلمة المرور');break}
+   case 'doLogin':{const em=toEmail($('#lgE').value),pw=$('#lgP').value;if(!$('#lgE').value.trim()||!pw){toast('أدخل اسم المستخدم وكلمة المرور');break}
      a.disabled=true;const{error}=await sb.auth.signInWithPassword({email:em,password:pw});a.disabled=false;
-     if(error){toast(/invalid/i.test(error.message)?'البريد أو كلمة المرور غير صحيحة':errMsg(error));break}
+     if(error){toast(/invalid/i.test(error.message)?'اسم المستخدم أو كلمة المرور غير صحيحة':errMsg(error));break}
      await loadProfile();closeModal();
      if(!PROFILE||!PROFILE.role){loginModal('','تم الدخول، لكن حسابك بانتظار تعيين الصلاحية من إدارة المنصة.');break}
-     audit(who(),'تسجيل دخول');const tg=a.dataset.target;go(tg&&ACCESS[tg]&&ACCESS[tg].includes(PROFILE.role)?tg:defaultView(PROFILE.role));break}
+     audit(who(),'تسجيل دخول');if(PROFILE.role==='citizen'){go('citizen',{tab:'mine'});break}const tg=a.dataset.target;go(tg&&ACCESS[tg]&&ACCESS[tg].includes(PROFILE.role)?tg:defaultView(PROFILE.role));break}
    case 'logout':await sb.auth.signOut();PROFILE=null;princeAuthed=false;vaultOpen=false;DB.tickets=[];renderAuth();go('hub');break;
    case 'rmP':draft.pfiles.splice(+a.dataset.i,1);cNew();break;
    case 'rmF':draft.files.splice(+a.dataset.i,1);cNew();break;
@@ -1826,21 +2579,23 @@ document.addEventListener('click',async e=>{
    case 'genPass':$('#nuPass').value=genPass();break;
    case 'createUser':createUser(a);break;
    case 'saveUser':saveUser(a.dataset.pid);break;
+   case 'setPass':{const pw=prompt('كلمة المرور الجديدة لـ '+a.dataset.name+' (8 أحرف على الأقل)');if(!pw)break;const{error}=await sb.rpc('admin_set_password',{p_id:a.dataset.pid,p_password:pw});if(error){toast('تعذر التغيير: '+errMsg(error));break}audit(who(),'تغيير كلمة مرور '+a.dataset.name);toast('تم تغيير كلمة المرور');break}
    case 'addEnt':{const name=$('#neName').value.trim(),key=$('#neKey').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,''),ch=$('#neCh').value.trim();if(name.length<3||key.length<2){toast('أكمل اسم الجهة ورمزها بالإنجليزية');break}
      const{error}=await sb.from('entities').insert({key,name,channel:ch,sort:100});if(error){toast('تعذر الإضافة: '+errMsg(error));break}audit(who(),'إضافة جهة '+name);await loadEntities();toast('أُضيفت الجهة');aEntities();break}
    case 'saveEnt':{const tr=document.querySelector(`tr[data-ek="${a.dataset.ek}"]`);const g=f=>tr.querySelector(`[data-f="${f}"]`);
      const{error}=await sb.from('entities').update({name:g('name').value.trim(),channel:g('channel').value.trim(),sort:+g('sort').value||100,active:g('active').checked}).eq('key',a.dataset.ek);if(error){toast('تعذر الحفظ: '+errMsg(error));break}audit(who(),'تعديل جهة '+a.dataset.ek);await loadEntities();toast('تم الحفظ');break}
    case 'seed':a.disabled=true;await doSeed();break;
-   case 'clearDemo':{if(!confirm('حذف كل البيانات التجريبية؟ لن تتأثر الطلبات الحقيقية.'))break;const{error}=await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);if(error){toast(errMsg(error));break}audit(who(),'حذف البيانات التجريبية');await loadAll();toast('حُذفت البيانات التجريبية');aData();break}
+   case 'clearDemo':{if(!confirm('حذف كل البيانات التجريبية؟ لن تتأثر الطلبات الحقيقية.'))break;const{error}=await sb.from('tickets').delete().eq('demo',true);await sb.from('directives').delete().eq('demo',true);for(const tb of ['transactions','meetings','appointments','attendance','leave_requests'])await sb.from(tb).delete().eq('demo',true);if(error){toast(errMsg(error));break}audit(who(),'حذف البيانات التجريبية');await loadAll();toast('حُذفت البيانات التجريبية');aData();break}
   }}catch(err){toast('حدث خطأ: '+errMsg(err))}
 });
 
 /* ================= BOOT ================= */
 (async()=>{
+  if(!/[?&]intro=1/.test(location.search)){$('#intro').style.display='none';document.documentElement.classList.remove('dark');document.body.classList.remove('dark');$('#app').classList.add('on');loading()}
   sb&&sb.auth.onAuthStateChange((ev)=>{if(ev==='SIGNED_OUT'){PROFILE=null;renderAuth()}});
   await Promise.race([(async()=>{await loadEntities();await loadProfile()})(),new Promise(r=>setTimeout(r,3500))]);
   const start=()=>{window.__startPlatform=null;
-    if(/[?&]intro=1/.test(location.search)||window.__wantIntro){initGlobe();setTimeout(()=>{if(!flown&&!entered)fly()},9000)}
+    if(/[?&]intro=1/.test(location.search)||window.__wantIntro){$('#intro').style.display='';document.documentElement.classList.add('dark');document.body.classList.add('dark');initGlobe();setTimeout(()=>{if(!flown&&!entered)fly()},9000)}
     else{flown=true;spinOn=false;$('#intro').style.display='none';enterApp()}};
   if(document.getElementById('pitch')&&!window.__wantPlatform){$('#intro').style.visibility='hidden';window.__startPlatform=()=>{$('#intro').style.visibility='';start()}}else start();
 })();
